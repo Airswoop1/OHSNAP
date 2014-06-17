@@ -39,7 +39,7 @@ def form_fill(fields):
     os.remove(tmp_file)
     print "Printed data to pdf!"
 
-opts, args = getopt.getopt(sys.argv[1:], '', ["Name=", "Address=", "Apt=", "Zip=", "Tel="])
+opts, args = getopt.getopt(sys.argv[1:], '', ["Name=", "Address=", "Apt=", "Zip=", "City=" ,"Tel="])
 
 formatted_data = []
 
@@ -52,6 +52,8 @@ for opt, a in opts:
         formatted_data.append(('Apt', a))
     elif opt=='--Zip':
         formatted_data.append(('Zip', a))
+    elif opt=='--City':
+        formatted_data.append(('City', a))
 
 print formatted_data
 

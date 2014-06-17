@@ -1,8 +1,10 @@
 {
-    "name": "snapplication",
-    "version": "0.0.1",
-    "dependencies":{
-        "express": "~3.x",
-        "connect": "2.19.6"
-    }
+  "name": "snapplication",
+  "version": "0.0.1",
+  "dependencies": {
+    "express": "~3.x",
+    "connect": "2.19.6",
+    "cities": "~1.0.6",
+    "cors": "~2.3.1"
+  }
 }

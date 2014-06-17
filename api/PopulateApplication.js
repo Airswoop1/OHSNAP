@@ -1,6 +1,7 @@
 /**
  * Created by airswoop1 on 6/17/14.
  */
+var cities = require('cities');
 
 var PopulateApplication = (function(){
 
@@ -46,6 +47,7 @@ var PopulateApplication = (function(){
         formatted_data['address'] = r.address.street_address;
         formatted_data['apt'] = r.address.apt_number;
         formatted_data['zip'] = r.address.zip;
+        formatted_data['city'] = cities.zip_lookup(r.address.zip).city;
         return formatted_data
     }
 
@@ -58,6 +60,7 @@ var PopulateApplication = (function(){
         input += "--Address='" + data.address + "' ";
         input += "--Apt='" + data.apt + "' ";
         input += "--Zip='" + data.zip + "' ";
+        input += "--City='" + data.city + "' ";
 
         exec(input, function(error, stdout, stderr){
             console.log("error: ");
