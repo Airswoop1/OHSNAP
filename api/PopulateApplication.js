@@ -15,18 +15,22 @@ var PopulateApplication = (function(){
     }());
 
     var execute = function(req, res){
+        console.log("Getting to execute of PopulateApplication!");
+        if(req.method == 'GET'){
+            res.send("hellow populate application")
+        }
+        else if(req.method == 'POST') {
+            var formatted_data = format_request(req.body)
 
-        var formatted_data = format_request(req.body)
-
-        populate_pdf(formatted_data,function(err, result){
-            if(err){
-                res.send(404);
-            }
-            else {
-                res.send(200);
-            }
-        })
-
+            populate_pdf(formatted_data,function(err, result){
+                if(err){
+                    res.send(404);
+                }
+                else {
+                    res.send(200);
+                }
+            })
+        }
         //validate request
 
         //look up user in db

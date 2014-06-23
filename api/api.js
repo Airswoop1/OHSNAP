@@ -9,6 +9,7 @@ var api = (function(){
     function set_routes(app){
         app.get('/', Index.execute);
         app.post('/create_base_pdf',PopulateApplication.execute);
+        app.get('/create_base_pdf',PopulateApplication.execute);
     }
 
     return {
