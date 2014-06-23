@@ -2,6 +2,7 @@
  * Created by airswoop1 on 6/17/14.
  */
 var cities = require('cities');
+var MongoClient = require('../database.js');
 
 var PopulateApplication = (function(){
 
@@ -12,24 +13,61 @@ var PopulateApplication = (function(){
 
     var Response = (function(){
         this.status = undefined;
+        this.message = undefined;
     }());
 
     var execute = function(req, res){
         console.log("Getting to execute of PopulateApplication!");
         if(req.method == 'GET'){
-            res.send("hellow populate application")
+            res.send("hello get populate application")
         }
         else if(req.method == 'POST') {
-            var formatted_data = format_request(req.body)
+            //var pdf_data = format_request_for_pdf(req.body);
+            //var mongo_data = format_request_for_db(req.body);
 
-            populate_pdf(formatted_data,function(err, result){
+            MongoClient.getConnection(function(db_err, db){
+                if(db_err) {
+                    console.log(db_err);
+                    var response = new Response();
+                    response.status = 404;
+                    response.message = 'error connecting to db';
+                    res.send(response);
+                }
+                else {
+                    var collection = db.collection('users');
+
+                    var query = {};
+                    query['phone_main'] = req.body.phone_main;
+
+                    collection.update(
+                        query,
+                        req.body,
+                        {"upsert":true, "multi": false},
+                        function (err, updated) {
+                            if(err){
+                                console.log(err);
+                                res.send(200);
+                            }
+                            else {
+                                console.log("successfully updated db!")
+                                console.log(updated);
+                                res.send(200);
+                            }
+                        })
+
+                }
+
+            })
+
+
+            /*populate_pdf(formatted_data,function(err, result){
                 if(err){
                     res.send(404);
                 }
                 else {
                     res.send(200);
                 }
-            })
+            })*/
         }
         //validate request
 
@@ -45,7 +83,14 @@ var PopulateApplication = (function(){
 
     }
 
-    function format_request(r) {
+    function format_request_for_db(r){
+        var mongo_obj = {};
+        mongo_obj['name'] = r.name;
+        mongo_obj['address'] = r.address;
+
+    }
+
+    function format_request_for_pdf(r) {
         var formatted_data = {};
         formatted_data['name'] = r.name.first_name + " " + r.name.last_name;
         formatted_data['address'] = r.address.street_address;
