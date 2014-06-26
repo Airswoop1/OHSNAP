@@ -2,14 +2,17 @@ console.log("Initializing... ");
 
 var express = require("express");
 var http = require("http");
+var https = require('https');
 var path = require("path");
 var os = require("os");
 
 var api = require("./api/api.js");
 var cors = require("cors");
+var config = require('./config.js');
 
 var app = express();
 var server = http.createServer(app);
+var https_server = https.createServer(config.ssl, app);
 //var hl_socket = require("./hl_socket.js")(server);
 
 
@@ -36,3 +39,8 @@ server.listen(app.get('port'), function () {
     console.log('Url: ' + os.hostname())
     console.log("Completed Node initialization: " + new Date());
 });
+
+https_server.listen(8080, function(){
+    console.log("HTTPS now listening on port 8080")
+    console.log("Completed https initialization");
+})

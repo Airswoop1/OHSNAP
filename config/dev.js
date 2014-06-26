@@ -1,6 +1,7 @@
 /**
  * Created by airswoop1 on 6/23/14.
  */
+var fs = require('fs');
 module.exports = {
     "db" : {
         "mongodb" : "mongodb://ohsnap:lastmorning123@ds041198.mongolab.com:41198/ohsnap-dev"
@@ -12,7 +13,10 @@ module.exports = {
             "region": "us-west-2"
         },
         "s3_bucket":"significance.labs.snapcoach.documents"
-
+    },
+    "ssl" : {
+        "key":fs.readFileSync('./config/ssl/key.pem'),
+        "cert":fs.readFileSync('./config/ssl/cert.pem')
     }
 
 }
