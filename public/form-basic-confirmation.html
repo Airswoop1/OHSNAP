@@ -1,0 +1,58 @@
+<div class="row ">
+    <span class="text-left" style="font-size: 30px"><strong>Great! You're almost done!</strong></span>
+</div>
+
+<div class="row ">
+    <p>
+        Once you submit your name and contact information, we'll confirm that SNAP has received it.
+    </p>
+</div>
+
+<div class="row ">
+
+    <div class="col-xs-12">
+        <p id="name">{{ formData.name.first_name + " " + formData.name.last_name }} </p>
+        <div >
+            <a ui-sref="form.intro" class="btn btn-block" style="background-color:#e8e8e8;color:black">
+                Edit name
+            </a>
+        </div>
+        <br/>
+    </div>
+
+
+    <div class="col-xs-12">
+        <p id="address">{{ formData.address.street_address + " " + formData.address.apt_number + ", " + formData.address.zip }} </p>
+        <div >
+            <a ui-sref="form.address" class="btn btn-block" style="background-color:#e8e8e8;color:black">
+                Edit address
+            </a>
+        </div>
+        <br/>
+    </div>
+
+
+    <div class="col-xs-12">
+        <p id="telephone">{{ (formData.phone_main | tel)}}</p>
+        <div>
+            <a ui-sref="form.telephone" class="btn btn-block" style="background-color:#e8e8e8;color:black">
+                Edit phone number
+            </a>
+        </div>
+    </div>
+    <br/>
+
+</div>
+
+
+<div class="row">
+    <br/>
+    <label for="agree_to_legal">
+        <input type="checkbox" id="agree_to_legal"  ng-model="basic_confirmation_agree"/> I certify that the information I am submitting is true.
+    </label>
+</div>
+<div class="col-xs-12" ng-show="basic_confirmation_agree">
+    <a ng-click="submitBasicApp()" class="btn btn-block btn-remove-ws" style="background-color: yellow;color:black">
+        Submit Application
+    </a>
+</div>
