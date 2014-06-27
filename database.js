@@ -14,7 +14,6 @@ function getConnection(callback) {
     }
     else {
         console.log("Connecting to mongo database...");
-        console.log(mongo_url)
 
         MongoClient.connect(mongo_url, function(err,db) {
             if(err) {

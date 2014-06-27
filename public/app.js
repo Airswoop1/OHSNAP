@@ -140,8 +140,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ngAnimate', 'ui.route
             $scope.formData.name.full_name = this.init_name;
 
             var split_name = this.init_name.split(' ');
-            alert(split_name);
-            alert(split_name.length);
 
             $scope.formData.name.first_name = split_name[0];
 
@@ -229,7 +227,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ngAnimate', 'ui.route
         $scope.uploadFiles = function($files) {
             var file_upload_status = documentUpload.onFileSelect($files, $scope);
             file_upload_status.then(function(success){
-                alert('success!');
                 console.log(success);
             })
         }
