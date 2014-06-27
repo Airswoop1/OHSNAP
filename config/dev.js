@@ -15,8 +15,9 @@ module.exports = {
         "s3_bucket":"significance.labs.snapcoach.documents"
     },
     "ssl" : {
-        "key":fs.readFileSync('./config/ssl/key.pem'),
-        "cert":fs.readFileSync('./config/ssl/cert.pem')
+        "key":fs.readFileSync('./config/ssl/ssl.key'),
+        "cert":fs.readFileSync('./config/ssl/ssl.crt'),
+        "ca":fs.readFileSync('./config/ssl/sub.class1.server.ca.pem')
     }
 
 }
