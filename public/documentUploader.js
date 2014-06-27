@@ -14,7 +14,7 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
                 var file = $files[i];
                 $scope.upload = $upload.
                     upload({
-                        url: 'https://54.213.211.187/upload_docs',
+                        url: 'https://easyfoodstamps.com/upload_docs',
                         data: {myObj: $scope.myModelObj, "the_data":"oohhh zee data"},
                         file: file
                     })

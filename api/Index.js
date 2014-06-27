@@ -7,7 +7,7 @@ var Index = (function(){
 
 
     var execute = function(req,res){
-        res.send(200);
+        res.redirect('/index.html');
     }
 
     return {
