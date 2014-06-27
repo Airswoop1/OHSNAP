@@ -4,7 +4,6 @@ var express = require("express");
 var http = require("http");
 var https = require('https');
 var path = require("path");
-var os = require("os");
 var ip = require("ip")
 var cors = require("cors");
 
@@ -24,11 +23,33 @@ app.use(express.urlencoded());
 app.use(express.bodyParser());
 app.use(express.cookieParser('asdfa9asdfxxc0'));
 app.use(cors())
-app.use(app.router);
+
+app.use(function(req, res, next){
+    if(!req.connection.encrypted){
+        if(process.env.NODE_ENV == 'dev'){
+            res.redirect('https://' + req.headers.host + req.url);
+        }
+        else if(process.env.NODE_ENV == 'sandbox'){
+            res.redirect('https://' + req.headers.host.split(':')[0] + ":8080"+ req.url);
+        }
+        else{
+            res.redirect('https://' + req.headers.host.split(':')[0] + ":8080"+ req.url);
+        }
+    }
+    else {
+        next();
+    }
+})
+
+//app.use(app.router);
 app.use(express.static('public'));
 app.set('views', path.join(__dirname, 'views'));
 
+
+
 api.set_routes(app);
+
+
 
 
 server.listen(app.get('port'), function () {
