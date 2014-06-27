@@ -22,7 +22,8 @@
 
 
     <div class="col-xs-12">
-        <p id="address">{{ formData.address.street_address + " " + formData.address.apt_number + ", " + formData.address.zip }} </p>
+        <p id="address" ng-show="has_address">{{ formData.address.street_address + " " + formData.address.apt_number + ", " + formData.address.zip}} </p>
+        <p id="no_address" ng-hide="has_address">None provided</p>
         <div >
             <a ui-sref="form.address" class="btn btn-block" style="background-color:#e8e8e8;color:black">
                 Edit address
@@ -33,7 +34,7 @@
 
 
     <div class="col-xs-12">
-        <p id="telephone">{{ (formData.phone_main | tel)}}</p>
+        <p id="telephone">{{ (formData.phone_main | tel) || "None provided"}}</p>
         <div>
             <a ui-sref="form.telephone" class="btn btn-block" style="background-color:#e8e8e8;color:black">
                 Edit phone number
@@ -52,7 +53,7 @@
     </label>
 </div>
 <div class="col-xs-12" ng-show="basic_confirmation_agree">
-    <a ng-click="submitBasicApp()" class="btn btn-block btn-remove-ws" style="background-color: yellow;color:black">
+    <button type="button" ng-click="submitBasicApp()" class="btn btn-block btn-remove-ws" style="background-color: yellow;color:black">
         Submit Application
-    </a>
+    </button>
 </div>

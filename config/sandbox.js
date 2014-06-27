@@ -1,5 +1,5 @@
 /**
- * Created by airswoop1 on 6/23/14.
+ * Created by airswoop1 on 6/27/14.
  */
 var fs = require('fs');
 module.exports = {
@@ -15,14 +15,14 @@ module.exports = {
         "s3_bucket":"significance.labs.snapcoach.documents"
     },
     "ssl" : {
-        "key":fs.readFileSync('./config/ssl/ssl.key'),
-        "cert":fs.readFileSync('./config/ssl/ssl.crt'),
-        "ca":fs.readFileSync('./config/ssl/sub.class1.server.ca.pem')
+        "key":fs.readFileSync('./config/ssl/sandbox/key.pem'),
+        "cert":fs.readFileSync('./config/ssl/sandbox/cert.pem')
     },
     "web": {
-        "http_port": 80,
-        "https_port" : 443
+        "http_port": 1337,
+        "https_port" : 8080
     }
 
 }
+
 

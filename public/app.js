@@ -116,8 +116,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ngAnimate', 'ui.route
 
         //data flags for optional fields
         $scope.basic_confirmation_agree = false;
-        $scope.has_phone = false;
-        $scope.has_address = false;
+        $scope.has_phone = true;
+        $scope.has_address = true;
         $scope.completed_first_name = false;
         $scope.submitted_basic_information = false;
 
@@ -143,7 +143,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ngAnimate', 'ui.route
 
             $scope.formData.name.first_name = split_name[0];
 
-            if(split_name.length == 1) {
+            if((split_name.length == 1) && (split_name != "")) {
                 $scope.completed_first_name = true;
                 $state.go('form.name');
             }
@@ -183,15 +183,15 @@ var app = angular.module('formApp', ['angularFileUpload', 'ngAnimate', 'ui.route
             }
         }
 
-        $scope.completedAddress = function(has_address, zip, address){
+        $scope.completedAddress = function(zip, address){
 
-            if(!has_address && zip && (zip.toString().length==5) && address){
+            if(address && zip && (zip.toString().length==5)){
                 updateProgress('address');
                 $state.go('form.telephone');
             }
-            else if(has_address){
+            else if(!address){
+                $scope.has_address = false;
                 $state.go('form.telephone');
-
             }
             else{
                 this.throwErrors('form.address');
@@ -200,6 +200,9 @@ var app = angular.module('formApp', ['angularFileUpload', 'ngAnimate', 'ui.route
 
         $scope.completedTelephone = function(){
             //phone validation?
+            if(!$scope.formData.phone_main){
+                $scope.has_phone = false;
+            }
             updateProgress('telephone');
             $state.go('form.basic-confirmation');
         }
