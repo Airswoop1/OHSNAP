@@ -20,6 +20,10 @@ body { padding-top:20px; }
 /* active buttons turn light green-blue*/
 #status-buttons a.active span   { background:#00BC8C; }
 
+/** main style
+========================================================================================= */
+.main_page { height:300px; background: url('images/background.png'); background-size:100%;color:white; margin:0; padding:10px; border-bottom:1px solid white; border-top-left-radius:5px; border-top-right-radius:5px;}
+
 #alt_mailing_btn { background-color: darkorange; border-color: darkorange}
 
 table thead th {font-weight:normal; font-size:small; text-align: center}
