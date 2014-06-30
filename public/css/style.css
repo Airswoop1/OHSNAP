@@ -22,7 +22,7 @@ body { padding-top:20px; }
 
 /** main style
 ========================================================================================= */
-.main_page { height:300px; background: url('images/background.png'); background-size:100%;color:white; margin:0; padding:10px; border-bottom:1px solid white; border-top-left-radius:5px; border-top-right-radius:5px;}
+.main_page { height:300px; background: url('../images/background.png'); background-size:100%;color:white; margin:0; padding:10px; border-bottom:1px solid white; border-top-left-radius:5px; border-top-right-radius:5px;}
 
 #alt_mailing_btn { background-color: darkorange; border-color: darkorange}
 
@@ -69,10 +69,13 @@ input[type="color"]:focus,
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(98, 196, 98, 0.6);
 }
 
+.footer-info .btn {background-color: slategray;border-bottom: 1px black solid;}
+
+
 /* style.css */
 /* ANIMATION STYLINGS
 ============================================================================= */
-#signup-form            { position:relative; min-height:300px; overflow:hidden; padding:30px; padding-top:0px; }
+#signup-form            { position:relative; min-height:715px; padding:30px; padding-top:0px; }
 #form-views             { width:auto; }
 
 /* basic styling for entering and leaving */
