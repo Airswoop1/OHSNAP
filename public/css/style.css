@@ -1,7 +1,7 @@
 /* style.css */
 /* BASIC STYLINGS
 ============================================================================= */
-body { padding-top:20px; }
+body { padding-top:20px; background-color:lightgray}
 /*font-family: GothamRnd-Medium; src:url('GothamRnd-Medium.otf');*/
 /* form styling */
 #form-container                { background:white; margin-bottom:20px; border-radius:5px; color:black;}
@@ -70,6 +70,65 @@ input[type="color"]:focus,
 }
 
 .footer-info .btn {background-color: slategray;border-bottom: 1px black solid;}
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+#circle {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    font-size: 35px;
+    color: #ffffff;
+    line-height: 150px;
+    text-align: center;
+    background: rgb(0, 191, 255);
+    margin:auto;
+}
+
+#arrow_clock{
+    width: 150px;
+    height: 150px;
+    font-size: 35px;
+    color: #ffffff;
+    line-height: 150px;
+    text-align: center;
+    margin:auto;
+    background-size:100%;
+    background-repeat:no-repeat;
+}
+
+
+.carousel-control {
+    top:50%;
+    width:auto;
+    height:1em;
+    background:transparent;
+}
+.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right  {
+    position:static;
+    display:block;
+    width:auto;
+}
+.carousel-control .glyphicon-chevron-left:before {
+    margin-left:0;
+}
+
+.carousel-indicators {
+    top:-25px;
+
+}
+
+.carousel-indicators li {
+    background-color: lightgray;
+    border-color: transparent;
+}
+
+.carousel-indicators .active {
+    background-color:#a9a9a9;
+}
+
+.carousel-inner {
+    height:300px;
+}
 
 
 /* style.css */

@@ -1,0 +1,66 @@
+<div class="row">
+    <accordion close-others="true">
+        <accordion-group is-open="about.open">
+            <accordion-heading>
+                ABOUT US<i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': about.open, 'glyphicon-chevron-right': !about.open}"></i>
+            </accordion-heading>
+            <span class="lead">We’re trying to make it easier to apply for SNAP. We're based in Brooklyn at Significance Labs,
+            and we aren’t affiliated with the US government.</span>
+        </accordion-group>
+        <accordion-group is-open="faq.open">
+            <accordion-heading>
+                FAQs <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': faq.open, 'glyphicon-chevron-right': !faq.open}"></i>
+            </accordion-heading>
+            <ul style="list-style-type: none;padding:3px;">
+                <accordion>
+                <li>
+                    <accordion-group>
+                        <accordion-heading>
+                            <span class="h4">What’s the difference between applying here versus applying elsewhere?</span>
+                        </accordion-heading>
+                        <span class="lead">The application that gets submitted is the same. We think you’ll be able to
+                            save time and headaches by applying with us, though. You’ll be eligible for the
+                            exact same SNAP benefits no matter where you apply.</span>
+                    </accordion-group>
+                </li>
+                <br/>
+                <li>
+                    <accordion-group>
+                        <accordion-heading>
+                            <span class="h4">How much does this cost?</span>
+                        </accordion-heading>
+                        <span class="lead">It's free.</span>
+                    </accordion-group>
+                </li>
+                <br/>
+                <li>
+                    <accordion-group>
+                        <accordion-heading>
+                            <span class="h4">What will you do with my personal information?</span>
+                        </accordion-heading>
+                        <span class="lead">By using this app, you are agreeing to our <a href="mailto:jimmy@significancelabs.org">Terms of Service</a> [link TBD].</span>
+                    </accordion-group>
+                </li>
+                <br/>
+                <li>
+                    <accordion-group>
+                        <accordion-heading>
+                            <span class="h4">Where can I read more about SNAP?</span>
+                        </accordion-heading>
+                        <span class="lead">Learn more <a href="http://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program-snap">here</a>.</span>
+                    </accordion-group>
+                </li>
+                </accordion>
+            </ul>
+        </accordion-group>
+        <accordion-group is-open="contact.open">
+            <accordion-heading>
+                CONTACT US <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': contact.open, 'glyphicon-chevron-right': !contact.open}"></i>
+            </accordion-heading>
+            <span class="lead"><a href="mailto:snap@significancelabs.org">snap@significancelabs.org</a></span>
+            <br/>
+            <span class="lead">(917) 727-6855</span>
+        </accordion-group>
+    </accordion>
+
+</div>

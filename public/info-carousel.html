@@ -1,0 +1,15 @@
+<div class="container">
+    <carousel interval="my_int">
+        <slide ng-repeat="slide in slides" active="slide.active">
+            <div id="{{ slide.id }}" ng-style="{background:slide.bg_color}">
+                <span class="text-center" style="width:50%;color:white">{{ slide.header }}</span>
+            </div>
+            <div class="text-center">
+                <br/>
+                <span class="h4" style="margin:auto">{{ slide.title }}</span>
+                <br/>
+                <span class="lead">{{ slide.text }}</span>
+            </div>
+        </slide>
+    </carousel>
+</div>
