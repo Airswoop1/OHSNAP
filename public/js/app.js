@@ -153,7 +153,9 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
         // we will store all of our form data in this object
         $scope.formData = {
-            name: {}
+            name: {},
+            address:{},
+            phone:undefined
         };
 
         //data objects for holding input temporarily
@@ -187,7 +189,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
 
         $scope.initNameStart = function(){
-            $scope.formData.name.full_name = this.init_name;
+            $scope.formData.name.entered_name = this.init_name;
 
             var split_name = this.init_name.split(' ');
 
@@ -218,9 +220,16 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             $scope.basic_confirmation_agree = true;
             $scope.submitted_basic_information = true;
 
-            InfoUploader.uploadBasicInfo($scope.formData);
+            InfoUploader.uploadBasicInfo($scope.formData, function(result){
+                if(result) {
+                    $state.go('form.basic-app-submitted');
+                }
+                else {
+                    alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.")
+                }
+            });
 
-            $state.go('form.basic-app-submitted');
+
         }
 
 
@@ -315,22 +324,21 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
     .factory('InfoUploader', function($http) {
         return {
-            uploadBasicInfo : function(formData) {
-                $http.post('https://54.213.211.187/create_base_pdf', JSON.stringify(formData))
+            uploadBasicInfo : function(formData, callback) {
+                $http.post('https://easyfoodstamps.com/upload_user_info', JSON.stringify(formData))
                     .success(function(data, status, headers, config) {
-                        alert("success uploading info!");
-                        console.log(status);
-                        console.log(data);
-                        console.log(headers);
-                        console.log(config);
 
+                        if(status === 201){
+                            callback(true);
+                        }
+                        else {
+                            callback(null);
+                        }
                     })
                     .error(function(data, status, headers, config) {
-                        alert('error uploading info');
-                        console.log(status);
                         console.log(data);
-                        console.log(headers);
-                        console.log(config);
+
+                        callback(null)
 
                     });
             }

@@ -2,15 +2,15 @@
  * Created by airswoop1 on 6/17/14.
  */
 var Index = require('./Index.js');
-var PopulateApplication = require('./PopulateApplication.js');
+var UploadUserInfo = require('./UploadUserInfo.js');
 var DocumentationUpload = require('./DocumentationUpload.js');
 
 var api = (function(){
 
     function set_routes(app){
         app.get('/', Index.execute);
-        app.post('/create_base_pdf', PopulateApplication.execute);
-        app.get('/create_base_pdf', PopulateApplication.execute);
+        app.post('/upload_user_info', UploadUserInfo.execute);
+        app.get('/upload_user_info', UploadUserInfo.execute);
         app.post('/upload_docs', DocumentationUpload.execute);
     }
 

@@ -4,7 +4,7 @@
 var fs = require('fs');
 module.exports = {
     "db" : {
-        "mongodb" : "mongodb://ohsnap:lastmorning123@ds041198.mongolab.com:41198/ohsnap-dev"
+        "mongodb" : "mongodb://ohsnap-sandbox:lastmorning123@ds037447.mongolab.com:37447/ohsnap-sandbox"
     },
     "aws" : {
         "s3" : {
