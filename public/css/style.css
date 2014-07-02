@@ -4,8 +4,8 @@
 body {
     padding-top: 20px;
     background-color: lightgray;
+    font-family: 'Roboto', sans-serif;
 }
-/*font-family: GothamRnd-Medium; src:url('GothamRnd-Medium.otf');*/
 /* form styling */
 #form-container {
     background: white;
@@ -65,7 +65,7 @@ body {
     background-size: 100%;
     color: white;
     margin: 0;
-    padding: 10px;
+    padding: 10px 25px;
     border-bottom: 1px solid white;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
@@ -274,4 +274,10 @@ input[type="color"]:focus,
     to {
         -webkit-transform: translateX(0);
     }
+}
+/* slide in from the right */
+
+.name-input {
+    padding: 0 15px;
+    margin-top: -50px;
 }
