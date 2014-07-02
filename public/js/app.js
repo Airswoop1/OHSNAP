@@ -196,6 +196,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             if((split_name.length == 1) && (split_name != "")) {
                 $scope.completed_first_name = true;
                 $state.go('form.name');
+
             }
             else if(split_name.length == 2) {
                 this.formData.name.last_name = split_name[1];
@@ -305,8 +306,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             $window.ga('send','pageview');
         }
 
-        function sendStartAnalytic(){
-
+        function sendEvent(category, action, label, value){
+            $window.ga('send','event',category, action, label, value);
         }
 
 
