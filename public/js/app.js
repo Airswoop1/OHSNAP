@@ -4,7 +4,7 @@
 // app.js
 // create our angular app and inject ngAnimate and ui-router
 // =============================================================================
-var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch','DocumentUploader', 'analytics' ])
+var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch','DocumentUploader' ])
 
     .directive('selectRace', function(){
         return {
@@ -149,7 +149,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
 // our controller for the form
 // =============================================================================
-    .controller('formController', function($scope, $state, $http, $rootScope, $upload, documentUpload, InfoUploader) {
+    .controller('formController', function($scope, $state, $http, $rootScope, $upload, $location, $window, documentUpload, InfoUploader) {
 
         // we will store all of our form data in this object
         $scope.formData = {
@@ -286,9 +286,11 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         }
 
         $rootScope.$on('$stateChangeStart', function(event, toState){
+
             if((toState.name == 'form.name' || toState.name == 'form.address' ||
                 toState.name == 'form.telephone' || toState.name == 'form.basic-confirmation')) {
                 $scope.show_progress = true
+                sendViewAnalytic();
             }
             else {
                 if($scope.show_progress == true){
@@ -297,6 +299,17 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             }
 
         })
+
+        function sendViewAnalytic(){
+            $window.ga('send','screenview', {
+                'screenName': $location.path()
+            });
+        }
+
+        function sendStartAnalytic(){
+
+        }
+
 
     })
 

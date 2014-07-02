@@ -9,6 +9,7 @@
                 $window.ga('send','screenview', {
                     'screenName': $location.path()
                 });
+                alert("Sending GA event for " + $location.path());
             };
             $rootScope.$on('$viewContentLoaded', track);
         }
