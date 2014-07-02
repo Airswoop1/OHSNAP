@@ -1,47 +1,121 @@
 /* style.css */
 /* BASIC STYLINGS
 ============================================================================= */
-body { padding-top:20px; background-color:lightgray}
+body {
+    padding-top: 20px;
+    background-color: lightgray;
+}
 /*font-family: GothamRnd-Medium; src:url('GothamRnd-Medium.otf');*/
 /* form styling */
-#form-container                { background:white; margin-bottom:20px; border-radius:5px; color:black;}
+#form-container {
+    background: white;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    color: black;
+}
 
-#form-container .page-header   { background:deepskyblue; color:white; margin:0; padding:10px; border-bottom:1px solid white; border-top-left-radius:5px; border-top-right-radius:5px; }
+#form-container .page-header {
+    background: deepskyblue;
+    color: white;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
 
 /* numbered buttons */
-#status-buttons                 {  }
-#status-buttons a               { color:#FFF; display:inline-block; font-size:12px; margin-right:10px; text-align:center; text-transform:uppercase; }
-#status-buttons a:hover         { text-decoration:none;  }
+#status-buttons {
+}
+
+#status-buttons a {
+    color: #FFF;
+    display: inline-block;
+    font-size: 12px;
+    margin-right: 10px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+#status-buttons a:hover {
+    text-decoration: none;
+}
 
 /* we will style the span as the circled number */
-#status-buttons span            { background:#080808; display:block; height:30px; margin:0 auto 10px; padding-top:5px; width:30px;
-    border-radius:50%; }
+#status-buttons span {
+    background: #080808;
+    display: block;
+    height: 30px;
+    margin: 0 auto 10px;
+    padding-top: 5px;
+    width: 30px;
+    border-radius: 50%;
+}
 
 /* active buttons turn light green-blue*/
-#status-buttons a.active span   { background:#00BC8C; }
+#status-buttons a.active span {
+    background: #00BC8C;
+}
 
 /** main style
 ========================================================================================= */
-.main_page { height:300px; background: url('../images/background.png'); background-size:100%;color:white; margin:0; padding:10px; border-bottom:1px solid white; border-top-left-radius:5px; border-top-right-radius:5px;}
+.main_page {
+    height: 300px;
+    background: url('../images/background.png');
+    background-size: 100%;
+    color: white;
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
 
-#alt_mailing_btn { background-color: darkorange; border-color: darkorange}
+#alt_mailing_btn {
+    background-color: darkorange;
+    border-color: darkorange;
+}
 
-table thead th {font-weight:normal; font-size:small; text-align: center}
-table tbody tr td {text-align:center}
+table thead th {
+    font-weight: normal;
+    font-size: small;
+    text-align: center;
+}
 
-.btn-remove-ws { white-space: normal;}
+table tbody tr td {
+    text-align: center;
+}
 
-.info-number {font-size: 61px;font-weight: 100;color:darkgray}
+.btn-remove-ws {
+    white-space: normal;
+}
 
-.info-border {border-bottom: 1px solid lightblue}
+.info-number {
+    font-size: 61px;
+    font-weight: 100;
+    color: darkgray;
+}
 
-.form-control, input {border:1px solid black}
+.info-border {
+    border-bottom: 1px solid lightblue;
+}
 
-.form-control, input:focus {border:1px solid black}
+.form-control, input {
+    border: 1px solid black;
+}
 
-.time-est {color: #bababa}
+.form-control, input:focus {
+    border: 1px solid black;
+}
 
-.savings { color: #006aff; font-weight: 900}
+.time-est {
+    color: #bababa;
+}
+
+.savings {
+    color: #006aff;
+    font-weight: 900;
+}
 
 textarea:focus,
 input[type="text"]:focus,
@@ -63,14 +137,19 @@ input[type="color"]:focus,
     outline: 0;
     outline: thin dotted \9;
     /* IE6-9 */
-
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(98, 196, 98, 0.6);
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(98, 196, 98, 0.6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(98, 196, 98, 0.6);
 }
 
-.footer-info .btn {background-color: slategray;border-bottom: 1px black solid;}
-.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+.footer-info .btn {
+    background-color: slategray;
+    border-bottom: 1px black solid;
+}
+
+.nav, .pagination, .carousel, .panel-title a {
+    cursor: pointer;
+}
 
 #circle {
     width: 150px;
@@ -81,40 +160,40 @@ input[type="color"]:focus,
     line-height: 150px;
     text-align: center;
     background: rgb(0, 191, 255);
-    margin:auto;
+    margin: auto;
 }
 
-#arrow_clock{
+#arrow_clock {
     width: 150px;
     height: 150px;
     font-size: 35px;
     color: #ffffff;
     line-height: 150px;
     text-align: center;
-    margin:auto;
-    background-size:100%;
-    background-repeat:no-repeat;
+    margin: auto;
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
-
 
 .carousel-control {
-    top:50%;
-    width:auto;
-    height:1em;
-    background:transparent;
+    top: 50%;
+    width: auto;
+    height: 1em;
+    background: transparent;
 }
-.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right  {
-    position:static;
-    display:block;
-    width:auto;
+
+.carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right {
+    position: static;
+    display: block;
+    width: auto;
 }
+
 .carousel-control .glyphicon-chevron-left:before {
-    margin-left:0;
+    margin-left: 0;
 }
 
 .carousel-indicators {
-    top:-25px;
-
+    top: -25px;
 }
 
 .carousel-indicators li {
@@ -123,64 +202,76 @@ input[type="color"]:focus,
 }
 
 .carousel-indicators .active {
-    background-color:#a9a9a9;
+    background-color: #a9a9a9;
 }
 
 .carousel-inner {
-    height:300px;
+    height: 300px;
 }
 
 
 /* style.css */
 /* ANIMATION STYLINGS
 ============================================================================= */
-#signup-form            { position:relative; min-height:715px; padding:30px; padding-top:0px; }
-#form-views             { width:auto; }
-
-/* basic styling for entering and leaving */
-/* left and right added to ensure full width */
-#form-views.ng-enter,
-#form-views.ng-leave      { position:absolute; left:30px; right:30px;
-    transition:0.5s all ease; -moz-transition:0.5s all ease; -webkit-transition:0.5s all ease;
+#signup-form {
+    position: relative;
+    min-height: 715px;
+    padding: 30px;
+    padding-top: 0px;
 }
 
-/* enter animation */
-#form-views.ng-enter            {
-    -webkit-animation:slideInRight 0.5s both ease;
-    -moz-animation:slideInRight 0.5s both ease;
-    animation:slideInRight 0.5s both ease;
-}
-
-/* leave animation */
-#form-views.ng-leave            {
-    -webkit-animation:slideOutLeft 0.5s both ease;
-    -moz-animation:slideOutLeft 0.5s both ease;
-    animation:slideOutLeft 0.5s both ease;
+#form-views {
+    width: auto;
 }
 
 /* ANIMATIONS
 ============================================================================= */
 /* slide out to the left */
 @keyframes slideOutLeft {
-    to 		{ transform: translateX(-200%); }
+    to {
+        transform: translateX(-200%);
+    }
 }
+
 @-moz-keyframes slideOutLeft {
-    to 		{ -moz-transform: translateX(-200%); }
+    to {
+        -moz-transform: translateX(-200%);
+    }
 }
+
 @-webkit-keyframes slideOutLeft {
-    to 		{ -webkit-transform: translateX(-200%); }
+    to {
+        -webkit-transform: translateX(-200%);
+    }
 }
 
 /* slide in from the right */
 @keyframes slideInRight {
-    from 	{ transform:translateX(200%); }
-    to 		{ transform: translateX(0); }
+    from {
+        transform: translateX(200%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
 }
+
 @-moz-keyframes slideInRight {
-    from 	{ -moz-transform:translateX(200%); }
-    to 		{ -moz-transform: translateX(0); }
+    from {
+        -moz-transform: translateX(200%);
+    }
+
+    to {
+        -moz-transform: translateX(0);
+    }
 }
+
 @-webkit-keyframes slideInRight {
-    from 	{ -webkit-transform:translateX(200%); }
-    to 		{ -webkit-transform: translateX(0); }
+    from {
+        -webkit-transform: translateX(200%);
+    }
+
+    to {
+        -webkit-transform: translateX(0);
+    }
 }
