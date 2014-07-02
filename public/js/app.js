@@ -4,7 +4,7 @@
 // app.js
 // create our angular app and inject ngAnimate and ui-router
 // =============================================================================
-var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch','DocumentUploader' ])
+var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch','DocumentUploader', 'analytics' ])
 
     .directive('selectRace', function(){
         return {
