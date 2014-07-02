@@ -301,9 +301,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         })
 
         function sendViewAnalytic(){
-            $window.ga('send','screenview', {
-                'screenName': $location.path()
-            });
+            $window.ga('set','page',$location.path())
+            $window.ga('send','pageview');
         }
 
         function sendStartAnalytic(){

@@ -57,8 +57,5 @@ ga('create', 'UA-52493533-1', 'auto');
 });*/
 ga('set', 'dimension1', device_type);
 ga('send', 'pageview');
-ga('send','screenview',{
-    'screenName' : 'Home'
-})
 
 
