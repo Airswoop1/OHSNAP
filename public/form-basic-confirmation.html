@@ -49,11 +49,13 @@
 <div class="row">
     <br/>
     <label for="agree_to_legal">
-        <input type="checkbox" id="agree_to_legal"  ng-model="basic_confirmation_agree"/> I certify that the information I am submitting is true.
+        <input type="checkbox" class="big-checkbox" id="agree_to_legal"  ng-model="basic_confirmation_agree"/>
+        <span class="pull-right" style="width:80%;">I certify that the information I am submitting is true.</span>
     </label>
 </div>
+
 <div class="col-xs-12" ng-show="basic_confirmation_agree">
-    <button type="button" ng-click="submitBasicApp()" class="btn btn-block btn-remove-ws" style="background-color: yellow;color:black">
+    <button ng-click="submitBasicApp()" class="btn btn-block btn-remove-ws" style="background-color: yellow;color:black">
         Submit Application
     </button>
 </div>

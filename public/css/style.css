@@ -69,6 +69,33 @@ input[type="color"]:focus,
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(98, 196, 98, 0.6);
 }
 
+#agree_to_legal {
+    padding: 10px;
+    width:16px;
+    height:16px;
+    margin-left:10%;
+    margin-top:5%
+}
+
+#agree_to_text {
+    padding: 10px;
+    width:16px;
+    height:16px;
+    margin-left:10%;
+    margin-top:5%
+}
+
+.big-checkbox {
+    -ms-transform: scale(2); /* IE */
+    -moz-transform: scale(2); /* FF */
+    -webkit-transform: scale(2); /* Safari and Chrome */
+    -o-transform: scale(2); /* Opera */
+}
+
+.panel-group .panel {
+    border-radius:0px;
+}
+
 .footer-info .btn {background-color: slategray;border-bottom: 1px black solid;}
 .nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
 

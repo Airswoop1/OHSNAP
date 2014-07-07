@@ -127,6 +127,11 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 templateUrl: 'basic-app-submitted.html'
             })
 
+            .state('form.feedback-submitted', {
+                url: '/feedback-submitted',
+                templateUrl:'form-feedback-submitted.html'
+            })
+
 
             .state('form.interview-information', {
                 url:'/interview-information',
@@ -164,6 +169,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.date = new Date();
         $scope.date_of_interview = new Date();
         $scope.date_of_interview.setDate($scope.date.getDate() + 10);
+        $scope.date_of_phone_call = new Date();
+        $scope.date_of_phone_call.setDate($scope.date.getDate() + 5);
 
 
         //data flags for optional fields
@@ -228,9 +235,19 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                     alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.")
                 }
             });
+        };
 
+        $scope.submitFeedback = function() {
 
-        }
+            InfoUploader.uploadFeedback(function(result){
+                if(result) {
+                    $state.go('form.feedback-submitted');
+                }
+                else {
+                    alert("Oops Looks like something went wrong. Your feedback was NOT submitted. Please wait and try again.")
+                }
+            })
+        };
 
 
         $scope.completedName = function(first_name, last_name) {
@@ -287,7 +304,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
         }
 
-
         $scope.uploadFiles = function($files) {
             var file_upload_status = documentUpload.onFileSelect($files, $scope);
             file_upload_status.then(function(success){
@@ -298,7 +314,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $rootScope.$on('$stateChangeStart', function(event, toState){
 
             if((toState.name == 'form.name' || toState.name == 'form.address' ||
-                toState.name == 'form.telephone' || toState.name == 'form.basic-confirmation')) {
+                toState.name == 'form.telephone' || toState.name == 'form.basic-confirmation'
+                || toState.name == 'form.basic-app-submitted')) {
                 $scope.show_progress = true
                 sendViewAnalytic();
             }
@@ -324,6 +341,26 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
     .factory('InfoUploader', function($http) {
         return {
+
+            uploadFeedback : function(callback) {
+                $http.post('https://easyfoodstamps.com/submit_feedback', JSON.stringify(formData))
+                    .success(function(data, status, headers, config) {
+
+                        if(status === 201){
+                            callback(true);
+                        }
+                        else {
+                            callback(null);
+                        }
+                    })
+                    .error(function(data, status, headers, config) {
+                        console.log(data);
+
+                        callback(null)
+
+                    });
+            },
+
             uploadBasicInfo : function(formData, callback) {
                 $http.post('https://easyfoodstamps.com/upload_user_info', JSON.stringify(formData))
                     .success(function(data, status, headers, config) {

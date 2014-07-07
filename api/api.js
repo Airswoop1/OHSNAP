@@ -1,9 +1,10 @@
 /**
  * Created by airswoop1 on 6/17/14.
  */
-var Index = require('./Index.js');
-var UploadUserInfo = require('./UploadUserInfo.js');
-var DocumentationUpload = require('./DocumentationUpload.js');
+var Index = require('./Index.js'),
+    UploadUserInfo = require('./UploadUserInfo.js'),
+    DocumentationUpload = require('./DocumentationUpload.js'),
+    SubmitFeedback = require('./SubmitFeedback.js');
 
 var api = (function(){
 
@@ -12,6 +13,7 @@ var api = (function(){
         app.post('/upload_user_info', UploadUserInfo.execute);
         app.get('/upload_user_info', UploadUserInfo.execute);
         app.post('/upload_docs', DocumentationUpload.execute);
+        app.post('/submit_feedback', SubmitFeedback.execute);
     }
 
     return {

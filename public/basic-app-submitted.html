@@ -1,29 +1,85 @@
 <div class="row ">
-    <span class="text-left" style="font-size: 30px"><strong>Your application is in!</strong></span>
-    <br/>
+    <div class="col-xs-3" style="margin-top:15%">
+        <i class="fa fa-check-square-o fa-5x" style=""></i>
+    </div>
+    <div class="col-xs-offset-1 col-xs-8">
+        <span class="text-left" style="font-size: 30px"><strong>Your application is in!</strong></span>
+    </div>
+
 </div>
 
 <div class="row">
-    <p>
-        Next, you'll get a phone call from the SNAP office by {{ date_of_interview | date:'EEEE, MMMM d' }}, to schedule your phone interview.
-    </p>
+    <accordion close-others="true">
+        <accordion-group>
+            <accordion-heading>
+                When is my interview? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': about.open, 'glyphicon-chevron-right': !about.open}"></i>
+            </accordion-heading>
+            <span class="lead">
+                A SNAP worker is legally obligated to call you in 5 days. Expect a phone call by {{ date_of_phone_call | date:'EEEE, MMMM d' }} to schedule the exact interview time.
+                <br/>
+                <br/>
+                We estimate that your interview will be scheduled for {{ date_of_interview | date:'EEEE, MMMM d' }}.
+            </span>
+        </accordion-group>
+        <accordion-group>
+            <accordion-heading>
+                Why will I be interviewed? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': about.open, 'glyphicon-chevron-right': !about.open}"></i>
+            </accordion-heading>
+        </accordion-group>
+    </accordion>
 </div>
 
 <div class="row">
-    <p>
-        Your phone interview should occur within 5 business days of today's filing date.
-    </p>
-    <br/>
-</div>
+    <div >
+        <strong>THANKS FOR APPLYING WITH US</strong>
+    </div>
+    <div  style="margin-top:10px">
+        <span class="lead">
+            We've successfully and safely submitted your application to SNAP. Steps 2 and 3 are not ready for the public yet.
+            If you check the box below you'll have the opportunity to help us test drive them.
+        </span>
+    </div>
 
-<div class="form-group">
-    <label for="sms_reminders">
-        <input type="checkbox" id="sms_reminders" ng-model="sms_reminders"/> Check this if you'd like to get SMS reminders about your phone interview.
+
+    <label for="agree_to_text" style="margin-top:15px">
+        <input type="checkbox" class="big-checkbox" id="agree_to_text"  ng-model="sms_agree"/>
+        <span class="pull-right" style="width:80%;">Yes please text me when the next steps are ready!</span>
     </label>
+
 </div>
 
-<div class="col-xs-12">
-    <a ui-sref="form.interview-information" class="btn btn-block btn-remove-ws" style="background-color: yellow;color:black">
-        <strong>Prepare for the interview</strong>
-    </a>
+<div class="row">
+    <div class="h5">
+        SEND US FEEDBACK FOR A CHANCE TO WIN A GIFTCARD!
+    </div>
+
+    <div style="margin-top:10px">
+        <span class="lead">
+            Fill in the optional questions below, and we'll enter you into a raffle for a $25 Amazong giftcard.
+        </span>
+    </div>
+
+</div>
+
+
+<div class="row">
+    <div class="h5">
+        How likely are you to recommend Easy Food Stamps to a friend?
+    </div>
+
+    <select class="form-control">
+        <option>Definitely</option>
+        <option>Maybe</option>
+        <option>Definitely NOT</option>
+    </select>
+    <br/>
+    <textarea class="form-control" rows="3" name="feedback_text" id="feedback_text" ng-model="formData.feedback_text" placeholder="WHY?"></textarea>
+
+    <br/>
+    <div class="col-xs-12">
+        <button ng-click="submitFeedback()" class="btn btn-block btn-remove-ws" style="background-color: yellow;color:black">
+            <strong>Submit feedback</strong>
+        </button>
+    </div>
+
 </div>
