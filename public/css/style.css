@@ -2,7 +2,6 @@
 /* BASIC STYLINGS
 ============================================================================= */
 body {
-    padding-top: 20px;
     background-color: lightgray;
     font-family: 'Roboto', sans-serif;
 }
@@ -67,8 +66,6 @@ body {
     margin: 0;
     padding: 10px 25px;
     border-bottom: 1px solid white;
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
 }
 
 #alt_mailing_btn {
@@ -278,6 +275,10 @@ input[type="color"]:focus,
 /* slide in from the right */
 
 .name-input {
-    padding: 0 15px;
+    padding: 0 10px;
     margin-top: -50px;
+}
+.name-input input {
+    border-radius: 0;
+    border: 2px white solid;
 }

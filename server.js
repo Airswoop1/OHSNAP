@@ -25,7 +25,7 @@ app.use(express.cookieParser('asdfa9asdfxxc0'));
 app.use(cors())
 
 app.use(function(req, res, next){
-    if(!req.connection.encrypted){
+    if(!req.connection.encrypted && process.env.NODE_ENV === 'dev'){
         if(process.env.NODE_ENV == 'dev'){
             res.redirect('https://' + req.headers.host + req.url);
         }
