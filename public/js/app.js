@@ -102,6 +102,11 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 templateUrl: 'form-intro.html'
             })
 
+            .state('form.recert', {
+                url: '/recert',
+                templateUrl: 'form-recert.html'
+            })
+
             .state('form.name', {
                 url: '/name',
                 templateUrl:'form-name.html'
@@ -172,6 +177,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             phone:undefined
         };
 
+
         //data objects for holding input temporarily
         $scope.init_name = "";
         $scope.progress = 0;
@@ -180,6 +186,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.date_of_interview.setDate($scope.date.getDate() + 10);
         $scope.date_of_phone_call = new Date();
         $scope.date_of_phone_call.setDate($scope.date.getDate() + 5);
+
 
 
         //data flags for optional fields
@@ -193,6 +200,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.has_address = true;
         $scope.completed_first_name = false;
         $scope.submitted_basic_information = false;
+        $scope.feedback_collapsed = true;
 
         $scope.completed_items = {
             "name": false,
@@ -202,6 +210,13 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             "household" : false,
             "confirmation" : false
         }
+
+        $scope.rating_options = [
+            {label: 'Yes Definitely', value:5},
+            {label: 'Maybe', value:3},
+            {label: 'Definitely No', value:1}
+        ]
+        $scope.selected_rating = $scope.rating_options[1];
 
         if($state.current.name == 'form.intro'){
             $scope.show_progress = false;
@@ -301,6 +316,12 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         }
 
 
+        function calculateBenefit() {
+            if($scope.formData.income && $scope.formData.household) {
+                $scope.formData.benefit_amount = 
+            }
+        }
+
         function updateProgress(u){
             $scope.completed_items[u] = true;
             $scope.progress = 0;
@@ -317,7 +338,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.submitBasicApp = function() {
             $scope.basic_confirmation_agree = true;
             $scope.submitted_basic_information = true;
-
+            calculateBenefit();
             InfoUploader.uploadBasicInfo($scope.formData, function(result, user_id){
                 if(result && user_id) {
                     $scope.formData.user_id = user_id;
@@ -329,7 +350,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             });
         };
 
-        $scope.submitFeedback = function() {
+        $scope.submitFeedback = function(rating) {
+            $scope.formData['rating'] = rating;
 
             InfoUploader.uploadFeedback($scope.formData, function(result){
                 if(result) {
@@ -371,7 +393,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 toState.name == 'form.basic-app-submitted' ||
                 toState.name == 'form.income' ||
                 toState.name == 'form.household' ||
-                toState.name == 'form.feedback-submitted')) {
+                toState.name == 'form.feedback-submitted' ||
+                toState.name == 'form.recert')) {
                 $scope.show_progress = true
                 sendViewAnalytic();
 

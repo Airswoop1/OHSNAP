@@ -5,88 +5,105 @@
     <div class="col-xs-offset-1 col-xs-8">
         <span class="text-left" style="font-size: 30px"><strong>Your application is in!</strong></span>
     </div>
-
 </div>
 
 <div class="row">
+    <div style="margin-top:10px;margin-bottom: 10px;">
+        <span><b>We estimate you are eligable for ${{formData.benefit_amount || 0}} of SNAP benefits per month based on the information you provided.</b></span>
+    </div>
+    <div style="margin-bottom:10px;margin-top:10px">
+        <span class="lead">
+            You're ready for the next step, an interview with a SNAP worker.
+        </span>
+    </div>
+
+</div>
+
+<div class="row" style="margin-top:10px">
     <accordion close-others="true">
-        <accordion-group>
+        <accordion-group is-open="when.open">
             <accordion-heading>
-                When is my interview? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': about.open, 'glyphicon-chevron-right': !about.open}"></i>
+                When is my interview? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': when.open, 'glyphicon-chevron-right': !when.open}"></i>
             </accordion-heading>
             <span class="lead">
-                A SNAP worker is legally obligated to call you in 5 days. Expect a phone call by {{ date_of_phone_call | date:'EEEE, MMMM d' }} to schedule the exact interview time.
+                <div ng-show="formData.phone_main">A SNAP worker is legally obligated to call you in 5 days. Expect a phone call by {{ date_of_phone_call | date:'EEEE, MMMM d' }} to schedule the exact interview time.</div>
+                <div ng-hide="formData.phone_main">You will receive a letter in the mail confirming your SNAP application submission within 5 days.</div>
                 <br/>
                 <br/>
                 We estimate that your interview will be scheduled for {{ date_of_interview | date:'EEEE, MMMM d' }}.
             </span>
         </accordion-group>
-        <accordion-group>
+        <accordion-group is-open="how.open">
             <accordion-heading>
-                Why will I be interviewed? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': about.open, 'glyphicon-chevron-right': !about.open}"></i>
+                How do I prepare for it? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': how.open, 'glyphicon-chevron-right': !how.open}"></i>
             </accordion-heading>
-            TODO
+            <span class="lead">
+                You'll be asked questions about your income, monthly expenses, and household. You'll be asked to confirm your social security number and address.
+            </span>
+            <br/>
+            <br/>
+            <span class="lead">
+                Check out this <a href="http://www.nyc.gov/html/hra/downloads/pdf/benefits/eligibility_factors_and_suggested_documentation_guide.pdf">official list of required documents </a> for details on how to prepare.
+            </span>
         </accordion-group>
-        <accordion-group>
+        <accordion-group is-open="what.open">
             <accordion-heading>
-                What to expect during the interview? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': about.open, 'glyphicon-chevron-right': !about.open}"></i>
+                <span style="word-wrap:break-word">What is the interview for?</span> <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': what.open, 'glyphicon-chevron-right': !what.open}"></i>
             </accordion-heading>
-            TODO
+            <span class="lead">
+                The interview is a required step in the application process. A SNAP worker must speak with you over the
+                phone or in person to confirm the answers you provided in the application form and to get additional information
+                about your situation
+            </span>
         </accordion-group>
     </accordion>
 </div>
 
 <div class="row">
-    <div >
-        <strong>THANKS FOR APPLYING WITH US</strong>
+    <div class="text-left">
+        <span class="h3">Thanks for applying with us!</span>
     </div>
-    <div  style="margin-top:10px">
+    <div  style="margin-top:10px;margin-bottom:10px">
         <span class="lead">
-            We've successfully and safely submitted your application to SNAP. Steps 2 and 3 are not ready for the public yet.
-            If you check the box below you'll have the opportunity to help us test drive them.
+            What did you think of applying for SNAP with Easy Food Stamps? Help us improve our service by answering
+            the optional question below!
         </span>
     </div>
-
-
-    <label for="agree_to_text" style="margin-top:15px">
-        <input type="checkbox" class="big-checkbox" id="agree_to_text"  ng-model="sms_agree"/>
-        <span class="pull-right" style="width:80%;">Yes please text me when the next steps are ready!</span>
-    </label>
-
 </div>
 
-<div class="row">
-    <div class="h5">
-        SEND US FEEDBACK FOR A CHANCE TO WIN A GIFTCARD!
-    </div>
+<div class="row" style="margin-top:20px">
+    <button class="btn-primary" ng-click="feedback_collapsed = !feedback_collapsed" style="background: yellow;color:black;border:none">
+        <b class="col-xs-9" style="padding:10px;float:left;text-align: left;">How likely are you to recommend Easy Food Stamps to a friend?</b>
+        <i class="pull-right fa fa-2x" ng-class="{'fa-chevron-down': !feedback_collapsed, 'fa-chevron-right': feedback_collapsed}" style="line-height:2.2;"></i>
+    </button>
+    <div class="feedback-container" collapse="feedback_collapsed">
+        <div class="well well-lg" style="min-height: 380px;background:white">
+            <select class="form-control" ng-model="selected_rating" ng-options="opt as opt.label for opt in rating_options" id="rating" name="rating" required>
+            </select>
+            <br/>
+            <textarea class="form-control" rows="3" name="feedback_message" id="feedback_message" ng-model="formData.feedback_message" placeholder="Why that rating?" ng-minlength="5"></textarea>
 
-    <div style="margin-top:10px">
-        <span class="lead">
-            Fill in the optional questions below, and we'll enter you into a raffle for a $25 Amazong giftcard.
-        </span>
-    </div>
+            <div style="margin-top:10px">
+                <span>
+                    We're building a new feature into our service to help you prepare more for your interview and submit your required paperwork faster.
+                    Want to help us test drive them? Check the box below!
+                </span>
+            </div>
 
-</div>
+            <div>
+                <label for="agree_to_text" style="margin-top:15px">
+                    <input type="checkbox" class="big-checkbox" id="agree_to_text"  ng-model="formData.sms_agree"/>
+                    <span class="pull-right" style="width:80%;"><em>Yes please text me when the next steps are ready!</em></span>
+                </label>
+            </div>
 
-
-<div class="row">
-    <div class="h5">
-        How likely are you to recommend Easy Food Stamps to a friend?
-    </div>
-
-    <select class="form-control" ng-model="formData.rating" id="rating" name="rating" required>
-        <option>Definitely</option>
-        <option>Maybe</option>
-        <option>Definitely NOT</option>
-    </select>
-    <br/>
-    <textarea class="form-control" rows="3" name="feedback_message" id="feedback_message" ng-model="formData.feedback_message" placeholder="WHY?" ng-minlength="5"></textarea>
-
-    <br/>
-    <div class="col-xs-12">
-        <button ng-click="submitFeedback()" class="btn btn-block btn-remove-ws" style="background-color: yellow;color:black">
-            <strong>Submit feedback</strong>
-        </button>
+            <br/>
+            <div class="col-xs-12">
+                <button ng-click="submitFeedback(selected_rating)" class="btn btn-block btn-remove-ws" style="background-color: yellow;color:black">
+                    <strong>Submit feedback</strong>
+                </button>
+            </div>
+        </div>
     </div>
 
 </div>

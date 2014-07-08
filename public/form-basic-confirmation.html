@@ -33,7 +33,7 @@
     </div>
 
     <div class="col-xs-12">
-        <p id="household" ng-show="formData.household">{{ formData.household }}</p>
+        <p id="household" ng-show="formData.household">{{ formData.household }} people</p>
         <p id="no_household" ng-hide="formData.household">None provided</p>
         <div >
             <a ui-sref="form.household" class="btn btn-block" style="background-color:#e8e8e8;color:black">
@@ -44,11 +44,11 @@
     </div>
 
     <div class="col-xs-12">
-        <p id="income" ng-show="formData.income">{{ formData.income }}</p>
+        <p id="income" ng-show="formData.income">${{ formData.income }}</p>
         <p id="no_income" ng-hide="formData.income">None provided</p>
         <div >
             <a ui-sref="form.income" class="btn btn-block" style="background-color:#e8e8e8;color:black">
-                Edit INcome
+                Edit Income
             </a>
         </div>
         <br/>
@@ -76,7 +76,7 @@
     </label>
 </div>
 
-<div class="col-xs-12" ng-show="basic_confirmation_agree">
+<div class="col-xs-12" ng-show="basic_confirmation_agree" style="margin-top:5px">
     <button ng-click="submitBasicApp()" class="btn btn-block btn-remove-ws" style="background-color: yellow;color:black">
         Submit Application
     </button>
