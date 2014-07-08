@@ -4,8 +4,9 @@
 
         <div id="form-container">
 
-            <div class="page-header text-center" style="margin-bottom:30px;height:45px" ng-show="show_progress">
-                <h4 >EASY<i class="fa fa-bolt" style="color:yellow"></i>FOODSTAMPS NYC</h4>
+            <div class="page-header text-center" style="margin-bottom:30px;height:55px" ng-show="show_progress">
+                <span ng-click="goBack()" style="line-height:2.7" class="glyphicon glyphicon-chevron-left pull-left"></span>
+                <h4 class="easy-title">EASY<i class="fa fa-bolt" style="color:yellow"></i>FOODSTAMPS NYC</h4>
 
                 <div class="progress center" style="margin-left:20%; margin-bottom:-40px; width:60%; height:15px;" ng-show="show_progress">
                     <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: progress +'%'}">
@@ -35,7 +36,7 @@
 	<!--<pre>
 		{{ formData }}
 
-        {{ has_address }}
+
 
 
 	</pre>-->

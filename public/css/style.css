@@ -24,6 +24,12 @@ body { padding-top:20px; background-color:lightgray}
 ========================================================================================= */
 .main_page { height:300px; background: url('../images/background.png'); background-size:100%;color:white; margin:0; padding:10px; border-bottom:1px solid white; border-top-left-radius:5px; border-top-right-radius:5px;}
 
+.easy-title {
+    margin-bottom:25px
+}
+
+
+
 #alt_mailing_btn { background-color: darkorange; border-color: darkorange}
 
 table thead th {font-weight:normal; font-size:small; text-align: center}
@@ -67,6 +73,10 @@ input[type="color"]:focus,
     -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(98, 196, 98, 0.6);
     -moz-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(98, 196, 98, 0.6);
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(98, 196, 98, 0.6);
+}
+
+.accordion-toggle {
+    display:block;
 }
 
 #agree_to_legal {
@@ -128,12 +138,14 @@ input[type="color"]:focus,
     top:50%;
     width:auto;
     height:1em;
-    background:transparent;
+    background:transparent!important;
 }
 .carousel-control .glyphicon-chevron-left, .carousel-control .glyphicon-chevron-right  {
     position:static;
     display:block;
     width:auto;
+    background: transparent;
+    color:black
 }
 .carousel-control .glyphicon-chevron-left:before {
     margin-left:0;
@@ -147,6 +159,8 @@ input[type="color"]:focus,
 .carousel-indicators li {
     background-color: lightgray;
     border-color: transparent;
+    margin-left:3px;
+    margin-right:3px;
 }
 
 .carousel-indicators .active {
@@ -155,6 +169,19 @@ input[type="color"]:focus,
 
 .carousel-inner {
     height:300px;
+}
+
+info-footer div.row {
+    margin-top:15px
+}
+
+.faqs .panel-group li .panel {
+    border:none;
+}
+
+.faqs .panel-group li .panel .panel-heading {
+    background-color: white;
+    border: none;
 }
 
 

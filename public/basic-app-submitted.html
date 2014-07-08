@@ -25,6 +25,13 @@
             <accordion-heading>
                 Why will I be interviewed? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': about.open, 'glyphicon-chevron-right': !about.open}"></i>
             </accordion-heading>
+            TODO
+        </accordion-group>
+        <accordion-group>
+            <accordion-heading>
+                What to expect during the interview? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': about.open, 'glyphicon-chevron-right': !about.open}"></i>
+            </accordion-heading>
+            TODO
         </accordion-group>
     </accordion>
 </div>
@@ -67,13 +74,13 @@
         How likely are you to recommend Easy Food Stamps to a friend?
     </div>
 
-    <select class="form-control">
+    <select class="form-control" ng-model="formData.rating" id="rating" name="rating" required>
         <option>Definitely</option>
         <option>Maybe</option>
         <option>Definitely NOT</option>
     </select>
     <br/>
-    <textarea class="form-control" rows="3" name="feedback_text" id="feedback_text" ng-model="formData.feedback_text" placeholder="WHY?"></textarea>
+    <textarea class="form-control" rows="3" name="feedback_message" id="feedback_message" ng-model="formData.feedback_message" placeholder="WHY?" ng-minlength="5"></textarea>
 
     <br/>
     <div class="col-xs-12">

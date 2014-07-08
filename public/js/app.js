@@ -117,6 +117,16 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 templateUrl: 'form-telephone.html'
             })
 
+            .state('form.income', {
+                url: '/income',
+                templateUrl:'form-income.html'
+            })
+
+            .state('form.household', {
+                url:'/household',
+                templateUrl:'form-household.html'
+            })
+
             .state('form.basic-confirmation', {
                 url: '/basic-confirmation',
                 templateUrl: 'form-basic-confirmation.html'
@@ -159,7 +169,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         // we will store all of our form data in this object
         $scope.formData = {
             name: {},
-            address:{},
             phone:undefined
         };
 
@@ -175,6 +184,11 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
         //data flags for optional fields
         $scope.basic_confirmation_agree = false;
+        $scope.submitted_name = false;
+        $scope.submitted_address = false;
+        $scope.submitted_phone = false;
+        $scope.submitted_income = false;
+        $scope.submitted_household = false;
         $scope.has_phone = true;
         $scope.has_address = true;
         $scope.completed_first_name = false;
@@ -184,6 +198,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             "name": false,
             "address": false,
             "telephone" : false,
+            "income" : false,
+            "household" : false,
             "confirmation" : false
         }
 
@@ -219,16 +235,92 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             else {
                 $state.go('form.name');
             }
+        }
+
+        $scope.completedName = function(first_name, last_name) {
+            if($scope.snapForm.$valid) {
+                updateProgress('name');
+                $state.go('form.address');
+            }
+            else {
+                $scope.submitted_name = true;
+            }
+        }
+
+        $scope.completedAddress = function(){
+            $scope.submitted_address = true;
+
+            //if(address && zip && (zip.toString().length==5)){
+              if($scope.snapForm.$valid) {
+
+                $scope.has_address = true;
+                updateProgress('address');
+                $state.go('form.household');
+            }
+            else if(!$scope.formData.address && $scope.snapForm.street_address.$pristine && $scope.snapForm.zip.$pristine){
+                $scope.has_address = false;
+                updateProgress('address');
+                $state.go('form.household');
+            }
+
+        }
+
+        $scope.completedTelephone = function(){
+            $scope.submitted_phone = true;
+            //phone validation?
+            if($scope.snapForm.$valid) {
+                updateProgress('telephone');
+                $state.go('form.basic-confirmation');
+            }
+            else if(!$scope.formData.phone_main && $scope.snapForm.phone.$pristine) {
+                $scope.has_phone = false
+                updateProgress('telephone');
+                $state.go('form.basic-confirmation');
+            }
+
+        }
+
+        $scope.completedIncome = function() {
+            $scope.submitted_income = true;
+
+            if($scope.snapForm.$valid) {
+                updateProgress('income');
+                $state.go('form.telephone');
+            }
+
+        }
+
+        $scope.completedHousehold = function() {
+            $scope.submitted_household = true;
+
+            if($scope.snapForm.$valid) {
+                updateProgress('household');
+                $state.go('form.income');
+            }
+
+        }
 
 
+        function updateProgress(u){
+            $scope.completed_items[u] = true;
+            $scope.progress = 0;
+            for(var comp in $scope.completed_items){
+                if($scope.completed_items[comp]==true){
+                    $scope.progress += 17;
+                }
+                if($scope.progress >= 100){
+                    //turn progress bar green?
+                }
+            }
         }
 
         $scope.submitBasicApp = function() {
             $scope.basic_confirmation_agree = true;
             $scope.submitted_basic_information = true;
 
-            InfoUploader.uploadBasicInfo($scope.formData, function(result){
-                if(result) {
+            InfoUploader.uploadBasicInfo($scope.formData, function(result, user_id){
+                if(result && user_id) {
+                    $scope.formData.user_id = user_id;
                     $state.go('form.basic-app-submitted');
                 }
                 else {
@@ -239,7 +331,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
         $scope.submitFeedback = function() {
 
-            InfoUploader.uploadFeedback(function(result){
+            InfoUploader.uploadFeedback($scope.formData, function(result){
                 if(result) {
                     $state.go('form.feedback-submitted');
                 }
@@ -249,52 +341,11 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             })
         };
 
-
-        $scope.completedName = function(first_name, last_name) {
-            if(first_name && last_name) {
-                updateProgress('name');
-                $state.go('form.address');
-            }
-            else {
-                this.throwErrors('form.name');
-            }
+        $scope.goBack = function() {
+            window.history.back();
         }
 
-        $scope.completedAddress = function(zip, address){
-
-            if(address && zip && (zip.toString().length==5)){
-                $scope.has_address = true;
-                updateProgress('address');
-                $state.go('form.telephone');
-            }
-            else if(!address){
-                $scope.has_address = false;
-                $state.go('form.telephone');
-            }
-            else{
-                this.throwErrors('form.address');
-            }
-        }
-
-        $scope.completedTelephone = function(){
-            //phone validation?
-            if(!$scope.formData.phone_main){
-                $scope.has_phone = false;
-            }
-            updateProgress('telephone');
-            $state.go('form.basic-confirmation');
-        }
-
-        function updateProgress(u){
-            $scope.completed_items[u] = true;
-            for(var comp in $scope.completed_items){
-                if($scope.completed_items[comp]==true){
-                    $scope.progress += 20;
-                }
-            }
-        }
-
-        $scope.throwErrors = function(page) {
+        /*$scope.throwErrors = function(page) {
             if(page == 'form.name') {
                 alert('you must fill out all required fields!');
             }
@@ -302,7 +353,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 alert('Please fill in address and zip!');
             }
 
-        }
+        }*/
 
         $scope.uploadFiles = function($files) {
             var file_upload_status = documentUpload.onFileSelect($files, $scope);
@@ -313,16 +364,26 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
         $rootScope.$on('$stateChangeStart', function(event, toState){
 
-            if((toState.name == 'form.name' || toState.name == 'form.address' ||
-                toState.name == 'form.telephone' || toState.name == 'form.basic-confirmation'
-                || toState.name == 'form.basic-app-submitted')) {
+            if((toState.name == 'form.name' ||
+                toState.name == 'form.address' ||
+                toState.name == 'form.telephone' ||
+                toState.name == 'form.basic-confirmation'||
+                toState.name == 'form.basic-app-submitted' ||
+                toState.name == 'form.income' ||
+                toState.name == 'form.household' ||
+                toState.name == 'form.feedback-submitted')) {
                 $scope.show_progress = true
                 sendViewAnalytic();
+
             }
             else {
-                if($scope.show_progress == true){
-                    $scope.show_progress = false;
-                }
+                $scope.show_progress = false;
+            }
+
+
+
+            if(toState.name == 'form.basic-confirmation' && !($scope.has_address && $scope.has_phone)){
+                alert("Note we will be unable to process your form if you do not provide us with at least your address or phone number");
             }
 
         })
@@ -342,8 +403,9 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
     .factory('InfoUploader', function($http) {
         return {
 
-            uploadFeedback : function(callback) {
-                $http.post('https://easyfoodstamps.com/submit_feedback', JSON.stringify(formData))
+            uploadFeedback : function(formData, callback) {
+                //$http.post('https://easyfoodstamps.com/submit_feedback', JSON.stringify(formData))
+                $http.post('http://localhost:1337/submit_feedback', JSON.stringify(formData))
                     .success(function(data, status, headers, config) {
 
                         if(status === 201){
@@ -362,11 +424,12 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             },
 
             uploadBasicInfo : function(formData, callback) {
-                $http.post('https://easyfoodstamps.com/upload_user_info', JSON.stringify(formData))
+               // $http.post('https://easyfoodstamps.com/upload_user_info', JSON.stringify(formData))
+                $http.post('http://localhost:1337/upload_user_info', JSON.stringify(formData))
                     .success(function(data, status, headers, config) {
 
                         if(status === 201){
-                            callback(true);
+                            callback(true, data.user_id);
                         }
                         else {
                             callback(null);

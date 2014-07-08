@@ -2,8 +2,9 @@
     <span class="text-left" style="font-size: 30px"><strong>What's your phone number?</strong></span>
 </div>
 
-<div class="form-group">
-    <input class="form-control" type="text" placeholder="PHONE NUMBER" id="phone" ng-model="formData.phone_main"/>
+<div class="form-group" ng-class="{'has-success':snapForm.phone.$pristine ,'has-error': snapForm.phone.$invalid}">
+    <input class="form-control" type="number" placeholder="PHONE NUMBER" name="phone" id="phone" ng-model="formData.phone_main" ng-minlength="10" ng-maxlength="10" autofocus="true"/>
+    <span class="help-block" ng-show="submitted_phone && !(snapForm.last_name.$error.valid)">Ten Digit Telephone Number Required</span>
 </div>
 
 <div class="form-group row ">

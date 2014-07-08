@@ -14,6 +14,7 @@ var UploadUserInfo = (function(){
     var Response = function(){
         this.status = undefined;
         this.message = undefined;
+        this.user_id = undefined;
     };
 
     var execute = function(req, res){
@@ -62,6 +63,7 @@ var UploadUserInfo = (function(){
                                         var response = new Response();
                                         response.status = 201;
                                         response.message = "successfully uploaded user data";
+                                        response.user_id = user_id;
                                         res.send(201, response);
                                     }
                                 })

@@ -5,7 +5,6 @@
 
 var Index = (function(){
 
-
     var execute = function(req,res){
         res.redirect('/index.html');
     }

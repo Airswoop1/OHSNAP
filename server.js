@@ -23,15 +23,14 @@ app.use(express.bodyParser());
 app.use(express.cookieParser('asdfa9asdfxxc0'));
 
 app.use(function(req, res, next){
+
     if(!req.connection.encrypted && process.env.NODE_ENV === 'dev'){
+
         if(process.env.NODE_ENV == 'dev'){
             res.redirect('https://' + req.headers.host + req.url);
         }
-        else if(process.env.NODE_ENV == 'sandbox'){
-            res.redirect('https://' + req.headers.host.split(':')[0] + ":8080"+ req.url);
-        }
-        else{
-            res.redirect('https://' + req.headers.host.split(':')[0] + ":8080"+ req.url);
+        else {
+            next();
         }
     }
     else {
@@ -53,7 +52,6 @@ api.set_routes(app);
 server.listen(app.get('port'), function () {
     console.log('HTTP now listening on ' + app.get('port'));
     console.log('Url: ' + ip.address())
-
 });
 
 https_server.listen(config.web.https_port, function(){
