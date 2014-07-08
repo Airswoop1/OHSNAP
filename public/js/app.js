@@ -318,7 +318,52 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
         function calculateBenefit() {
             if($scope.formData.income && $scope.formData.household) {
-                $scope.formData.benefit_amount = 
+                var house = $scope.formData.household;
+                var income = parseInt($scope.formData.income,10);
+                var benefit = 0;
+                var eligible = false;
+
+
+                if($scope.formData.disabled == true) {
+
+                    if( (house == 1 && income <= 1915) ||
+                        (house == 2 && income <= 2585) ||
+                        (house == 3 && income <= 3255) ||
+                        (house == 4 && income <= 3925) )
+                    {
+                        eligible = true;
+                    }
+                    else if(house >= 5 && (income <= (((house-4)*670)+3925)) ){
+                        eligible = true;
+                    }
+                }
+                else {
+                    if( (house == 1 && income <= 1245) ||
+                        (house == 2 && income <= 1681) ||
+                        (house == 3 && income <= 2116) ||
+                        (house == 4 && income <= 2552) )
+                    {
+                        eligible = true;
+                    }
+                    else if(house >= 5 && (income <= (((house-4)*436)+2552)) ){
+                        eligible = true;
+                    }
+                }
+                if(eligible){
+                    if(house == 1){ benefit=189; }
+                    else if(house == 2){ benefit=347;}
+                    else if(house == 3){ benefit=497;}
+                    else if(house == 4){ benefit=632;}
+                    else if(house == 5){ benefit=750;}
+                    else if(house == 6){ benefit=900;}
+                    else if(house == 7){ benefit=995;}
+                    else if(house == 8){ benefit=1137}
+                    else if(house >= 9) {
+                        benefit = 1337 + (142*(house-8))
+                    }
+                }
+
+                $scope.formData.benefit_amount = benefit;
             }
         }
 
@@ -329,16 +374,17 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 if($scope.completed_items[comp]==true){
                     $scope.progress += 17;
                 }
-                if($scope.progress >= 100){
-                    //turn progress bar green?
-                }
             }
+            alert($scope.progress);
         }
 
         $scope.submitBasicApp = function() {
             $scope.basic_confirmation_agree = true;
             $scope.submitted_basic_information = true;
+
             calculateBenefit();
+            updateProgress('confirmation');
+
             InfoUploader.uploadBasicInfo($scope.formData, function(result, user_id){
                 if(result && user_id) {
                     $scope.formData.user_id = user_id;
@@ -427,8 +473,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         return {
 
             uploadFeedback : function(formData, callback) {
-                $http.post('https://easyfoodstamps.com/submit_feedback', JSON.stringify(formData))
-                //$http.post('http://localhost:1337/submit_feedback', JSON.stringify(formData))
+                //$http.post('https://easyfoodstamps.com/submit_feedback', JSON.stringify(formData))
+                $http.post('http://localhost:1337/submit_feedback', JSON.stringify(formData))
                     .success(function(data, status, headers, config) {
 
                         if(status === 201){
@@ -447,8 +493,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             },
 
             uploadBasicInfo : function(formData, callback) {
-               $http.post('https://easyfoodstamps.com/upload_user_info', JSON.stringify(formData))
-               // $http.post('http://localhost:1337/upload_user_info', JSON.stringify(formData))
+               //$http.post('https://easyfoodstamps.com/upload_user_info', JSON.stringify(formData))
+               $http.post('http://localhost:1337/upload_user_info', JSON.stringify(formData))
                     .success(function(data, status, headers, config) {
 
                         if(status === 201){

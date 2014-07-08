@@ -43,6 +43,7 @@ var UploadUserInfo = (function(){
 
                             query['user_id'] = user_id;
                             req.body['user_id'] = user_id;
+                            req.body['created_on'] = new Date().getTime();
 
                             collection.update(
                                 query,

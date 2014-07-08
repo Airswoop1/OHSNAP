@@ -17,11 +17,13 @@ var SubmitFeedback = (function(){
     };
 
     var execute = function(req,res){
-        console.log(req.body);
-        if(req.body.user_id && req.body.rating && req.body.feedback_message){
+
+
+        if(req.body.user_id && req.body.rating){
             var user_id = req.body.user_id;
             var rating = req.body.rating;
-            var feedback_message = req.body.feedback_message;
+            var feedback_message = (typeof req.body.feedback_message != "undefined") ? req.body.feedback_message : "";
+            var rec_sms = (typeof req.body.sms_agree != "undefined") ? req.body.sms_agree : false;
         }
         else{
             var response = new Response();
@@ -50,6 +52,8 @@ var SubmitFeedback = (function(){
                 update['user_id'] = user_id;
                 update['rating'] = rating;
                 update['feedback_message'] = feedback_message;
+                update['rec_sms'] = rec_sms;
+                update['created_on'] = new Date().getTime();
 
                 collection.update(
                     query,
