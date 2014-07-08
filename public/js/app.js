@@ -375,7 +375,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                     $scope.progress += 17;
                 }
             }
-            alert($scope.progress);
         }
 
         $scope.submitBasicApp = function() {
