@@ -212,11 +212,11 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         }
 
         $scope.rating_options = [
-            {label: 'Yes Definitely', value:5},
-            {label: 'Maybe', value:3},
-            {label: 'Definitely No', value:1}
+            {label:'Select', value:-1},
+            {label: 'Yes', value:1},
+            {label: 'No', value:0}
         ]
-        $scope.selected_rating = $scope.rating_options[1];
+        $scope.selected_rating = $scope.rating_options[0];
 
         if($state.current.name == 'form.intro'){
             $scope.show_progress = false;
@@ -306,7 +306,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.completedIncome = function() {
             $scope.submitted_income = true;
 
-            if($scope.snapForm.$valid) {
+            if($scope.snapForm.income.$valid) {
                 updateProgress('income');
                 $state.go('form.telephone');
             }
@@ -316,7 +316,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.completedHousehold = function() {
             $scope.submitted_household = true;
 
-            if($scope.snapForm.$valid) {
+            if($scope.snapForm.household.$valid) {
                 updateProgress('household');
                 $state.go('form.income');
             }
@@ -424,15 +424,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             window.history.back();
         }
 
-        /*$scope.throwErrors = function(page) {
-            if(page == 'form.name') {
-                alert('you must fill out all required fields!');
-            }
-            else if(page == 'form.address') {
-                alert('Please fill in address and zip!');
-            }
-
-        }*/
 
         $scope.uploadFiles = function($files) {
             var file_upload_status = documentUpload.onFileSelect($files, $scope);
