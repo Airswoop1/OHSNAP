@@ -25,7 +25,8 @@ body { padding-top:20px; background-color:lightgray; font-family: 'Roboto', sans
 .main_page { height:360px; background: url('../images/background.png'); background-size:100%;color:white; margin:0; padding:10px; border-bottom:1px solid white; border-top-left-radius:5px; border-top-right-radius:5px;}
 
 .easy-title {
-    margin-bottom:25px
+    margin-bottom:25px;
+    letter-spacing: 1px;
 }
 
 
