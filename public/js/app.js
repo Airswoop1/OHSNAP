@@ -4,7 +4,7 @@
 // app.js
 // create our angular app and inject ngAnimate and ui-router
 // =============================================================================
-var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch','DocumentUploader' ])
+var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch','DocumentUploader', 'NoContactModal' ])
 
     .directive('selectRace', function(){
         return {
@@ -169,7 +169,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
 // our controller for the form
 // =============================================================================
-    .controller('formController', function($scope, $state, $http, $rootScope, $upload, $location, $window, documentUpload, InfoUploader) {
+    .controller('formController', function($scope, $state, $http, $rootScope, $upload, $location, $window, documentUpload, InfoUploader, modalService) {
 
         // we will store all of our form data in this object
         $scope.formData = {
@@ -250,9 +250,9 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             else {
                 $state.go('form.name');
             }
-        }
+        };
 
-        $scope.completedName = function(first_name, last_name) {
+        $scope.completedName = function() {
             if($scope.snapForm.$valid) {
                 updateProgress('name');
                 $state.go('form.address');
@@ -260,40 +260,48 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             else {
                 $scope.submitted_name = true;
             }
-        }
+        };
 
         $scope.completedAddress = function(){
             $scope.submitted_address = true;
 
             //if(address && zip && (zip.toString().length==5)){
-              if($scope.snapForm.$valid) {
+            if(!$scope.formData.address && $scope.snapForm.street_address.$pristine && $scope.snapForm.zip.$pristine) {
+                alert('has_address false');
+                $scope.has_address = false;
+                updateProgress('address');
+                $state.go('form.household');
+            }
+            else if($scope.snapForm.$valid) {
 
                 $scope.has_address = true;
                 updateProgress('address');
                 $state.go('form.household');
             }
-            else if(!$scope.formData.address && $scope.snapForm.street_address.$pristine && $scope.snapForm.zip.$pristine){
-                $scope.has_address = false;
-                updateProgress('address');
-                $state.go('form.household');
-            }
 
-        }
+
+        };
 
         $scope.completedTelephone = function(){
             $scope.submitted_phone = true;
-            //phone validation?
-            if($scope.snapForm.$valid) {
-                updateProgress('telephone');
-                $state.go('form.basic-confirmation');
+
+            if(!$scope.formData.phone_main && $scope.snapForm.phone.$pristine) {
+                $scope.has_phone = false;
+
+                if($scope.has_phone == false && $scope.has_address == false) {
+                    showNoContactModal();
+                }
+                else {
+                    updateProgress('telephone');
+                    $state.go('form.basic-confirmation');
+                }
             }
-            else if(!$scope.formData.phone_main && $scope.snapForm.phone.$pristine) {
-                $scope.has_phone = false
+            else if($scope.snapForm.$valid) {
                 updateProgress('telephone');
                 $state.go('form.basic-confirmation');
             }
 
-        }
+        };
 
         $scope.completedIncome = function() {
             $scope.submitted_income = true;
@@ -365,6 +373,10 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
                 $scope.formData.benefit_amount = benefit;
             }
+        }
+
+        function showNoContactModal() {
+            modalService.showModal({}, {})
         }
 
         function updateProgress(u){
@@ -446,12 +458,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             }
             else {
                 $scope.show_progress = false;
-            }
-
-
-
-            if(toState.name == 'form.basic-confirmation' && !($scope.has_address && $scope.has_phone)){
-                alert("Note we will be unable to process your form if you do not provide us with at least your address or phone number");
             }
 
         })
