@@ -442,7 +442,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         }
 
         $rootScope.$on('$stateChangeStart', function(event, toState){
-
+            $window.scrollTo(0,0);
             if((toState.name == 'form.name' ||
                 toState.name == 'form.address' ||
                 toState.name == 'form.telephone' ||
