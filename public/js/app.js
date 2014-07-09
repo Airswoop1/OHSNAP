@@ -267,7 +267,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
             //if(address && zip && (zip.toString().length==5)){
             if(!$scope.formData.address && $scope.snapForm.street_address.$pristine && $scope.snapForm.zip.$pristine) {
-                alert('has_address false');
+
                 $scope.has_address = false;
                 updateProgress('address');
                 $state.go('form.household');
