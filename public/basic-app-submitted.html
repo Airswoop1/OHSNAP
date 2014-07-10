@@ -26,11 +26,11 @@
                 When is my interview? <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': when.open, 'glyphicon-chevron-right': !when.open}"></i>
             </accordion-heading>
             <span class="lead">
-                <div ng-show="formData.phone_main">A SNAP worker is legally obligated to call you in 5 days. Expect a phone call by {{ date_of_phone_call | date:'EEEE, MMMM d' }} to schedule the exact interview time.</div>
+                <div ng-show="formData.phone_main">A SNAP worker is legally obligated to call you in 5 days. Expect a phone call before {{ date_of_phone_call | date:'EEEE, MMMM d' }} to schedule the exact interview time.</div>
                 <div ng-hide="formData.phone_main">You will receive a letter in the mail confirming your SNAP application submission within 5 days.</div>
                 <br/>
 
-                We estimate that your interview will be scheduled for {{ date_of_interview | date:'EEEE, MMMM d' }}.
+                We estimate that your interview will be scheduled before {{ date_of_interview | date:'EEEE, MMMM d' }}.
             </span>
         </accordion-group>
         <accordion-group is-open="how.open">
