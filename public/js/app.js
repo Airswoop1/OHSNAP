@@ -6,33 +6,10 @@
 // =============================================================================
 var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch','DocumentUploader', 'NoContactModal' ])
 
-    .directive('selectRace', function(){
-        return {
-            restrict:'E',
-            templateUrl:'select-race.html',
-            controller: function(){
-                this.race = "Caucasian";
-
-                this.getRace = function(){
-                    return this.race;
-                }
-            },
-            controllerAs : 'selected_race'
-        }
-    })
-
     .directive('snapInformation', function(){
         return {
             restrict:'E',
             templateUrl:'process-info.html'
-        }
-    })
-
-    .directive('requiredDocuments', function(){
-
-        return {
-            restrict:'E',
-            templateUrl:'required-documents.html'
         }
     })
 
@@ -225,10 +202,11 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             {label: '3', value:3},
             {label: '2', value:2},
             {label: 'Absolutely Not - 1', value:1}
-        ]
+        ];
+
         $scope.selected_rating = $scope.rating_options[0];
 
-        if($state.current.name == 'form.intro'){
+        if($state.current.name === 'form.intro'){
             $scope.show_progress = false;
         }
         else{
@@ -245,12 +223,12 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
             $scope.formData.name.first_name = split_name[0];
 
-            if((split_name.length == 1) && (split_name != "")) {
+            if((split_name.length === 1) && (split_name !== "")) {
                 $scope.completed_first_name = true;
                 $state.go('form.name');
 
             }
-            else if(split_name.length == 2) {
+            else if(split_name.length === 2) {
                 this.formData.name.last_name = split_name[1];
                 $state.go('form.address');
             }
@@ -277,7 +255,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.completedAddress = function(){
             $scope.submitted_address = true;
 
-            //if(address && zip && (zip.toString().length==5)){
             if(!$scope.formData.address && $scope.snapForm.street_address.$pristine && $scope.snapForm.zip.$pristine) {
 
                 $scope.has_address = false;
@@ -303,7 +280,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             if(!$scope.formData.phone_main && $scope.snapForm.phone.$pristine) {
                 $scope.has_phone = false;
 
-                if($scope.has_phone == false && $scope.has_address == false) {
+                if(!$scope.has_phone && !$scope.has_address) {
                     showNoContactModal();
                 }
                 else {
@@ -318,15 +295,15 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
         };
 
-        $scope.completedIncome = function() {
+        $scope.completedIncome = function () {
             $scope.submitted_income = true;
 
-            if($scope.snapForm.income.$valid) {
+            if ($scope.snapForm.income.$valid) {
                 updateProgress('income');
                 $state.go('form.telephone');
             }
 
-        }
+        };
 
         $scope.completedHousehold = function() {
             $scope.submitted_household = true;
@@ -336,7 +313,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 $state.go('form.income');
             }
 
-        }
+        };
 
 
         function calculateBenefit() {
@@ -347,12 +324,12 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 var eligible = false;
 
 
-                if($scope.formData.disabled == true) {
+                if($scope.formData.disabled === true) {
 
-                    if( (house == 1 && income <= 1915) ||
-                        (house == 2 && income <= 2585) ||
-                        (house == 3 && income <= 3255) ||
-                        (house == 4 && income <= 3925) )
+                    if( (house === 1 && income <= 1915) ||
+                        (house === 2 && income <= 2585) ||
+                        (house === 3 && income <= 3255) ||
+                        (house === 4 && income <= 3925) )
                     {
                         eligible = true;
                     }
@@ -361,10 +338,10 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                     }
                 }
                 else {
-                    if( (house == 1 && income <= 1245) ||
-                        (house == 2 && income <= 1681) ||
-                        (house == 3 && income <= 2116) ||
-                        (house == 4 && income <= 2552) )
+                    if( (house === 1 && income <= 1245) ||
+                        (house === 2 && income <= 1681) ||
+                        (house === 3 && income <= 2116) ||
+                        (house === 4 && income <= 2552) )
                     {
                         eligible = true;
                     }
@@ -372,15 +349,16 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                         eligible = true;
                     }
                 }
+
                 if(eligible){
-                    if(house == 1){ benefit=189; }
-                    else if(house == 2){ benefit=347;}
-                    else if(house == 3){ benefit=497;}
-                    else if(house == 4){ benefit=632;}
-                    else if(house == 5){ benefit=750;}
-                    else if(house == 6){ benefit=900;}
-                    else if(house == 7){ benefit=995;}
-                    else if(house == 8){ benefit=1137}
+                    if(house === 1){ benefit=189; }
+                    else if(house === 2){ benefit=347;}
+                    else if(house === 3){ benefit=497;}
+                    else if(house === 4){ benefit=632;}
+                    else if(house === 5){ benefit=750;}
+                    else if(house === 6){ benefit=900;}
+                    else if(house === 7){ benefit=995;}
+                    else if(house === 8){ benefit=1137}
                     else if(house >= 9) {
                         benefit = 1337 + (142*(house-8))
                     }
@@ -398,7 +376,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             $scope.completed_items[u] = true;
             $scope.progress = 0;
             for(var comp in $scope.completed_items){
-                if($scope.completed_items[comp]==true){
+                if($scope.completed_items.hasOwnProperty(comp) && $scope.completed_items[comp]){
                     $scope.progress += 17;
                 }
             }
@@ -437,7 +415,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
         $scope.goBack = function() {
             window.history.back();
-        }
+        };
 
 
         $scope.uploadFiles = function($files) {
@@ -445,19 +423,19 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             file_upload_status.then(function(success){
                 console.log(success);
             })
-        }
+        };
 
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState){
 
-            if((toState.name == 'form.name' ||
-                toState.name == 'form.address' ||
-                toState.name == 'form.telephone' ||
-                toState.name == 'form.basic-confirmation'||
-                toState.name == 'form.basic-app-submitted' ||
-                toState.name == 'form.income' ||
-                toState.name == 'form.household' ||
-                toState.name == 'form.feedback-submitted' ||
-                toState.name == 'form.recert')) {
+            if((toState.name === 'form.name' ||
+                toState.name === 'form.address' ||
+                toState.name === 'form.telephone' ||
+                toState.name === 'form.basic-confirmation'||
+                toState.name === 'form.basic-app-submitted' ||
+                toState.name === 'form.income' ||
+                toState.name === 'form.household' ||
+                toState.name === 'form.feedback-submitted' ||
+                toState.name === 'form.recert')) {
                 $scope.show_progress = true
                 sendViewAnalytic();
 
@@ -467,14 +445,14 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             }
 
 
-            if((fromState.name == 'form.intro' ||
-                fromState.name == 'form.address' ||
-                fromState.name == 'form.basic-confirmation' ||
-                fromState.name == 'form.basic-app-submitted')) {
+            if((fromState.name === 'form.intro' ||
+                fromState.name === 'form.address' ||
+                fromState.name === 'form.basic-confirmation' ||
+                fromState.name === 'form.basic-app-submitted')) {
                 $window.scrollTo(0,0);
             }
 
-        })
+        });
 
         function sendViewAnalytic(){
             $window.ga('set','page',$location.path())
@@ -492,9 +470,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         return {
 
             uploadFeedback : function(formData, callback) {
-                $http.post('https://easyfoodstamps.com/submit_feedback', JSON.stringify(formData))
-                //$http.post('http://localhost:1337/submit_feedback', JSON.stringify(formData))
-                    .success(function(data, status, headers, config) {
+                $http.post('/submit_feedback', JSON.stringify(formData))
+                    .success(function(data, status) {
 
                         if(status === 201){
                             callback(true);
@@ -503,18 +480,16 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                             callback(null);
                         }
                     })
-                    .error(function(data, status, headers, config) {
+                    .error(function(data) {
                         console.log(data);
-
                         callback(null)
 
                     });
             },
 
             uploadBasicInfo : function(formData, callback) {
-               $http.post('https://easyfoodstamps.com/upload_user_info', JSON.stringify(formData))
-               //$http.post('http://localhost/upload_user_info', JSON.stringify(formData))
-                    .success(function(data, status, headers, config) {
+               $http.post('/upload_user_info', JSON.stringify(formData))
+                    .success(function(data, status) {
 
                         if(status === 201){
                             callback(true, data.user_id);
@@ -523,7 +498,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                             callback(null);
                         }
                     })
-                    .error(function(data, status, headers, config) {
+                    .error(function(data) {
                         console.log(data);
 
                         callback(null)
@@ -569,7 +544,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                     return tel;
             }
 
-            if (country == 1) {
+            if (country === 1) {
                 country = "";
             }
 

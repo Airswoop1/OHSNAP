@@ -24,6 +24,9 @@ module.exports = {
     "web": {
         "http_port": 3000,
         "https_port" : 3001
+    },
+    "angularjs" : {
+        "base_url":"https://easyfoodstamps.com/"
     }
 
 }

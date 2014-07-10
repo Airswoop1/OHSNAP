@@ -23,6 +23,9 @@ module.exports = {
     "web": {
         "http_port": 1337,
         "https_port" : 8080
+    },
+    "angularjs" : {
+        "base_url":"http://localhost:1337/"
     }
 
 }

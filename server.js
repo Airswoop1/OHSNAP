@@ -24,8 +24,8 @@ app.use(express.cookieParser('asdfa9asdfxxc0'));
 
 
 app.configure('sandbox', function(){
-    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
     app.use(express.logger('dev'));
+    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
 app.configure('dev', function(){
