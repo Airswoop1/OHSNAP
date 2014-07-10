@@ -492,8 +492,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         return {
 
             uploadFeedback : function(formData, callback) {
-                //$http.post('https://easyfoodstamps.com/submit_feedback', JSON.stringify(formData))
-                $http.post('http://localhost:1337/submit_feedback', JSON.stringify(formData))
+                $http.post('https://easyfoodstamps.com/submit_feedback', JSON.stringify(formData))
+                //$http.post('http://localhost:1337/submit_feedback', JSON.stringify(formData))
                     .success(function(data, status, headers, config) {
 
                         if(status === 201){
@@ -512,8 +512,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             },
 
             uploadBasicInfo : function(formData, callback) {
-               //$http.post('https://easyfoodstamps.com/upload_user_info', JSON.stringify(formData))
-               $http.post('http://localhost/upload_user_info', JSON.stringify(formData))
+               $http.post('https://easyfoodstamps.com/upload_user_info', JSON.stringify(formData))
+               //$http.post('http://localhost/upload_user_info', JSON.stringify(formData))
                     .success(function(data, status, headers, config) {
 
                         if(status === 201){
