@@ -34,7 +34,7 @@
 
     <div class="col-xs-12">
         <!--<input class="form-control" type="number" name="household"  id="household" ng-model="formData.household"/>-->
-        <p  id="household" ng-show="(formData.household == 1)">{{ formData.household }} person</p>
+        <p  id="single_household" ng-show="(formData.household == 1)">{{ formData.household }} person</p>
         <p  id="household" ng-show="(formData.household > 1)">{{ formData.household }} people</p>
         <p id="no_household" ng-hide="formData.household">None provided</p>
         <div >
@@ -80,7 +80,7 @@
     <br/>
     <label for="agree_to_legal">
         <input type="checkbox" class="big-checkbox" id="agree_to_legal"  ng-model="basic_confirmation_agree"/>
-        <span class="pull-right" style="width:80%;">I certify that the information I am submitting is true and authorize
+        <span class="pull-right" style="width:70%;">I certify that the information I am submitting is true and authorize
             Easy Food Stamps to sign my application on my behalf.</span>
     </label>
 </div>

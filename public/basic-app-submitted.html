@@ -74,7 +74,7 @@
 
 <div class="row" style="margin-top:20px">
     <button class="btn-primary" ng-click="feedback_collapsed = !feedback_collapsed" style="background: yellow;color:black;border:none">
-        <b class="col-xs-9" style="padding:10px;float:left;text-align: left;">How was your experience with this application?</b>
+        <b class="col-xs-9" style="padding:10px;float:left;text-align: left;">How likely are you to recommend this application to someone else applying for food stamps?</b>
         <i class="pull-right fa fa-2x" ng-class="{'fa-chevron-down': !feedback_collapsed, 'fa-chevron-right': feedback_collapsed}" style="line-height:2.2;"></i>
     </button>
     <div class="feedback-container" collapse="feedback_collapsed">
@@ -93,7 +93,7 @@
             <div>
                 <label for="agree_to_text" style="margin-top:15px">
                     <input type="checkbox" class="big-checkbox" id="agree_to_text" value="true"  ng-model="formData.sms_agree"/>
-                    <span class="pull-right" style="width:80%;"><em>Yes, please let me know!</em></span>
+                    <span class="pull-right" style="width:70%;"><em>Yes, please let me know!</em></span>
                 </label>
             </div>
 

@@ -14,40 +14,38 @@ var server = http.createServer(app);
 var https_server = https.createServer(config.ssl, app);
 
 
-app.set('port', process.env.PORT || config.web.http_port);
+app.set('port', config.web.http_port);
 app.set('view engine', 'html');
 app.use(express.favicon());
-app.use(express.logger('dev'));
 app.use(express.urlencoded());
 app.use(express.bodyParser());
 app.use(express.cookieParser('asdfa9asdfxxc0'));
 
-app.use(function(req, res, next){
 
-    if(!req.connection.encrypted && process.env.NODE_ENV === 'dev'){
 
-        if(process.env.NODE_ENV == 'dev'){
+app.configure('sandbox', function(){
+    app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
+    app.use(express.logger('dev'));
+});
+
+app.configure('dev', function(){
+    app.use(express.errorHandler());
+
+    app.use(function(req, res, next){
+        if(!req.connection.encrypted){
             res.redirect('https://' + req.headers.host + req.url);
         }
         else {
             next();
         }
-    }
-    else {
-        next();
-    }
-})
+    })
 
-//app.use(app.router);
+});
+
 app.use(express.static('public'));
 app.set('views', path.join(__dirname, 'views'));
 
-
-
 api.set_routes(app);
-
-
-
 
 server.listen(app.get('port'), function () {
     console.log('HTTP now listening on ' + app.get('port'));

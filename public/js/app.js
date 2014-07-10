@@ -215,8 +215,16 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
         $scope.rating_options = [
             {label:'Select', value:-1},
-            {label: 'Yes', value:1},
-            {label: 'No', value:0}
+            {label: 'Definitely - 10', value:10},
+            {label: '9', value:9},
+            {label: '8', value:8},
+            {label: '7', value:7},
+            {label: '6', value:6},
+            {label: '5', value:5},
+            {label: '4', value:4},
+            {label: '3', value:3},
+            {label: '2', value:2},
+            {label: 'Absolutely Not - 1', value:1}
         ]
         $scope.selected_rating = $scope.rating_options[0];
 
@@ -484,8 +492,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         return {
 
             uploadFeedback : function(formData, callback) {
-                $http.post('https://easyfoodstamps.com/submit_feedback', JSON.stringify(formData))
-                //$http.post('http://localhost:1337/submit_feedback', JSON.stringify(formData))
+                //$http.post('https://easyfoodstamps.com/submit_feedback', JSON.stringify(formData))
+                $http.post('http://localhost:1337/submit_feedback', JSON.stringify(formData))
                     .success(function(data, status, headers, config) {
 
                         if(status === 201){
@@ -504,8 +512,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             },
 
             uploadBasicInfo : function(formData, callback) {
-               $http.post('https://easyfoodstamps.com/upload_user_info', JSON.stringify(formData))
-               //$http.post('http://localhost:1337/upload_user_info', JSON.stringify(formData))
+               //$http.post('https://easyfoodstamps.com/upload_user_info', JSON.stringify(formData))
+               $http.post('http://localhost/upload_user_info', JSON.stringify(formData))
                     .success(function(data, status, headers, config) {
 
                         if(status === 201){

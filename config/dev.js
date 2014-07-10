@@ -2,9 +2,11 @@
  * Created by airswoop1 on 6/23/14.
  */
 var fs = require('fs');
+var mongolab_pw = process.env.MONGOLAB_PW;
+
 module.exports = {
     "db" : {
-        "mongodb" : "mongodb://ohsnap:lastmorning123@ds041198.mongolab.com:41198/ohsnap-dev"
+        "mongodb" : "mongodb://dev:"+ mongolab_pw +"@ds041198.mongolab.com:41198/ohsnap-dev"
     },
     "aws" : {
         "s3" : {
@@ -20,8 +22,8 @@ module.exports = {
         "ca":fs.readFileSync('./config/ssl/sub.class1.server.ca.pem')
     },
     "web": {
-        "http_port": 80,
-        "https_port" : 443
+        "http_port": 3000,
+        "https_port" : 3001
     }
 
 }
