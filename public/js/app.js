@@ -31,7 +31,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                     {
                         header: "STEP 1",
                         title: "Fill out a short form",
-                        text: "We keep the application short and sweet. No more long waits or confusing paperwork.",
+                        text: "Answer 5 basic questions about yourself to get started.",
                         bg_color:"#00BFFF",
                         id:"circle"
                     },
