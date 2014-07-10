@@ -2,7 +2,8 @@
 <div class="form-group row">
     <div  style="margin-top:-125px;">
         <div class="input-group input-group-lg">
-            <input type="text" class="form-control" ng-model="init_name" placeholder="What's your name?" required style="border:none;border-radius: 0px"/>
+            <input type="text" class="form-control" ng-model="formData.name.entered_name" placeholder="What's your name?"
+                   ng-enter="initNameStart()" required style="border:none;border-radius: 0px"/>
             <span class="input-group-btn">
                 <button class="btn btn-group-lg btn-default"  ng-click="initNameStart()" type="button" style="border:none;background-color:yellow;color:black;border-radius:0px"><b>Start</b></button>
             </span>

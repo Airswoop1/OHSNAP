@@ -173,13 +173,15 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
         // we will store all of our form data in this object
         $scope.formData = {
-            name: {},
+            name: {
+                "entered_name":""
+            },
             phone:undefined
         };
 
 
         //data objects for holding input temporarily
-        $scope.init_name = "";
+
         $scope.progress = 0;
         $scope.date = new Date();
         $scope.date_of_interview = new Date();
@@ -227,9 +229,11 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
 
         $scope.initNameStart = function(){
-            $scope.formData.name.entered_name = this.init_name;
+            var split_name = ""
+            if($scope.formData.name.entered_name){
+                split_name = ($scope.formData.name.entered_name).split(' ');
+            }
 
-            var split_name = this.init_name.split(' ');
 
             $scope.formData.name.first_name = split_name[0];
 
@@ -272,11 +276,14 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 updateProgress('address');
                 $state.go('form.household');
             }
-            else if($scope.snapForm.$valid) {
+            else if($scope.snapForm.$valid && $scope.formData.address.street_address && $scope.formData.address.zip) {
 
                 $scope.has_address = true;
                 updateProgress('address');
                 $state.go('form.household');
+            }
+            else if($scope.snapForm.$valid && ($scope.formData.address.street_address || $scope.formData.address.zip)){
+                $scope.has_address = true;
             }
 
 
@@ -432,8 +439,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             })
         }
 
-        $rootScope.$on('$stateChangeStart', function(event, toState){
-            $window.scrollTo(0,0);
+        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams){
+
             if((toState.name == 'form.name' ||
                 toState.name == 'form.address' ||
                 toState.name == 'form.telephone' ||
@@ -449,6 +456,14 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             }
             else {
                 $scope.show_progress = false;
+            }
+
+
+            if((fromState.name == 'form.intro' ||
+                fromState.name == 'form.address' ||
+                fromState.name == 'form.basic-confirmation' ||
+                fromState.name == 'form.basic-app-submitted')) {
+                $window.scrollTo(0,0);
             }
 
         })
@@ -553,6 +568,20 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             number = number.slice(0, 3) + '-' + number.slice(3);
 
             return (country + " (" + city + ") " + number).trim();
+        };
+    })
+
+    .directive('ngEnter', function () {
+        return function (scope, element, attrs) {
+            element.bind("keydown keypress", function (event) {
+                if(event.which === 13) {
+                    scope.$apply(function (){
+                        scope.$eval(attrs.ngEnter);
+                    });
+
+                    event.preventDefault();
+                }
+            });
         };
     });
 

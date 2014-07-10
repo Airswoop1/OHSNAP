@@ -10,7 +10,7 @@
     <br/>
 </div>
 
-<div class="form-group" style="margin-top:20px" ng-class="{'has-success':snapForm.household.$pristine ,'has-error': snapForm.household.$invalid }">
+<div class="form-group" style="margin-top:20px" ng-class="{'has-success':snapForm.household.$pristine ,'has-error': (snapForm.household.$invalid && snapForm.household.$dirty)}">
     <input class="form-control" type="number" name="household"  id="household" ng-model="formData.household" autofocus="true" required min="1"/>
     <span class="help-block" ng-show="submitted_household && (!(snapForm.household.$error.valid) || snapForm.household.$error.required)">
         Number of people living with you is required. Must be greater than 0. </span>

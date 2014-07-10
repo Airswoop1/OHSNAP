@@ -1,11 +1,11 @@
 <!-- form-address.html -->
-<div class="row col-xs-10">
+<div class="row col-xs-11">
     <span class="text-left" style="font-size: 30px"><strong> What's your address?</strong></span>
 </div>
 
-<div class="form-group" ng-class="{'has-success':snapForm.street_address.$pristine ,'has-error': snapForm.street_address.$invalid}">
+<div class="form-group" ng-class="{'has-success':snapForm.street_address.$pristine ,'has-error': (snapForm.street_address.$invalid || (!snapForm.zip.$pristine && snapForm.street_address.$pristine) )}">
     <input type="text" class="form-control" name="street_address" id="street_address" placeholder="STREET ADDRESS" ng-model="formData.address.street_address" ng-minlength="3" autofocus="true">
-    <span class="help-block" ng-show="submitted_address && has_address && !(snapForm.street_address.$valid)">Street Address Required</span>
+    <span class="help-block" ng-show="submitted_address && has_address && (!(snapForm.street_address.$valid) || snapForm.zip.$valid)">Street Address Required</span>
 </div>
 
 <div class="form-group">
