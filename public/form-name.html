@@ -1,6 +1,6 @@
 <div class="row">
-    <span class="text-left" style="font-size: 30px"><strong>Thanks, {{ formData.name.first_name }}!</strong></span>
-
+    <span class="text-left" style="font-size: 30px" ng-show="formData.name.first_name"><strong>Thanks, {{ formData.name.first_name }}!</strong></span>
+    <span class="text-left" style="font-size: 30px" ng-hide="formData.name.first_name"><strong>Thanks!</strong></span>
     <p>Answer a few more basic questions, and you'll be done with this step!</p>
 </div>
 

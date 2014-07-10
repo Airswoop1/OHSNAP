@@ -13,8 +13,8 @@
 </div>
 
 <div class="form-group" ng-class="{'has-success':snapForm.zip.$pristine ,'has-error': snapForm.zip.$invalid}">
-    <input type="number" class="form-control" name="zip" id="zip" placeholder="ZIP CODE" ng-model="formData.address.zip" ng-minlength="5">
-    <span class="help-block" ng-show="submitted_address && has_address && !(snapForm.zip.$valid)">5 Digit Zip Code Required</span>
+    <input type="number" class="form-control" name="zip" id="zip" placeholder="ZIP CODE" ng-model="formData.address.zip" ng-minlength="5" min="10000" max="12000">
+    <span class="help-block" ng-show="submitted_address && has_address && !(snapForm.zip.$valid)">5 Digit Zip Code in the NYC area Required</span>
 
 </div>
 

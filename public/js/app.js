@@ -230,11 +230,13 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             }
             else if(split_name.length === 2) {
                 this.formData.name.last_name = split_name[1];
+                updateProgress('name');
                 $state.go('form.address');
             }
             else if(split_name.length >= 3) {
                 this.formData.name.middle_name = split_name[1];
                 this.formData.name.last_name = split_name[2];
+                updateProgress('name');
                 $state.go('form.address');
             }
             else {
@@ -317,55 +319,56 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
 
         function calculateBenefit() {
-            if($scope.formData.income && $scope.formData.household) {
-                var house = $scope.formData.household;
-                var income = parseInt($scope.formData.income,10);
-                var benefit = 0;
-                var eligible = false;
+            
+            var house = ($scope.formData.household !== "undefined") ? $scope.formData.household : 1;
+            var income = ($scope.formData.income !== "undefined") ? parseInt($scope.formData.income,10) : 0;
+            var benefit = 0;
+            var eligible = false;
 
 
-                if($scope.formData.disabled === true) {
+            if($scope.formData.disabled === true) {
 
-                    if( (house === 1 && income <= 1915) ||
-                        (house === 2 && income <= 2585) ||
-                        (house === 3 && income <= 3255) ||
-                        (house === 4 && income <= 3925) )
-                    {
-                        eligible = true;
-                    }
-                    else if(house >= 5 && (income <= (((house-4)*670)+3925)) ){
-                        eligible = true;
-                    }
+                if( (house === 1 && income <= 1915) ||
+                    (house === 2 && income <= 2585) ||
+                    (house === 3 && income <= 3255) ||
+                    (house === 4 && income <= 3925) )
+                {
+                    eligible = true;
                 }
-                else {
-                    if( (house === 1 && income <= 1245) ||
-                        (house === 2 && income <= 1681) ||
-                        (house === 3 && income <= 2116) ||
-                        (house === 4 && income <= 2552) )
-                    {
-                        eligible = true;
-                    }
-                    else if(house >= 5 && (income <= (((house-4)*436)+2552)) ){
-                        eligible = true;
-                    }
+                else if(house >= 5 && (income <= (((house-4)*670)+3925)) ){
+                    eligible = true;
                 }
-
-                if(eligible){
-                    if(house === 1){ benefit=189; }
-                    else if(house === 2){ benefit=347;}
-                    else if(house === 3){ benefit=497;}
-                    else if(house === 4){ benefit=632;}
-                    else if(house === 5){ benefit=750;}
-                    else if(house === 6){ benefit=900;}
-                    else if(house === 7){ benefit=995;}
-                    else if(house === 8){ benefit=1137}
-                    else if(house >= 9) {
-                        benefit = 1337 + (142*(house-8))
-                    }
-                }
-
-                $scope.formData.benefit_amount = benefit;
             }
+            else {
+                if( (house === 1 && income <= 1245) ||
+                    (house === 2 && income <= 1681) ||
+                    (house === 3 && income <= 2116) ||
+                    (house === 4 && income <= 2552) )
+                {
+                    eligible = true;
+                }
+                else if(house >= 5 && (income <= (((house-4)*436)+2552)) ){
+                    eligible = true;
+                }
+            }
+
+            if(eligible){
+                if(house === 1){ benefit=189; }
+                else if(house === 2){ benefit=347;}
+                else if(house === 3){ benefit=497;}
+                else if(house === 4){ benefit=632;}
+                else if(house === 5){ benefit=750;}
+                else if(house === 6){ benefit=900;}
+                else if(house === 7){ benefit=995;}
+                else if(house === 8){ benefit=1137}
+                else if(house >= 9) {
+                    benefit = 1337 + (142*(house-8))
+                }
+            }
+            alert(eligible);
+            alert(benefit);
+            $scope.formData.benefit_amount = benefit;
+
         }
 
         function showNoContactModal() {
@@ -376,7 +379,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             $scope.completed_items[u] = true;
             $scope.progress = 0;
             for(var comp in $scope.completed_items){
-                if($scope.completed_items.hasOwnProperty(comp) && $scope.completed_items[comp]){
+                if($scope.completed_items[comp]){
                     $scope.progress += 17;
                 }
             }
