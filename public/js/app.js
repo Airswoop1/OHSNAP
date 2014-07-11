@@ -319,7 +319,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
 
         function calculateBenefit() {
-            
+
             var house = ($scope.formData.household !== "undefined") ? $scope.formData.household : 1;
             var income = ($scope.formData.income !== "undefined") ? parseInt($scope.formData.income,10) : 0;
             var benefit = 0;
