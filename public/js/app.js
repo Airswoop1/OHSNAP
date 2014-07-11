@@ -365,8 +365,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                     benefit = 1337 + (142*(house-8))
                 }
             }
-            alert(eligible);
-            alert(benefit);
+
             $scope.formData.benefit_amount = benefit;
 
         }
