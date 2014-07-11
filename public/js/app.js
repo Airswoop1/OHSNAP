@@ -4,63 +4,10 @@
 // app.js
 // create our angular app and inject ngAnimate and ui-router
 // =============================================================================
-var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch','DocumentUploader', 'NoContactModal' ])
+var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch','DocumentUploader',
+        'NoContactModal', 'formApp.infoCarouselDirective', 'formApp.infoFooterDirective', 'formApp.ngEnterDirective',
+        'formApp.telephoneFilter', 'formApp.apiFactory'])
 
-    .directive('snapInformation', function(){
-        return {
-            restrict:'E',
-            templateUrl:'process-info.html'
-        }
-    })
-
-    .directive('infoFooter', function(){
-        return {
-            restrict:'E',
-            templateUrl:'info-footer.html'
-        }
-    })
-
-    .directive('infoCarousel', function(){
-        return {
-            restrict:'E',
-            templateUrl:'info-carousel.html',
-            controller: function($scope){
-                $scope.my_int = 5000;
-
-                $scope.slides = [
-                    {
-                        header: "STEP 1",
-                        title: "Fill out a short form",
-                        text: "Answer 5 basic questions about yourself to get started.",
-                        bg_color:"#00BFFF",
-                        id:"circle"
-                    },
-                    {
-                        header: "STEP 2",
-                        title: "Get an interview",
-                        text: "Prepare for your interview with a government worker with our interview guide.",
-                        bg_color:"#30D5C8",
-                        id:"circle"
-                    },
-                    {
-                        header: "STEP 3",
-                        title: "Send in required documents",
-                        text: "Text us your documents or upload them from your mobile device and we'll fax them in for you. Boom! You're done.",
-                        bg_color:"#66CD00",
-                        id:"circle"
-                    },
-                    {
-                        header: "",
-                        title: "We follow up, anytime",
-                        text: "Get reminders about application deadlines. If something goes wrong, we help you take action.",
-                        bg_color:"url(images/arrow_clock_sm.png)",
-                        id:'arrow_clock'
-                    }
-                ]
-            },
-            controllerAs:"carouselCtrl"
-        }
-    })
 // configuring our routes
 // =============================================================================
     .config(function($stateProvider, $urlRouterProvider) {
@@ -471,105 +418,9 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
     })
 
-    .factory('InfoUploader', function($http) {
-        return {
-
-            uploadFeedback : function(formData, callback) {
-                $http.post('/submit_feedback', JSON.stringify(formData))
-                    .success(function(data, status) {
-
-                        if(status === 201){
-                            callback(true);
-                        }
-                        else {
-                            callback(null);
-                        }
-                    })
-                    .error(function(data) {
-                        console.log(data);
-                        callback(null)
-
-                    });
-            },
-
-            uploadBasicInfo : function(formData, callback) {
-               $http.post('/upload_user_info', JSON.stringify(formData))
-                    .success(function(data, status) {
-
-                        if(status === 201){
-                            callback(true, data.user_id);
-                        }
-                        else {
-                            callback(null);
-                        }
-                    })
-                    .error(function(data) {
-                        console.log(data);
-
-                        callback(null)
-
-                    });
-            }
-        }
-    })
 
 
-    .filter('tel', function () {
-        return function (tel) {
-            if (!tel) { return ''; }
 
-            var value = tel.toString().trim().replace(/^\+/, '');
 
-            if (value.match(/[^0-9]/)) {
-                return tel;
-            }
 
-            var country, city, number;
-
-            switch (value.length) {
-                case 10: // +1PPP####### -> C (PPP) ###-####
-                    country = 1;
-                    city = value.slice(0, 3);
-                    number = value.slice(3);
-                    break;
-
-                case 11: // +CPPP####### -> CCC (PP) ###-####
-                    country = value[0];
-                    city = value.slice(1, 4);
-                    number = value.slice(4);
-                    break;
-
-                case 12: // +CCCPP####### -> CCC (PP) ###-####
-                    country = value.slice(0, 3);
-                    city = value.slice(3, 5);
-                    number = value.slice(5);
-                    break;
-
-                default:
-                    return tel;
-            }
-
-            if (country === 1) {
-                country = "";
-            }
-
-            number = number.slice(0, 3) + '-' + number.slice(3);
-
-            return (country + " (" + city + ") " + number).trim();
-        };
-    })
-
-    .directive('ngEnter', function () {
-        return function (scope, element, attrs) {
-            element.bind("keydown keypress", function (event) {
-                if(event.which === 13) {
-                    scope.$apply(function (){
-                        scope.$eval(attrs.ngEnter);
-                    });
-
-                    event.preventDefault();
-                }
-            });
-        };
-    });
 
