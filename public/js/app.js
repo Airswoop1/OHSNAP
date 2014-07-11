@@ -399,7 +399,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                     $state.go('form.basic-app-submitted');
                 }
                 else {
-                    alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.")
+                    alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
+                    $scope.disable_submit = false;
                 }
             });
         };
