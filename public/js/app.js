@@ -180,6 +180,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.completed_first_name = false;
         $scope.submitted_basic_information = false;
         $scope.feedback_collapsed = true;
+        $scope.disable_submit = false;
 
         $scope.completed_items = {
             "name": false,
@@ -325,7 +326,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             var benefit = 0;
             var eligible = false;
 
-
             if($scope.formData.disabled === true) {
 
                 if( (house === 1 && income <= 1915) ||
@@ -390,6 +390,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
             calculateBenefit();
             updateProgress('confirmation');
+
+            $scope.disable_submit = true;
 
             InfoUploader.uploadBasicInfo($scope.formData, function(result, user_id){
                 if(result && user_id) {

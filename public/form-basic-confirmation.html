@@ -85,8 +85,14 @@
     </label>
 </div>
 
-<div class="row" ng-show="basic_confirmation_agree" style="margin-top:5px">
+<div class="row" ng-show="basic_confirmation_agree && !disable_submit" style="margin-top:5px">
     <button ng-click="submitBasicApp()" class="btn btn-block btn-remove-ws" style="background-color: yellow;color:black">
         Submit Application
     </button>
+</div>
+
+<div class="row" ng-show="disable_submit" style="margin-top:5px;background:#e3e3e3;padding:3px">
+    <div class="col-xs-offset-5">
+        <i class="fa fa-spinner fa-spin fa-2x"></i>
+    </div>
 </div>
