@@ -389,7 +389,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 toState.name === 'form.feedback-submitted' ||
                 toState.name === 'form.recert')) {
                 $scope.show_progress = true
-                sendViewAnalytic();
+
+
 
             }
             else {
@@ -401,13 +402,16 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 fromState.name === 'form.address' ||
                 fromState.name === 'form.basic-confirmation' ||
                 fromState.name === 'form.basic-app-submitted')) {
+
+
                 $window.scrollTo(0,0);
             }
+            sendViewAnalytic();
 
         });
 
         function sendViewAnalytic(){
-            $window.ga('set','page',$location.path())
+            $window.ga('set','page', $location.path());
             $window.ga('send','pageview');
         }
 
@@ -416,7 +420,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         }
 
 
-    })
+    });
 
 
 

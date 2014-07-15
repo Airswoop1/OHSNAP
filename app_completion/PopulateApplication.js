@@ -20,13 +20,13 @@ var PopulateApplication = (function(){
             else {
 
                 var collection = db.collection('users'),
-                    //query = {$or:[{'completed':{$exists:false}},{'completed':false}]};
-                    query = {};
+                    query = {$or:[{'completed':{$exists:false}},{'completed':false}]};
+
 
                     collection.find(query,
                         function(err, cursor){
                             if(err){
-                                console.log("error with query!")
+                                console.log("error with query in populate application!");
                                 console.log(err);
                             }
                             else{
@@ -44,8 +44,8 @@ var PopulateApplication = (function(){
 
     function processApp(data){
         format_request(data, function(formatted_data) {
-            populate_pdf(formatted_data, function(err, result) {
-                update_DB_pdfCreated(err, result);
+            populate_pdf(formatted_data, function(err, result, tmp_file) {
+                update_DB_pdfCreated(err, result, tmp_file);
             })
         })
 
@@ -81,20 +81,21 @@ var PopulateApplication = (function(){
             if(error || stderr) {
 
                 error_ct++;
-                cb(error,data.user_id);
+                cb(error,data.user_id, data.tmp_id);
             }
             else {
                 success_ct++;
-                cb(null, data.user_id);
+                cb(null, data.user_id, data.tmp_id);
             }
 
         })
     }
 
-    function update_DB_pdfCreated(err, user_id) {
+    function update_DB_pdfCreated(err, user_id, tmp_id) {
 
         var completed = err ? false : true,
-            query = { "user_id" : user_id },
+            file_name = "SNAP_Application_" + tmp_id + ".pdf",
+            query = { "user_id" : user_id, "output_file_path":  file_name},
             update = {"$set": {'completed': completed}};
 
         MongoClient.getConnection(function(db_err, db) {

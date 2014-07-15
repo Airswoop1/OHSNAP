@@ -32,7 +32,7 @@ def form_fill(fields):
     fdf_file = open(tmp_file,"w")
     fdf_file.write(fdf)
     fdf_file.close()
-    output_file = '{0}{1} {2}.pdf'.format(output_folder, filename_prefix, fields[0][1])
+    output_file = '{0}{1}.pdf'.format(output_folder, filename_prefix)
     cmd = 'pdftk "{0}" fill_form "{1}" output "{2}" dont_ask'.format(pdf_file, tmp_file, output_file)
     os.system(cmd)
     os.remove(tmp_file)
@@ -61,7 +61,7 @@ for opt, a in opts:
 
 
 tmp_file = "tmp" + str(tmp_id) + ".fdf"
-filename_prefix = "SNAP_Application_" + str(tmp_id) + "_"
+filename_prefix = "SNAP_Application_" + str(tmp_id)
 
 
 form_fill(formatted_data)
