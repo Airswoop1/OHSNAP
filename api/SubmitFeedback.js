@@ -50,7 +50,7 @@ var SubmitFeedback = (function(){
 
                 var update = {};
                 update['user_id'] = user_id;
-                update['rating'] = rating;
+                update['rating'] = rating.value;
                 update['feedback_message'] = feedback_message;
                 update['rec_sms'] = rec_sms;
                 update['created_on'] = new Date().getTime();

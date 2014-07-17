@@ -2,9 +2,11 @@
  * Created by airswoop1 on 6/27/14.
  */
 var fs = require('fs');
+var mongolab_pw = process.env.MONGOLAB_PW;
+
 module.exports = {
     "db" : {
-        "mongodb" : "mongodb://ohsnap-sandbox:lastmorning123@ds037447.mongolab.com:37447/ohsnap-sandbox"
+        "mongodb" : "mongodb://sandbox:" + mongolab_pw + "@ds037447.mongolab.com:37447/ohsnap-sandbox"
     },
     "aws" : {
         "s3" : {
@@ -21,6 +23,9 @@ module.exports = {
     "web": {
         "http_port": 1337,
         "https_port" : 8080
+    },
+    "angularjs" : {
+        "base_url":"http://localhost:1337/"
     }
 
 }

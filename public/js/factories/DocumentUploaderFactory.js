@@ -20,7 +20,6 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
                     })
                     .progress(function(evt) {
                         return deferred.promise;
-                        console.log('percent: ' + parseInt(100.0 * evt.loaded / evt.total));
                     })
                     .success(function(data, status, headers, config) {
                         // file is uploaded successfully

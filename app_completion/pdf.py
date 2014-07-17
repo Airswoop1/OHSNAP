@@ -4,10 +4,9 @@ import os
 import sys, getopt
 
 sys.path.insert(0, os.getcwd())
-filename_prefix = "SNAPplication_"
 csv_file = "NVC.csv"
-pdf_file = "NVC.pdf"
-tmp_file = "tmp.fdf"
+pdf_file = "SNAPFORM.pdf"
+
 output_folder = './output/'
 
 def process_csv(file):
@@ -39,9 +38,10 @@ def form_fill(fields):
     os.remove(tmp_file)
     print "Printed data to pdf!"
 
-opts, args = getopt.getopt(sys.argv[1:], '', ["Name=", "Address=", "Apt=", "Zip=", "City=" ,"Tel="])
+opts, args = getopt.getopt(sys.argv[1:], '', ["Name=", "Address=", "Apt=", "Zip=", "City=" ,"Tel=", "ID="])
 
 formatted_data = []
+tmp_id = ""
 
 for opt, a in opts:
     if opt=='--Name':
@@ -54,8 +54,15 @@ for opt, a in opts:
         formatted_data.append(('Zip', a))
     elif opt=='--City':
         formatted_data.append(('City', a))
+    elif opt=='--Tel':
+        formatted_data.append(('Tel', a))
+    elif opt=='--ID':
+        tmp_id = a
 
-print formatted_data
+
+tmp_file = "tmp" + str(tmp_id) + ".fdf"
+filename_prefix = "SNAP_Application_" + str(tmp_id) + "_"
+
 
 form_fill(formatted_data)
 

@@ -6,6 +6,7 @@ var Index = require('./Index.js'),
     DocumentationUpload = require('./DocumentationUpload.js'),
     SubmitFeedback = require('./SubmitFeedback.js');
 
+
 var api = (function(){
 
     function set_routes(app){
@@ -20,6 +21,6 @@ var api = (function(){
         "set_routes":set_routes
     }
 
-}())
+}());
 
 module.exports = api
