@@ -130,17 +130,17 @@ h5.close::after {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-p.accordion {
+.accordion {
 	padding: 15px;
 	margin: -20px 0 20px 0 !important;
 	border-bottom: solid 1px #e6e6e6;
 	border-left: solid 1px #e6e6e6;
 	border-right: solid 1px #e6e6e6;
 }
-p.accordion.close {
+.accordion.close {
 	display: none;
 }
-p.accordion.open {
+.accordion.open {
 	display: block;
 }
 p {

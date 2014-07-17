@@ -1,26 +1,35 @@
 <!-- info-footer.html -->
 <div class="footer">
-    <h5 class="open">
+    <h5 ng-class="{'open':isActive.about, 'close':!isActive.about}" ng-click="click('about')">
         ABOUT US
     </h5>
-    <p class="accordion open">We’re trying to make it easier to apply for SNAP. We're based in Brooklyn at Significance Labs, and we aren’t affiliated with the US government.</p>
-    <h5 class="close">
+    <p class="accordion" ng-class="{'open':isActive.about, 'close':!isActive.about}">We’re trying to make it easier to apply for SNAP. We're based in Brooklyn at Significance Labs, and we aren’t affiliated with the US government.</p>
+    <h5 ng-class="{'open':isActive.faqs, 'close':!isActive.faqs}" ng-click="click('faqs')">
         FAQs
     </h5>
-    <p class="accordion close">
-    <strong>What’s the difference between applying here versus applying elsewhere?</strong><br/>
-    The application that gets submitted is the same. We think you’ll be able to save time and headaches by applying with us, though. You’ll be eligible for the exact same SNAP benefits no matter where you apply.<br/>
-    <strong>How much does this cost?</strong><br/>
-    It's free.<br/>
-    <strong>What will you do with my personal information?</strong><br/>
-    By using this app, you are agreeing to our <a href="/terms-of-service.html">Terms of Service</a>.<br/>
-    <strong>Where can I read more about SNAP?</strong><br/>
-    Learn more <a href="http://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program-snap">here</a>.
-    </p>
-    <h5 class="close">
+    <div class="accordion" ng-class="{'open':isActive.faqs, 'close':!isActive.faqs}">
+        <p ng-click="clickFAQ('diff')"><strong>What’s the difference between applying here versus applying elsewhere?</strong>
+            <span class="accordion" ng-class="{'open':faqActive.diff, 'close':!faqActive.diff}">The application that gets submitted is the same. We think you’ll be able to save time and headaches by applying with us, though. You’ll be eligible for the exact same SNAP benefits no matter where you apply.</span>
+        </p>
+        <p ng-click="clickFAQ('cost')">
+            <strong>How much does this cost?</strong>
+            <span class="accordion" ng-class="{'open':faqActive.cost, 'close':!faqActive.cost}">It's free.</span>
+        </p>
+        <p ng-click="clickFAQ('info')">
+            <strong>What will you do with my personal information?</strong>
+            <span class="accordion" ng-class="{'open':faqActive.info, 'close':!faqActive.info}">
+                By using this app, you are agreeing to our <a href="/terms-of-service.html">Terms of Service</a>.
+            </span>
+        </p>
+        <p ng-click="clickFAQ('more')">
+            <strong>Where can I read more about SNAP?</strong>
+        <span class="accordion" ng-class="{'open':faqActive.more, 'close':!faqActive.more}">Learn more <a href="http://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program-snap">here</a>.</span>
+        </p>
+    </div>
+    <h5 ng-class="{'open':isActive.contact, 'close':!isActive.contact}" ng-click="click('contact')">
         CONTACT US
     </h5>
-    <p class="accordion close">
+    <p class="accordion" ng-class="{'open':isActive.contact, 'close':!isActive.contact}" >
         <a href="mailto:snap@significancelabs.org">snap@significancelabs.org</a><br/>
         <a href="tel://1-917-727-6855">+1 (917) 727-6855</a>
     </p>
