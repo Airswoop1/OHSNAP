@@ -1,19 +1,14 @@
-<div class="row col-xs-10">
-    <span class="text-left" style="font-size: 30px"><strong>What's your phone number?</strong></span>
+<!-- form-telephone.html -->
+<h1>What’s your phone number?</h1>
+<div class="checkbox-group">
+    <input type="checkbox" name="" value="">
+    <span>Check if you don’t have one.</span>
 </div>
-
 <div class="form-group" ng-class="{'has-success':snapForm.phone.$pristine ,'has-error': snapForm.phone.$invalid}">
-    <input class="form-control" type="number" placeholder="PHONE NUMBER" name="phone" id="phone" ng-model="formData.phone_main" ng-minlength="10" ng-maxlength="11" autofocus="true"/>
-    <span class="help-block" ng-show="submitted_phone && !(snapForm.last_name.$error.valid)">Ten Digit Telephone Number Required</span>
+    <input class="form-control" type="number" placeholder="Phone Number" name="phone" id="phone" ng-model="formData.phone_main" ng-minlength="10" ng-maxlength="11" autofocus="true"/>
+    <p class="help-block" ng-show="submitted_phone && !(snapForm.last_name.$error.valid)">Ten Digit Telephone Number Required</p>
 </div>
-
-<div class="form-group row ">
-    <span>If you don’t have a phone number, leave this blank. Note that you’ll have to visit the SNAP office in person.</span>
-</div>
-
-<div class="row">
-    <button type="button" ng-click="completedTelephone()" class="btn btn-block" style="background-color:yellow;color:black">
-        Continue
-    </button>
-</div>
+<p>If you don’t have a phone number, leave this blank. Note that you’ll have to visit the SNAP office in person.
+</p>
+<div class="yellow-button" ng-click="completedTelephone()">Continue</div>
 
