@@ -1,21 +1,16 @@
-<div class="row">
-    <span class="text-left" style="font-size: 30px"><strong>Thanks, {{ formData.name.first_name }}</strong></span>
+		<div class="page-second-header">
+			<h1>Thanks {{ formData.name.first_name }}!</h1>
+	        <p>Answer a few more basic questions, and you’ll be done with this step!</p>
+		</div>
 
-    <p>To complete your online application for SNAP, we need your full name and contact information.</p>
-</div>
+		<div class="form-group" ng-class="{'has-error': snapForm.first_name.$invalid}" ng-hide="completed_first_name">
+		    <input class="form-control" type="text" placeholder="First name" name="first_name" id="first_name" ng-model="formData.name.first_name" required/>
+		    <span class="help-block" ng-show="submitted_name && (snapForm.first_name.$error.required)">First Name Required</span>
+		</div>
 
-<div class="form-group" ng-class="{'has-error': snapForm.first_name.$invalid}" style="margin-left:-16px" ng-hide="completed_first_name">
-    <input class="form-control" type="text" placeholder="FIRST NAME" name="first_name" id="first_name" ng-model="formData.name.first_name" required/>
-    <span class="help-block" ng-show="submitted_name && (snapForm.first_name.$error.required)">First Name Required</span>
-</div>
+		<div class="form-group" ng-class="{'has-error': snapForm.last_name.$invalid}">
+		    <input class="form-control" type="text" placeholder="Last name" name="last_name" id="last_name" ng-model="formData.name.last_name" required/>
+		    <span class="help-block" ng-show="submitted_name && (snapForm.last_name.$error.required)">Last Name Required</span>
+		</div>
 
-<div class="form-group" ng-class="{'has-error': snapForm.last_name.$invalid}" style="margin-left:-16px">
-    <input class="form-control" type="text" placeholder="LAST NAME" name="last_name" id="last_name" ng-model="formData.name.last_name" required/>
-    <span class="help-block" ng-show="submitted_name && (snapForm.last_name.$error.required)">Last Name Required</span>
-</div>
-
-<div class="row">
-    <button type="button" ng-click="completedName()" class="btn btn-block" style="background-color:yellow;color:black">
-        <strong>Continue</strong>
-    </button>
-</div>
+		<div class="yellow-button" ng-click="completedName()">Continue</div>
