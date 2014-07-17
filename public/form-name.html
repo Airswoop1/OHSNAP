@@ -1,5 +1,6 @@
 <div class="page-second-header">
-    <h1>Thanks{{ " " + formData.name.first_name }}!</h1>
+    <h1 ng-show="formData.name.first_name">Thanks{{ " " + formData.name.first_name }}!</h1>
+    <h1 ng-hide="formData.name.first_name">Thanks!</h1>
     <p>Answer a few more basic questions, and you’ll be done with this step!</p>
 </div>
 
