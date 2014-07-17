@@ -173,29 +173,40 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
             if((split_name.length === 1) && (split_name !== "")) {
                 $scope.completed_first_name = true;
-                $state.go('form.name');
+                sendViewAnalytic('/form/name',function(){
+                    $state.go('form.name');
+                });
 
             }
             else if(split_name.length === 2) {
                 this.formData.name.last_name = split_name[1];
                 updateProgress('name');
-                $state.go('form.address');
+                sendViewAnalytic('/form/address',function(){
+                    $state.go('form.address');
+                });
             }
             else if(split_name.length >= 3) {
                 this.formData.name.middle_name = split_name[1];
                 this.formData.name.last_name = split_name[2];
                 updateProgress('name');
-                $state.go('form.address');
+                sendViewAnalytic('/form/address', function(){
+                    $state.go('form.address');
+                });
+
             }
             else {
-                $state.go('form.name');
+                sendViewAnalytic('/form/name',function(){
+                    $state.go('form.name');
+                });
             }
         };
 
         $scope.completedName = function() {
             if($scope.snapForm.$valid) {
                 updateProgress('name');
-                $state.go('form.address');
+                sendViewAnalytic('/form/address',function(){
+                    $state.go('form.address');
+                });
             }
             else {
                 $scope.submitted_name = true;
@@ -209,13 +220,17 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
                 $scope.has_address = false;
                 updateProgress('address');
-                $state.go('form.household');
+                sendViewAnalytic('/form/household',function(){
+                    $state.go('form.household');
+                });
             }
             else if($scope.snapForm.$valid && $scope.formData.address.street_address && $scope.formData.address.zip) {
 
                 $scope.has_address = true;
                 updateProgress('address');
-                $state.go('form.household');
+                sendViewAnalytic('/form/household',function(){
+                    $state.go('form.household');
+                });
             }
             else if($scope.snapForm.$valid && ($scope.formData.address.street_address || $scope.formData.address.zip)){
                 $scope.has_address = true;
@@ -235,12 +250,16 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 }
                 else {
                     updateProgress('telephone');
-                    $state.go('form.basic-confirmation');
+                    sendViewAnalytic('/form/basic-confirmation',function(){
+                        $state.go('form.basic-confirmation');
+                    });
                 }
             }
             else if($scope.snapForm.$valid) {
                 updateProgress('telephone');
-                $state.go('form.basic-confirmation');
+                sendViewAnalytic('/form/basic-confirmation',function(){
+                    $state.go('form.basic-confirmation');
+                });
             }
 
         };
@@ -250,7 +269,9 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
             if ($scope.snapForm.income.$valid) {
                 updateProgress('income');
-                $state.go('form.telephone');
+                sendViewAnalytic('/form/telephone',function(){
+                    $state.go('form.telephone');
+                });
             }
 
         };
@@ -260,7 +281,9 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
             if($scope.snapForm.household.$valid) {
                 updateProgress('household');
-                $state.go('form.income');
+                sendViewAnalytic('/form/income', function(){
+                    $state.go('form.income');
+                });
             }
 
         };
@@ -343,7 +366,9 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             InfoUploader.uploadBasicInfo($scope.formData, function(result, user_id){
                 if(result && user_id) {
                     $scope.formData.user_id = user_id;
-                    $state.go('form.basic-app-submitted');
+                    sendViewAnalytic('/form/app-submitted',function(){
+                        $state.go('form.basic-app-submitted');
+                    });
                 }
                 else {
                     alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
@@ -357,7 +382,9 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
             InfoUploader.uploadFeedback($scope.formData, function(result){
                 if(result) {
-                    $state.go('form.feedback-submitted');
+                    sendViewAnalytic('/form/feedback-submitted',function(){
+                        $state.go('form.feedback-submitted');
+                    });
                 }
                 else {
                     alert("Oops Looks like something went wrong. Your feedback was NOT submitted. Please wait and try again.")
@@ -388,31 +415,39 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 toState.name === 'form.household' ||
                 toState.name === 'form.feedback-submitted' ||
                 toState.name === 'form.recert')) {
-                $scope.show_progress = true
 
-
-
+                $scope.show_progress = true;
             }
             else {
                 $scope.show_progress = false;
             }
-
 
             if((fromState.name === 'form.intro' ||
                 fromState.name === 'form.address' ||
                 fromState.name === 'form.basic-confirmation' ||
                 fromState.name === 'form.basic-app-submitted')) {
 
-
                 $window.scrollTo(0,0);
             }
-            sendViewAnalytic();
+
+            if(toState.name == 'form.recert') {
+                sendViewAnalytic('/form/recert',function(){return;});
+            }
+            else if(toState.name == 'form.intro') {
+                sendViewAnalytic('/form/intro',function(){return;});
+            }
+
 
         });
 
-        function sendViewAnalytic(){
-            $window.ga('set','page', $location.path());
-            $window.ga('send','pageview');
+        function sendViewAnalytic(page, cb){
+
+            $window.ga('send', 'pageview', {
+                'page': page,
+                'hitCallback': function() {
+                    cb();
+                }
+            });
         }
 
         function sendEvent(category, action, label, value){

@@ -2,7 +2,10 @@
  * Created by airswoop1 on 6/23/14.
  */
 var fs = require('fs');
-var mongolab_pw = process.env.MONGOLAB_PW;
+var mongolab_pw = process.env.MONGOLAB_PW,
+    phaxio_prod_key = process.env.PHAXIO_PROD_KEY,
+    phaxio_prod_secret = process.env.PHAXIO_PROD_SECRET;
+
 
 module.exports = {
     "db" : {
@@ -25,8 +28,9 @@ module.exports = {
         "http_port": 3000,
         "https_port" : 3001
     },
-    "angularjs" : {
-        "base_url":"https://easyfoodstamps.com/"
+    "phaxio" : {
+        "key":phaxio_prod_key,
+        "secret":phaxio_prod_secret
     }
 
 }

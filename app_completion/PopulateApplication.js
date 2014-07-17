@@ -5,6 +5,7 @@
 var MongoClient = require('../database.js');
 var exec = require('child_process').exec;
 
+
 var PopulateApplication = (function(){
 
     console.log("executing PopulateApplication")
@@ -20,8 +21,8 @@ var PopulateApplication = (function(){
             else {
 
                 var collection = db.collection('users'),
-                    query = {$or:[{'completed':{$exists:false}},{'completed':false}]};
-
+                    //query = {$or:[{'completed':{$exists:false}},{'completed':false}]};
+                    query = {};
 
                     collection.find(query,
                         function(err, cursor){
@@ -68,6 +69,14 @@ var PopulateApplication = (function(){
     }
 
     function populate_pdf(data, cb){
+        var today = new Date(),
+            dd = today.getDate(),
+            mm = today.getMonth()+1,
+            yyyy = today.getFullYear();
+
+        if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
+        today = mm+'/'+dd+'/'+yyyy;
+
 
         var input = "python ./app_completion/pdf.py ";
         input += "--Name='" + data.name + "' ";
@@ -76,8 +85,11 @@ var PopulateApplication = (function(){
         input += "--Zip='" + data.zip + "' ";
         input += "--Tel='" + data.phone_main + "' ";
         input += "--ID='" + data.tmp_id + "' ";
+        input += "--Date='" + today + "' ";
 
         exec(input, function(error, stdout, stderr){
+            console.log(error);
+            console.log(stderr);
             if(error || stderr) {
 
                 error_ct++;
@@ -95,8 +107,8 @@ var PopulateApplication = (function(){
 
         var completed = err ? false : true,
             file_name = "SNAP_Application_" + tmp_id + ".pdf",
-            query = { "user_id" : user_id, "output_file_path":  file_name},
-            update = {"$set": {'completed': completed}};
+            query = { "user_id" : user_id},
+            update = {"$set": {'completed': completed, "output_file_name":  file_name}};
 
         MongoClient.getConnection(function(db_err, db) {
             if(db_err) {
@@ -116,6 +128,7 @@ var PopulateApplication = (function(){
                             console.log("db write error")
                         }
                         else {
+                            console.log("wrote to db pdf created");
                         }
 
                         if((error_ct+success_ct) === total){

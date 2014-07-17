@@ -2,7 +2,9 @@
  * Created by airswoop1 on 6/27/14.
  */
 var fs = require('fs');
-var mongolab_pw = process.env.MONGOLAB_PW;
+var mongolab_pw = process.env.MONGOLAB_PW,
+    phaxio_key = process.env.PHAXIO_TEST_KEY,
+    phaxio_secret = process.env.PHAXIO_TEST_SECRET;
 
 module.exports = {
     "db" : {
@@ -24,8 +26,9 @@ module.exports = {
         "http_port": 1337,
         "https_port" : 8080
     },
-    "angularjs" : {
-        "base_url":"http://localhost:1337/"
+    "phaxio" : {
+        "key":phaxio_key,
+        "secret":phaxio_secret
     }
 
 }

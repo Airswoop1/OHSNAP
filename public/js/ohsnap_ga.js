@@ -58,6 +58,6 @@ ga('require', 'displayfeatures');
     'cookieDomain': 'none'
 });*/
 ga('set', 'dimension1', device_type);
-ga('send', 'pageview');
+ga('send', 'pageview', {page:'/form/intro'});
 
 
