@@ -1,98 +1,19 @@
-<div class="row ">
-    <span class="text-left" style="font-size: 30px"><strong>Great! You're almost done!</strong></span>
+<!-- form-basic-confirmation.html -->
+<h1>Great! You're almost done!</h1>
+<p>Once you submit your name and contact information, we'll confirm that SNAP has received it.</p>
+<p>We’ll confirm that SNAP has received your application on the next page.
+</p>
+<input type="text" placeholder="First name" name="first_name" id="first_name" ng-model="formData.name.first_name" required/>
+<input type="text" placeholder="Last name" name="last_name" id="last_name" ng-model="formData.name.last_name" required/>
+<input class="form-control" type="number" placeholder="Phone Number" name="phone" id="phone" ng-model="formData.phone_main" ng-minlength="10" ng-maxlength="11" autofocus="true"/>
+<input type="text" name="street_address" id="street_address" placeholder="Street Address" ng-model="formData.address.street_address" ng-minlength="3" autofocus="true">
+<input type="text" id="apt_number" placeholder="APT #" ng-model="formData.address.apt_number">
+<input type="number" name="zip" id="zip" placeholder="Zip Code" ng-model="formData.address.zip" ng-minlength="5">
+<input class="form-control" type="number" name="household"  id="household" ng-model="formData.household" autofocus="true" required min="1"/>
+<input class="form-control" placeholder="$" type="number" name="income"  id="income" ng-model="formData.income" autofocus="true" required/>
+
+<div class="checkbox-group">
+    <input type="checkbox" class="big-checkbox" id="agree_to_legal"  ng-model="basic_confirmation_agree"/>
+    <span>I certify that the information I am submitting is true and authorize Easy Food Stamps to sign my application on my behalf.</span>
 </div>
-
-<div class="row ">
-    <p>
-        Review your information. After you check the box and hit Submit, we’ll send your application.
-    </p>
-</div>
-
-<div class="row ">
-
-    <div class="col-xs-12">
-        <p id="name">{{ formData.name.first_name + " " + formData.name.last_name }} </p>
-        <div >
-            <a ui-sref="form.name" class="btn btn-block" style="background-color:#e8e8e8;color:black">
-                Edit name
-            </a>
-        </div>
-        <br/>
-    </div>
-
-
-    <div class="col-xs-12">
-        <p id="address" ng-show="formData.address">{{ formData.address.street_address + " " + formData.address.apt_number + ", " + formData.address.zip}} </p>
-        <p id="no_address" ng-hide="formData.address">None provided</p>
-        <div >
-            <a ui-sref="form.address" class="btn btn-block" style="background-color:#e8e8e8;color:black">
-                Edit address
-            </a>
-        </div>
-        <br/>
-    </div>
-
-    <div class="col-xs-12">
-        <!--<input class="form-control" type="number" name="household"  id="household" ng-model="formData.household"/>-->
-        <p  id="single_household" ng-show="(formData.household == 1)">{{ formData.household }} person</p>
-        <p  id="household" ng-show="(formData.household > 1)">{{ formData.household }} people</p>
-        <p id="no_household" ng-hide="formData.household">None provided</p>
-        <div >
-            <a ui-sref="form.household" class="btn btn-block" style="background-color:#e8e8e8;color:black">
-                Edit household size
-            </a>
-        </div>
-        <br/>
-    </div>
-
-    <div class="col-xs-12">
-        <!--<div class="input-group">
-            <span class="input-group-addon">$</span>
-            <input class="form-control" type="number" name="income"  id="income" ng-model="formData.income"/>
-        </div>-->
-
-        <p id="income" ng-show="formData.income">${{ formData.income }}</p>
-        <p id="no_income" ng-hide="formData.income">None provided</p>
-        <div >
-            <a ui-sref="form.income" class="btn btn-block" style="background-color:#e8e8e8;color:black">
-                Edit income
-            </a>
-        </div>
-        <br/>
-    </div>
-
-
-    <div class="col-xs-12">
-        <!--<input class="form-control" type="number" name="phone" id="phone" ng-model="formData.phone_main"/>-->
-        <p id="telephone">{{ (formData.phone_main | tel) || "None provided"}}</p>
-        <div>
-            <a ui-sref="form.telephone" class="btn btn-block" style="background-color:#e8e8e8;color:black">
-                Edit phone number
-            </a>
-        </div>
-    </div>
-    <br/>
-
-</div>
-
-
-<div class="row">
-    <br/>
-    <label for="agree_to_legal">
-        <input type="checkbox" class="big-checkbox" id="agree_to_legal"  ng-model="basic_confirmation_agree"/>
-        <span class="pull-right" style="width:70%;">I certify that the information I am submitting is true and authorize
-            Easy Food Stamps to sign my application on my behalf.</span>
-    </label>
-</div>
-
-<div class="row" ng-show="basic_confirmation_agree && !disable_submit" style="margin-top:5px">
-    <button ng-click="submitBasicApp()" class="btn btn-block btn-remove-ws" style="background-color: yellow;color:black">
-        Submit Application
-    </button>
-</div>
-
-<div class="row" ng-show="disable_submit" style="margin-top:5px;background:#e3e3e3;padding:3px">
-    <div class="col-xs-offset-5">
-        <i class="fa fa-spinner fa-spin fa-2x"></i>
-    </div>
-</div>
+<div class="yellow-button" ng-click="submitBasicApp()">Submit Application</div>

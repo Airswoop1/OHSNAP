@@ -1,29 +1,22 @@
 <!-- form-address.html -->
-<div class="row col-xs-11">
-    <span class="text-left" style="font-size: 30px"><strong> What's your address?</strong></span>
+<h1>What’s your address?</h1>
+<div class="checkbox-group">
+    <input type="checkbox" name="" value="">
+    <span>Check if you don’t have one.</span>
 </div>
-
-<div class="form-group" ng-class="{'has-success':snapForm.street_address.$pristine ,'has-error': (snapForm.street_address.$invalid || (!snapForm.zip.$pristine && snapForm.street_address.$pristine) )}">
-    <input type="text" class="form-control" name="street_address" id="street_address" placeholder="STREET ADDRESS" ng-model="formData.address.street_address" ng-minlength="3" autofocus="true">
-    <span class="help-block" ng-show="submitted_address && has_address && (!(snapForm.street_address.$valid) || snapForm.zip.$valid)">Street Address Required</span>
+<div class="form-group" ng-class="{'has-success':snapForm.street_address.$pristine ,'has-error': snapForm.street_address.$invalid}">
+    <input type="text" class="form-control" name="street_address" id="street_address" placeholder="Street Address" ng-model="formData.address.street_address" ng-minlength="3" autofocus="true">
+    <span class="help-block" ng-show="submitted_address && has_address && !(snapForm.street_address.$valid)">Street Address Required</span>
 </div>
-
 <div class="form-group">
     <input type="text" class="form-control" id="apt_number" placeholder="APT #" ng-model="formData.address.apt_number">
 </div>
 
 <div class="form-group" ng-class="{'has-success':snapForm.zip.$pristine ,'has-error': snapForm.zip.$invalid}">
-    <input type="number" class="form-control" name="zip" id="zip" placeholder="ZIP CODE" ng-model="formData.address.zip" ng-minlength="5" min="10000" max="12000">
-    <span class="help-block" ng-show="submitted_address && has_address && !(snapForm.zip.$valid)">5 Digit Zip Code in the NYC area Required</span>
-
+    <input type="number" class="form-control" name="zip" id="zip" placeholder="Zip Code" ng-model="formData.address.zip" ng-minlength="5">
+    <span class="help-block" ng-show="submitted_address && has_address && !(snapForm.zip.$valid)">5 Digit Zip Code Required</span>
 </div>
-
-<div class="form-group row col-xs-offset-1">
-    <span>If you do not have an address, please leave this form blank</span>
-</div>
-
-<div class="row">
-    <button type="button" ng-click="completedAddress()" class="btn btn-block btn-remove-ws" style="background-color:yellow;color:black">
-        Continue
-    </button>
-</div>
+<p>Leave the field blank if you don’t have a phone number.
+</p>
+<p>For the next step,your interview with a SNAP worker, you will have to go in person to the office.</p>
+<div class="yellow-button" ng-click="completedAddress()">Continue</div>
