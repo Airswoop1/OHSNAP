@@ -402,10 +402,10 @@ textarea {
 	width: 60px;
 	text-align: center;
 	display: inline-block;
- 	-webkit-animation: spin 2s infinite linear;
-	-moz-animation: spin 2s infinite linear;
-	-o-animation: spin 2s infinite linear;
-	animation: spin 2s infinite linear;
+ 	-webkit-animation: spin 1s infinite linear;
+	-moz-animation: spin 1s infinite linear;
+	-o-animation: spin 1s infinite linear;
+	animation: spin 1s infinite linear;
 
 	speak: none;
 	font-style: normal;
