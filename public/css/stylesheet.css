@@ -219,6 +219,25 @@ h6 {
 	margin: 10px 0;
 	font-weight: 300;
 }
+.bolt-logo {
+	display: inline-block;
+	font-family: 'icomoon';
+	color: #fcee21;
+	font-size: 18px;
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+.bolt-logo::before {
+	content: '\f0e7';
+}
 .accordion {
 	padding: 15px;
 	margin: -20px 0 20px 0 !important;
