@@ -28,10 +28,82 @@ textarea:focus {
 	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(98,196,98,.6);
 	box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(98,196,98,.6);
 }
-.help-block {
 
+@-moz-keyframes spin {
+  0% {
+    -moz-transform: rotate(0deg);
+  }
+  100% {
+    -moz-transform: rotate(359deg);
+  }
+}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+  }
+}
+@-o-keyframes spin {
+  0% {
+    -o-transform: rotate(0deg);
+  }
+  100% {
+    -o-transform: rotate(359deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(359deg);
+    transform: rotate(359deg);
+  }
 }
 
+::-webkit-input-placeholder {
+   color: #666;
+   font-size: 16px;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: #666;
+   font-size: 16px;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: #666;
+   font-size: 16px;
+}
+
+:-ms-input-placeholder {  
+   color: #666;
+   font-size: 16px;
+}
+.help-block {
+	top: -15px;
+	position: relative;
+}
+.dollar-input {
+	padding-left: 60px;
+	position: relative;
+}
+.dollar-input::before {
+	content: '$';
+	background-color: #39b54a;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 60px;
+	height: 60px;
+	line-height: 60px;
+	text-align: center;
+	color: #fff;
+	font-size: 24px;
+}
 /*******************************/
 @font-face {
 	font-family: 'icomoon';
@@ -50,12 +122,23 @@ body {
     -webkit-font-smoothing: antialiased !important;
     background-color: #ffffff;
 }
+a {
+	color: #00a4ff;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
 h1 {
 	font-size: 40px;
 	line-height: 48px;
 	font-weight: 300;
 	padding: 20px 0 10px 0;
 	margin: 0;
+}
+h1.sub-h1 {
+	font-size: 28px !important;
+	line-height: 36px !important;
 }
 h2 {
 	text-transform: uppercase;
@@ -130,17 +213,17 @@ h5.close::after {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-p.accordion {
+.accordion {
 	padding: 15px;
 	margin: -20px 0 20px 0 !important;
 	border-bottom: solid 1px #e6e6e6;
 	border-left: solid 1px #e6e6e6;
 	border-right: solid 1px #e6e6e6;
 }
-p.accordion.close {
+.accordion.close {
 	display: none;
 }
-p.accordion.open {
+.accordion.open {
 	display: block;
 }
 p {
@@ -183,9 +266,12 @@ p {
 }
 .intro-input {
 	margin-top: 40px;
+	height: 60px;
+	width: 100%;
 }
 input[type=text],
-input[type=number] {
+input[type=number],
+select {
 	line-height: 60px;
 	height: 60px;
 	border: solid 1px #000000;
@@ -224,6 +310,12 @@ textarea {
 	font-weight: 700;
 	float: left;
 	width: 30%;
+}
+.recertify-link {
+	color: #fcee21;
+	margin-top: 10px;
+	display: block;
+	text-align: center;
 }
 .steps-wrapper {
 	width: 100%;
@@ -293,7 +385,41 @@ textarea {
 	font-weight: 700;
 	width: 140px;
 	margin: 70px auto 20px auto;
+	border: none;
 }
+.yellow-button.disabled {
+	background-color: #e3e3e3;
+}
+.yellow-button.spinner-button {
+	background-color: #e3e3e3;
+	text-align: center !important;
+}
+.yellow-button.spinner-button i {
+	font-family: 'icomoon';
+	color: #000000;
+	font-size: 27px;
+	height: 60px;
+	width: 60px;
+	text-align: center;
+	display: inline-block;
+ 	-webkit-animation: spin 2s infinite linear;
+	-moz-animation: spin 2s infinite linear;
+	-o-animation: spin 2s infinite linear;
+	animation: spin 2s infinite linear;
+
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+ }
+ .yellow-button.spinner-button i::before {
+	content: '\e61c';
+ }
 .page-second-header {
 	background-color: #00a4ff;
 	width: 100%;
@@ -362,7 +488,8 @@ textarea {
 	position: relative;
 }
 .form-wrapper input[type=text],
-.form-wrapper input[type=number] {
+.form-wrapper input[type=number],
+.form-wrapper select {
 	width: 100%;
 	font-size: 18px;
 	padding: 0 20px;
@@ -374,7 +501,7 @@ textarea {
 .form-wrapper .yellow-button {
 	cursor: pointer;
 	width: 100%;
-	text-align: left;
+	text-align: center;
 	padding: 0 20px;
 	box-sizing: border-box;
 	margin: 10px 0 25px 0;
@@ -386,6 +513,10 @@ textarea {
 }
 .form-wrapper p {
 	margin: 0 0 25px 0;
+}
+.form-wrapper p span {
+	color: #fcee21;
+	font-weight: 600;
 }
 .form-wrapper p strong {
 	margin-bottom: 15px;
@@ -409,7 +540,7 @@ h1.icon-check {
 h1.icon-check::before {
 	position: absolute;
 	left: 0;
-	top: 30px;
+	top: 10px;
 	content: "\e604";
 	font-family: 'icomoon';
 	font-size: 50px;

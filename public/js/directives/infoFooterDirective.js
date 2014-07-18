@@ -4,6 +4,9 @@
 angular.module('formApp.infoFooterDirective',[]).directive('infoFooter', function(){
     return {
         restrict:'E',
-        templateUrl:'info-footer.html'
+        templateUrl:'info-footer.html',
+        controller: function($scope){
+        	
+        }
     }
 })
