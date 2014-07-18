@@ -16,6 +16,6 @@
     </div>
 </div>
 
-<button class="yellow-button" ng-click="completedHousehold()" ng-hide="submitted_household && (!(snapForm.household.$error.valid) || snapForm.household.$error.required)">Continue</button>
+<button class="yellow-button" ng-hide="submitted_household && (!(snapForm.household.$error.valid) || snapForm.household.$error.required)" ng-click="completedHousehold()">Continue</button>
 <button class="yellow-button disabled" ng-show="submitted_household && (!(snapForm.household.$error.valid) || snapForm.household.$error.required)" ng-click="completedHousehold()">Continue</button>
 
