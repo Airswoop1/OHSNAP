@@ -7,12 +7,15 @@
 <div class="form-group" ng-class="{'has-error': snapForm.first_name.$invalid}" ng-hide="completed_first_name">
     <input class="form-control" type="text" placeholder="First name" name="first_name" id="first_name" ng-model="formData.name.first_name" required/>
     <span class="help-block" ng-show="submitted_name && (snapForm.first_name.$error.required)">First Name Required</span>
+
 </div>
 
 
 <div class="form-group" ng-class="{'has-error': snapForm.last_name.$invalid}">
     <input class="form-control" type="text" placeholder="Last name" name="last_name" id="last_name" ng-model="formData.name.last_name" required/>
     <span class="help-block" ng-show="submitted_name && (snapForm.last_name.$error.required)">Last Name Required</span>
-</div>
 
-<button class="yellow-button" ng-click="completedName()">Continue</button>
+	<button class="yellow-button" ng-show="!(snapForm.last_name.$error.required) && !(snapForm.first_name.$error.required)" ng-click="completedName()">Continue</button>
+	<button class="yellow-button disabled" ng-show="(snapForm.last_name.$error.required)||(snapForm.first_name.$error.required)">Continue</button>
+
+</div>
