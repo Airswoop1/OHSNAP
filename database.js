@@ -1,9 +1,9 @@
 /**
  * Created by airswoop1 on 6/23/14.
  */
-var MongoClient = require('mongodb').MongoClient;
-var config = require('./config.js');
-var mongo_url = config.db.mongodb;
+var MongoClient = require('mongodb').MongoClient,
+    config = require('./config.js'),
+    mongo_url = config.db.mongodb;
 
 var mongoDatabase;
 
@@ -18,6 +18,7 @@ function getConnection(callback) {
         MongoClient.connect(mongo_url, function(err,db) {
             if(err) {
                 console.log("Unable to connect to Mongo database.");
+
                 mongoDatabase = null;
                 callback(err, null);
             }
@@ -31,7 +32,7 @@ function getConnection(callback) {
 };
 
 function isConnected() {
-    if (mongoDatabase === undefined) {
+    if(typeof mongoDatabase === "undefined") {
         return false;
     }
     else {

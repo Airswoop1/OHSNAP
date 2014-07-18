@@ -21,8 +21,8 @@ var PopulateApplication = (function(){
             else {
 
                 var collection = db.collection('users'),
-                    //query = {$or:[{'completed':{$exists:false}},{'completed':false}]};
-                    query = {};
+                    query = {$or:[{'completed':{$exists:false}},{'completed':false}]};
+                    //query = {};
 
                     collection.find(query,
                         function(err, cursor){

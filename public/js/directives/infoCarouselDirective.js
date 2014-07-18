@@ -4,7 +4,7 @@
 angular.module("formApp.infoCarouselDirective",[]).directive('infoCarousel', function(){
     return {
         restrict:'E',
-        templateUrl:'info-carousel.html',
+        templateUrl:'templates/info-carousel.html',
         controller: function($scope){
             $scope.my_int = 5000;
 

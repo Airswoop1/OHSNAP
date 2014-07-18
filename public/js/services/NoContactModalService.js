@@ -9,7 +9,7 @@ angular.module('NoContactModal',[]).service('modalService', ['$modal',
             backdrop: true,
             keyboard: true,
             modalFade: true,
-            templateUrl: 'modal.html'
+            templateUrl: 'templates/modal.html'
         };
 
         var modalOptions = {

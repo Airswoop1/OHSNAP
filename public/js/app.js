@@ -17,70 +17,70 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             // route to show our basic form (/form)
             .state('form', {
                 url: '/form',
-                templateUrl: 'form.html',
+                templateUrl: 'templates/form.html',
                 controller: 'formController'
             })
 
             .state('form.intro', {
                 url: '/intro',
-                templateUrl: 'form-intro.html'
+                templateUrl: 'templates/form-intro.html'
             })
 
             .state('form.recert', {
                 url: '/recert',
-                templateUrl: 'form-recert.html'
+                templateUrl: 'templates/form-recert.html'
             })
 
             .state('form.name', {
                 url: '/name',
-                templateUrl:'form-name.html'
+                templateUrl:'templates/form-name.html'
             })
 
             .state('form.address', {
                 url: '/address',
-                templateUrl: 'form-address.html'
+                templateUrl: 'templates/form-address.html'
             })
 
             .state('form.telephone', {
                 url: '/telephone',
-                templateUrl: 'form-telephone.html'
+                templateUrl: 'templates/form-telephone.html'
             })
 
             .state('form.income', {
                 url: '/income',
-                templateUrl:'form-income.html'
+                templateUrl:'templates/form-income.html'
             })
 
             .state('form.household', {
                 url:'/household',
-                templateUrl:'form-household.html'
+                templateUrl:'templates/form-household.html'
             })
 
             .state('form.basic-confirmation', {
                 url: '/basic-confirmation',
-                templateUrl: 'form-basic-confirmation.html'
+                templateUrl: 'templates/form-basic-confirmation.html'
             })
 
             .state('form.basic-app-submitted', {
                 url: '/app-submitted',
-                templateUrl: 'basic-app-submitted.html'
+                templateUrl: 'templates/basic-app-submitted.html'
             })
 
             .state('form.feedback-submitted', {
                 url: '/feedback-submitted',
-                templateUrl:'form-feedback-submitted.html'
+                templateUrl:'templates/form-feedback-submitted.html'
             })
 
 
             .state('form.interview-information', {
                 url:'/interview-information',
-                templateUrl:'form-interview-information.html'
+                templateUrl:'templates/form-interview-information.html'
             })
 
 
             .state('form.upload',{
                 url:'/upload',
-                templateUrl:'upload-test.html'
+                templateUrl:'templates/upload-test.html'
             })
 
 
@@ -136,7 +136,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             "income" : false,
             "household" : false,
             "confirmation" : false
-        }
+        };
 
         $scope.rating_options = [
             {label:'Select', value:-1},
@@ -154,20 +154,18 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
         $scope.selected_rating = $scope.rating_options[0];
 
-        if($state.current.name === 'form.intro'){
-            $scope.show_progress = false;
-        }
-        else{
-            $scope.show_progress = true;
-        }
-
+        $scope.show_progress = !($state.current.name === 'form.intro')
 
         $scope.initNameStart = function(){
             var split_name = ""
+
             if($scope.formData.name.entered_name){
                 split_name = ($scope.formData.name.entered_name).split(' ');
+                $window.ga('send','event','name','tap','exists',1);
             }
-
+            else {
+                $window.ga('send','event','name','tap','empty',1);
+            }
 
             $scope.formData.name.first_name = split_name[0];
 
@@ -176,7 +174,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 sendViewAnalytic('/form/name',function(){
                     $state.go('form.name');
                 });
-
             }
             else if(split_name.length === 2) {
                 this.formData.name.last_name = split_name[1];
@@ -209,7 +206,21 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 });
             }
             else {
+                var field_invalid = $scope.snapForm.$error.required,
+                    which = "";
+
+                if(field_invalid.length == 2) {
+                    which = "both";
+                }
+                else if(field_invalid[0].$name == 'first_name') {
+                    which = 'first_name';
+                }
+                else {
+                    which = 'last_name';
+                }
+
                 $scope.submitted_name = true;
+                $window.ga('send','event','name_validate','tap',which,1);
             }
         };
 
@@ -217,7 +228,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             $scope.submitted_address = true;
 
             if(!$scope.formData.address && $scope.snapForm.street_address.$pristine && $scope.snapForm.zip.$pristine) {
-
                 $scope.has_address = false;
                 updateProgress('address');
                 sendViewAnalytic('/form/household',function(){
@@ -225,7 +235,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 });
             }
             else if($scope.snapForm.$valid && $scope.formData.address.street_address && $scope.formData.address.zip) {
-
                 $scope.has_address = true;
                 updateProgress('address');
                 sendViewAnalytic('/form/household',function(){
@@ -234,6 +243,21 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             }
             else if($scope.snapForm.$valid && ($scope.formData.address.street_address || $scope.formData.address.zip)){
                 $scope.has_address = true;
+                $window.ga('send','event','address_validate','tap','bad',1);
+            }
+            else {
+                var field_invalid = $scope.snapForm.$error,
+                    which = "";
+
+                if(field_invalid.minlength){
+                    if(field_invalid.minlength.length==2){which = "both_length";}
+                    else if(field_invalid.minlength[0].$name == 'street_address') {which = 'street_address_length';}
+                    else if(field_invalid.minlength[0].$name == 'zip'){which = 'zip_length';}
+                }
+                else if(field_invalid.number){
+                    which = "zip_nan";
+                }
+                $window.ga('send','event','address_validate','tap',which,1);
             }
 
 
@@ -261,6 +285,18 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                     $state.go('form.basic-confirmation');
                 });
             }
+            else {
+                var field_invalid = $scope.snapForm.$error,
+                    which = "";
+
+                if(field_invalid.minlength){
+                    which = 'tel_length';
+                }
+                else if(field_invalid.number){
+                    which = 'tel_nan'
+                }
+                $window.ga('send','event','telephone_validate','tap',which,1);
+            }
 
         };
 
@@ -272,6 +308,17 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 sendViewAnalytic('/form/telephone',function(){
                     $state.go('form.telephone');
                 });
+            }
+            else {
+                var field_invalid = $scope.snapForm.$error,
+                    which = "";
+                if(field_invalid.minlength){
+                    which = 'income_length';
+                }
+                else if(field_invalid.number){
+                    which = 'income_nan'
+                }
+                $window.ga('send','event','income_validate','tap',which,1);
             }
 
         };
@@ -285,7 +332,9 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                     $state.go('form.income');
                 });
             }
-
+            else {
+                $window.ga('send','event','household_validate','tap','bad',1);
+            }
         };
 
 
@@ -431,10 +480,10 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             }
 
             if(toState.name == 'form.recert') {
-                sendViewAnalytic('/form/recert',function(){return;});
+                sendViewAnalytic('/form/recert',function(){});
             }
             else if(toState.name == 'form.intro') {
-                sendViewAnalytic('/form/intro',function(){return;});
+                sendViewAnalytic('/form/intro',function(){});
             }
 
 

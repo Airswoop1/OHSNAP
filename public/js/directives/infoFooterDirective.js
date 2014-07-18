@@ -4,8 +4,8 @@
 angular.module('formApp.infoFooterDirective',[]).directive('infoFooter', function(){
     return {
         restrict:'E',
-        templateUrl:'info-footer.html',
-        controller: function($scope) {
+        templateUrl:'templates/info-footer.html',
+        controller: function($scope, $window) {
 
             $scope.isActive = {
                 about:false,
@@ -32,6 +32,9 @@ angular.module('formApp.infoFooterDirective',[]).directive('infoFooter', functio
                 else if($scope.isActive[name]) {
                     $scope.isActive[name]=false;
                 }
+                $window.ga('send','event','footer', 'tap', name, 1);
+
+
             };
 
             $scope.clickFAQ = function(name) {
@@ -45,7 +48,12 @@ angular.module('formApp.infoFooterDirective',[]).directive('infoFooter', functio
                 else if($scope.faqActive[name]) {
                     $scope.faqActive[name]=false;
                 }
+                $window.ga('send','event','faq', 'tap', name, 1);
             };
+
+            $scope.external = function(name) {
+                $window.ga('send','event','external', 'tap', name, 1);
+            }
 
         }
     }
