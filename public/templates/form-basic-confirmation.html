@@ -32,7 +32,7 @@
     </div>
 
     <div>
-        <input type="number" name="zip" id="zip" placeholder="Zip Code" ng-model="formData.address.zip" min="0" ng-minlength="5">
+        <input type="number" name="zip" id="zip" placeholder="Zip Code" ng-model="formData.address.zip" min="10000" ng-minlength="5">
         <span class="help-block" ng-show="has_address && snapForm.street_address.$error.required">Zip required</span>
     </div>
 

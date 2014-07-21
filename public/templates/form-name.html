@@ -5,7 +5,7 @@
 </div>
 
 <div class="form-group" ng-class="{'has-error': snapForm.first_name.$invalid}" ng-hide="completed_first_name">
-    <input class="form-control" type="text" placeholder="First name" name="first_name" id="first_name" ng-model="formData.name.first_name" required/>
+    <input class="form-control" type="text" placeholder="First name" name="first_name" id="first_name" autofocus="true" ng-model="formData.name.first_name" required/>
     <span class="help-block" ng-show="submitted_name && (snapForm.first_name.$error.required)">First Name Required</span>
 </div>
 

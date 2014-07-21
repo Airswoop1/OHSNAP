@@ -465,8 +465,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 toState.name === 'form.feedback-submitted' ||
                 toState.name === 'form.recert')) {
 
-                $window.scrollTo(0,0);
-
                 $scope.show_progress = true;
             }
             else {
