@@ -6,7 +6,8 @@
 // =============================================================================
 var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch','DocumentUploader',
         'NoContactModal', 'formApp.infoCarouselDirective', 'formApp.infoFooterDirective', 'formApp.ngEnterDirective',
-        'formApp.telephoneFilter', 'formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective'])
+        'formApp.telephoneFilter', 'formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective',
+        'formApp.modalDirective'])
 
 // configuring our routes
 // =============================================================================
@@ -228,7 +229,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.completedAddress = function(){
             $scope.submitted_address = true;
 
-            if(!$scope.formData.address && $scope.snapForm.street_address.$pristine && $scope.snapForm.zip.$pristine) {
+            if((!$scope.formData.address) || (!$scope.formData.address.street_address && !$scope.formData.address.zip)) {
                 $scope.has_address = false;
                 updateProgress('address');
                 sendViewAnalytic('/form/household',function(){
@@ -391,7 +392,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         }
 
         function showNoContactModal() {
-            modalService.showModal({}, {})
+            $scope.modalShown = true;
+
         }
 
         function updateProgress(u){
