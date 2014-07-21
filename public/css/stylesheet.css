@@ -597,7 +597,7 @@ div.form-group {
 .form-wrapper p {
 	margin: 0 0 25px 0;
 }
-.form-wrapper p span {
+.form-wrapper p span.amount {
 	color: #fcee21;
 	font-weight: 600;
 }
