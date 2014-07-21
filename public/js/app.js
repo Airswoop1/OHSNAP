@@ -225,6 +225,10 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             }
         };
 
+    $scope.checkboxAlert = function() {
+
+        alert('You must check the box to certify your information is true before we can submit your application.');
+    }
 
         $scope.completedAddress = function(){
             $scope.submitted_address = true;
