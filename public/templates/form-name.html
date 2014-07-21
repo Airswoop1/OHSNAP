@@ -7,6 +7,7 @@
 <div class="form-group" ng-class="{'has-error': snapForm.first_name.$invalid}" ng-hide="completed_first_name">
     <input class="form-control" type="text" placeholder="First name" name="first_name" id="first_name" autofocus ng-model="formData.name.first_name" required/>
     <span class="help-block" ng-show="submitted_name && (snapForm.first_name.$error.required)">First Name Required</span>
+
 </div>
 
 
@@ -15,4 +16,4 @@
     <span class="help-block" ng-show="submitted_name && (snapForm.last_name.$error.required)">Last Name Required</span>
 </div>
 
-<div ng-class="{'yellow-button': (snapForm.last_name.$valid && snapForm.first_name.$valid), 'disabled-yellow-button':(snapForm.last_name.$invalid || snapForm.first_name.$invalid)}"  ng-click="completedName()">Continue</div>
+<div class="yellow-button" ng-class="{'disabled':(snapForm.last_name.$invalid || snapForm.first_name.$invalid)}"  ng-click="completedName()">Continue</div>

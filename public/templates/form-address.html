@@ -1,5 +1,6 @@
 <!-- form-address.html -->
 <h1>What’s your address?</h1>
+
 <div class="form-group" ng-class="{'has-success':snapForm.street_address.$pristine, 'has-error': snapForm.street_address.$invalid}">
     <input type="text" class="form-control" name="street_address" id="street_address" placeholder="Street Address" ng-model="formData.address.street_address" ng-minlength="3" autofocus="true">
     <span class="help-block" ng-show="submitted_address && has_address && !(snapForm.street_address.$valid)">Street Address Required</span>
@@ -14,4 +15,5 @@
 </div>
 <p>If you do not have an address please leave this form blank.
 </p>
+
 <div class="yellow-button" ng-click="completedAddress()">Continue</div>
