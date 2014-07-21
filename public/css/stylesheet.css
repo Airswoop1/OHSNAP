@@ -610,11 +610,13 @@ input.agree-checkbox {
     padding: 10px;
     margin-left: 10%;
     margin-top: 10%;
+    height:30px;
+    width:30px;
 
-    -ms-transform: scale(2);
+    /*-ms-transform: scale(2);
     -moz-transform: scale(2);
     -webkit-transform: scale(2);
-    -o-transform: scale(2);
+    -o-transform: scale(2);*/
 }
 
 div.feedback-container {
@@ -706,4 +708,6 @@ span.text-next-steps {
     margin-bottom: 11px;
     font-weight: 500;
 }
+
+
 
