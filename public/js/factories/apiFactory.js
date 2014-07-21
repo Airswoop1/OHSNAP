@@ -22,6 +22,7 @@ angular.module('formApp.apiFactory',[]).factory('InfoUploader', function($http) 
         },
 
         uploadBasicInfo : function(formData, callback) {
+
             $http.post('/upload_user_info', JSON.stringify(formData))
                 .success(function(data, status) {
 

@@ -15,4 +15,4 @@
     <span class="help-block" ng-show="submitted_name && (snapForm.last_name.$error.required)">Last Name Required</span>
 </div>
 
-<div class="yellow-button" ng-click="completedName()">Continue</div>
+<div ng-class="{'yellow-button': (snapForm.last_name.$valid && snapForm.first_name.$valid), 'disabled-yellow-button':(snapForm.last_name.$invalid || snapForm.first_name.$invalid)}"  ng-click="completedName()">Continue</div>

@@ -3,17 +3,57 @@
 <p>Once you submit your name and contact information, we'll confirm that SNAP has received it.</p>
 <p>We’ll confirm that SNAP has received your application on the next page.
 </p>
-<input type="text" placeholder="First name" name="first_name" id="first_name" ng-model="formData.name.first_name" required/>
-<input type="text" placeholder="Last name" name="last_name" id="last_name" ng-model="formData.name.last_name" required/>
-<input class="form-control" type="number" placeholder="Phone Number" name="phone" id="phone" ng-model="formData.phone_main" ng-minlength="10" ng-maxlength="11" autofocus="true"/>
-<input type="text" name="street_address" id="street_address" placeholder="Street Address" ng-model="formData.address.street_address" ng-minlength="3" autofocus="true">
-<input type="text" id="apt_number" placeholder="APT #" ng-model="formData.address.apt_number">
-<input type="number" name="zip" id="zip" placeholder="Zip Code" ng-model="formData.address.zip" ng-minlength="5">
-<input class="form-control" type="number" name="household"  id="household" ng-model="formData.household" autofocus="true" required min="1"/>
-<input class="form-control" placeholder="$" type="number" name="income"  id="income" ng-model="formData.income" autofocus="true" required/>
+<div class="confirm-info">
+
+    <div>
+        <input type="text" placeholder="First name" name="first_name" id="first_name" ng-model="formData.name.first_name" required/>
+        <span class="help-block" ng-show="snapForm.first_name.$error.required">First name required</span>
+    </div>
+
+    <div>
+        <input type="text" placeholder="Last name" name="last_name" id="last_name" ng-model="formData.name.last_name" required/>
+        <span class="help-block" ng-show="snapForm.first_name.$error.required">Last name required</span>
+    </div>
+
+    <div>
+        <input class="form-control" type="number" placeholder="Phone Number" name="phone" id="phone"
+           ng-model="formData.phone_main" ng-minlength="10" ng-maxlength="11" min="0"/>
+        <span class="help-block" ng-show="has_phone && snapForm.phone.$error.required">10 digit number required.</span>
+    </div>
+
+    <div>
+        <input type="text" name="street_address" id="street_address" placeholder="Street Address"
+           ng-model="formData.address.street_address" ng-minlength="3" autofocus="true">
+        <span class="help-block" ng-show="has_address && snapForm.street_address.$error.required">Address required</span>
+    </div>
+
+    <div>
+        <input type="text" id="apt_number" placeholder="APT #" ng-model="formData.address.apt_number">
+    </div>
+
+    <div>
+        <input type="number" name="zip" id="zip" placeholder="Zip Code" ng-model="formData.address.zip" min="0" ng-minlength="5">
+        <span class="help-block" ng-show="has_address && snapForm.street_address.$error.required">Zip required</span>
+    </div>
+
+    <div>
+        <input class="form-control" type="number" placeholder="Household Size" name="household"  id="household"
+               ng-model="formData.household" required min="1" required/>
+        <span class="help-block" ng-show="snapForm.household.$error.required">Household size required</span>
+    </div>
+
+    <div>
+        <input class="form-control" placeholder="$" type="number" name="income"  id="income" ng-model="formData.income" required/>
+        <span class="help-block" ng-show="snapForm.income.$error.required">Household income required</span>
+    </div>
+</div>
 
 <div class="checkbox-group">
-    <input type="checkbox" class="big-checkbox" id="agree_to_legal"  ng-model="basic_confirmation_agree"/>
+    <input type="checkbox" class="agree-checkbox big-checkbox" id="agree_to_legal"  ng-model="basic_confirmation_agree"/>
     <span>I certify that the information I am submitting is true and authorize Easy Food Stamps to sign my application on my behalf.</span>
 </div>
-<div class="yellow-button" ng-click="submitBasicApp()">Submit Application</div>
+<div ng-show="!basic_confirmation_agree || snapForm.validation.$error" class="disabled-button">Submit Application</div>
+<div ng-show="basic_confirmation_agree && !snapForm.validation.$error && !disable_submit" class="yellow-button" ng-click="submitBasicApp()">Submit Application</div>
+<div ng-show="basic_confirmation_agree && disable_submit" class="disabled-button">
+    <span>Submitting Application </span>
+</div>

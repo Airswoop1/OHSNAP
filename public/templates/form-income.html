@@ -10,8 +10,9 @@
 <div class="form-group">
     <div class="input-group" ng-class="{'has-success':snapForm.income.$pristine ,'has-error': snapForm.income.$invalid }">
         <input class="form-control" placeholder="$" type="number" name="income"  id="income" ng-model="formData.income" autofocus="true" required/>
-    </div>
-    <span class="help-block" ng-show="submitted_income && (!(snapForm.income.$error.valid) || snapForm.income.$error.required)">
+        <span class="help-block" ng-show="submitted_income && (!(snapForm.income.$error.valid) || snapForm.income.$error.required)">
         Input 0 if no income in the last 30 days.</span>
+    </div>
+
 </div>
-<div class="yellow-button" ng-click="completedIncome()">Continue</div>
+<div ng-class="{'yellow-button': snapForm.income.$valid, 'disabled-yellow-button':snapForm.income.$invalid}" ng-click="completedIncome()">Continue</div>

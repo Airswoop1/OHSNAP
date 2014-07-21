@@ -6,7 +6,7 @@
 // =============================================================================
 var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch','DocumentUploader',
         'NoContactModal', 'formApp.infoCarouselDirective', 'formApp.infoFooterDirective', 'formApp.ngEnterDirective',
-        'formApp.telephoneFilter', 'formApp.apiFactory'])
+        'formApp.telephoneFilter', 'formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective'])
 
 // configuring our routes
 // =============================================================================
@@ -224,6 +224,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             }
         };
 
+
         $scope.completedAddress = function(){
             $scope.submitted_address = true;
 
@@ -406,11 +407,10 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.submitBasicApp = function() {
             $scope.basic_confirmation_agree = true;
             $scope.submitted_basic_information = true;
+            $scope.disable_submit = true;
 
             calculateBenefit();
             updateProgress('confirmation');
-
-            $scope.disable_submit = true;
 
             InfoUploader.uploadBasicInfo($scope.formData, function(result, user_id){
                 if(result && user_id) {
@@ -465,19 +465,18 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 toState.name === 'form.feedback-submitted' ||
                 toState.name === 'form.recert')) {
 
+                $window.scrollTo(0,0);
+
                 $scope.show_progress = true;
             }
             else {
+                if(fromState.name === 'form.intro') {
+                    $window.scrollTo(0,0);
+                }
+
                 $scope.show_progress = false;
             }
 
-            if((fromState.name === 'form.intro' ||
-                fromState.name === 'form.address' ||
-                fromState.name === 'form.basic-confirmation' ||
-                fromState.name === 'form.basic-app-submitted')) {
-
-                $window.scrollTo(0,0);
-            }
 
             if(toState.name == 'form.recert') {
                 sendViewAnalytic('/form/recert',function(){});

@@ -1,6 +1,6 @@
 <!-- form-household.html -->
 <h1>How many people live in your house?</h1>
-<p>Only count people who are living at the same address and prepare meals together,including yourself
+<p>Only count people who are living at the same address and prepare meals together, including yourself.
 </p>
 
 <div class="form-group" ng-class="{'has-success':snapForm.household.$pristine ,'has-error': snapForm.household.$invalid }">
@@ -16,4 +16,4 @@
     </div>
 </div>
 
-<div class="yellow-button" ng-click="completedHousehold()">Continue</div>
+<div ng-class="{'yellow-button': snapForm.household.$valid,'disabled-yellow-button': snapForm.household.$invalid}" ng-click="completedHousehold()">Continue</div>
