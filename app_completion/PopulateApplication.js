@@ -13,34 +13,34 @@ var PopulateApplication = (function(){
         error_ct = 0,
         total = 0;
 
-        MongoClient.getConnection(function(db_err, db){
-            if(db_err) {
-                console.log(db_err);
-                return;
-            }
-            else {
+    MongoClient.getConnection(function(db_err, db){
+        if(db_err) {
+            console.log(db_err);
+            return;
+        }
+        else {
 
-                var collection = db.collection('users'),
-                    query = {$or:[{'completed':{$exists:false}},{'completed':false}]};
-                    //query = {};
+            var collection = db.collection('users'),
+                query = {$or:[{'completed':{$exists:false}},{'completed':false}]};
+            //query = {};
 
-                    collection.find(query,
-                        function(err, cursor){
-                            if(err){
-                                console.log("error with query in populate application!");
-                                console.log(err);
-                            }
-                            else{
-                             cursor.toArray(function(e, docs){
+            collection.find(query,
+                function(err, cursor){
+                    if(err){
+                        console.log("error with query in populate application!");
+                        console.log(err);
+                    }
+                    else{
+                        cursor.toArray(function(e, docs){
 
-                                 total = docs.length;
-                                 docs.forEach(processApp);
-                                return;
-                             })
-                            }
-                    });
-            }
-        })
+                            total = docs.length;
+                            docs.forEach(processApp);
+                            return;
+                        })
+                    }
+                });
+        }
+    })
 
 
     function processApp(data){
@@ -112,8 +112,8 @@ var PopulateApplication = (function(){
 
         MongoClient.getConnection(function(db_err, db) {
             if(db_err) {
-               console.log  ('error saving pdf status to db');
-               console.log(db_err);
+                console.log  ('error saving pdf status to db');
+                console.log(db_err);
             }
             else {
                 var collection = db.collection('users');

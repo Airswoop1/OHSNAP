@@ -12,6 +12,7 @@
 <div class="form-group" ng-class="{'has-success':snapForm.zip.$pristine ,'has-error': snapForm.zip.$invalid}">
     <input type="number" class="form-control" name="zip" id="zip" placeholder="Zip Code" ng-model="formData.address.zip" ng-minlength="5" min="10000" max="12000">
     <span class="help-block" ng-show="submitted_address && has_address && !(snapForm.zip.$valid)">5 Digit Zip Code Required</span>
+    <span class="help-block" ng-show="submitted_address && has_address && !(snapForm.zip.$error.min || snapForm.zip.$error.max)">Easy Food Stamps is currently only available for New York</span>
 </div>
 <p>If you do not have an address please leave this form blank.
 </p>

@@ -112,7 +112,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.date_of_interview = new Date();
         $scope.date_of_interview.setDate($scope.date.getDate() + 10);
         $scope.date_of_phone_call = new Date();
-        $scope.date_of_phone_call.setDate($scope.date.getDate() + 5);
+        $scope.date_of_phone_call.setDate($scope.date.getDate() + 7);
 
 
 
@@ -233,7 +233,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.completedAddress = function(){
             $scope.submitted_address = true;
 
-            if((!$scope.formData.address) || (!$scope.formData.address.street_address && !$scope.formData.address.zip)) {
+            if( (!$scope.formData.address) || (!$scope.formData.address.street_address && !$scope.formData.address.zip)) {
+
                 $scope.has_address = false;
                 updateProgress('address');
                 sendViewAnalytic('/form/household',function(){
@@ -435,16 +436,21 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
         $scope.submitFeedback = function(rating) {
             $scope.formData['rating'] = rating;
 
-            InfoUploader.uploadFeedback($scope.formData, function(result){
-                if(result) {
-                    sendViewAnalytic('/form/feedback-submitted',function(){
-                        $state.go('form.feedback-submitted');
-                    });
-                }
-                else {
-                    alert("Oops Looks like something went wrong. Your feedback was NOT submitted. Please wait and try again.")
-                }
-            })
+            if(rating.value != "-1" ) {
+                InfoUploader.uploadFeedback($scope.formData, function(result){
+                    if(result) {
+                        sendViewAnalytic('/form/feedback-submitted',function(){
+                            $state.go('form.feedback-submitted');
+                        });
+                    }
+                    else {
+                        alert("Oops Looks like something went wrong. Your feedback was NOT submitted. Please wait and try again.")
+                    }
+                })
+            }
+            else {
+                alert("You must select a rating first!")
+            }
         };
 
         $scope.goBack = function() {
