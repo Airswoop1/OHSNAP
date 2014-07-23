@@ -5,9 +5,9 @@ import os
 import sys, getopt
 
 sys.path.insert(0, os.getcwd())
-pdf_file = "SNAPFORM.pdf"
+pdf_file = "./app_completion/SNAPFORM.pdf"
 
-output_folder = './output/'
+output_folder = os.getcwd() + '/output/'
 
 
 opts, args = getopt.getopt(sys.argv[1:], '', ["Name=", "Address=", "Apt=", "Zip=", "City=" ,"Tel=", "Date=", "ID="])
@@ -33,11 +33,12 @@ for opt, a in opts:
     elif opt=='--ID':
         tmp_id = a
 
+formatted_data.append(('Applying','X'))
 
 tmp_file = "tmp" + str(tmp_id) + ".fdf"
 filename_prefix = "SNAP_Application_" + str(tmp_id)
 
-
+print formatted_data
 #form_fill(formatted_data)
 
 #def form_fill(fields):
@@ -61,7 +62,7 @@ page1.mergePage(watermark.getPage(0))
 
 output.addPage(input.getPage(1))
 
-outputStream = file("./output/Signed_"+filename_prefix+".pdf" , "wb")
+outputStream = file(os.getcwd() + "/output/Signed_"+filename_prefix+".pdf" , "wb")
 output.write(outputStream)
 outputStream.close()
 os.remove(output_file)

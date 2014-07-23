@@ -1,7 +1,7 @@
 /**
  * Created by airswoop1 on 7/11/14.
  */
-angular.module('formApp.apiFactory',[]).factory('InfoUploader', function($http) {
+angular.module('formApp.apiFactory',[]).factory('API', function($http) {
     return {
         uploadFeedback : function(formData, callback) {
             $http.post('/submit_feedback', JSON.stringify(formData))
@@ -39,6 +39,16 @@ angular.module('formApp.apiFactory',[]).factory('InfoUploader', function($http) 
                     callback(null)
 
                 });
+        },
+
+        getDocumentStatus : function(user_id) {
+          $http.get('/get_doc_status')
+              .success(function(data,status){
+                 return data;
+              })
+              .error(function(data){
+                  return null;
+              });
         }
     }
 })

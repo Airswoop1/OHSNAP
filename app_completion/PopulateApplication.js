@@ -4,6 +4,8 @@
 
 var MongoClient = require('../database.js');
 var exec = require('child_process').exec;
+var cities = require('cities');
+
 
 
 var PopulateApplication = (function(){
@@ -21,7 +23,7 @@ var PopulateApplication = (function(){
         else {
 
             var collection = db.collection('users'),
-                query = {$or:[{'completed':{$exists:false}},{'completed':false}]};
+                query = {$or:[{'completed':{$exists:false}},{'completed':false}],'created_on':{'$gt':1405885564000}};
             //query = {};
 
             collection.find(query,
@@ -60,6 +62,13 @@ var PopulateApplication = (function(){
             formatted_data['address'] = (typeof r.address.street_address === "undefined") ? " " : r.address.street_address;
             formatted_data['apt'] = (typeof r.address.apt_number === "undefined") ? " " : r.address.apt_number;
             formatted_data['zip'] = (typeof r.address.zip === "undefined") ? " " : r.address.zip;
+            formatted_data['city'] = (typeof r.address.zip === "undefined") ? " " : cities.zip_lookup(r.address.zip).city;
+        }
+        else {
+            formatted_data['address'] = "N/A";
+            formatted_data['apt'] = " ";
+            formatted_data['zip'] = " ";
+            formatted_data['city'] = " ";
         }
         formatted_data['phone_main'] = (typeof r.phone_main === "undefined") ? " " : r.phone_main;
         formatted_data['tmp_id'] = r.user_id.replace(/\-/g,'');
@@ -82,6 +91,7 @@ var PopulateApplication = (function(){
         input += "--Name='" + data.name + "' ";
         input += "--Address='" + data.address + "' ";
         input += "--Apt='" + data.apt + "' ";
+        input += "--City='" + data.city + "' ";
         input += "--Zip='" + data.zip + "' ";
         input += "--Tel='" + data.phone_main + "' ";
         input += "--ID='" + data.tmp_id + "' ";
@@ -91,6 +101,9 @@ var PopulateApplication = (function(){
             console.log(error);
             console.log(stderr);
             if(error || stderr) {
+                console.log('error parsing users form:');
+                console.log(data.name);
+                console.log(data.tmp_id);
 
                 error_ct++;
                 cb(error,data.user_id, data.tmp_id);
@@ -109,7 +122,7 @@ var PopulateApplication = (function(){
             file_name = "SNAP_Application_" + tmp_id + ".pdf",
             query = { "user_id" : user_id},
             update = {"$set": {'completed': completed, "output_file_name":  file_name}};
-
+        console.log('outputted ' + file_name);
         MongoClient.getConnection(function(db_err, db) {
             if(db_err) {
                 console.log  ('error saving pdf status to db');

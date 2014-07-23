@@ -4,10 +4,10 @@
 // app.js
 // create our angular app and inject ngAnimate and ui-router
 // =============================================================================
-var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch','DocumentUploader',
+var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch',
         'NoContactModal', 'formApp.infoCarouselDirective', 'formApp.infoFooterDirective', 'formApp.ngEnterDirective',
         'formApp.telephoneFilter', 'formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective',
-        'formApp.modalDirective'])
+        'formApp.modalDirective', 'formApp.documentUploadCtrl'])
 
 // configuring our routes
 // =============================================================================
@@ -81,7 +81,8 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
             .state('form.upload',{
                 url:'/upload',
-                templateUrl:'templates/upload-test.html'
+                templateUrl:'templates/upload-test.html',
+                controller: 'documentUploadCtrl'
             })
 
 
@@ -94,7 +95,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
 // our controller for the form
 // =============================================================================
-    .controller('formController', function($scope, $state, $http, $rootScope, $upload, $location, $window, documentUpload, InfoUploader, modalService) {
+    .controller('formController', function($scope, $state, $http, $rootScope, $upload, $location, $window, API, modalService) {
 
         // we will store all of our form data in this object
         $scope.formData = {
@@ -419,7 +420,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             calculateBenefit();
             updateProgress('confirmation');
 
-            InfoUploader.uploadBasicInfo($scope.formData, function(result, user_id){
+            API.uploadBasicInfo($scope.formData, function(result, user_id){
                 if(result && user_id) {
                     $scope.formData.user_id = user_id;
                     sendViewAnalytic('/form/app-submitted',function(){
@@ -437,7 +438,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             $scope.formData['rating'] = rating;
 
             if(rating.value != "-1" ) {
-                InfoUploader.uploadFeedback($scope.formData, function(result){
+                API.uploadFeedback($scope.formData, function(result){
                     if(result) {
                         sendViewAnalytic('/form/feedback-submitted',function(){
                             $state.go('form.feedback-submitted');
@@ -457,13 +458,6 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             window.history.back();
         };
 
-
-        $scope.uploadFiles = function($files) {
-            var file_upload_status = documentUpload.onFileSelect($files, $scope);
-            file_upload_status.then(function(success){
-                console.log(success);
-            })
-        };
 
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState){
 

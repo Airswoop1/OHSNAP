@@ -1,7 +1,26 @@
 <div class="row">
 <h4>Upload Files</h4>
-    <input type="text" ng-model="myModelObj">
-    <input type="file" ng-file-select="uploadFiles($files)" >
-    <input type="file" ng-file-select="uploadFiles($files)" multiple>
-
+    <div ng-show="!uploadedFiles.CITIZENSHIP">
+        <label for="citizenship">Citizenship</label>
+        <input id='citizenship' type="file" ng-file-select="uploadFile($files,'CITIZENSHIP')" >
+    </div>
+    <div ng-show="uploadedFiles.CITIZENSHIP">
+        <span>COMPLETED CITIZENSHIP</span>
+    </div>
+    <br/>
+    <div ng-show="!uploadedFiles.IDENTITY">
+        <label for="identity">Identity</label>
+        <input id='identity' type="file" ng-file-select="uploadFile($files,'IDENTITY')" >
+    </div>
+    <div ng-show="uploadedFiles.IDENTITY">
+        <span>COMPLETED IDENTITY</span>
+    </div>
+    <br/>
+    <div ng-show="!uploadedFiles.RESIDENCE">
+        <label for="residence">Residence</label>
+        <input id='residence' type="file" ng-file-select="uploadFile($files,'RESIDENCE')" >
+    </div>
+    <div ng-show="uploadedFiles.RESIDENCE">
+        <span>COMPLETED RESIDENCE</span>
+    </div>
 </div>
