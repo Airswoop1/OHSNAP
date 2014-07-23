@@ -22,9 +22,6 @@ angular.module('formApp.documentUploadCtrl',['DocumentUploader','formApp.apiFact
 
 
 
-    updateUploadedFilesStatus($scope.user_id);
-
-
     $scope.uploadFile = function($files, type) {
 
         documentUpload.onFileSelect($files, $scope,type).then(
@@ -40,10 +37,18 @@ angular.module('formApp.documentUploadCtrl',['DocumentUploader','formApp.apiFact
             })
     };
 
-    function updateUploadedFilesStatus(user_id) {
-        API.getDocumentStatus(user_id);
+     $scope.updateUploadedFilesStatus = function(data) {
+        console.log(data.status)
+         if(data.status){
+             for (var uploaded in data.status){
+                if(data.status.hasOwnProperty(uploaded)){
+                    $scope.uploadedFiles[uploaded] = data.status[uploaded];
+                }
+            }
+        }
     }
 
+    API.getDocumentStatus($scope.user_id, $scope.updateUploadedFilesStatus);
 
 
 

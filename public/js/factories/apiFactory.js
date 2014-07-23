@@ -41,13 +41,13 @@ angular.module('formApp.apiFactory',[]).factory('API', function($http) {
                 });
         },
 
-        getDocumentStatus : function(user_id) {
-          $http.get('/get_doc_status')
-              .success(function(data,status){
-                 return data;
+        getDocumentStatus : function(user_id, callback) {
+          $http.post('/get_doc_status',JSON.stringify({"user_id":user_id}))
+              .success(function(data, status){
+                  callback(data);
               })
               .error(function(data){
-                  return null;
+                  callback(null);
               });
         }
     }

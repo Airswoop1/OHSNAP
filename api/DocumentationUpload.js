@@ -161,7 +161,8 @@ var DocumentationUpload = (function(){
                     Bucket: config.aws.s3_bucket,
                     Key: name,
                     ACL:'authenticated-read',
-                    Body: data
+                    Body: data,
+                    ServerSideEncryption:"AES256"
                 };
 
                 storage.createBucket( {Bucket:config.aws.s3_bucket}, function(){

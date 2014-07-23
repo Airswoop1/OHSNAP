@@ -4,7 +4,8 @@
 var Index = require('./Index.js'),
     UploadUserInfo = require('./UploadUserInfo.js'),
     DocumentationUpload = require('./DocumentationUpload.js'),
-    SubmitFeedback = require('./SubmitFeedback.js');
+    SubmitFeedback = require('./SubmitFeedback.js'),
+    DocumentStatus = require('./DocumentStatus.js');
 
 
 var api = (function(){
@@ -15,6 +16,7 @@ var api = (function(){
         app.get('/upload_user_info', UploadUserInfo.execute);
         app.post('/upload_docs', DocumentationUpload.execute);
         app.post('/submit_feedback', SubmitFeedback.execute);
+        app.post('/get_doc_status', DocumentStatus.execute);
     }
 
     return {
@@ -23,4 +25,4 @@ var api = (function(){
 
 }());
 
-module.exports = api
+module.exports = api;
