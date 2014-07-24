@@ -27,8 +27,8 @@ module.exports = {
         "cert":fs.readFileSync('./config/ssl/sandbox/cert.pem')
     },
     "web": {
-        "http_port": 3000,
-        "https_port" : 3001
+        "http_port": 1337,
+        "https_port" : 8080
     },
     "phaxio" : {
         "key":phaxio_prod_key,
