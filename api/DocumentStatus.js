@@ -5,6 +5,11 @@
 var DocumentStatus = (function() {
 
     var execute = function(req, res){
+     /*
+     * check if user ID is valid
+     * query db for doc_status array
+     * send back
+     * */
 
         var status = {
             'IDENTITY':true,

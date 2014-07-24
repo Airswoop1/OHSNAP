@@ -4,7 +4,9 @@
 var fs = require('fs');
 var mongolab_pw = process.env.MONGOLAB_PW,
     phaxio_key = process.env.PHAXIO_TEST_KEY,
-    phaxio_secret = process.env.PHAXIO_TEST_SECRET;
+    phaxio_secret = process.env.PHAXIO_TEST_SECRET,
+    AWS_ACCESS_KEY = process.env.AWS_ACCESS_KEY_ID,
+    AWS_SECRET_KEY = process.env.AWS_SECRET_ACCESS_KEY;
 
 module.exports = {
     "db" : {
@@ -12,8 +14,8 @@ module.exports = {
     },
     "aws" : {
         "s3" : {
-            "accessKeyId": "AKIAICYB4XMMX4WC2CXQ",
-            "secretAccessKey": "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",
+            "accessKeyId": AWS_ACCESS_KEY,
+            "secretAccessKey": AWS_SECRET_KEY,
             "region": "us-west-2"
         },
         "s3_bucket":"significance.labs.snapcoach.documents"
