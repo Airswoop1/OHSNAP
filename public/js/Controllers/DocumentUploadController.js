@@ -39,7 +39,7 @@ angular.module('formApp.documentUploadCtrl',['DocumentUploader','formApp.apiFact
             //it succeeeded
             function(result){
                 alert('woo uploaded!');
-                alert(restul);
+                alert(result);
                 $scope.uploadedFiles[type] = true;
 
             },
