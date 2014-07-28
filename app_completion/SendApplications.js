@@ -26,7 +26,7 @@ var SendApplications = (function(){
                 query,
                 function(err, cursor){
                     if(err){
-                        console.log("error with query in populate application!");
+                        console.log("error with query in send application!");
                         console.log(err);
                     }
                     else{
@@ -37,10 +37,10 @@ var SendApplications = (function(){
                         })
                     }
 
-                    })
+                })
 
-            }
-        })
+        }
+    });
 
     function faxApplication(d) {
 
@@ -74,14 +74,14 @@ var SendApplications = (function(){
                         console.log(err);
                     }
                     else if(data.success) {
-                       updateUserFaxStatus(user_id, data.faxId, function(fax_db_err, result){
+                        updateUserFaxStatus(user_id, data.faxId, function(fax_db_err, result){
                             if(fax_db_err) {
                                 console.log(fax_db_err);
                             }
-                           else {
+                            else {
                                 return;
                             }
-                       })
+                        })
                         console.log("Success!");
                         console.log(data);
                     }

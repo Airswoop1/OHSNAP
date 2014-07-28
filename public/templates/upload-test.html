@@ -1,26 +1,37 @@
 <div class="row">
 <h4>Upload Files</h4>
-    <div ng-show="!uploadedFiles.CITIZENSHIP">
+    <div ng-show="uploadedFiles.CITIZENSHIP==DOC_STATUS.NOT_UPLOADED">
         <label for="citizenship">Citizenship</label>
         <input id='citizenship' type="file" ng-file-select="uploadFile($files,'CITIZENSHIP')" >
     </div>
-    <div ng-show="uploadedFiles.CITIZENSHIP">
+    <div ng-show="uploadedFiles.CITIZENSHIP==DOC_STATUS.IN_PROGRESS">
+        <span>Uploading Citizenship</span>
+    </div>
+    <div ng-show="uploadedFiles.CITIZENSHIP==DOC_STATUS.UPLOADED">
         <span>COMPLETED CITIZENSHIP</span>
     </div>
     <br/>
-    <div ng-show="!uploadedFiles.IDENTITY">
+    <div ng-show="uploadedFiles.IDENTITY == DOC_STATUS.NOT_UPLOADED">
         <label for="identity">Identity</label>
         <input id='identity' type="file" ng-file-select="uploadFile($files,'IDENTITY')" >
     </div>
-    <div ng-show="uploadedFiles.IDENTITY">
+    <div ng-show="uploadedFiles.IDENTITY == DOC_STATUS.IN_PROGRESS">
+        <span>Uploading Identity...</span>
+    </div>
+    <div ng-show="uploadedFiles.IDENTITY == DOC_STATUS.UPLOADED">
         <span>COMPLETED IDENTITY</span>
     </div>
     <br/>
-    <div ng-show="!uploadedFiles.RESIDENCE">
+    <div ng-show="uploadedFiles.RESIDENCE == DOC_STATUS.NOT_UPLOADED">
         <label for="residence">Residence</label>
         <input id='residence' type="file" ng-file-select="uploadFile($files,'RESIDENCE')" >
     </div>
-    <div ng-show="uploadedFiles.RESIDENCE">
+    <div ng-show="uploadedFiles.RESIDENCE == DOC_STATUS.UPLOADED">
+        <span>Uploading residence...</span>
+    </div>
+    <div ng-show="uploadedFiles.RESIDENCE == DOC_STATUS.UPLOADED">
         <span>COMPLETED RESIDENCE</span>
     </div>
 </div>
+
+

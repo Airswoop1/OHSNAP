@@ -45,7 +45,7 @@ var DocumentationUpload = (function(){
     };
 
     var Request  = function() {
-        this.file = undefined;
+        this.file = {};
         this.user_id = undefined;
         this.document_type = undefined;
     };
@@ -57,35 +57,36 @@ var DocumentationUpload = (function(){
 
     var execute = function(req, res){
 
-        console.log("executing documentation upload")
-        console.log(req.body);
-        console.log(req.files);
+        console.log("executing documentation upload");
 
         var request = new Request();
         request.user_id = req.body.user_id;
         request.document_type = req.body.document_type;
-        request.file = req.files.file;
+        request.file.name = req.body.file_name;
+        request.file.type = req.body.file_type;
 
 
-        if(request.user_id && request.document_type && request.file) {
+        if(request.user_id && request.document_type && request.file.name && request.file.type) {
 
             var current_time = new Date().getDate(),
-                file = req.files.file,
-                tmpPath = file.path,
-                tmpName = file.name + current_time.toString(),
-                my_path = path.join(__dirname, '../uploaded/',file.name);
+                my_path = path.join(__dirname, '../uploaded/',request.file.name)
 
 
 
-            fs.readFile(tmpPath, function (err, data) {
-                fs.writeFile(my_path, data, function (err) {
+            var file_type_regex = "data:" + request.file.type +  ";base64,";
+            console.log(file_type_regex);
+            var base64Data = req.body.file_base64.replace(file_type_regex, "");
+
+            fs.writeFile(my_path, new Buffer(base64Data, 'base64'), function (err) {
                     if(err) {
                         console.log("error");
                         console.log(err);
+                        res.send(400);
                         throw err;
                     }
                     else {
-                        updateDBForFile(request, function(db_file_err){
+                      res.send(201);
+                      /*  updateDBForFile(request, function(db_file_err){
                             if(db_file_err){
                                 console.log("error saving upload document information to db");
                                 console.log(db_file_err);
@@ -110,10 +111,10 @@ var DocumentationUpload = (function(){
 
                                 });
                             }
-                        })
+                        });*/
                     }
                 });
-            });
+            //});
         }
         else {
             var response = new Response();
@@ -133,9 +134,9 @@ var DocumentationUpload = (function(){
                 var collection = db.collection('users'),
                     doc_type = DocumentTypes[request.document_type],
                     query = {'user_id':request.user_id},
-                    update = {"$set":{}};
+                    update = {'$push':{'documents':{}}};
 
-                update.$set[doc_type] = {"file_name": request.file.name, "file_type": request.file.type };
+                update.$push.documents = {name: doc_type,"file_name": request.file.name, "file_type": request.file.type};
 
                 collection.findAndModify(query,[],update,function(err,res){
                     cb(err,res);
