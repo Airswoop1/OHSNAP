@@ -27,7 +27,7 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
                     tempW = tempImg.width,
                     tempH = tempImg.height;
                 console.log("Temp w: " + tempW + " temp h:  " + tempH);
-                
+
                 //  is it landscape? if so...
                 if (tempW > tempH) {
                     console.log("landscape");
@@ -50,7 +50,7 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
                         console.log("Not scaling...");
                     }
                 }
-                console.log("Temp w: " + tempW + " temp h:  " + tempH);
+                console.log("Temp w: " + tempW + " temp h: " + tempH);
 
 
                 var canvas = document.createElement('canvas');
@@ -58,7 +58,7 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
                 canvas.height = tempH;
 
                 var ctx = canvas.getContext("2d");
-                ctx.drawImage(this, 0, 0, tempW, tempH);
+                ctx.drawImage(this, 0, 0, tempH, tempW);
 
                 var dataURL = canvas.toDataURL(file.type);
                 console.log("data URL for new image: ");
