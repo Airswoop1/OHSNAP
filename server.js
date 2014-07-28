@@ -1,5 +1,5 @@
 console.log("Initializing OHSNAP... ");
-require('monitor').start();
+//require('monitor').start();
 
 var express = require("express");
 var http = require("http");

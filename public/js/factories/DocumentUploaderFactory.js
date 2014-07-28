@@ -14,10 +14,13 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
         reader.onloadend = function() {
             console.log("reading operation complete")
 
+
             var tempImg = new Image();
             tempImg.src = reader.result;
 
             tempImg.onload = function () {
+                console.log("THE FILE: ");
+                console.log(file);
 
                 var MAX_WIDTH = 800,
                     MAX_HEIGHT = 600,
@@ -26,14 +29,24 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
 
                 //  is it landscape? if so...
                 if (tempW > tempH) {
+                    console.log("landscape");
                     if (tempW > MAX_WIDTH) {
+                        console.log("Scaling...");
                         tempH *= MAX_WIDTH / tempW;
                         tempW = MAX_WIDTH;
                     }
+                    else{
+                        console.log("Not scaling...");
+                    }
                 } else {
+                    console.log("portrait")
                     if (tempH > MAX_HEIGHT) {
+                        console.log("Scaling...");
                         tempW *= MAX_HEIGHT / tempH;
                         tempH = MAX_HEIGHT;
+                    }
+                    else{
+                        console.log("Not scaling...");
                     }
                 }
 
@@ -45,7 +58,8 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
                 ctx.drawImage(this, 0, 0, tempW, tempH);
 
                 var dataURL = canvas.toDataURL(file.type);
-
+                console.log("data URL for new image: ");
+                console.log(dataURL);
                 callback(dataURL);
             }
         }
