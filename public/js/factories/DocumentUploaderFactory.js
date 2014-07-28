@@ -58,7 +58,7 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
                 canvas.height = tempH;
 
                 var ctx = canvas.getContext("2d");
-                ctx.drawImage(this, 0, 0, tempImg.width, tempImg.height);
+                ctx.drawImage(this, 0, 0, 800, 600);
 
                 var dataURL = canvas.toDataURL(file.type);
                 console.log("data URL for new image: ");
