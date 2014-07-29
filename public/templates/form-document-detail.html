@@ -1,0 +1,37 @@
+
+	<div class="document-upload">
+		<p><strong>This document proves your monthly expenses for housing</strong></p>
+
+		<div class="yellow-button add-picture">Take a picture
+			<input type="file">
+		</div>
+		<h5>See sample document:</h5>
+		<div class="picture-wrapper">
+			<img src="i/roommate-letter.png">
+		</div>
+		<div class="yellow-button disabled">Submit documents</div>
+	</div>
+
+	<div class="document-uploading">
+		<p><strong>Great! Your picture is uploading. You can keep uploading more documents.</strong></p>
+		<div class="yellow-button add-picture uploading-picture-button">
+			<div class="upload-progress-bar" style="width: 30%;"></div>
+			Uploading ...
+			<input type="file">
+		</div>
+		<div class="yellow-button disabled">Submit documents</div>
+	</div>
+
+	<div class="document-uploaded">
+		<p><strong>Picture successfully uploaded</strong></p>
+		<div class="yellow-button add-picture">
+			Retake
+			<input type="file">
+		</div>
+		<div class="picture-wrapper" ng-class="fullscreen">
+			<img src="i/phone-image.jpg">
+		</div>
+		
+		<div class="yellow-button">Submit documents</div>
+	</div>
+	
