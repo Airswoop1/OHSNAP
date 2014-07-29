@@ -64,57 +64,33 @@ var DocumentationUpload = (function(){
         request.document_type = req.body.document_type;
         request.file.name = req.body.file_name;
         request.file.type = req.body.file_type;
+        request.platform = req.body.platform;
+
+        var file = req.files.file;
 
 
         if(request.user_id && request.document_type && request.file.name && request.file.type) {
+            var
+                path = path.join(__dirname, '../uploaded/',request.user_id,request.document.type,Math.floor((Math.random() * 1000) + 1)),
+                tmpPath = file.path;
 
-            var current_time = new Date().getDate(),
-                my_path = path.join(__dirname, '../uploaded/',request.file.name)
 
 
-
-            var file_type_regex = "data:" + request.file.type +  ";base64,";
-            console.log(file_type_regex);
-            var base64Data = req.body.file_base64.replace(file_type_regex, "");
-
-            fs.writeFile(my_path, new Buffer(base64Data, 'base64'), function (err) {
-                    if(err) {
-                        console.log("error");
-                        console.log(err);
-                        res.send(400);
-                        throw err;
-                    }
-                    else {
-                      res.send(201);
-                      /*  updateDBForFile(request, function(db_file_err){
-                            if(db_file_err){
-                                console.log("error saving upload document information to db");
-                                console.log(db_file_err);
-                                var response = new Response();
-                                response = ResponseCodes['db_failure'];
-                                res.send(400)
-                            }
-                            else{
-                                var proper_file_name= request.user_id + "_" + request.document_type;
-
-                                storeFileOnAWS(my_path, proper_file_name, function(err, result){
-                                    var response = new Response();
-                                    if(err){
-                                        response = ResponseCodes['unable_to_upload']
-                                        console.log(err);
-                                        res.send(403, response);
-                                    }
-                                    else {
-                                        response = ResponseCodes['success'];
-                                        res.send(201, response);
-                                    }
-
-                                });
-                            }
-                        });*/
-                    }
+            if(request.platform === 'ios'){
+                processiOSDocumentUpload( path, tmpPath, request, function(error, result) {
+                    //delete temp file
                 });
-            //});
+            }
+            else {
+
+                var file_type_regex = "data:" + request.file.type +  ";base64,",
+                    base64Data = req.body.file_base64.replace(file_type_regex, "");
+
+                processOtherDocumentUpload( path, base64Data, request, function(error, result) {
+                    //delete temp file
+
+                });
+            }
         }
         else {
             var response = new Response();
@@ -122,6 +98,71 @@ var DocumentationUpload = (function(){
             res.send(400, response);
         }
     };
+
+
+    function processiOSDocumentUpload(path, tmpPath, request, callback) {
+
+        fs.readFile(tmpPath, function (err, data) {
+
+            fs.writeFile(path, data, function (err) {
+                if(err) {
+                    callback(err,null);
+                }
+                else {
+
+                    updateDBForFile(request, function(db_file_err){
+                        if(db_file_err){
+                            callback(db_file_err,null);
+                        }
+                        else{
+                            var proper_file_name= request.user_id + "_" + request.document_type;
+
+                            storeFileOnAWS(path, proper_file_name, function(aws_err, result){
+                                if(aws_err){
+                                    callback(aws_err,null);
+                                }
+                                else {
+                                    callback(nul, result);
+                                }
+
+                            });
+                        }
+                    });
+                }
+            })
+        })
+
+    };
+
+    function processOtherDocumentUpload( path, base64Data, request,  callback) {
+
+        fs.writeFile(path, new Buffer(base64Data, 'base64'), function (err) {
+            if(err) {
+                callback(err,null);
+            }
+            else {
+                updateDBForFile(request, function(db_file_err){
+                    if(db_file_err){
+                        callback(db_file_err,nul);
+                    }
+                    else{
+                        var proper_file_name= request.user_id + "_" + request.document_type;
+
+                        storeFileOnAWS(path, proper_file_name, function(aws_err, result){
+                            if(aws_err){
+                                callback(aws_err, null);
+                            }
+                            else {
+                                callback(null, result);
+                            }
+
+                        });
+                    }
+                });
+            }
+        })
+    }
+
 
     function updateDBForFile(request, cb) {
 
