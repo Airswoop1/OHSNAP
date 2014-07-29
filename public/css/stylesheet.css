@@ -171,12 +171,20 @@ body {
     -webkit-font-smoothing: antialiased !important;
     background-color: #ffffff;
 }
+ul, li {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
 a {
 	color: #00a4ff;
 	text-decoration: none;
 }
 a:hover {
 	text-decoration: underline;
+}
+.clear {
+	clear: both;
 }
 h1 {
 	font-size: 30px;
@@ -512,7 +520,7 @@ textarea {
 	width: 100%;
 	color: #ffffff;
 	box-sizing: border-box;
-	padding: 30px 25px 30px 25px;
+	padding: 20px 25px;
 }
 
 .page-header.step-three {
@@ -759,5 +767,162 @@ span.text-next-steps {
     margin-bottom: 11px;
     font-weight: 500;
 }
+.doc-list ul li {
+	width: 50%;
+	box-sizing: border-box;
+	float: left;
+	position: relative;	
+	margin-bottom: 20px;
+}
+.doc-list ul li:nth-child(odd){
+	padding-right: 10px;
+}
+.doc-list ul li:nth-child(even){
+	padding-left: 10px;
+}
+.doc-list ul li div {
+	height: 120px;
+	display: flex;
+}
+.doc-list ul li h4 {
+	font-size: 18px;
+	font-weight: 600;
+	line-height: 24px;
+	border: solid 1px #e3e3e3;
+	padding: 5px 0;
+}
 
+.doc-list ul li div.upload-button {
+	background-color: #fcee21;
+	position: relative;
+	cursor: pointer;
+}
+.doc-list ul li div.upload-progress {
+	background-color: #e3e3e3;
+	position: relative;
+}
+.doc-list ul li div.upload-progress div.upload-progress-bar {
+	position: absolute;
+	background-color: #8cc63f;
+}
+.doc-list ul li div.upload-progress h6 {
+	position: absolute;
+	height: 120px;
+	text-align: center;
+	box-sizing: border-box;
+	padding-top: 20px; 	
+}
+.doc-list ul li div.upload-button::before {
+	content: "\f055";
+	font-family: 'icomoon';
+	font-size: 40px;
+	line-height: 120px;
+	text-align: center;
+	width: 100%;
 
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.doc-list ul li div.image-wrapper {
+	background-color: #e3e3e3;
+	background-size: cover;
+	background-position: center center;
+	justify-content: center;
+}
+.doc-list ul li div img {
+	max-width: 100%;
+	max-height: 100%;
+	height: auto;
+	align-self: center;
+}
+.yellow-button.add-new {
+	background-color: #fcee21;
+	cursor: pointer;
+	position: relative;
+	padding-left: 50px;
+}
+.yellow-button.add-new::before {
+	content: '\f055';
+	font-family: 'icomoon';
+	font-size: 30px;
+	line-height: 60px;
+	position: absolute;
+	left: 30px;
+
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+.yellow-button.add-picture {
+	background-color: #fcee21;
+	cursor: pointer;
+	position: relative;
+}
+.yellow-button.add-picture::before {
+	content: '\e623';
+	font-family: 'icomoon';
+	font-size: 30px;
+	line-height: 58px;
+	position: absolute;
+	left: 30px;
+
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+input[type=file]{
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	opacity: 0;
+}
+.yellow-button.add-picture.uploading-picture-button {
+	background-color: #e3e3e3;
+	position: relative;
+	z-index: -2;
+}
+.yellow-button.add-picture.uploading-picture-button div.upload-progress-bar {
+	position: absolute;
+	background-color: #8cc63f;
+	height: 60px;
+	left: 0;
+	z-index: -1;
+}
+.picture-wrapper {
+	overflow: auto;
+	height: 300px;
+	margin-bottom: 30px;
+}
+
+.picture-wrapper.fullscreen {
+	position: fixed;
+	width: 100%;
+	height: 100%;
+	z-index: 9999;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+}
