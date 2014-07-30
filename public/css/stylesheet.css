@@ -310,6 +310,13 @@ h6 {
 .accordion.open {
 	display: block;
 }
+.accordion div.close {
+    display:none;
+}
+.accordion div.open {
+    display:block;
+}
+
 p {
 	font-size: 18px;
 	font-weight: 400;
@@ -830,6 +837,64 @@ span.text-next-steps {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+
+.doc-list ul li div.in-progress-button {
+    background-color: #07a7fc;
+    position: relative;
+    cursor: pointer;
+}
+
+.doc-list ul li div.in-progress-button i {
+    font-family: 'icomoon';
+    color: #000000;
+    font-size: 27px;
+    width: 60px;
+    text-align: center;
+    display: inline-block;
+    -webkit-animation: spin 1s infinite linear;
+    -moz-animation: spin 1s infinite linear;
+    -o-animation: spin 1s infinite linear;
+    animation: spin 1s infinite linear;
+
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    margin:auto;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.doc-list ul li div.in-progress-button i::before {
+    content: '\e61c';
+}
+
+.doc-list ul li div.uploaded-button {
+    background-color: #00bd54;
+    position: relative;
+    cursor: pointer;
+}
+.doc-list ul li div.uploaded-button i{
+    content: "\f055";
+    font-family: 'icomoon';
+    font-size: 40px;
+    line-height: 120px;
+    text-align: center;
+    width: 100%;
+
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .doc-list ul li div.image-wrapper {
 	background-color: #e3e3e3;
 	background-size: cover;

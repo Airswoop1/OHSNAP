@@ -4,36 +4,36 @@
 		<div class="doc-list">
 			<ul>
                 <li ng-click="goToDocUpload('IDENTITY')">
-                    <div ng-class="{'upload-button': isNotUploaded('IDENTITY')}"></div>
+                    <div ng-class="{'upload-button': isNotUploaded('IDENTITY'), 'in-progress-button': isInProgress('IDENTITY'), 'uploaded-button': isUploaded('IDENTITY')}"><i></i></div>
                     <h4>IDENTITY</h4>
                 </li>
-                <li>
-                    <div ng-class="{'upload-button': isNotUploaded('RESIDENCE')}"></div>
+                <li ng-click="goToDocUpload('RESIDENCE')">
+                    <div ng-class="{'upload-button': isNotUploaded('RESIDENCE'), 'in-progress-button': isInProgress('RESIDENCE'), 'uploaded-button': isUploaded('RESIDENCE')}"></div>
                     <h4>RESIDENCE</h4>
                 </li>
 
-                <li>
-                    <div ng-class="{'upload-button': isNotUploaded('AGE')}"></div>
+                <li ng-click="goToDocUpload('AGE')">
+                    <div ng-class="{'upload-button': isNotUploaded('AGE') , 'in-progress-button': isInProgress('AGE'), 'uploaded-button': isUploaded('AGE')}"></div>
                     <h4>AGE</h4>
                 </li>
 
-                <li>
-                    <div ng-class="{'upload-button': isNotUploaded('SSN')}"></div>
+                <li ng-click="goToDocUpload('SSN')">
+                    <div ng-class="{'upload-button': isNotUploaded('SSN'), 'in-progress-button': isInProgress('SSN'), 'uploaded-button': isUploaded('SSN')}"></div>
                     <h4>SSN</h4>
                 </li>
 
-                <li>
-                    <div ng-class="{'upload-button':isNotUploaded('CITIZENSHIP')}"></div>
+                <li ng-click="goToDocUpload('CITIZENSHIP')">
+                    <div ng-class="{'upload-button':isNotUploaded('CITIZENSHIP'), 'in-progress-button': isInProgress('CITIZENSHIP'), 'uploaded-button': isUploaded('CITIZENSHIP')}"></div>
                     <h4>CITIZENSHIP</h4>
                 </li>
 
-                <li>
-					<div ng-class="{'upload-button': isNotUploaded('EARNED_INCOME')}">
+                <li ng-click="goToDocUpload('EARNED_INCOME')">
+					<div ng-class="{'upload-button': isNotUploaded('EARNED_INCOME'), 'in-progress-button': isInProgress('EARNED_INCOME'), 'uploaded-button': isUploaded('EARNED_INCOME')}">
 					</div>
 					<h4>INCOME</h4>
 				</li>
 
-                <li>
+                <li ng-click="goToDocUpload('OTHER')">
                     <div class="upload-button"></div>
                     <h4>OTHER</h4>
                 </li>
@@ -56,4 +56,3 @@
 			    <div class="clear"></div>
 			</ul>
 		</div>
-		<div class="yellow-button">Submit documents</div>
