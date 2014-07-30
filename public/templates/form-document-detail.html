@@ -1,6 +1,7 @@
 
-	<div class="document-upload" ng-show="getDocDetailState() === DOC_STATUS.NOT_UPLOADED" ng-init="header_content = getCurrentContent()">
-		<p><strong>{{ header_content }}</strong></p>
+	<div class="document-upload" ng-show="getDocDetailState() === DOC_STATUS.NOT_UPLOADED" ng-init="header_content = getCurrentContent
+	">
+    <p><strong>{{ header_content }}</strong></p>
 
 		<div class="yellow-button add-picture">Take a picture
 			<input type="file" ng-file-select="uploadFile($files)">

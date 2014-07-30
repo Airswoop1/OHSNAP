@@ -3,7 +3,7 @@
  */
 
 
-angular.module('DocumentUploader',[]).factory('documentUpload', function($http, $upload, $q) {
+angular.module('formApp.DocumentUploader',[]).factory('documentUpload', function($http, $upload, $q) {
 
     function resizeDocument(file, callback) {
 

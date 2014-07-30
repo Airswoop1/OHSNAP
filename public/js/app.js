@@ -86,17 +86,22 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
             })
 
 
-            .state('form.document-upload',{
-                url:'/upload',
-                templateUrl:'templates/form-document-upload.html',
-                controller: 'documentUploadCtrl'
+	        .state('upload', {
+		        url:'/upload',
+		        templateUrl:'templates/upload-main.html',
+		        controller: 'documentUploadCtrl'
+
+	        })
+
+            .state('upload.documents',{
+                url:'/documents',
+                templateUrl:'templates/form-document-upload.html'
             })
 
 
-            .state('form.document-detail',{
-                url:'/upload-detail?type',
-                templateUrl:'templates/form-document-detail.html',
-                controller: 'documentUploadCtrl'
+            .state('upload.detail',{
+                url:'/detail?type',
+                templateUrl:'templates/form-document-detail.html'
             })
 
 

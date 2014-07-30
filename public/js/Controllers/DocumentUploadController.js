@@ -2,14 +2,14 @@
  * Created by airswoop1 on 7/23/14.
  */
 
-angular.module('formApp.documentUploadCtrl',['DocumentUploader','formApp.apiFactory']).controller('documentUploadCtrl',
+angular.module('formApp.documentUploadCtrl',['formApp.DocumentUploader','formApp.apiFactory']).controller('documentUploadCtrl',
     function($scope, $upload, $state, $stateParams, documentUpload, API){
-
+		alert("loading controller!");
     $scope.DOC_STATUS = {
         "UPLOADED": 2,
         "IN_PROGRESS":1,
         "NOT_UPLOADED":0
-    }
+    };
 
     $scope.docs = {
         'IDENTITY':$scope.DOC_STATUS.NOT_UPLOADED,
@@ -24,10 +24,10 @@ angular.module('formApp.documentUploadCtrl',['DocumentUploader','formApp.apiFact
         'RESOURCES':$scope.DOC_STATUS.NOT_UPLOADED
     };
 
+	    $scope.current_sample_image = "";
 
-
-    $scope.user_id = $scope.$parent.formData.user_id;
-
+    //$scope.user_id = $scope.$parent.formData.user_id;
+	$scope.user_id = "hello";
 
     $scope.isNotUploaded = function(name) {
         return $scope.docs[name] === $scope.DOC_STATUS.NOT_UPLOADED;
@@ -43,18 +43,20 @@ angular.module('formApp.documentUploadCtrl',['DocumentUploader','formApp.apiFact
 
 
     $scope.goToDocUpload = function(name) {
-        $state.go('form.document-detail', {'type':name});
+        $state.go('upload.detail', {'type':name});
 
     };
 
 	$scope.getCurrentContent = function(){
-		var params =  $stateParams;
-		$scope.current_sample_image = $scope.docContent[params.type].sample_image;
-		return $scope.docContent[params.type].header;
+
+		var type =  $state.params.type;
+		$scope.current_sample_image = $scope.docContent[type].sample_image;
+		return $scope.docContent[type].header;
 	};
 
 	$scope.getDocDetailState = function() {
-		return $scope.docs[$stateParams.type];
+
+		return $scope.docs[$state.params.type];
 	};
 
 	$scope.testME = function(type) {
