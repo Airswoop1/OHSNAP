@@ -12,16 +12,16 @@ var DocumentStatus = (function() {
      * */
 
         var status = {
-            'IDENTITY':true,
-            'RESIDENCE':false,
-            'HOUSEHOLD_COMPOSITION':false,
-            'AGE':false,
-            'SSN':false,
-            'CITIZENSHIP':false,
-            'ALIEN_STATUS':false,
-            'EARNED_INCOME':false,
-            'UNEARNED_INCOME':false,
-            'RESOURCES':false
+            'IDENTITY':0,
+            'RESIDENCE':0,
+            'HOUSEHOLD_COMPOSITION':0,
+            'AGE':0,
+            'SSN':0,
+            'CITIZENSHIP':0,
+            'ALIEN_STATUS':0,
+            'EARNED_INCOME':0,
+            'UNEARNED_INCOME':0,
+            'RESOURCES':0
         };
         res.send(200, {"status":status})
 

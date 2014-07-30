@@ -1,14 +1,44 @@
 		<!-- form-document-upload.html -->
 		<p><strong>Your documents are due in 8 days, on Wednseday, July 23.</strong></p>
-		<div class="yellow-button add-new">Add document</div>
+		<!--<div class="yellow-button add-new">Add document</div>-->
 		<div class="doc-list">
 			<ul>
-				<li>
-					<div class="upload-button">
+                <li ng-click="goToDocUpload('IDENTITY')">
+                    <div ng-class="{'upload-button': isNotUploaded('IDENTITY')}"></div>
+                    <h4>IDENTITY</h4>
+                </li>
+                <li>
+                    <div ng-class="{'upload-button': isNotUploaded('RESIDENCE')}"></div>
+                    <h4>RESIDENCE</h4>
+                </li>
+
+                <li>
+                    <div ng-class="{'upload-button': isNotUploaded('AGE')}"></div>
+                    <h4>AGE</h4>
+                </li>
+
+                <li>
+                    <div ng-class="{'upload-button': isNotUploaded('SSN')}"></div>
+                    <h4>SSN</h4>
+                </li>
+
+                <li>
+                    <div ng-class="{'upload-button':isNotUploaded('CITIZENSHIP')}"></div>
+                    <h4>CITIZENSHIP</h4>
+                </li>
+
+                <li>
+					<div ng-class="{'upload-button': isNotUploaded('EARNED_INCOME')}">
 					</div>
-					<h4>LETTER FROM ROOMMATES</h4>
+					<h4>INCOME</h4>
 				</li>
-				<li>
+
+                <li>
+                    <div class="upload-button"></div>
+                    <h4>OTHER</h4>
+                </li>
+
+				<!--<li>
 					<div class="upload-progress">
 						<div class="upload-progress-bar" style="width: 30%;">
 						</div>
@@ -16,13 +46,14 @@
 					</div>
 					<h4>UTILITY BILL</h4>
 				</li>
-				<li>
+				--><li>
 					<div class="image-wrapper" >
-						<img src="images/id.gif">
+						<img src="../images/state_id.jpg">
 					</div>
-					<h4>NEW YORK STATE ID</h4>
+					<h4>STATE ID</h4>
 				</li>
-				<div class="clear"></div>
+
+			    <div class="clear"></div>
 			</ul>
 		</div>
 		<div class="yellow-button">Submit documents</div>

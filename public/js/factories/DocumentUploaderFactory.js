@@ -11,7 +11,6 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
         reader.readAsDataURL(file);
 
         reader.onloadend = function() {
-
             var tempImg = new Image();
             tempImg.src = reader.result;
 
@@ -60,6 +59,7 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
                 file = $files[0],
                 data = {
                     'user_id':"d5ec41d5-9632-4a76-bd91-e9a9218a3222",
+                    //'user_id':user_id,
                     'document_type':type,
                     'file_name': file.name,
                     'file_type':file.type
@@ -78,6 +78,20 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
                         'file' : file
                     }
                 )
+                .progress(function(evt) {
+                    return deferred.promise;
+                })
+                .success(function(d, status, headers, config) {
+                    console.log("within onFileSelect")
+		                console.log(status);
+		                console.log(config);
+		                console.log(headers);
+                    // file is uploaded successfully
+                    return deferred.resolve(d);
+                })
+                .error(function(err, data){
+                    return deferred.reject(err);
+                });
 
 
             }
@@ -90,17 +104,17 @@ angular.module('DocumentUploader',[]).factory('documentUpload', function($http, 
                     $scope.upload = $upload
                         .upload({
                             'url': '/upload_docs',
-                            'data': data,
-                            'file':'undefined'
+                            'data': data
+
                         })
                         .progress(function(evt) {
                             return deferred.promise;
                         })
-                        .success(function(data, status, headers, config) {
+                        .success(function(d, status, headers, config) {
                             // file is uploaded successfully
-                            return deferred.resolve(data);
+                            return deferred.resolve(d,data);
                         })
-                        .error(function(err, data){
+                        .error(function(err){
                             return deferred.reject(err);
                         });
 

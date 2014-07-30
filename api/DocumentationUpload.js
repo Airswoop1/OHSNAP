@@ -68,17 +68,17 @@ var DocumentationUpload = (function(){
 
         var file = req.files.file;
 
+        console.log(request);
 
         if(request.user_id && request.document_type && request.file.name && request.file.type) {
-            var
-                path = path.join(__dirname, '../uploaded/',request.user_id,request.document.type,Math.floor((Math.random() * 1000) + 1)),
-                tmpPath = file.path;
+            var my_path = path.join(__dirname, '../uploaded/', (request.user_id + request.document_type + "." + request.file.name.split('.').pop())),
+                tmpPath = (typeof file === 'undefined') ? '' : file.path ;
 
 
 
             if(request.platform === 'ios'){
-                processiOSDocumentUpload( path, tmpPath, request, function(error, result) {
-                    //delete temp file
+                processiOSDocumentUpload( my_path, tmpPath, request, function(error, result) {
+                    res.send(200);
                 });
             }
             else {
@@ -86,7 +86,10 @@ var DocumentationUpload = (function(){
                 var file_type_regex = "data:" + request.file.type +  ";base64,",
                     base64Data = req.body.file_base64.replace(file_type_regex, "");
 
-                processOtherDocumentUpload( path, base64Data, request, function(error, result) {
+                processOtherDocumentUpload( my_path, base64Data, request, function(error, result) {
+                    console.log(error);
+                    console.log(result);
+                    res.send(200);
                     //delete temp file
 
                 });
@@ -115,14 +118,15 @@ var DocumentationUpload = (function(){
                             callback(db_file_err,null);
                         }
                         else{
-                            var proper_file_name= request.user_id + "_" + request.document_type;
+                            var file_ext = request.file.name.split('.').pop(),
+                                proper_file_name= request.user_id + "_" + request.document_type + "." +file_ext;
 
                             storeFileOnAWS(path, proper_file_name, function(aws_err, result){
                                 if(aws_err){
                                     callback(aws_err,null);
                                 }
                                 else {
-                                    callback(nul, result);
+                                    callback(null, result);
                                 }
 
                             });
@@ -143,10 +147,12 @@ var DocumentationUpload = (function(){
             else {
                 updateDBForFile(request, function(db_file_err){
                     if(db_file_err){
-                        callback(db_file_err,nul);
+                        callback(db_file_err, null);
                     }
                     else{
-                        var proper_file_name= request.user_id + "_" + request.document_type;
+
+                        var file_ext = request.file.name.split('.').pop(),
+                            proper_file_name= request.user_id + "_" + request.document_type + "." + file_ext;
 
                         storeFileOnAWS(path, proper_file_name, function(aws_err, result){
                             if(aws_err){

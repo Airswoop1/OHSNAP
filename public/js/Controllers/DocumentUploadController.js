@@ -2,7 +2,8 @@
  * Created by airswoop1 on 7/23/14.
  */
 
-angular.module('formApp.documentUploadCtrl',['DocumentUploader','formApp.apiFactory']).controller('documentUploadCtrl',function($scope, $upload,  documentUpload, API){
+angular.module('formApp.documentUploadCtrl',['DocumentUploader','formApp.apiFactory']).controller('documentUploadCtrl',
+    function($scope, $upload, $state, $stateParams, documentUpload, API){
 
     $scope.DOC_STATUS = {
         "UPLOADED": 2,
@@ -10,7 +11,7 @@ angular.module('formApp.documentUploadCtrl',['DocumentUploader','formApp.apiFact
         "NOT_UPLOADED":0
     }
 
-    $scope.uploadedFiles = {
+    $scope.docs = {
         'IDENTITY':$scope.DOC_STATUS.NOT_UPLOADED,
         'RESIDENCE':$scope.DOC_STATUS.NOT_UPLOADED,
         'HOUSEHOLD_COMPOSITION':$scope.DOC_STATUS.NOT_UPLOADED,
@@ -28,23 +29,60 @@ angular.module('formApp.documentUploadCtrl',['DocumentUploader','formApp.apiFact
     $scope.user_id = $scope.$parent.formData.user_id;
 
 
+    $scope.isNotUploaded = function(name) {
+        return $scope.docs[name] === $scope.DOC_STATUS.NOT_UPLOADED;
+    };
+
+    $scope.isInProgress = function(name) {
+        return $scope.docs[name] === $scope.DOC_STATUS.IN_PROGRESS;
+    };
+
+    $scope.isUploaded = function(name) {
+        return $scope.docs[name] === $scope.DOC_STATUS.UPLOADED;
+    };
 
 
-    $scope.uploadFile = function($files, type) {
+    $scope.goToDocUpload = function(name) {
+        $state.go('form.document-detail', {'type':name});
+
+    };
+
+	$scope.getCurrentContent = function(){
+		var params =  $stateParams;
+		$scope.current_sample_image = $scope.docContent[params.type].sample_image;
+		return $scope.docContent[params.type].header;
+	};
+
+	$scope.getDocDetailState = function() {
+		return $scope.docs[$stateParams.type];
+	};
+
+	$scope.testME = function(type) {
+
+		$scope.docs[type] = $scope.DOC_STATUS.UPLOADED;
+		console.log($scope.docs[type])
+	}
+
+    $scope.uploadFile = function($files) {
 
         //display upload in progress;
+		var type = $stateParams.type;
+	    $scope.docs[type] = $scope.DOC_STATUS.IN_PROGRESS;
 
-
-        documentUpload.onFileSelect($files, $scope,type, $scope.user_id).then(
+        documentUpload.onFileSelect($files, $scope, type, $scope.user_id).then(
             //it succeeeded
             function(result){
-                alert('woo uploaded!');
-                alert(result);
-                $scope.uploadedFiles[type] = true;
+                console.log('woo uploaded!');
+                console.log(result);
+	            console.log($scope.docs[type]);
+				console.log(type);
+
+	            $scope.testME(type);
 
             },
             //it failed
             function(reason){
+                $scope.docs[type] = $scope.DOC_STATUS.NOT_UPLOADED;
                 //throw some sort of error indicating failure.
                 alert('aw no upload');
                 alert(reason);
@@ -57,17 +95,56 @@ angular.module('formApp.documentUploadCtrl',['DocumentUploader','formApp.apiFact
          if(status){
              for (var uploaded in status){
                 if(status.hasOwnProperty(uploaded)){
-                    $scope.uploadedFiles[uploaded] = status[uploaded];
+                    $scope.docs[uploaded] = status[uploaded];
                 }
             }
         }
+
     }
 
-    API.getDocumentStatus($scope.user_id, $scope.updateUploadedFilesStatus);
+
+    function docUploadInProgress(amount){
+        console.log(amount);
+    }
+
+    //API.getDocumentStatus($scope.user_id, $scope.updateUploadedFilesStatus);
 
 
 
+    $scope.docContent = {
+        'IDENTITY':{
+            header:"We need to confirm your identity",
+	        sample_image:"state_id.jpg"
 
+        },
+        'RESIDENCE':{
+	        header:"We need to confirm where you live"
+        },
+        'HOUSEHOLD_COMPOSITION':{
+	        header:"We need to confirm who is living with you"
+        },
+        'AGE':{
+	        header:"We need to confirm how old you are"
+        },
+        'SSN':{
+	        header:"We need to confirm your Social Security Number"
+        },
+        'CITIZENSHIP':{
+	        header:"We need to confirm your citizenship status"
+        },
+        'ALIEN_STATUS':{
+	        header:"We need to confirm your alien status"
+        },
+        'EARNED_INCOME':{
+	        header:"We need to confirm your income"
+        },
+        'UNEARNED_INCOME':{
+	        header:"We need to confirm your unearned income"
+        },
+        'RESOURCES':{
+	        header:"Let us know if you have any other documents we might need!"
+        }
+    }
 
 
 

@@ -80,7 +80,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
 
             .state('form.upload',{
-                url:'/upload',
+                url:'/upload-test',
                 templateUrl:'templates/upload-test.html',
                 controller: 'documentUploadCtrl'
             })
@@ -94,7 +94,7 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
 
 
             .state('form.document-detail',{
-                url:'/upload-detail',
+                url:'/upload-detail?type',
                 templateUrl:'templates/form-document-detail.html',
                 controller: 'documentUploadCtrl'
             })
@@ -481,7 +481,9 @@ var app = angular.module('formApp', ['angularFileUpload', 'ui.router', 'ui.boots
                 toState.name === 'form.income' ||
                 toState.name === 'form.household' ||
                 toState.name === 'form.feedback-submitted' ||
-                toState.name === 'form.recert')) {
+                toState.name === 'form.recert' ||
+	            toState.name === 'form.document-upload' ||
+	            toState.name === 'form.document-detail')) {
 
                 $scope.show_progress = true;
             }
