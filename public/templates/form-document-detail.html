@@ -13,7 +13,7 @@
 	<div class="document-uploading" ng-show="getDocDetailState() === DOC_STATUS.IN_PROGRESS" >
 		<p><strong>Great! Your picture is uploading. In the meantime can keep uploading more documents.</strong></p>
 		<div class="yellow-button add-picture uploading-picture-button">
-			<div class="upload-progress-bar" style="width: 30%;"></div>
+			<div class="upload-progress-bar" ng-style="{width: docProgress[getCurrentType()] + '%'}"></div>
 			Uploading ...
 			<input type="file">
 		</div>

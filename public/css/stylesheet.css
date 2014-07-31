@@ -896,16 +896,53 @@ span.text-next-steps {
 }
 
 .doc-list ul li div.image-wrapper {
-	background-color: #e3e3e3;
-	background-size: cover;
-	background-position: center center;
-	justify-content: center;
+    background-color: #e3e3e3;
+    background-size: cover;
+    background-position: center center;
+    justify-content: center;
 }
+
+.doc-list ul li div.image-wrapper::before {
+
+    font-family: 'icomoon';
+    position: absolute;
+    font-size: 40px;
+    line-height: 120px;
+    text-align: center;
+    width: 100%;
+
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.doc-list ul li div.image-wrapper.uploaded{
+    background-color:#070707;
+}
+
+.doc-list ul li div.image-wrapper.uploaded::before {
+    content: "\f058";
+    color: #8cc63f;
+}
+
+.doc-list ul li div.image-wrapper.not-uploaded::before {
+    content:"\f055";
+    color:#000;
+}
+
 .doc-list ul li div img {
-	max-width: 100%;
-	max-height: 100%;
-	height: auto;
-	align-self: center;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    align-self: center;
+    opacity: 0.2;
+    filter: alpha(opacity=40);
 }
 
 

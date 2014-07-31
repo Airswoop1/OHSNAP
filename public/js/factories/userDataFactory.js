@@ -22,6 +22,18 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				'EARNED_INCOME':this.DOC_STATUS.NOT_UPLOADED,
 				'UNEARNED_INCOME':this.DOC_STATUS.NOT_UPLOADED,
 				'RESOURCES':this.DOC_STATUS.NOT_UPLOADED
+			},
+			docProgress : {
+				'IDENTITY':0,
+				'RESIDENCE':0,
+				'HOUSEHOLD_COMPOSITION':0,
+				'AGE':0,
+				'SSN':0,
+				'CITIZENSHIP':0,
+				'ALIEN_STATUS':0,
+				'EARNED_INCOME':0,
+				'UNEARNED_INCOME':0,
+				'RESOURCES':0
 			}
 		};
 

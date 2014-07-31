@@ -4,15 +4,18 @@
 
 angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formApp.userDataFactory', 'formApp.sampleDocumentsDirective']).controller('documentUploadCtrl',
 	function($scope, $upload, $state, $stateParams, $rootScope, documentUpload, userDataFactory){
-		alert("loading controller!");
+
 		$scope.docs = userDataFactory.userData.docs;
+		$scope.docProgress = userDataFactory.userData.docProgress;
 
 		$scope.DOC_STATUS = {
 			"UPLOADED": 2,
 			"IN_PROGRESS":1,
 			"NOT_UPLOADED":0
 		};
+
 		$scope.current_type = $state.params.type;
+
 		$rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState){
 			if(toParams){
 				$scope.current_type = toParams.type;
@@ -51,19 +54,23 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 			return $scope.docs[$state.params.type];
 		};
 
+		$scope.getCurrentType = function() {
+			return $state.params.type;
+		};
+
 
 		$scope.uploadFile = function($files) {
-
+			console.log("called.")
 			//display upload in progress;
 			var type = $state.params.type;
 
 			userDataFactory.userData.docs[type] = $scope.DOC_STATUS.IN_PROGRESS;
-
-			documentUpload.onFileSelect($files, $scope, type, $scope.user_id).then(
+			$scope.uploadProgress(type);
+			documentUpload.onFileSelect($files, $scope, type, $scope.user_id, $scope.uploadProgress).then(
 				//it succeeeded
 				function(result){
+					$scope.docProgress[type] = 100;
 					userDataFactory.userData.docs[type] = $scope.DOC_STATUS.UPLOADED;
-
 				},
 				//it failed
 				function(reason){
@@ -73,6 +80,23 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 					alert(reason);
 				})
 		};
+
+		$scope.uploadProgress = function(type) {
+			$scope.docProgress[type] += 10
+			var upload = setInterval(function(){
+
+				if($scope.docProgress[type] < 100 && $scope.docs[type] !== $scope.DOC_STATUS.UPLOADED){
+					$scope.docProgress[type] += 25;
+				}
+				else{
+					$scope.docProgress[type] = 100;
+					clearInterval(upload);
+				}
+
+			},200)
+
+		};
+
 
 		//update status based on whats in the db
 		$scope.updateUploadedFilesStatus = function(data) {
@@ -177,6 +201,7 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 			},
 			'EARNED_INCOME':{
 				header:"We need to confirm your income",
+				sample_image:"sample_paystub.jpg",
 				valid_docs : [
 					{
 						"name":"Social Security Card",
@@ -195,18 +220,15 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 					}
 				]
 			},
-			'RESOURCES':{
+			'OTHER':{
 				header:"Let us know if you have any other documents we might need!",
 
 			}
+
 		};
 
 		$scope.goBack = function() {
 			window.history.back();
 		};
-
-
-
-
 
 	});

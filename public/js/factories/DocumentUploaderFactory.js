@@ -105,10 +105,10 @@ angular.module('formApp.DocumentUploader',[]).factory('documentUpload', function
                         .upload({
                             'url': '/upload_docs',
                             'data': data
-
                         })
                         .progress(function(evt) {
-                            return deferred.promise;
+
+
                         })
                         .success(function(d, status, headers, config) {
                             // file is uploaded successfully
