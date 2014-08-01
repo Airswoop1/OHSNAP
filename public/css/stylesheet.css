@@ -968,6 +968,7 @@ span.text-next-steps {
 	content: "\f058";
     font-family: 'icomoon';
     position: absolute;
+    left: 0;
     font-size: 40px;
     line-height: 120px;
     text-align: center;

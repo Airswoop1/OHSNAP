@@ -83,17 +83,18 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 
 		$scope.uploadProgress = function(type) {
 			$scope.docProgress[type] += 10
+
 			var upload = setInterval(function(){
 
 				if($scope.docProgress[type] < 100 && $scope.docs[type] !== $scope.DOC_STATUS.UPLOADED){
-					$scope.docProgress[type] += 25;
+					$scope.docProgress[type] += 10;
 				}
 				else{
 					$scope.docProgress[type] = 100;
 					clearInterval(upload);
 				}
 
-			},200)
+			},50);
 
 		};
 
