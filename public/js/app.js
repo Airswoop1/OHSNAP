@@ -117,7 +117,33 @@ var app = angular.module('formApp',['ui.router', 'formApp.formController',
 				templateUrl: 'templates/interview/interview-household-applying.html'
 			})
 
+			.state('int.household-ssn', {
+				url: '/household-ssn',
+				templateUrl: 'templates/interview/interview-household-ssn.html'
+			})
 
+			.state('int.household-dob', {
+				url: '/household-dob',
+				templateUrl: 'templates/interview/interview-household-dob.html'
+			})
+
+			.state('int.household-relation', {
+				url: '/household-relation',
+				templateUrl: 'templates/interview/interview-household-relation.html'
+			})
+
+			.state('int.income-frequency', {
+				url: '/income-frequency',
+				templateUrl: 'templates/interview/interview-income-frequency.html'
+			})
+
+			.state('int.income-hours', {
+				url: '/income-hours',
+				templateUrl: 'templates/interview/interview-income-hours.html'
+			})
+
+
+		/********************* DOCUMENTS ****************************************/
 
 			.state('upload', {
 				url:'/upload',

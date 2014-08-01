@@ -4,9 +4,9 @@
     your husband or wife.</h5>
 
 <div ng-repeat="person in user.formData.household_obj track by $index" class="household-applying">
-    <label for="applying_{{ $index }}">{{ person }}</label>
-    <input id="applying_{{ $index }}" type="checkbox" name="applying" ng-model="user.formData.household_obj[person].applying"/>
+    <label for="applying_{{ $index }}">{{ person.name }}</label>
+    <input id="applying_{{ $index }}" type="checkbox" name="applying" value="true" ng-model="person.applying"/>
 </div>
 
-<div class="yellow-button" ui-sref="int.household-applying">Continue</div>
+<div class="yellow-button" ui-sref="int.household-ssn">Continue</div>
 
