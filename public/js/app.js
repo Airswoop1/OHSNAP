@@ -76,10 +76,19 @@ var app = angular.module('formApp',['ui.router', 'formApp.formController',
 				templateUrl:'templates/form-interview-information.html'
 			})
 
+
+
+			/*************************** INTERVIEW ****************/
+
 			.state('int', {
 				url:'/interview',
-				templateUrl:'templates/interview/interview-main.html',
+				templateUrl:'templates/interview/interview.html',
 				controller: 'interviewCtrl'
+			})
+
+			.state('int.main', {
+				url:'/main',
+				templateUrl:'templates/interview/interview-main.html'
 			})
 
 			.state('int.ssn', {
@@ -142,6 +151,15 @@ var app = angular.module('formApp',['ui.router', 'formApp.formController',
 				templateUrl: 'templates/interview/interview-income-hours.html'
 			})
 
+			.state('int.income-household-amount', {
+				url: '/income-household-amount',
+				templateUrl: 'templates/interview/interview-income-household-amount.html'
+			})
+
+			.state('int.resources', {
+				url: '/resources',
+				templateUrl: 'templates/interview/interview-resources.html'
+			})
 
 		/********************* DOCUMENTS ****************************************/
 
