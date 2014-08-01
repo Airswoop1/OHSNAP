@@ -161,6 +161,22 @@ var app = angular.module('formApp',['ui.router', 'formApp.formController',
 				templateUrl: 'templates/interview/interview-resources.html'
 			})
 
+			.state('int.expenses-mortgage', {
+				url: '/expenses-mortgage',
+				templateUrl: 'templates/interview/interview-expenses-mortgage.html'
+			})
+
+			.state('int.expenses-utilities', {
+				url: '/expenses-utilities',
+				templateUrl: 'templates/interview/interview-expenses-utilities.html'
+			})
+
+			.state('int.expenses-utilities-total', {
+				url: '/expenses-utilities-total',
+				templateUrl: 'templates/interview/interview-expenses-utilities-total.html'
+			})
+
+
 		/********************* DOCUMENTS ****************************************/
 
 			.state('upload', {
