@@ -35,7 +35,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory']).controller('
 			{name:"parent"},
 			{name:"roommate"},
 			{name:"other family member"}
-		]
+		];
 
 
 
