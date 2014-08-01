@@ -1,0 +1,16 @@
+<div class="page-header step-two">
+    <div class="header">
+        <h3>Step 2 of 3</h3>
+        <h4>Interview</h4>
+    </div>
+    <div class="progress" ng-show="show_interview_progress">
+        <div class="progress-bar"  ng-style="{ width: progress +'%'}" style="width:30%">
+        </div>
+    </div>
+</div>
+
+
+<form name="interviewForm" id="interview-form" novalidate>
+    <!-- our nested state views will be injected here -->
+    <div class="form-wrapper" ui-view></div>
+</form>

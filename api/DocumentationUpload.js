@@ -31,6 +31,7 @@ var DocumentationUpload = (function(){
 
     };
 
+
     var DocumentTypes = {
         'IDENTITY':'identity',
         'RESIDENCE':'residence',

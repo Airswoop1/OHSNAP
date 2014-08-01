@@ -1,0 +1,12 @@
+<h1>Which ones are you applying for?</h1>
+<h5>You can apply with other people if you live together and buy and cook food together,
+    if you live with and are applying for your child, or if you live with and are applying with
+    your husband or wife.</h5>
+
+<div ng-repeat="person in user.formData.household_obj track by $index" class="household-applying">
+    <label for="applying_{{ $index }}">{{ person }}</label>
+    <input id="applying_{{ $index }}" type="checkbox" name="applying" ng-model="user.formData.household_obj[person].applying"/>
+</div>
+
+<div class="yellow-button" ui-sref="int.household-applying">Continue</div>
+

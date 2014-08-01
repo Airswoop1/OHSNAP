@@ -117,114 +117,194 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 
 		$scope.docContent = {
 			'IDENTITY':{
-				header:"We need to confirm your identity",
-				sample_image:"state_id.jpg",
+				header:"Take a picture of 1 of these documents to confirm your identity.",
+				sample_image:"sample_id.png",
 				valid_docs : [
 					{
-						"name":"Passport",
+						"name":"Drivers license or state photo ID",
+						"image":"sample_dl.jpg",
+						"link":"http://dmv.ny.gov/driver-license/get-driver-license"
+					},
+					{
+						"name":"US Passport",
 						"image":"sample_passport.jpg",
 						"link":"https://www.usps.com/shop/apply-for-a-passport.htm"
 					}
 				]
 
 			},
-			'RESIDENCE':{
-				header:"We need to confirm where you live",
-				sample_image:"sample_lease.png",
+			'ADDRESS':{
+				header:"Take a picture of 1 of these documents to confirm where you live.",
+				sample_image:"sample_address.png",
 				valid_docs : [
 					{
 						"name":"Lease",
-						"image":"sample_lease.png",
+						"image":"sample_lease.jpg",
 						"link":"http://www.ehow.com/how_6147098_request-copy-apartment-lease-mail.html"
+					},
+					{
+						"name":"Statement from landlord or primary tenant",
+						"image":"sample_addressstatement.jpg",
+						"link":"http://www.wikihow.com/Write-a-Letter-Showing-Proof-of-Residence-for-a-Tenant"
+					},
+					{
+						"name":"Mortgage record",
+						"image":"sample_mortgagerecord.jpg",
+						"link":"http://a836-acris.nyc.gov/CP/"
+					}
+				]
+			},
+			'HOUSING_EXPENSE':{
+				header:"Take a picture of 1 of these documents to confirm how much you pay for housing.",
+				sample_image:"sample_housingexpense.png",
+				valid_docs : [
+					{
+						"name":"Lease, if you do not split the rent",
+						"image":"sample_lease.jpg",
+						"link":"http://www.ehow.com/how_6147098_request-copy-apartment-lease-mail.html"
+					},
+					{
+						"name":"Rent receipt, if you do not split the rent",
+						"image":"sample_rentreceipt.jpg",
+						"link":"http://www.masslegalhelp.org/housing/private-housing/ch3/security-deposit-landlords-responsiblities"
+					},
+					{
+						"name":"Statement from roommates, if you split the rent",
+						"image":"sample_housingstatement.jpg",
+						"link":"http://www.lawdepot.com/contracts/roommate-agreement/"
 					}
 				]
 			},
 			'HOUSEHOLD_COMPOSITION':{
-				header:"We need to confirm who is living with you",
-				sample_image:"sample_lease.png",
+				header:"Take a picture of 1 of these documents to prove who lives with you.",
+				sample_image:"sample_household.png",
 				valid_docs : [
 					{
-						"name":"Statement from Non-Relative Landlord",
-						"image":"sample_lease.png",
-						"link":"http://www.ehow.com/how_6147098_request-copy-apartment-lease-mail.html"
+						"name":"Statement from your landlord",
+						"image":"sample_addressstatement.jpg",
+						"link":"http://www.wikihow.com/Write-a-Letter-Showing-Proof-of-Residence-for-a-Tenant"
+					},
+					{
+						"name":"School records",
+						"image":"sample_schoolrecord.jpg",
+						"link":"http://www1.nyc.gov/nyc-resources/service/2557/student-record-request"
 					}
 				]
 			},
-			'AGE':{
-				header:"We need to confirm how old you are",
-				sample_image:"sample_birth_cert.jpg",
+
+			'UTILITIES':{
+				header:"Take a picture of 1 of these documents to confirm utilities you pay for separate from rent.",
+				sample_image:"sample_utilities.png",
 				valid_docs : [
 					{
-						"name":"Birth Certificate",
-						"image":"sample_birth_cert.jpg",
-						"link":"https://www.health.ny.gov/vital_records/birth.htm"
+						"name":"Utility bill",
+						"image":"sample_utility.jpg"
+
+					},
+					{
+						"name":"Telephone bill",
+						"image":"sample_phonebill.jpg"
 					}
 				]
 			},
 			'SSN':{
-				header:"We need to confirm your Social Security Number",
-				sample_image:"sample_ssn.gif",
+				header:"Take a picture of 1 of these documents to confirm your Social Security Number.",
+				sample_image:"sample_ssn.png",
 				valid_docs : [
 					{
 						"name":"Social Security Card",
-						"image":"sample_ssn.gif",
-						"link":"http://www.ssa.gov/ssnumber/"
+						"image":"sample_ssn.jpg",
+						"link":"http://www.nyc.gov/html/id/html/how/social_security_card.shtml"
+					},
+					{
+						"name":"Official mail from the SSA",
+						"image":"sample_ssamail.jpg"
 					}
 				]
 			},
 			'CITIZENSHIP':{
-				header:"We need to confirm your citizenship status",
-				sample_image:"sample_passport.jpg",
+				header:"Take a picture of one of these documents to confirm your citizenship status.",
+				sample_image:"sample_citizen.png",
 				valid_docs : [
 					{
-						"name":"Passport",
+						"name":"US Passport",
 						"image":"sample_passport.jpg",
 						"link":"https://www.usps.com/shop/apply-for-a-passport.htm"
 					},
 					{
-						"name":"Birth Certificate",
+						"name":"US Birth Certificate",
 						"image":"sample_birth_cert.jpg",
-						"link":"https://www.health.ny.gov/vital_records/birth.htm"
-					}
-				]
-			},
-			'ALIEN_STATUS':{
-				header:"We need to confirm your alien status",
-				valid_docs : [
+						"link":"http://www.nyc.gov/html/id/html/how/birth_certificate.shtml"
+					},
 					{
-						"name":"Social Security Card",
-						"image":"sample_ssn.gif",
-						"link":"http://www.ssa.gov/ssnumber/"
+						"name":"US Military service record",
+						"image":"sample_military.jpg",
+						"link":"http://themilitarywallet.com/how-to-get-a-military-id-card/"
+					},
+					{
+						"name":"Naturalization Certificate",
+						"image":"sample_naturalization.jpg",
+						"link":"http://www.uscis.gov/tools/how-do-i-customer-guides/how-do-i-guides-us-citizens/how-do-i-obtain-certified-true-copies-certificate-naturalization"
 					}
 				]
-
 			},
 			'EARNED_INCOME':{
-				header:"We need to confirm your income",
-				sample_image:"sample_paystub.jpg",
+				header:"Take a picture of 1 of these documents to confirm income that you've earned.",
+				sample_image:"sample_income.png",
 				valid_docs : [
 					{
-						"name":"Social Security Card",
-						"image":"sample_ssn.gif",
-						"link":"http://www.ssa.gov/ssnumber/"
+						"name":"Pay stub",
+						"image":"sample_paystub.jpg",
+						"link":"http://www.ehow.com/how_8353804_copy-pay-stubs.html"
+					},
+					{
+						"name":"Tax return",
+						"image":"sample_taxreturn.jpg",
+						"link":"http://www.irs.gov/Individuals/Get-Transcript"
+					},
+					{
+						"name":"Statement from employer",
+						"image":"sample_incomestatement.jpg",
+						"link":"hhttp://www.wikihow.com/Write-a-Letter-for-Proof-of-Income"
+					},
+					{
+						"name":"Invoice, if you are self-employed",
+						"image":"sample_invoice.jpg"
 					}
 				]
 			},
-			'UNEARNED_INCOME':{
-				header:"We need to confirm your unearned income",
+			'ALT_INCOME':{
+				header:"Take a picture of 1 of these documents to confirm alternate sources of income.",
+				sample_image:"sample_altincome.png",
 				valid_docs : [
 					{
-						"name":"Social Security Card",
-						"image":"sample_ssn.gif",
-						"link":"http://www.ssa.gov/ssnumber/"
+						"name":"Statement from person paying child support",
+						"link":"http://info.legalzoom.com/evidence-child-support-payments-23480.html"
+					},
+					{
+						"name":"Check stubs from child support",
+						"link":"http://info.legalzoom.com/evidence-child-support-payments-23480.html"
+					},
+					{
+						"name":"Current unemployment award certificate",
+						"image":"sample_unemploymentcert.jpg",
+						"link":"http://www.ehow.com/how_8421455_do-proof-unemployment.html"
+					},
+					{
+						"name":"Current Social Security benefit check",
+						"image":"sample_sscheck.jpg",
+						"link":"http://www.ssa.gov/pubs/EN-05-10552.pdf"
+					},
+					{
+						"name":"Current veteran's benefit check",
+					},
+					{
+						"name":"Current worker's compensation certificate",
+						"image":"sample_workerscompcert.jpg"
 					}
-				]
-			},
-			'OTHER':{
-				header:"Let us know if you have any other documents we might need!",
 
+				]
 			}
-
 		};
 
 		$scope.goBack = function() {

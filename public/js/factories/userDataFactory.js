@@ -34,7 +34,12 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				'EARNED_INCOME':0,
 				'UNEARNED_INCOME':0,
 				'RESOURCES':0
+			},
+
+			'interview': {
+
 			}
+
 		};
 
 

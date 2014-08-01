@@ -1,0 +1,9 @@
+<h1>What are the names of the people living with you?</h1>
+
+<div ng-repeat="num in getNumber(user.formData.household) track by $index" class="household-names">
+    <label for="name_{{ $index }}">Person {{ $index + 1 }}</label>
+    <input id="name_{{ $index }}" placeholder="First and Last Name" type="text" name="names" ng-model="user.formData.household_obj[$index]"/>
+</div>
+
+<div class="yellow-button" ui-sref="int.household-applying">Continue</div>
+

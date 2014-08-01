@@ -16,13 +16,6 @@
                     <h4>RESIDENCE</h4>
                 </li>
 
-                <li ng-click="goToDocUpload('AGE')">
-                    <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('AGE') , 'in-progress-button': isInProgress('AGE'), 'uploaded': isUploaded('AGE')}">
-                        <img src="../images/{{ docContent['AGE'].sample_image  }}" alt=""/>
-                    </div>
-                    <h4>AGE</h4>
-                </li>
-
                 <li ng-click="goToDocUpload('SSN')">
                     <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('SSN'), 'in-progress-button': isInProgress('SSN'), 'uploaded': isUploaded('SSN')}">
                         <img src="../images/{{ docContent['SSN'].sample_image  }}" alt=""/>
