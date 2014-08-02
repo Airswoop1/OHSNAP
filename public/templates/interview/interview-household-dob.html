@@ -1,6 +1,6 @@
 <h1>Household members DOB?</h1>
 
-<div ng-repeat="person in user.formData.household_obj track by $index" class="household-dob">
+<div ng-repeat="person in user.formData.household_members track by $index" class="household-dob" ng-show="person.applying">
     <label for="dob_{{ $index }}">What is {{ person.name }}'s DOB?</label>
     <input id="dob_{{ $index }}" type="date" name="dob"  ng-model="person.dob"/>
 </div>

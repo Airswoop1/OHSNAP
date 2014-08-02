@@ -1,13 +1,10 @@
 <h1>Household members monthly income?</h1>
 
-
-<div ng-repeat="person in user.formData.household_obj track by $index" class="household-relation">
+<div ng-repeat="person in user.formData.household_members track by $index" class="household-income" ng-show="person.applying">
+    <label for="household_monthly_income_{{$index}}">Monthly income for {{ person.name }}</label>
     <div class="input-group dollar-input" >
-        <input type="number" name="monthly_income" placeholder="0" id="household_monthly_income_{{$index}}" ng-model="person.income" autofocus="true" min="0"/>
+        <input type="number" name="monthly_income" placeholder="0" id="household_monthly_income_{{$index}}" ng-model="person.income" min="0"/>
     </div>
 </div>
 
-
-<!--<input ng-model="user.formData.monthly_income" id="monthly_income" type="number" class="name-input income-input" name="monthly_income"><label
-        for="citizen_yes">YES</label>-->
 <div class="yellow-button" ui-sref="int.income-household-frequency">Continue</div>

@@ -13,6 +13,8 @@ var app = angular.module('formApp',['ui.router', 'formApp.formController',
 
 		$stateProvider
 
+			/************Step 1 - Initial Questions ****************/
+
 			// route to show our basic form (/form)
 			.state('form', {
 				url: '/form',
@@ -78,7 +80,7 @@ var app = angular.module('formApp',['ui.router', 'formApp.formController',
 
 
 
-			/*************************** INTERVIEW ****************/
+			/************************ Step 2 - INTERVIEW ****************/
 
 			.state('int', {
 				url:'/interview',
@@ -156,6 +158,11 @@ var app = angular.module('formApp',['ui.router', 'formApp.formController',
 				templateUrl: 'templates/interview/interview-income-household-amount.html'
 			})
 
+			.state('int.income-household-frequency', {
+				url: '/income-household-frequency',
+				templateUrl: 'templates/interview/interview-income-household-frequency.html'
+			})
+
 			.state('int.resources', {
 				url: '/resources',
 				templateUrl: 'templates/interview/interview-resources.html'
@@ -201,7 +208,19 @@ var app = angular.module('formApp',['ui.router', 'formApp.formController',
 		// catch all route
 		// send users to the form page
 		$urlRouterProvider.otherwise('/form/intro');
-	});
+	})
 
+/**************** Google Analytics Send event on page tarnsition ****************/
+	.run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
+		$rootScope
+			.$on('$stateChangeSuccess',
+			function(event){
 
+				if (!$window.ga)
+					return;
+
+				$window.ga('send', 'pageview', { page: $location.path() });
+			});
+
+	}]);
 
