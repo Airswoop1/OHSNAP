@@ -66,7 +66,7 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 
 			userDataFactory.userData.docs[type] = $scope.DOC_STATUS.IN_PROGRESS;
 			$scope.uploadProgress(type);
-			documentUpload.onFileSelect($files, $scope, type, $scope.user_id, $scope.uploadProgress).then(
+			documentUpload.onFileSelect($files, $scope, type, $scope.user_id).then(
 				//it succeeeded
 				function(result){
 					$scope.docProgress[type] = 100;
