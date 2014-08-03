@@ -52,7 +52,7 @@ angular.module('formApp.apiFactory',[]).factory('API', function($http) {
         },
 
 	    uploadPartialInterviewInfo : function(formData, callback) {
-		    $http.post('/upload_user_info', JSON.stringify(formData))
+		    $http.post('/update_user_info', JSON.stringify(formData))
 			    .success(function(data, status) {
 
 				    if(status === 201){
