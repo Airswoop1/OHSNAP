@@ -49,6 +49,29 @@ angular.module('formApp.apiFactory',[]).factory('API', function($http) {
               .error(function(data){
                   callback(null);
               });
-        }
+        },
+
+	    uploadPartialInterviewInfo : function(formData, callback) {
+		    $http.post('/upload_user_info', JSON.stringify(formData))
+			    .success(function(data, status) {
+
+				    if(status === 201){
+					    callback(true);
+				    }
+				    else {
+					    callback(null);
+				    }
+			    })
+			    .error(function(data) {
+				    console.log(data);
+
+				    callback(null)
+
+			    });
+
+
+	    }
+
+
     }
 })

@@ -18,7 +18,7 @@ var UploadUserInfo = (function(){
     };
 
     var execute = function(req, res){
-
+		console.log(req.body);
         if(req.method == 'GET'){
             res.send("Oops, this isn't what you're looking for!");
         }
@@ -92,10 +92,6 @@ var UploadUserInfo = (function(){
         else {
             callback(true);
         }
-        //TODO: We really shouldn't accept an application if we don't have both a phone nor address - may be handled at the client level
-        /*else if(!(data.phone_main || data.address.street_address)) {
-            callback(null);
-        }*/
     }
 
     return {

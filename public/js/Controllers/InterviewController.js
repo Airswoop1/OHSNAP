@@ -2,18 +2,18 @@
  * Created by airswoop1 on 7/31/14.
  */
 
-angular.module('formApp.interviewCtrl',['formApp.userDataFactory']).controller('interviewCtrl',
-	function($scope, $rootScope, userDataFactory){
-
+angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiFactory']).controller('interviewCtrl',
+	function($scope, $rootScope, userDataFactory, API){
+		console.log(userDataFactory.userData.user.formData);
 		$scope.show_interview_progress=true;
 		$scope.int_progress = 0;
 
-		$scope.user = userDataFactory.userData;
+		$scope.user = userDataFactory.userData.user.formData;
 
 		//for testing
-		$scope.user.formData = {};
-		$scope.user.formData.household = 4;
-		$scope.user.formData.household_members = {};
+//		$scope.user.formData = {};
+//		$scope.user.formData.household = 4;
+		$scope.user.household_members = {};
 		/*$scope.user.formData.household_members = {
 			"0":{"name":"Kevin Miller", "income":0},
 			"1":{"name":"Jamie Miller", "income":0},
@@ -22,16 +22,16 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory']).controller('
 
 
 
-		for(var i=0; i<$scope.user.formData.household;i++ ){
-			$scope.user.formData.household_members[i] = {
+		for(var i=0; i<$scope.user.household;i++ ){
+			$scope.user.household_members[i] = {
 				"applying":false,
 		        "income":0
 			};
 		}
 
 
-		$scope.user.formData['citizen'] = 'yes';
-		$scope.user.formData['disabled'] = 'no';
+		$scope.user['citizen'] = 'yes';
+		$scope.user['disabled'] = 'no';
 
 		$scope.interviewCompleted = {
 			"eligibility":false,
@@ -51,6 +51,14 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory']).controller('
 
 		$scope.$on('int-main', function(meta, type){
 			$scope.interviewCompleted[type] = true;
+			API.uploadPartialInterviewInfo($scope.user, function(result){
+				if(result) {
+					userDataFactory.userData.user.formData = $scope.user;
+				}
+				else {
+					alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
+				}
+			});
 		});
 
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {

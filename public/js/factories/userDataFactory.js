@@ -36,9 +36,8 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				'RESOURCES':0
 			},
 
-			'interview': {
-
-			}
+			'interview': {},
+			'user':{}
 
 		};
 

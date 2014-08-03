@@ -392,7 +392,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			API.uploadBasicInfo($scope.formData, function(result, user_id){
 				if(result && user_id) {
 					$scope.formData.user_id = user_id;
-					userDataFactory.userData.user = $scope.formData;
+					userDataFactory.userData.user.formData = $scope.formData;
 
 					$scope.disable_submit = false;
 					$state.go('form.basic-app-submitted');
