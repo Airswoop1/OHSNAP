@@ -23,8 +23,8 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 		});
 
 
-		//$scope.user_id = $scope.$parent.formData.user_id;
-		$scope.user_id = "hello";
+		$scope.user_id = $scope.$parent.formData.user_id;
+		//$scope.user_id = "hello";
 
 		$scope.isNotUploaded = function(name) {
 			return $scope.docs[name] === $scope.DOC_STATUS.NOT_UPLOADED;
