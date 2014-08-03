@@ -48,9 +48,11 @@ var UpdateUserInfo = (function(){
 							req.body['last_modified'] = new Date().getTime();
 							req.body['created_on_readable'] = new Date().toLocaleString();
 
+							var update = {"$set":req.body};
+
 							collection.update(
 								query,
-								req.body,
+								update,
 								{"upsert":true, "multi": false},
 								function (err, updated) {
 									if(err){
@@ -67,7 +69,6 @@ var UpdateUserInfo = (function(){
 										var response = new Response();
 										response.status = 201;
 										response.message = "successfully updated user data";
-										response.user_id = user_id;
 										res.send(201, response);
 									}
 								})
