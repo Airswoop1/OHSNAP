@@ -1,6 +1,6 @@
 <h1>Household members SSN's?</h1>
 
-<div ng-repeat="person in user.formData.household_members track by $index" class="household-ssn" ng-show="person.applying">
+<div ng-repeat="person in user.household_members track by $index" class="household-ssn" ng-show="person.applying">
     <label for="ssn_{{ $index }}">What is {{ person.name }}'s SSN?</label>
     <input id="ssn_{{ $index }}" type="password" name="ssn" placeholder="XXX-XX-XXXX" ng-model="person.ssn"/>
 </div>

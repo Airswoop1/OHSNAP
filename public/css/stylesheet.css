@@ -573,9 +573,9 @@ textarea {
 	background-color: #00a4ff;
 	width: 100%;
 	color: #ffffff;
-	padding: 0 25px 50px 25px;
+	padding: 0 25px 20px 25px;
 	position: relative;
-	top: -50px;
+	top: -40px;
 	left: -25px;
 }
 .page-header {
@@ -678,9 +678,11 @@ div.form-group {
 .form-wrapper p {
 	margin: 0 0 25px 0;
 }
-.form-wrapper p span.amount {
-	color: #fcee21;
-	font-weight: 600;
+.form-wrapper span.amount {
+	font-weight: 700;
+    font-size: 74px;
+    text-align: center;
+    display:block;
 }
 .form-wrapper p strong {
 	margin-bottom: 15px;
@@ -700,6 +702,7 @@ div.form-group {
 h1.icon-check {
 	position: relative;
 	padding-left: 90px;
+    padding-bottom:4px;
 }
 h1.icon-check::before {
 	position: absolute;
@@ -727,6 +730,13 @@ h1.icon-check::before {
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.page-second-header p.sub-text {
+    text-align:center;
+    margin-bottom:0px;
+    font-weight:600;
+    margin-bottom:0px;
 }
 
 div.confirm-info div {

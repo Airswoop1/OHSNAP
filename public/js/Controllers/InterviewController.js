@@ -4,23 +4,15 @@
 
 angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiFactory']).controller('interviewCtrl',
 	function($scope, $rootScope, userDataFactory, API){
-		console.log(userDataFactory.userData.user.formData);
+
+
 		$scope.show_interview_progress=true;
 		$scope.int_progress = 0;
 
-		$scope.user = userDataFactory.userData.user.formData;
-
-		//for testing
-//		$scope.user.formData = {};
-//		$scope.user.formData.household = 4;
+		$scope.user = userDataFactory.userData.user.formData ? userDataFactory.userData.user.formData : {};
 		$scope.user.household_members = {};
-		/*$scope.user.formData.household_members = {
-			"0":{"name":"Kevin Miller", "income":0},
-			"1":{"name":"Jamie Miller", "income":0},
-			"2":{"name":"Tiernan Kiefer", "income":0},
-			"3":{"name":"Brianna Miller", "income":0}};*/
-
-
+		$scope.user['citizen'] = 'yes';
+		$scope.user['disabled'] = 'no';
 
 		for(var i=0; i<$scope.user.household;i++ ){
 			$scope.user.household_members[i] = {
@@ -28,10 +20,6 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		        "income":0
 			};
 		}
-
-
-		$scope.user['citizen'] = 'yes';
-		$scope.user['disabled'] = 'no';
 
 		$scope.interviewCompleted = {
 			"eligibility":false,
@@ -56,7 +44,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 					userDataFactory.userData.user.formData = $scope.user;
 				}
 				else {
-					alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
+					alert("Oops! Looks like something went wrong. Your information was NOT submitted. Please refill your information");
 				}
 			});
 		});
@@ -76,6 +64,9 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			return new Array(n);
 		};
 
+		/**
+		 * Back Button
+		 * **/
 		$scope.goBack = function() {
 			window.history.back();
 		};
