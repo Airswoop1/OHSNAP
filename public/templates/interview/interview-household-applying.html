@@ -6,7 +6,7 @@
 -  You live with and are applying for your husband or wife
 </p>
 
-<div ng-repeat="person in user.formData.household_obj track by $index" class="household-applying">
+<div ng-repeat="person in user.formData.household_members track by $index" class="household-applying">
 <div class="checkbox-group">
     <input id="applying_{{ $index }}" type="checkbox" name="applying" value="true" ng-model="person.applying"/>
     <span for="applying_{{ $index }}">{{ person.name }}</span>
