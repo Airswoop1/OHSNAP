@@ -1,6 +1,6 @@
 <!-- form-basic-confirmation.html -->
 <h1>Great! You're almost done!</h1>
-<p> Review your information. After you check the box and hit Submit Application, we’ll send your application.</p>
+<p> Review your information. Review your information to make sure everything is right.</p>
 <div class="confirm-info">
 
     <div>
@@ -58,6 +58,6 @@
     <input type="checkbox" class="agree-checkbox big-checkbox" id="agree_to_legal"  ng-model="basic_confirmation_agree"/>
     <span style="padding-left:10px">I certify that the information I am submitting is true and authorize Easy Food Stamps to sign my application on my behalf.</span>
 </div>
-<div ng-show="!basic_confirmation_agree || snapForm.validation.$error" class="yellow-button disabled" ng-click="checkboxAlert()">Submit Application</div>
-<div ng-show="basic_confirmation_agree && !snapForm.validation.$error && !disable_submit" class="yellow-button" ng-click="submitBasicApp()">Submit Application</div>
+<div ng-show="!basic_confirmation_agree || snapForm.validation.$error" class="yellow-button disabled" ng-click="checkboxAlert()">Confirm answers</div>
+<div ng-show="basic_confirmation_agree && !snapForm.validation.$error && !disable_submit" class="yellow-button" ng-click="submitBasicApp()">Confirm answers</div>
 <div ng-show="basic_confirmation_agree && disable_submit" class="yellow-button spinner-button"><i></i></div>
