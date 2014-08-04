@@ -3,10 +3,10 @@
     <div class="back-button" ng-click="goBack()"></div>
     <div class="header">
         <h3>Step 3 of 3</h3>
-        <h4>Documents</h4>
+        <h4>{{ getCurrentType() }}</h4>
     </div>
-    <h1>We’ll send in your documents.</h1>
-    <p>Take a photo of your required documents and upload them here. We’ll fax them in for you.</p>
+    <h1 ng-show="getCurrentType() == 'Documents'">We’ll send in your documents.</h1>
+    <p ng-show="getCurrentType() == 'Documents'">Take a photo of your required documents and upload them here. We’ll fax them in for you.</p>
 </div>
 
 <form name="snapForm" id="signup-form" ng-submit="processForm()" novalidate>

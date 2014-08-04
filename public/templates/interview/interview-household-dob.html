@@ -2,7 +2,7 @@
 
 <div ng-repeat="person in user.household_members track by $index" class="household-dob" ng-show="person.applying">
     <h6 for="dob_{{ $index }}">What is {{ person.name }}'s DOB?</h6>
-    <input id="dob_{{ $index }}" type="date" name="dob"  ng-model="person.dob"/>
+    <input id="dob_{{ $index }}" type="date" name="dob" value="1988-05-15" ng-model="person.dob"/>
 </div>
 
 <div class="yellow-button" ui-sref="int.household-relation">Continue</div>

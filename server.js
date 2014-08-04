@@ -21,6 +21,8 @@ app.use(express.favicon());
 app.use(express.urlencoded());
 app.use(express.bodyParser());
 app.use(express.cookieParser('asdfa9asdfxxc0'));
+app.use(express.session());
+
 
 
 

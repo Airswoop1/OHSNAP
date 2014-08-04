@@ -3,7 +3,7 @@
 
 <div ng-repeat="person in user.household_members track by $index" class="household-ssn" ng-show="person.applying">
     <h6 for="ssn_{{ $index }}">What is {{ person.name }}'s SSN?</h6>
-    <input id="ssn_{{ $index }}" type="password" name="ssn" placeholder="XXX-XX-XXXX" ng-model="person.ssn"/>
+    <input id="ssn_{{ $index }}" type="text" maxlength="9" name="ssn" placeholder="XXX - XX - XXXX" ng-model="person.ssn"/>
 </div>
 
 <div class="yellow-button" ui-sref="int.household-dob">Continue</div>

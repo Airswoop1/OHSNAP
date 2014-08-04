@@ -36,6 +36,13 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				'RESOURCES':0
 			},
 
+			'interviewProgress': {
+				"eligibility":false,
+				"household":false,
+				"income":false,
+				"expenses":false
+			},
+
 			'user':{}
 
 		};

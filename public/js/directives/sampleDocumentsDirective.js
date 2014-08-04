@@ -15,7 +15,7 @@ angular.module('formApp.sampleDocumentsDirective',[]).directive('sampleDocuments
 		controller: function($scope, $window) {
 
 			$scope.isActive = {
-				showExampleDocs:false
+				showExampleDocs:true
 			};
 
 			$scope.exampleActive = {};
