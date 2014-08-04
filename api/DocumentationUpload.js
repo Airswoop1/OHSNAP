@@ -79,7 +79,16 @@ var DocumentationUpload = (function(){
 
             if(request.platform === 'ios'){
                 processiOSDocumentUpload( my_path, tmpPath, request, function(error, result) {
-                    res.send(200);
+                    if(error){
+	                    console.log("error uploading document");
+	                    console.log(error);
+	                    res.send(400);
+                    }
+	                else {
+	                    console.log(result)
+	                    res.send(200);
+                    }
+
                 });
             }
             else {
@@ -88,10 +97,15 @@ var DocumentationUpload = (function(){
                     base64Data = req.body.file_base64.replace(file_type_regex, "");
 
                 processOtherDocumentUpload( my_path, base64Data, request, function(error, result) {
-                    console.log(error);
-                    console.log(result);
-                    res.send(200);
-                    //delete temp file
+                    if(error){
+	                    console.log("error uploading document");
+	                    console.log(error);
+                    }else{
+	                    console.log(result)
+	                    res.send(200);
+	                    //delete temp file
+                    }
+
 
                 });
             }
@@ -127,7 +141,16 @@ var DocumentationUpload = (function(){
                                     callback(aws_err,null);
                                 }
                                 else {
-                                    callback(null, result);
+	                                removeFile(path, function(file_err) {
+		                                if(file_err){
+			                                callback(file_err, null)
+		                                }
+		                                else {
+			                                callback(null, result);
+		                                }
+
+	                                })
+
                                 }
 
                             });
@@ -160,9 +183,15 @@ var DocumentationUpload = (function(){
                                 callback(aws_err, null);
                             }
                             else {
-                                callback(null, result);
+	                            removeFile(path, function(file_err) {
+		                            if(file_err){
+			                            callback(file_err, null)
+		                            }
+		                            else {
+			                            callback(null, result);
+		                            }
+	                            })
                             }
-
                         });
                     }
                 });
@@ -231,6 +260,17 @@ var DocumentationUpload = (function(){
         })
 
     }
+
+	function removeFile(file_path, callback) {
+		fs.unlink(file_path, function(err){
+			if(err){
+				callback(err);
+			}
+			else {
+				callback(null);
+			}
+		})
+	}
 
     return {
         "execute":execute
