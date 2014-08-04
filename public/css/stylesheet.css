@@ -1047,7 +1047,7 @@ span.text-next-steps {
 
 .doc-list ul li div.image-wrapper.uploaded::before {
     content: "\f058";
-    color: #8cc63f;
+    color: #FFFFFF;
 }
 
 .doc-list ul li div.image-wrapper.not-uploaded::before {

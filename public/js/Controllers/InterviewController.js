@@ -81,7 +81,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			$scope.int_progress = 0;
 			for(var x in $scope.stepsCompleted) {
 				if($scope.stepsCompleted[x] === true){
-					$scope.int_progress += 5.6;
+					$scope.int_progress += 7.4;
 				}
 			}
 		}
