@@ -4,4 +4,4 @@
     <input ng-model="user.utilities.rent" id="total_rent" type="number" class="name-input rent-input" name="total_rent">
 </div>
 
-<div class="yellow-button" ui-sref="int.expenses-utilities">Continue</div>
+<div class="yellow-button" ng-click="$emit('int-main', 'expenses')" ui-sref="int.main">Continue</div>
