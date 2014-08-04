@@ -9,7 +9,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.show_interview_progress=true;
 		$scope.int_progress = 0;
 
-		$scope.user = userDataFactory.userData.user.formData ? userDataFactory.userData.user.formData : {};
+		$scope.user = userDataFactory.userData.user.formData ? userDataFactory.userData.user.formData : {"household":1};
+
 		$scope.user.household_members = {};
 		$scope.user['citizen'] = 'yes';
 		$scope.user['disabled'] = 'no';
@@ -36,12 +37,20 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			{relation:"other family member"}
 		];
 
+		$scope.hasHouseholdMembers = function() {
+			var has_members =false;
+			for(var member in $scope.user.household_members){
+				has_members = has_members || $scope.user.household_members[member].name;
+			}
+			return has_members;
+		};
+
 
 		$scope.$on('int-main', function(meta, type){
 			$scope.interviewCompleted[type] = true;
 			API.uploadPartialInterviewInfo($scope.user, function(result){
 				if(result) {
-					userDataFactory.userData.user.formData = $scope.user;
+
 				}
 				else {
 					alert("Oops! Looks like something went wrong. Your information was NOT submitted. Please refill your information");

@@ -8,6 +8,9 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 		$scope.docs = userDataFactory.userData.docs;
 		$scope.docProgress = userDataFactory.userData.docProgress;
 
+		$scope.user = userDataFactory.userData.user.formData;
+
+
 		$scope.DOC_STATUS = {
 			"UPLOADED": 2,
 			"IN_PROGRESS":1,
@@ -21,10 +24,8 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 				$scope.current_type = toParams.type;
 			}
 		});
+		console.log($scope);
 
-
-		$scope.user_id = $scope.$parent.formData.user_id;
-		//$scope.user_id = "hello";
 
 		$scope.isNotUploaded = function(name) {
 			return $scope.docs[name] === $scope.DOC_STATUS.NOT_UPLOADED;
@@ -134,7 +135,7 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 				]
 
 			},
-			'ADDRESS':{
+			'RESIDENCE':{
 				header:"Take a picture of 1 of these documents to confirm where you live.",
 				sample_image:"sample_address.png",
 				valid_docs : [

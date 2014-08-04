@@ -5,5 +5,6 @@
     <input id="name_{{ $index }}" placeholder="First and Last Name" type="text" name="names" ng-model="user.household_members[$index].name"/>
 </div>
 
-<div class="yellow-button" ui-sref="int.household-applying">Continue</div>
+<div ng-show="!hasHouseholdMembers()" class="yellow-button disabled">Please enter at least one name</div>
+<div ng-show="hasHouseholdMembers()" class="yellow-button" ui-sref="int.household-applying">Continue</div>
 

@@ -5,7 +5,7 @@
             <h5 ng-click="clickEx(ex.name)">{{ex.name}}</h5>
                 <div ng-class="{'open':exampleActive[ex.name], 'close':!exampleActive[ex.name]}">
                 <div class="picture-wrapper">
-                    <img ng-src="images/{{ ex.image }}">
+                    <img ng-src="images/sample/{{ ex.image }}">
                 </div>
                 <p>Need help getting one? Click <a ng-href="{{ ex.link }}" target="_blank">here</a>.</p>
             </div>
