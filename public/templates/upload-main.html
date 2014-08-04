@@ -1,24 +1,14 @@
 
 <div class="page-header step-three" >
+    <div class="back-button" ng-click="goBack()"></div>
     <div class="header">
-        <div ng-click="goBack()"></div>
         <h3>Step 3 of 3</h3>
         <h4>Documents</h4>
     </div>
-    <!--<div class="progress" >
-        <div class="progress-bar"  ng-style="{ width: doc_progress +'%'}" style="width:30%">
-        </div>
-        <div class="progress-bar progress-bar-info" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: progress +'%'}">
-            <span class="sr-only">{{ progress | number:0 }}% Complete</span>
-        </div>
-    </div>-->
     <h1>We’ll send in your documents.</h1>
     <p>Take a photo of your required documents and upload them here. We’ll fax them in for you.</p>
 </div>
 
-<!-- use ng-submit to catch the form submission and use our Angular function -->
 <form name="snapForm" id="signup-form" ng-submit="processForm()" novalidate>
-    <!-- our nested state views will be injected here -->
     <div class="form-wrapper" ui-view></div>
-
 </form>

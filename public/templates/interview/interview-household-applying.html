@@ -3,11 +3,10 @@
     if you live with and are applying for your child, or if you live with and are applying with
     your husband or wife.</p>
 
-<div ng-repeat="person in user.formData.household_obj track by $index" class="household-applying">
-<div class="checkbox-group">
+<div ng-repeat="person in user.household_members track by $index" class="household-applying" ng-show="person.name">
+    <h6 for="applying_{{ $index }}">{{ person.name }}</h6>
     <input id="applying_{{ $index }}" type="checkbox" name="applying" value="true" ng-model="person.applying"/>
     <span for="applying_{{ $index }}">{{ person.name }}</span>
-</div>
 </div>
 
 <div class="yellow-button" ui-sref="int.household-ssn">Continue</div>

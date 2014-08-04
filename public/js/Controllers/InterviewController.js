@@ -2,42 +2,67 @@
  * Created by airswoop1 on 7/31/14.
  */
 
-angular.module('formApp.interviewCtrl',['formApp.userDataFactory']).controller('interviewCtrl',
-	function($scope, userDataFactory){
+angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiFactory']).controller('interviewCtrl',
+	function($scope, $rootScope, userDataFactory, API){
+
 
 		$scope.show_interview_progress=true;
+		$scope.int_progress = 0;
 
-		$scope.user = userDataFactory.userData;
+		$scope.user = userDataFactory.userData.user.formData ? userDataFactory.userData.user.formData : {"household":1};
 
-		//for testing
-		$scope.user.formData = {};
-		$scope.user.formData.household = 4;
-		$scope.user.formData.household_obj = {};
-		$scope.user.formData.household_obj = {"0":{"name":"Kevin Miller"},"1":{"name":"Jamie Miller"},"2":{"name":"Tiernan Kiefer"},"3":{"name":"Brianna Miller"}};
-		/*for(var i=0; i<$scope.user.formData.household;i++ ){
-			$scope.user.formData.household_obj[i] = {
-				"applying":false
+		$scope.user.household_members = {};
+		$scope.user['citizen'] = 'yes';
+		$scope.user['disabled'] = 'no';
+
+		for(var i=0; i<$scope.user.household;i++ ){
+			$scope.user.household_members[i] = {
+				"applying":false,
+		        "income":0
 			};
-		}*/
+		}
 
-		//$scope.user.formData.household_obj = {"0":{"name":"Kevin Miller"},"1":{"name":"Jamie Miller"},"2":{"name":"Tiernan Kiefer"},"3":{"name":"Brianna Miller"}};
-
-
-		$scope.user.formData['citizen'] = 'yes';
-		$scope.user.formData['disabled'] = 'no';
-
-
-
+		$scope.interviewCompleted = {
+			"eligibility":false,
+			"household":false,
+			"income":false,
+			"expenses":false
+		};
 
 		$scope.relationshipOptions = [
-			{name:"partner"},
-			{name: "child"},
-			{name:"parent"},
-			{name:"roommate"},
-			{name:"other family member"}
-		]
+			{relation:"partner"},
+			{relation: "child"},
+			{relation:"parent"},
+			{relation:"roommate"},
+			{relation:"other family member"}
+		];
+
+		$scope.hasHouseholdMembers = function() {
+			var has_members =false;
+			for(var member in $scope.user.household_members){
+				has_members = has_members || $scope.user.household_members[member].name;
+			}
+			return has_members;
+		};
 
 
+		$scope.$on('int-main', function(meta, type){
+			$scope.interviewCompleted[type] = true;
+			API.uploadPartialInterviewInfo($scope.user, function(result){
+				if(result) {
+
+				}
+				else {
+					alert("Oops! Looks like something went wrong. Your information was NOT submitted. Please refill your information");
+				}
+			});
+		});
+
+		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {
+			if(fromState.name !== 'int.main' && $scope.int_progress < 100){
+				$scope.int_progress += 5.6;
+			}
+		});
 
 		/**
 		 * Takes the number in formData.household and allows ng-repeat to create n items
@@ -48,7 +73,12 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory']).controller('
 			return new Array(n);
 		};
 
-
+		/**
+		 * Back Button
+		 * **/
+		$scope.goBack = function() {
+			window.history.back();
+		};
 
 
 

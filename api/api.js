@@ -3,6 +3,7 @@
  */
 var Index = require('./Index.js'),
     UploadUserInfo = require('./UploadUserInfo.js'),
+	UpdateUserInfo = require('./UpdateUserInfo.js'),
     DocumentationUpload = require('./DocumentationUpload.js'),
     SubmitFeedback = require('./SubmitFeedback.js'),
     DocumentStatus = require('./DocumentStatus.js');
@@ -14,6 +15,7 @@ var api = (function(){
         app.get('/', Index.execute);
         app.post('/upload_user_info', UploadUserInfo.execute);
         app.get('/upload_user_info', UploadUserInfo.execute);
+	    app.post('/update_user_info', UpdateUserInfo.execute);
         app.post('/upload_docs', DocumentationUpload.execute);
         app.post('/submit_feedback', SubmitFeedback.execute);
         app.post('/get_doc_status', DocumentStatus.execute);

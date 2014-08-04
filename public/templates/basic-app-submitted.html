@@ -1,14 +1,12 @@
 <div class="page-second-header">
-    <h1 class="icon-check">Your application is in!</h1>
-    <p>We estimate you are eligible for <span class="amount">${{formData.benefit_amount || 0}}</span>
-        of SNAP benefits per month based on the information you provided.</p>
-    <p>You’re ready for the next step, an interview with a SNAP worker.</p>
+    <h1 class="icon-check">You Completed Step 1!</h1>
+    <span class="amount">${{formData.benefit_amount || 0}}</span>
+    <p class="sub-text">YOUR MONTHLY <br/> BENEFITS ESTIMATE</p>
 </div>
 
-<app-submitted-dropdown></app-submitted-dropdown>
+<p>You're ready for the next step, an interview with a SNAP worker.</p>
 
-<p><strong>Thanks for applying with us!</strong></p>
+<div class="yellow-button" ui-sref="int.main">Prepare for my interview</div>
 
-<feedback-footer></feedback-footer>
 
 

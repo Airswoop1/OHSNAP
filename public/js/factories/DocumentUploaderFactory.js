@@ -58,8 +58,8 @@ angular.module('formApp.DocumentUploader',[]).factory('documentUpload', function
             var deferred = $q.defer(),
                 file = $files[0],
                 data = {
-                    'user_id':"d5ec41d5-9632-4a76-bd91-e9a9218a3222",
-                    //'user_id':user_id,
+                    //'user_id':"d5ec41d5-9632-4a76-bd91-e9a9218a3222",
+                    'user_id':user_id,
                     'document_type':type,
                     'file_name': file.name,
                     'file_type':file.type

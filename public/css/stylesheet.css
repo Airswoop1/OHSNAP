@@ -382,19 +382,23 @@ input.dob-input {
 
 .marital-input,
 .disabled-input,
-.citizen-input {
+.citizen-input,
+.utilities-input{
     display:none;
 }
 
 .marital-input + label,
 .disabled-input + label,
-.citizen-input + label {
+.citizen-input + label,
+.utilities-input + label{
     width:100%;
     height: 60px;
     line-height: 60px;
     vertical-align: middle;
     font-weight: 300;
     font-size: 18px;
+
+    text-indent: 40px;
     display: block;
     background-color:#e3e3e3;
     position: relative;
@@ -438,8 +442,13 @@ input.dob-input {
 }
 .marital-input label,
 .disabled-input label,
-.citizen-input label{
+.citizen-input label,
+.utilities-input label{
     width:100%;
+}
+
+.household-income {
+    margin-bottom:10px;
 }
 
 
@@ -594,9 +603,9 @@ textarea {
 	background-color: #00a4ff;
 	width: 100%;
 	color: #ffffff;
-	padding: 0 25px 50px 25px;
+	padding: 0 25px 20px 25px;
 	position: relative;
-	top: -50px;
+	top: -40px;
 	left: -25px;
 }
 .page-header {
@@ -699,9 +708,11 @@ div.form-group {
 .form-wrapper p {
 	margin: 0 0 25px 0;
 }
-.form-wrapper p span.amount {
-	color: #fcee21;
-	font-weight: 600;
+.form-wrapper span.amount {
+	font-weight: 700;
+    font-size: 74px;
+    text-align: center;
+    display:block;
 }
 .form-wrapper p strong {
 	margin-bottom: 15px;
@@ -721,6 +732,7 @@ div.form-group {
 h1.icon-check {
 	position: relative;
 	padding-left: 90px;
+    padding-bottom:4px;
 }
 h1.icon-check::before {
 	position: absolute;
@@ -748,6 +760,13 @@ h1.icon-check::before {
 	/* Better Font Rendering =========== */
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+}
+
+.page-second-header p.sub-text {
+    text-align:center;
+    margin-bottom:0px;
+    font-weight:600;
+    margin-bottom:0px;
 }
 
 div.confirm-info div {
@@ -993,6 +1012,7 @@ span.text-next-steps {
 	content: "\f058";
     font-family: 'icomoon';
     position: absolute;
+    left: 0;
     font-size: 40px;
     line-height: 120px;
     text-align: center;

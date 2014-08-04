@@ -7,7 +7,7 @@ var mongolab_pw = process.env.MONGOLAB_PW,
     phaxio_prod_key = process.env.PHAXIO_TEST_KEY,
     phaxio_prod_secret = process.env.PHAXIO_TEST_SECRET,
     AWS_ACCESS_KEY = process.env.AWS_SL_ACCESS_KEY_ID,
-    AWS_SECRET_KEY = process.env.AWS_SL_ACCESS_KEY_ID;
+    AWS_SECRET_KEY = process.env.AWS_SL_SECRET_ACCESS_KEY;
 
 
 module.exports = {

@@ -50,14 +50,13 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 var device_type = detectDevice();
+if(window.location.host.split('.')[0] == 'easyfoodstamps'){
+	ga('create', 'UA-52493533-1', 'auto');
+	ga('require', 'displayfeatures');
+	ga('set', 'dimension1', device_type);
+}
 
-ga('create', 'UA-52493533-1', 'auto');
-ga('require', 'displayfeatures');
 
-/*ga('create', 'UA-52493533-1', {
-    'cookieDomain': 'none'
-});*/
-ga('set', 'dimension1', device_type);
-ga('send', 'pageview', {page:'/form/intro'});
+
 
 
