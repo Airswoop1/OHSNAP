@@ -411,8 +411,9 @@ input.dob-input {
 
 .marital-input + label::before,
 .disabled-input + label::before,
-.citizen-input + label::before {	
-	position: absolute;
+.citizen-input + label::before
+.utilities-input + label::before{
+  	position: absolute;
 	left: 20px;
 	content: "\e62d";
 	font-family: 'icomoon';
@@ -431,14 +432,17 @@ input.dob-input {
 
 .marital-input:checked + label,
 .disabled-input:checked + label,
-.citizen-input:checked + label {
+.citizen-input:checked + label
+.utilities-input:checked + label{
     background-color: #8cc63f;
     color: #ffffff;
 }
 
 .marital-input:checked + label::before,
 .disabled-input:checked + label::before,
-.citizen-input:checked + label::before {
+.citizen-input:checked + label::before
+.utilities-input:checked + label::before
+{
 	content: "\e62c";
     color: #ffffff;
 }
@@ -1004,7 +1008,7 @@ span.text-next-steps {
 }
 
 .doc-list ul li div.image-wrapper {
-    background-color: #e3e3e3;
+    background-color: #fcee21;
     background-size: cover;
     background-position: center center;
     justify-content: center;
@@ -1017,8 +1021,9 @@ span.text-next-steps {
     position: absolute;
     left: 0;
     font-size: 40px;
-    line-height: 120px;
-    text-align: center;
+    line-height: 54px;
+    text-indent:10px;
+    /*text-align: center;*/
     width: 100%;
 
     speak: none;
@@ -1032,8 +1037,12 @@ span.text-next-steps {
     -moz-osx-font-smoothing: grayscale;
 }
 
+.doc-list ul li:nth-child(even) div.image-wrapper::before{
+    left:10px;
+}
+
 .doc-list ul li div.image-wrapper.uploaded{
-    background-color:#070707;
+    background-color:#8cc63f;
 }
 
 .doc-list ul li div.image-wrapper.uploaded::before {
@@ -1051,8 +1060,8 @@ span.text-next-steps {
     max-height: 100%;
     height: auto;
     align-self: center;
-    opacity: 0.2;
-    filter: alpha(opacity=40);
+    /*opacity: 0.2;
+    filter: alpha(opacity=40);*/
 }
 
 

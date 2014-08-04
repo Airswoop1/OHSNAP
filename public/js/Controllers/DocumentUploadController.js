@@ -56,7 +56,7 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 		};
 
 		$scope.getCurrentType = function() {
-			return $state.params.type;
+			return $state.params.type ? $state.params.type : "Documents";
 		};
 
 

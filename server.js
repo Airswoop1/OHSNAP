@@ -21,6 +21,8 @@ app.use(express.favicon());
 app.use(express.urlencoded());
 app.use(express.bodyParser());
 app.use(express.cookieParser('asdfa9asdfxxc0'));
+app.use(express.session());
+
 
 
 
@@ -29,7 +31,7 @@ app.configure('sandbox', function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
-app.configure('dev', function(){
+app.configure('prod', function(){
     app.use(express.errorHandler());
 
     app.use(function(req, res, next){

@@ -1,9 +1,14 @@
 <h1>Are you a US citizen?</h1>
+<<<<<<< HEAD
 <p>Legal immigrants are eligible to receive SNAP. Either way, your SNAP application does not have any impact on your immigration status.</p>
 <input ng-model="user.citizen" id="citizen_yes" type="radio" class="name-input citizen-input" value="yes" name="citizen"><label
+=======
+
+<input ng-model="user.citizen" id="citizen_yes" type="radio" class="name-input disabled-input" value="yes" name="citizen"><label
+>>>>>>> 7589afdd21cf925f36c12fc129592917292f66f4
         for="citizen_yes">YES</label>
 <br/>
-<input ng-model="user.citizen" id="citizen_no" type="radio" class="name-input citizen-input" value="no" name="citizen"><label
+<input ng-model="user.citizen" id="citizen_no" type="radio" class="name-input disabled-input" value="no" name="citizen"><label
         for="citizen_no">NO</label>
 <div class="yellow-button" ng-click="$emit('int-main', 'eligibility')" ui-sref="int.main">Continue</div>
 
