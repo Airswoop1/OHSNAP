@@ -20,7 +20,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				'CITIZENSHIP':this.DOC_STATUS.NOT_UPLOADED,
 				'ALIEN_STATUS':this.DOC_STATUS.NOT_UPLOADED,
 				'EARNED_INCOME':this.DOC_STATUS.NOT_UPLOADED,
-				'UNEARNED_INCOME':this.DOC_STATUS.NOT_UPLOADED,
+				'ALT_INCOME':this.DOC_STATUS.NOT_UPLOADED,
 				'RESOURCES':this.DOC_STATUS.NOT_UPLOADED
 			},
 			docProgress : {
@@ -32,7 +32,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				'CITIZENSHIP':0,
 				'ALIEN_STATUS':0,
 				'EARNED_INCOME':0,
-				'UNEARNED_INCOME':0,
+				'ALT_INCOME':0,
 				'RESOURCES':0
 			},
 
