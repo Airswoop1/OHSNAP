@@ -68,7 +68,7 @@ angular.module('formApp.DocumentUploader',[]).factory('documentUpload', function
 
 
             if(/(iPad|iPhone|iPod)/g.test( navigator.userAgent )){
-                alert("iOS device");
+
                 data['platform'] = 'ios';
 
                 $scope.upload = $upload.upload(
