@@ -31,7 +31,7 @@ app.configure('sandbox', function(){
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
-app.configure('dev', function(){
+app.configure('prod', function(){
     app.use(express.errorHandler());
 
     app.use(function(req, res, next){
