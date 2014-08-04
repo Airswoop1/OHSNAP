@@ -1,7 +1,7 @@
 <h1>Household members relationship to YOU?</h1>
 
 <div ng-repeat="person in user.formData.household_obj track by $index" class="household-relation">
-    <label for="relation_{{ $index }}">What is {{ person.name }}'s relationship to you?</label>
+    <h6 for="relation_{{ $index }}">What is {{ person.name }}'s relationship to you?</h6>
     <select name="relationship" id="relation_{{ $index }}" ng-model="person.relation" ng-options="opt as opt.name for opt in relationshipOptions"></select>
 </div>
 
