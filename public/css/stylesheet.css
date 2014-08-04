@@ -378,6 +378,9 @@ select {
 }
 input.dob-input {
     width:100%;
+    font-family: 'Roboto', sans-serif;
+    text-transform: uppercase !important;
+	display: block;
 }
 
 .marital-input,
@@ -409,7 +412,7 @@ input.dob-input {
 .marital-input + label::before,
 .disabled-input + label::before,
 .citizen-input + label::before
-.utilities-input + label{
+.utilities-input + label::before{
   	position: absolute;
 	left: 20px;
 	content: "\e62d";
@@ -638,6 +641,7 @@ textarea {
 	left: 0;
 	top: 0;
 	z-index: 1;
+	cursor: pointer;
 }
 .page-header .header::before {
 	position: absolute;
@@ -681,6 +685,7 @@ textarea {
 }
 .form-wrapper input[type=text],
 .form-wrapper input[type=number],
+.form-wrapper input[type=password],
 .form-wrapper select {
 	width: 100%;
 	font-size: 18px;
@@ -783,8 +788,6 @@ div.confirm-info span.help-block {
 input.agree-checkbox {
 
     padding: 10px;
-    margin-left: 10%;
-    margin-top: 10%;
     height:30px;
     width:30px;
 
@@ -1009,6 +1012,7 @@ span.text-next-steps {
     background-size: cover;
     background-position: center center;
     justify-content: center;
+    position: relative;
 }
 
 .doc-list ul li div.image-wrapper::before {
@@ -1212,15 +1216,27 @@ input[type=file]{
 .question-sections .question-section::after {
 	width: 40px;
 	display: block;
-	content: "?";
+	content: "\e613";
 	position: absolute;
 	right: 0;
 	top: 0;
 	height: 100%;
 	background-color: #f2f2f2;
 	text-align: center;
-	font-size: 30px;
+	font-size: 24px;
 	line-height: 80px;
+
+	font-family: 'icomoon';
+
+	speak: none;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+
+	/* Better Font Rendering =========== */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 .question-sections .question-section.finished::after {
 	background-color: #8cc63f !important;
@@ -1237,4 +1253,7 @@ input[type=file]{
 	text-indent: 10px;
 	font-weight: 300;
 	font-size: 15px;
+}
+.question-section h2 {
+	text-transform: none !important;
 }

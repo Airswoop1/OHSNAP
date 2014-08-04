@@ -1,7 +1,6 @@
-<h1>Household members SSN's?</h1>
+<h1>What are the Social Security numbers of the people you’re applying for?</h1>
 
-
-<div ng-repeat="person in user.household_members track by $index" class="household-ssn" ng-show="person.applying">
+<div ng-repeat="person in user.formData.household_obj track by $index" class="household-ssn">
     <h6 for="ssn_{{ $index }}">What is {{ person.name }}'s SSN?</h6>
     <input id="ssn_{{ $index }}" type="text" maxlength="9" name="ssn" placeholder="XXX - XX - XXXX" ng-model="person.ssn"/>
 </div>
