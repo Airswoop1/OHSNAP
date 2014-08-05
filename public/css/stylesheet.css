@@ -741,6 +741,7 @@ h1.icon-check {
 	position: relative;
 	padding-left: 90px;
     padding-bottom:4px;
+    padding-top: 10px;
 }
 h1.icon-check::before {
 	position: absolute;
