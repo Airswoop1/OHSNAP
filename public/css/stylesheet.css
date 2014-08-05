@@ -1170,8 +1170,8 @@ input[type=file]{
 	cursor: pointer;
 }
 
-.question-sections .question-section:nth-child(even){
-	background-color: #f2f2f2
+.question-sections .question-section.even{
+	background-color: #f2f2f2;
 }
 .question-sections .question-section.finished {
 	color: #ffffff;
@@ -1241,7 +1241,7 @@ input[type=file]{
 .question-sections .question-section.finished::after {
 	background-color: #8cc63f !important;
 }
-.question-sections .question-section:nth-child(even)::after {
+.question-sections .question-section.even::after {
 	background-color: #e3e3e3;
 }
 .question-sections .question-section h2 {
