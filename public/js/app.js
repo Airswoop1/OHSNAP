@@ -18,64 +18,69 @@ var app = angular.module('formApp',['ui.router', 'formApp.formController',
 			// route to show our basic form (/form)
 			.state('form', {
 				url: '/form',
-				templateUrl: 'templates/form.html',
+				templateUrl: 'templates/basic/form.html',
 				controller: 'formController'
 			})
 
 			.state('form.intro', {
 				url: '/intro',
-				templateUrl: 'templates/form-intro.html'
+				templateUrl: 'templates/basic/form-intro.html'
 			})
 
 			.state('form.recert', {
 				url: '/recert',
-				templateUrl: 'templates/form-recert.html'
+				templateUrl: 'templates/basic/form-recert.html'
 			})
 
 			.state('form.name', {
 				url: '/name',
-				templateUrl:'templates/form-name.html'
+				templateUrl:'templates/basic/form-name.html'
 			})
 
 			.state('form.address', {
 				url: '/address',
-				templateUrl: 'templates/form-address.html'
+				templateUrl: 'templates/basic/form-address.html'
 			})
 
 			.state('form.telephone', {
 				url: '/telephone',
-				templateUrl: 'templates/form-telephone.html'
+				templateUrl: 'templates/basic/form-telephone.html'
 			})
 
 			.state('form.income', {
 				url: '/income',
-				templateUrl:'templates/form-income.html'
+				templateUrl:'templates/basic/form-income.html'
 			})
 
 			.state('form.household', {
 				url:'/household',
-				templateUrl:'templates/form-household.html'
+				templateUrl:'templates/basic/form-household.html'
 			})
+
+			.state('form.eligibility-expenses', {
+				url:'/eligibility-expenses',
+				templateUrl:'templates/basic/form-eligible-expenses.html'
+			})
+
+			.state('form.eligibility', {
+				url:'/elibility',
+				templateUrl:'templates/basic/form-eligibility.html'
+			})
+
 
 			.state('form.basic-confirmation', {
 				url: '/basic-confirmation',
-				templateUrl: 'templates/form-basic-confirmation.html'
+				templateUrl: 'templates/basic/form-basic-confirmation.html'
 			})
 
 			.state('form.basic-app-submitted', {
 				url: '/app-submitted',
-				templateUrl: 'templates/basic-app-submitted.html'
+				templateUrl: 'templates/basic/basic-app-submitted.html'
 			})
 
 			.state('form.feedback-submitted', {
 				url: '/feedback-submitted',
-				templateUrl:'templates/form-feedback-submitted.html'
-			})
-
-
-			.state('form.interview-information', {
-				url:'/interview-information',
-				templateUrl:'templates/form-interview-information.html'
+				templateUrl:'templates/basic/form-feedback-submitted.html'
 			})
 
 
@@ -188,20 +193,20 @@ var app = angular.module('formApp',['ui.router', 'formApp.formController',
 
 			.state('upload', {
 				url:'/upload',
-				templateUrl:'templates/upload-main.html',
+				templateUrl:'templates/documents/upload-main.html',
 				controller: 'documentUploadCtrl'
 
 			})
 
 			.state('upload.documents',{
 				url:'/documents',
-				templateUrl:'templates/form-document-upload.html'
+				templateUrl:'templates/documents/form-document-upload.html'
 			})
 
 
 			.state('upload.detail',{
 				url:'/detail?type',
-				templateUrl:'templates/form-document-detail.html'
+				templateUrl:'templates/documents/form-document-detail.html'
 			})
 
 

@@ -7,7 +7,7 @@ angular.module('formApp.sampleDocumentsDirective',[]).directive('sampleDocuments
 
 	return {
 		restrict:'E',
-		templateUrl:'templates/sample-documents.html',
+		templateUrl:'templates/documents/sample-documents.html',
 		scope:{
 			docContent:'=docContent',
 			type:'=current_type'

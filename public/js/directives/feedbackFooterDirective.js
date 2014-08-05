@@ -4,7 +4,7 @@
 angular.module('formApp.feedbackFooterDirective',[]).directive('feedbackFooter', function(){
     return {
         restrict:'E',
-        templateUrl:'templates/feedback-footer.html',
+        templateUrl:'templates/basic/feedback-footer.html',
         controller: function($scope, $window) {
 
             $scope.isActive = {
