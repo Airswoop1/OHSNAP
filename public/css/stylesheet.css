@@ -184,7 +184,7 @@ a:hover {
 	text-decoration: underline;
 }
 .clear {
-	clear: both;
+	clear: both !important;
 }
 h1 {
 	font-size: 30px;
@@ -1256,4 +1256,29 @@ input[type=file]{
 }
 .question-section h2 {
 	text-transform: none !important;
+}
+.estimate {
+	width: 100%;
+}
+.estimate .time-estimate,
+.estimate .benefit-estimate {
+	float: left;
+	width: 50%;
+}
+.estimate>div h1 {
+	font-size: 50px;
+	font-weight: 900;
+}
+.estimate>div h1.finish {
+	color: #fcee21;
+}
+.estimate>div h1 span {
+	font-size: 18px;
+	font-weight: 700;
+	margin-left: 5px;
+	line-height: 0;
+}
+.estimate>div h2 {
+	font-size: 18px;
+	font-weight: 600;
 }
