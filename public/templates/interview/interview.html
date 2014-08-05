@@ -9,12 +9,17 @@
         <div class="progress-bar"  ng-style="{ width: int_progress +'%'}">
         </div>
     </div>
-    <h1>Ace your interview!</h1>
-    <p>Answering your interview questions in advance will make your phone interview shorter.</p>
-    <h1>Great! You're done!</h1>
+    <h1 ng-hide="interviewCompleted.income && interviewCompleted.household &&
+                                    interviewCompleted.income && interviewCompleted.expenses">Ace your interview!</h1>
+    <p ng-hide="interviewCompleted.income && interviewCompleted.household &&
+                                    interviewCompleted.income && interviewCompleted.expenses">Answering your interview questions in advance will make your phone interview shorter.</p>
+    <h1 ng-show="interviewCompleted.income && interviewCompleted.household &&
+                                    interviewCompleted.income && interviewCompleted.expenses">Great! You're done!</h1>
     <div class="estimate">
         <div class="time-estimate">
-            <h1 class="finish">45<span>min</span></h1>
+            <h1 ng-class="{'finish':interviewCompleted.income && interviewCompleted.household &&interviewCompleted.income && interviewCompleted.expenses}">
+                45<span>min</span>
+            </h1>
             <h2>Estimated interview</h2>
         </div>
         <div class="benefit-estimate">  
