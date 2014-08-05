@@ -1037,10 +1037,6 @@ span.text-next-steps {
     -moz-osx-font-smoothing: grayscale;
 }
 
-.doc-list ul li:nth-child(even) div.image-wrapper::before{
-    left:10px;
-}
-
 .doc-list ul li div.image-wrapper.uploaded{
     background-color:#8cc63f;
 }
