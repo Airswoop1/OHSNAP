@@ -4,10 +4,10 @@
 	  position: absolute;
 	  left: 0;
 	  right: 0;
-	-webkit-transition:all .6s ease;
-	-moz-transition:all .6s ease;
-	-o-transition:all .6s ease;
-	transition:all .6s ease;
+	-webkit-transition:all .6s ease-in;
+	-moz-transition:all .6s ease-in;
+	-o-transition:all .6s ease-in;
+	transition:all .6s ease-in;
 }
 
 .container>[ui-view].ng-enter {
@@ -46,13 +46,12 @@
 
 [ui-view].form-wrapper.ng-enter, 
 [ui-view].form-wrapper.ng-leave {
-	  position: absolute;
-	  left: 0;
-	  right: 0;
-	-webkit-transition:all .6s ease;
-	-moz-transition:all .6s ease;
-	-o-transition:all .6s ease;
-	transition:all .6s ease;
+	position: absolute;
+	left: 0;
+	right: 0;
+	-webkit-transition: all 0.3s ease-in;
+	-o-transition: all 0.3s ease-in;
+	transition: all 0.3s ease-in;
 }
 
 [ui-view].form-wrapper.ng-enter {

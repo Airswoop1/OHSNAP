@@ -56,7 +56,13 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 		};
 
 		$scope.getCurrentType = function() {
-			return $state.params.type ? $state.params.type : "Documents";
+			if($state.params.type == "ALT_INCOME") {
+				return "OTHER INCOME";
+			} else if($state.params.type == "EARNED_INCOME") {
+				return "INCOME";
+			} else {
+				return $state.params.type ? $state.params.type : "Documents";
+			}
 		};
 
 
