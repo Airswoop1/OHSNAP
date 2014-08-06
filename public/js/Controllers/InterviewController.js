@@ -10,6 +10,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.int_progress = 0;
 
 		$scope.interview_progress_status = 0;
+		$scope.interview_steps = -1;
 
 		$scope.user = userDataFactory.userData.user.formData ? userDataFactory.userData.user.formData : {"household":1};
 
@@ -103,27 +104,70 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 					$scope.int_progress += 7.4;
 				}
 			}
-
-			if($scope.int_progress >= 100){
-				$scope.interview_progress_status = 2;
-			} else if ($scope.int_progress < 100 || $scope.int_progress > 0){
-				$scope.interview_progress_status = 1;
-			} 
 		};
 
+		function updateProgressStatus(){
+			// console.log($scope.interviewCompleted);
+			if( $scope.interviewCompleted.eligibility && 
+				$scope.interviewCompleted.household &&
+				$scope.interviewCompleted.income && 
+				$scope.interviewCompleted.expenses){
+				$scope.interview_progress_status = 2;
+			} else if ( !$scope.interviewCompleted.eligibility && 
+						!$scope.interviewCompleted.household && 
+						!$scope.interviewCompleted.income && 
+						!$scope.interviewCompleted.expenses){
+				$scope.interview_progress_status = 0;
+			} else {
+				$scope.interview_progress_status = 1;
+			}
+			// console.log("interview_progress_status: "+$scope.interview_progress_status);
+		}
 
 
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {
 			if(fromState.name !== 'int.main' && $scope.int_progress < 100){
 				updateProgress(fromState.name);
 			}
-
 			if(fromState.name == 'int.main') {
 				$scope.show_interview_progress = true;
 			}
 			if(toState.name == 'int.main'){
 				$scope.show_interview_progress = false;
 			}
+
+			switch(toState.name) {
+			    case "int.ssn":
+			    case "int.dob":
+			    case "int.marital_status":
+			    case "int.disabled":
+			    case "int.citizen":
+			        $scope.interview_steps = 0;
+			        break;
+			    case "int.household":
+			    case "int.household-applying":
+			    case "int.household-ssn":
+			    case "int.household-dob":
+			    case "int.household-relation":
+			        $scope.interview_steps = 1;
+			        break;
+			    case "int.income-frequency":
+			    case "int.income-hours":
+			    case "int.income-household-amount":
+			    case "int.income-household-frequency":
+			        $scope.interview_steps = 2;
+			        break;
+			    case "int.resources":
+			    case "int.expenses-mortgage":
+			        $scope.interview_steps = 3;
+			        break;
+			    case "int.main":
+			        $scope.interview_steps = -1;
+			        break;
+			    default:
+			        $scope.interview_steps = -1;
+			}
+			updateProgressStatus();
 		});
 
 		/**
