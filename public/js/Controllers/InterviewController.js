@@ -14,8 +14,9 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;
 
 		$scope.user.household_members = {};
-
 		$scope.user['disabled'] = 'no';
+
+		$scope.minutes_saved = 0;
 
 		for(var i=0; i<$scope.user.household;i++ ){
 			$scope.user.household_members[i] = {
@@ -23,8 +24,6 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		        "income":0
 			};
 		}
-
-
 
 		$scope.stepsCompleted = {
 			"int.ssn":false,
@@ -45,14 +44,24 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			"int.expenses-mortgage":false
 		};
 
+		var interviewMinutesCategory = {
+			"eligibility":5,
+			"household":10,
+			"income":5,
+			"expenses":5
+		};
 
 		$scope.relationshipOptions = [
-			{relation:"Oartner"},
+			{relation:"Partner"},
 			{relation: "Child"},
 			{relation:"Parent"},
 			{relation:"Roommate"},
 			{relation:"Other family member"}
 		];
+
+		$scope.updateMinutes = function(num) {
+			$scope.minutes_saved += num;
+		};
 
 		$scope.hasHouseholdMembers = function() {
 			var has_members =false;
@@ -64,8 +73,16 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 
 		$scope.$on('int-main', function(meta, type){
+
+			if(!$scope.interviewCompleted[type]){
+				$scope.updateMinutes(interviewMinutesCategory[type]);
+			}
+
 			$scope.interviewCompleted[type] = true;
 			$scope.show_interview_progress = false;
+
+
+
 			API.uploadPartialInterviewInfo($scope.user, function(result){
 				if(result) {
 
@@ -84,7 +101,9 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 					$scope.int_progress += 7.4;
 				}
 			}
-		}
+		};
+
+
 
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {
 			if(fromState.name !== 'int.main' && $scope.int_progress < 100){
