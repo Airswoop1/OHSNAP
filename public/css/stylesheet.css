@@ -1,16 +1,16 @@
 
-[ui-view].main-ui-view.ng-enter, 
-[ui-view].main-ui-view.ng-leave {
-  position: absolute;
-  left: 0;
-  right: 0;
-  -webkit-transition:all .5s ease-in-out;
-	-moz-transition:all .5s ease-in-out;
-	-o-transition:all .5s ease-in-out;
-	transition:all .5s ease-in-out;
+.container>[ui-view].ng-enter, 
+.container>[ui-view].ng-leave {
+	  position: absolute;
+	  left: 0;
+	  right: 0;
+	-webkit-transition:all .6s ease;
+	-moz-transition:all .6s ease;
+	-o-transition:all .6s ease;
+	transition:all .6s ease;
 }
 
-[ui-view].main-ui-view.ng-enter {
+.container>[ui-view].ng-enter {
   opacity: 0;
   -webkit-transform:scale3d(0.5, 0.5, 0.5);
   -moz-transform:scale3d(0.5, 0.5, 0.5);
@@ -20,7 +20,7 @@
   transform:translate3d(100%, 0, 0);
 }
 
-[ui-view].main-ui-view.ng-enter-active {
+.container>[ui-view].ng-enter-active {
   opacity: 1;
    -webkit-transform:scale3d(1, 1, 1);
   -moz-transform:scale3d(1, 1, 1);
@@ -30,22 +30,46 @@
   transform:translate3d(0, 0, 0);
 }
 
-[ui-view].main-ui-view.ng-leave {
+.container>[ui-view].ng-leave {
   opacity: 1;
-  /*padding-left: 0px;*/  
   -webkit-transform:translate3d(0, 0, 0);
   -moz-transform:translate3d(0, 0, 0);
   transform:translate3d(0, 0, 0);
 }
 
-[ui-view].main-ui-view.ng-leave-active {
+.container>[ui-view].ng-leave-active {
   opacity: 0;
-  /*padding-left: 100px;*/
   -webkit-transform:translate3d(-100%, 0, 0);
   -moz-transform:translate3d(-100%, 0, 0);
   transform:translate3d(-100%, 0, 0);
 }
 
+[ui-view].form-wrapper.ng-enter, 
+[ui-view].form-wrapper.ng-leave {
+	  position: absolute;
+	  left: 0;
+	  right: 0;
+	-webkit-transition:all .6s ease;
+	-moz-transition:all .6s ease;
+	-o-transition:all .6s ease;
+	transition:all .6s ease;
+}
+
+[ui-view].form-wrapper.ng-enter {
+  opacity: 0;
+}
+
+[ui-view].form-wrapper.ng-enter-active {
+  opacity: 1;
+}
+
+[ui-view].form-wrapper.ng-leave {
+  opacity: 1;
+}
+
+[ui-view].form-wrapper.ng-leave-active {
+  opacity: 0;
+}
 
 .has-error .form-control {
 	border-color: #FF3D2E;
@@ -296,6 +320,7 @@ h5.open::after {
 	font-size: 24px;
 	line-height: 30px;
 	right: 10px;
+	top: 10px;
 
 	speak: none;
 	font-style: normal;
@@ -314,6 +339,7 @@ h5.close::after {
 	font-size: 24px;
 	line-height: 30px;
 	right: 10px;
+	top: 10px;
 
 	speak: none;
 	font-style: normal;
