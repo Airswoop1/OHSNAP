@@ -9,13 +9,21 @@
         <div class="progress-bar"  ng-style="{ width: int_progress +'%'}">
         </div>
     </div>
-    <h1 ng-hide="interviewCompleted.income || interviewCompleted.household ||
-                                    interviewCompleted.income || interviewCompleted.expenses" class="">Ace your interview!</h1 >
-    <p ng-hide="interviewCompleted.income || interviewCompleted.household ||
-                                    interviewCompleted.income || interviewCompleted.expenses" class="">Answering your interview questions in advance will make your phone interview shorter.</p>
 
-    <h1 ng-show="interviewCompleted.income && interviewCompleted.household &&
-                                    interviewCompleted.income && interviewCompleted.expenses">Great! You're done!</h1>
+    <div ng-switch="interview_progress_status">
+        <h1 ng-switch-when="0">Ace your interview!</h1 >
+        <p ng-switch-when="0">Answering your interview questions in advance will make your phone interview shorter.</p>
+        <h1 ng-switch-when="1">Good job so far!</h1>
+        <h1 ng-switch-when="2">Great! You're done!</h1>
+    </div>
+
+    <!-- <h1 ng-switch-when="0" ng-hide="interviewCompleted.income || interviewCompleted.household ||
+                                    interviewCompleted.income || interviewCompleted.expenses" class="">Ace your interview!</h1 >
+        <p ng-switch-when="0" ng-hide="interviewCompleted.income || interviewCompleted.household ||
+                                        interviewCompleted.income || interviewCompleted.expenses" class="">Answering your interview questions in advance will make your phone interview shorter.</p>
+        <h1 ng-switch-when="1">Good job so far!</h1>
+        <h1 ng-switch-when="2" ng-show="interviewCompleted.income && interviewCompleted.household &&
+                                        interviewCompleted.income && interviewCompleted.expenses">Great! You're done!</h1> -->
     <div class="estimate">
         <div class="time-estimate">
             <h1 ng-class="{'finish':interviewCompleted.income && interviewCompleted.household &&interviewCompleted.income && interviewCompleted.expenses}">

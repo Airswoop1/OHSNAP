@@ -9,6 +9,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.show_interview_progress=false;
 		$scope.int_progress = 0;
 
+		$scope.interview_progress_status = 0;
+
 		$scope.user = userDataFactory.userData.user.formData ? userDataFactory.userData.user.formData : {"household":1};
 
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;
@@ -101,6 +103,12 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 					$scope.int_progress += 7.4;
 				}
 			}
+
+			if($scope.int_progress >= 100){
+				$scope.interview_progress_status = 2;
+			} else if ($scope.int_progress < 100 || $scope.int_progress > 0){
+				$scope.interview_progress_status = 1;
+			} 
 		};
 
 
