@@ -2,17 +2,21 @@
  * Created by airswoop1 on 7/31/14.
  */
 angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch',
-		'NoContactModal', 'formApp.infoCarouselDirective', 'formApp.infoFooterDirective', 'formApp.ngEnterDirective',
+		'NoContactModal','formApp.infoFooterDirective', 'formApp.ngEnterDirective',
 		'formApp.telephoneFilter', 'formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective',
 		'formApp.modalDirective', 'formApp.documentUploadCtrl', 'formApp.userDataFactory']).controller('formController',
 	function($scope, $state, $http, $rootScope, $upload, $location, $window, API, userDataFactory) {
 
 		// we will store all of our form data in this object
 		$scope.formData = {
-			name: {
+			"name": {
 				"entered_name":""
 			},
-			phone:undefined
+			"address":{
+				"street_address":undefined,
+				"zip":undefined
+			},
+			"phone":undefined
 		};
 
 
@@ -39,6 +43,9 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		$scope.submitted_basic_information = false;
 		$scope.feedback_collapsed = true;
 		$scope.disable_submit = false;
+		$scope.show_progress_bar = true;
+		$scope.remove_progress_bar = false;
+		$scope.show_elig_progress_bar = false;
 
 		$scope.completed_items = {
 			"name": false,
@@ -46,7 +53,14 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			"telephone" : false,
 			"income" : false,
 			"household" : false,
+			"expenses":false,
 			"confirmation" : false
+		};
+
+		$scope.eligibilityCompleted = {
+			"household":false,
+			"income":false,
+			"expenses":false
 		};
 
 		$scope.rating_options = [
@@ -162,40 +176,41 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		$scope.completedAddress = function(){
 			$scope.submitted_address = true;
 
-			if( (!$scope.formData.address) || (!$scope.formData.address.street_address && !$scope.formData.address.zip)) {
-
-				$scope.has_address = false;
-				updateProgress('address');
-
-				$state.go('form.household');
-
-			}
-			else if($scope.snapForm.$valid && $scope.formData.address.street_address && $scope.formData.address.zip) {
-				$scope.has_address = true;
-				updateProgress('address');
-
-				$state.go('form.household');
-
-			}
-			else if($scope.snapForm.$valid && ($scope.formData.address.street_address || $scope.formData.address.zip)){
-				$scope.has_address = true;
-				$window.ga('send','event','address_validate','tap','bad',1);
-			}
-			else {
-				var field_invalid = $scope.snapForm.$error,
-					which = "";
-
-				if(field_invalid.minlength){
-					if(field_invalid.minlength.length==2){which = "both_length";}
-					else if(field_invalid.minlength[0].$name == 'street_address') {which = 'street_address_length';}
-					else if(field_invalid.minlength[0].$name == 'zip'){which = 'zip_length';}
+			console.log($scope.formData.address);
+			console.log($scope.snapForm.street_address);
+			console.log($scope.snapForm.zip);
+			if($scope.snapForm.street_address.$pristine && $scope.snapForm.zip.$pristine){
+				if($scope.formData.household && $scope.formData.income){
+					$state.go('form.telephone');
 				}
-				else if(field_invalid.number){
-					which = "zip_nan";
+				else {
+					$state.go('form.household');
 				}
-				$window.ga('send','event','address_validate','tap',which,1);
 			}
+			else if($scope.snapForm.street_address.$valid && $scope.snapForm.zip.$valid
+				&& $scope.formData.address.street_address && $scope.formData.address.zip){
 
+				if($scope.formData.household && $scope.formData.income){
+					$state.go('form.telephone');
+				}
+				else {
+					$state.go('form.household');
+				}
+			}
+			else if(($scope.snapForm.street_address.$dirty || $scope.snapForm.zip.$dirty)
+				&& ($scope.formData.address.street_address === "" || (typeof $scope.formData.address.street_address === "undefined"))
+				&& ($scope.formData.address.zip === null || (typeof $scope.formData.address.zip === "undefined" )
+				&& $scope.snapForm.street_address.$valid && $scope.snapForm.zip.$valid)){
+
+				if($scope.formData.household && $scope.formData.income){
+					$state.go('form.telephone');
+				}
+				else {
+					$state.go('form.household');
+				}
+			}else {
+
+			}
 
 		};
 
@@ -288,6 +303,33 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			}
 		};
 
+		$scope.completedEligibilityIncome = function() {
+			$scope.submitted_income = true;
+
+			if ($scope.snapForm.income.$valid) {
+				updateEligibilityProgress('income');
+				$state.go('form.eligibility-expenses');
+			}
+
+			};
+
+		$scope.completedEligibilityHousehold = function() {
+			if($scope.snapForm.household.$valid) {
+				updateEligibilityProgress('household');
+				$state.go('form.income');
+
+			}
+		};
+
+		$scope.completeEligibilityCalc = function() {
+			calculateBenefit();
+			updateProgress('expenses');
+			$scope.show_progress_bar = false;
+			$scope.remove_progress_bar = true;
+			$state.go('form.eligibility')
+		};
+
+
 		/**
 		 * fn calculateBenefit
 		 * Use data from household and income to determine whether the individual is eligible for SNAP and if so
@@ -299,6 +341,10 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 			var house = ($scope.formData.household !== "undefined") ? $scope.formData.household : 1;
 			var income = ($scope.formData.income !== "undefined") ? parseInt($scope.formData.income,10) : 0;
+			if($scope.formData.eligibility_expenses) {
+				income -= $scope.formData.eligibility_expenses;
+				income = (income >= 0) ? income : 0;
+			}
 			var benefit = 0;
 			var eligible = false;
 
@@ -356,6 +402,23 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 		}
 
+		$scope.$on('show-progress-bar', function() {
+			$scope.show_progress_bar = true
+		});
+
+		$scope.$on('dont-show-progress-bar', function() {
+			$scope.show_progress_bar = false;
+		});
+
+		$scope.$on('remove_progress_bar', function() {
+			$scope.remove_progress_bar = true;
+		});
+
+		$scope.$on('show-elig-progress-bar', function() {
+			$scope.show_elig_progress_bar = true;
+		});
+
+
 		/**
 		 * fn updateProgress
 		 * @param u
@@ -367,6 +430,16 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			for(var comp in $scope.completed_items){
 				if($scope.completed_items[comp]){
 					$scope.progress += 17;
+				}
+			}
+		}
+
+		function updateEligibilityProgress(u){
+			$scope.eligibilityCompleted[u] = true;
+			$scope.eligibility_progress = 0;
+			for(var comp in $scope.eligibilityCompleted){
+				if($scope.eligibilityCompleted[comp]){
+					$scope.progress += 25;
 				}
 			}
 		}
@@ -393,7 +466,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				if(result && user_id) {
 					$scope.formData.user_id = user_id;
 					userDataFactory.userData.user.formData = $scope.formData;
-
+					$scope.remove_progress_bar = true;
 					$scope.disable_submit = false;
 					$state.go('form.basic-app-submitted');
 
@@ -469,13 +542,19 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				toState.name === 'form.feedback-submitted' ||
 				toState.name === 'form.recert' ||
 				toState.name === 'form.document-upload' ||
-				toState.name === 'form.document-detail')) {
+				toState.name === 'form.document-detail' ||
+				toState.name === 'form.eligibility' ||
+				toState.name === 'form.eligibility-expenses')) {
 
 				$scope.show_progress = true;
 			}
 			else {
 				if(fromState.name === 'form.intro') {
 					$window.scrollTo(0,0);
+				}
+
+				if(toState.name == 'form.intro') {
+					$scope.show_progress_bar = true;
 				}
 
 				$scope.show_progress = false;

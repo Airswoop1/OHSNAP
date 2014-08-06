@@ -4,7 +4,7 @@
 angular.module('formApp.appSubmittedDropdownDirective',[]).directive('appSubmittedDropdown', function(){
     return {
         restrict:'E',
-        templateUrl:'templates/app-submitted-dropdowns.html',
+        templateUrl:'templates/basic/app-submitted-dropdowns.html',
         controller: function($scope, $window) {
 
             $scope.isActive = {

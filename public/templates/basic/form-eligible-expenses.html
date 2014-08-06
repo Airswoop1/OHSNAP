@@ -1,0 +1,7 @@
+<h1>How much are your monthly expenses?</h1>
+
+<div class="form-group">
+    <input class="form-control" type="number" name="expenses"  id="expenses" ng-model="formData.eligibility_expenses" autofocus="true" min="0" required/>
+</div>
+
+<div class="yellow-button" ng-class="{'disabled': snapForm.expenses.$invalid}" ng-click="completeEligibilityCalc()">Continue</div>

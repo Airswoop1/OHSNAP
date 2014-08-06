@@ -3,7 +3,7 @@
     <div class="accordion" ng-class="{'open':isActive.showExampleDocs, 'close':!isActive.showExampleDocs}">
         <div ng-repeat="ex in currentContent.valid_docs">
             <h5 ng-click="clickEx(ex.name)">{{ex.name}}</h5>
-                <div ng-class="{'open':exampleActive[ex.name], 'close':!exampleActive[ex.name]}">
+            <div ng-class="{'open':exampleActive[ex.name], 'close':!exampleActive[ex.name]}">
                 <p ng-show="ex.link">Need help getting one? Click <a ng-href="{{ ex.link }}" target="_blank">here</a>.</p>
                 <div class="picture-wrapper">
                     <img ng-src="images/sample/{{ ex.image }}">

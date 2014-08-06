@@ -30,6 +30,6 @@ angular.module('formApp.modalDirective',[]).directive('modalDialog',function(){
           };
 
         },
-        templateUrl: 'templates/modal.html'
+        templateUrl: 'templates/basic/modal.html'
     };
 })
