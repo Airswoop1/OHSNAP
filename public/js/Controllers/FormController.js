@@ -135,7 +135,6 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		 * else determine which field invalidated the submission, set flag for errors, send event for error
 		 * **/
 		$scope.completedName = function() {
-			console.log($scope.formData.name);
 			if($scope.snapForm.$valid && $scope.formData.name.first_name && $scope.formData.name.last_name) {
 				updateProgress('name');
 				$state.go('form.address');
@@ -176,9 +175,6 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		$scope.completedAddress = function(){
 			$scope.submitted_address = true;
 
-			console.log($scope.formData.address);
-			console.log($scope.snapForm.street_address);
-			console.log($scope.snapForm.zip);
 			if($scope.snapForm.street_address.$pristine && $scope.snapForm.zip.$pristine){
 				updateProgress('address');
 				if($scope.formData.household && $scope.formData.income){
@@ -336,7 +332,6 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		};
 
 		$scope.completeEligibilityCalc = function() {
-			console.log($scope.snapForm.expenses.$error);
 			$scope.submitted_expenses = true;
 			if($scope.snapForm.expenses.$valid){
 				calculateBenefit();

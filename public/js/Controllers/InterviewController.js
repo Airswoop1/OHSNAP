@@ -11,9 +11,6 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 		$scope.interview_progress_status = 0;
 		$scope.interview_steps = -1;
-
-		console.log(userDataFactory.userData.user);
-
 		$scope.user = userDataFactory.userData.user.formData; //? userDataFactory.userData.user.formData : {"household":1};
 		$scope.user.household_members = (typeof $scope.user.household_members!== 'undefined') ? $scope.user.household_members : {};
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;
@@ -24,16 +21,16 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.minutes_saved = 0;
 
 		if(!isEmpty($scope.user.household_members)){
-			console.log("creating household members data")
+
 			for(var i=0; i<$scope.user.household-1;i++ ){
 				$scope.user.household_members[i] = {
 					"applying":false,
 			        "income":0,
-					"show":false
+					"show":false,
+					"relation":'Select'
 				};
 			}
 		}
-		console.log($scope.user);
 
 		$scope.stepsCompleted = {
 			"int.ssn":false,
@@ -79,6 +76,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		];
 
 		$scope.relationshipOptions = [
+			{name:"Select", value:"Select"},
 			{name:"Partner", value:"Partner"},
 			{name: "Child", "value":"Child"},
 			{name:"Parent", "value":"Parent"},
@@ -127,7 +125,6 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			calculateBenefit();
 
 
-			console.log($scope.user);
 			API.uploadPartialInterviewInfo($scope.user, function(result){
 				if(result) {
 
@@ -149,8 +146,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		};
 
 		function updateProgressStatus(){
-			// console.log($scope.interviewCompleted);
-			if( $scope.interviewCompleted.eligibility && 
+			if( $scope.interviewCompleted.eligibility &&
 				$scope.interviewCompleted.household &&
 				$scope.interviewCompleted.income && 
 				$scope.interviewCompleted.expenses){
