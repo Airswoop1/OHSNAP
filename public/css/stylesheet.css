@@ -17,6 +17,17 @@
   }
 }
 
+.mobile-notice {
+    text-align:center;
+    background-color: #fff819;
+    font-weight: 300;
+}
+.mobile-notice a {
+    color:black;
+    text-decoration: underline;
+
+}
+
 @media (max-width: 767px) {
 	.container {
 		width: 100%;
