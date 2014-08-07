@@ -233,14 +233,14 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				else {
 					updateProgress('telephone');
 					$scope.remove_progress_bar = true;
-					$state.go('form.basic-app-submitted');
-
+					$scope.submitBasicApp()
 				}
 			}
 			else if($scope.snapForm.$valid) {
 				updateProgress('telephone');
-				$state.go('form.basic-app-submitted');
 				$scope.remove_progress_bar = true;
+				$scope.submitBasicApp();
+
 
 
 			}
@@ -477,10 +477,6 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		 *
 		 */
 		$scope.submitBasicApp = function() {
-			$scope.basic_confirmation_agree = true;
-			$scope.submitted_basic_information = true;
-			$scope.disable_submit = true;
-
 			calculateBenefit();
 			updateProgress('confirmation');
 
@@ -489,13 +485,12 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 					$scope.formData.user_id = user_id;
 					userDataFactory.userData.user.formData = $scope.formData;
 					$scope.remove_progress_bar = true;
-					$scope.disable_submit = false;
 					$state.go('form.basic-app-submitted');
 
 				}
 				else {
 					alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
-					$scope.disable_submit = false;
+
 				}
 			});
 		};

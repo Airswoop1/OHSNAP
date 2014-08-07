@@ -18,7 +18,7 @@ var UpdateUserInfo = (function(){
 	};
 
 	var execute = function(req, res){
-
+		console.log(req.body);
 		if(req.method == 'GET'){
 			res.send("Oops, this isn't what you're looking for!");
 		}
@@ -53,10 +53,10 @@ var UpdateUserInfo = (function(){
 							collection.update(
 								query,
 								update,
-								{"upsert":true, "multi": false},
+								{"upsert":false, "multi": false},
 								function (err, updated) {
 									if(err){
-										console.log("error writing to the db for user: " + user_id);
+										console.log("error writing to the db for user: " + request.user_id);
 										console.log(err);
 										var response = new Response();
 										response.status = 500;

@@ -3,7 +3,7 @@
  */
 
 angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiFactory']).controller('interviewCtrl',
-	function($scope, $rootScope, $location, $anchorScroll, userDataFactory, API){
+	function($scope, $state, $rootScope, $location, $anchorScroll, userDataFactory, API){
 
 
 		$scope.show_interview_progress=false;
@@ -12,8 +12,10 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.interview_progress_status = 0;
 		$scope.interview_steps = -1;
 
-		$scope.user = userDataFactory.userData.user.formData ? userDataFactory.userData.user.formData : {"household":1};
-		$scope.user.household_members = $scope.user.household_members ? $scope.user.household_members : {};
+		console.log(userDataFactory.userData.user);
+
+		$scope.user = userDataFactory.userData.user.formData; //? userDataFactory.userData.user.formData : {"household":1};
+		$scope.user.household_members = (typeof $scope.user.household_members!== 'undefined') ? $scope.user.household_members : {};
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;
 		$scope.estimated_benefit = $scope.user.benefit_amount;
 
@@ -31,7 +33,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				};
 			}
 		}
-		console.log($scope.user.household_members);
+		console.log($scope.user);
 
 		$scope.stepsCompleted = {
 			"int.ssn":false,
@@ -115,7 +117,6 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 
 		$scope.$on('int-main', function(meta, type){
-			calculateBenefit();
 
 			if(!$scope.interviewCompleted[type]){
 				$scope.updateMinutes(interviewMinutesCategory[type]);
@@ -123,9 +124,10 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 			$scope.interviewCompleted[type] = true;
 			$scope.show_interview_progress = false;
+			calculateBenefit();
 
 
-
+			console.log($scope.user);
 			API.uploadPartialInterviewInfo($scope.user, function(result){
 				if(result) {
 
@@ -166,7 +168,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 		function calculateBenefit() {
 
-			var applying = 1,
+			var applying = $scope.interviewCompleted.household ? 1 : $scope.user.household,
 				income = (typeof $scope.user.monthly_income !== 'undefined') ? $scope.user.monthly_income : parseInt($scope.user.income),
 				expenses = (typeof $scope.user.eligibility_expenses !== 'undefined') ? $scope.user.eligibility_expenses : 0;
 
@@ -283,6 +285,18 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			}
 			updateProgressStatus();
 		});
+
+
+		$scope.submitBasicApp = function() {
+			API.uploadPartialInterviewInfo($scope.user, function(result){
+				if(result) {
+					$state.go('form.basic-app-submitted');
+				}
+				else {
+					alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
+				}
+			});
+		};
 
 		/**
 		 * Takes the number in formData.household and allows ng-repeat to create n items
