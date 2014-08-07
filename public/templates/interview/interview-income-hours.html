@@ -7,4 +7,5 @@
 <input ng-model="user.wk_month" id="weeks_monthly" type="number" class="name-input income-input" name="weeks_monthly">
 
         
-<div class="yellow-button" ui-sref="int.income-household-amount">Continue</div>
+<div ng-show="hasApplyingMembers()" class="yellow-button" ui-sref="int.income-household-amount">Continue</div>
+<div ng-show="!hasApplyingMembers()"  class="yellow-button" ng-click="$emit('int-main', 'income')" ui-sref="int.main">Continue</div>
