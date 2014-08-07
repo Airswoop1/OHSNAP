@@ -68,7 +68,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 			"utilities_total": 0
 		},
 			"hours_wk": 23,
-			"household": 4,
+			"household": 5,
 			"household_members": {
 			"0": {
 				"applying": true,
