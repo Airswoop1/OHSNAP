@@ -21,10 +21,16 @@
 	.container {
 		width: 100%;
 	}
+	.mobile-notice {
+		display: none;
+	}
 }
 @media (max-width: 480px) {
 	.container {
 		width: 100%;
+	}
+	.mobile-notice {
+		display: none;
 	}
 }
 .container>[ui-view].ng-enter, 
