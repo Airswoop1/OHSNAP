@@ -24,7 +24,6 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 				$scope.current_type = toParams.type;
 			}
 		});
-		console.log($scope);
 
 
 		$scope.isNotUploaded = function(name) {
@@ -67,7 +66,6 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 
 
 		$scope.uploadFile = function($files) {
-			console.log("called.")
 			//display upload in progress;
 			var type = $state.params.type;
 

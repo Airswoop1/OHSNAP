@@ -84,14 +84,17 @@
 
 [ui-view].form-wrapper.ng-enter {
   opacity: 0;
+  display: block;
 }
 
 [ui-view].form-wrapper.ng-enter-active {
   opacity: 1;
+  display: block;
 }
 
 [ui-view].form-wrapper.ng-leave {
   opacity: 1;
+  display: none;
 }
 
 [ui-view].form-wrapper.ng-leave-active {
@@ -343,9 +346,16 @@ h5.title {
 }
 
 .person-name{
-    background-color:lightgrey;text-align:left
+    background-color:lightgrey;
+    text-align:left;
+    height:40px;
+    line-height: 43px;
+    text-indent: 14px;
+    font-size: 22px;
+    font-weight: 300;
 }
 
+h5.open::after,
 .person-name.open::after {
 	position: absolute;
 	content: "\e611";
@@ -365,6 +375,7 @@ h5.title {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+h5.close::after,
 .person-name.close::after {
 	position: absolute;
 	content: "\e613";
@@ -390,6 +401,18 @@ h6 {
 	padding: 0;
 	margin: 10px 0;
 	font-weight: 300;
+}
+
+.each-month {
+    text-align: center;
+    display: block;
+    font-weight: 700;
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.eligible-for {
+    text-align: center;
 }
 
 .bolt-logo {
@@ -642,7 +665,7 @@ textarea {
 	height: 66px;
 	background-color: #000000;
 	color: #ffffff;
-	font-weight: 900;
+	font-weight: 300;
 	font-size: 24px;
 	line-height: 30px;
 	text-align: center;
@@ -710,7 +733,7 @@ textarea {
     height: 60px;
     line-height: 60px;
     text-indent: 15px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     width: 100%;
     margin: 20px 0 0 0;
@@ -719,8 +742,8 @@ textarea {
 }
 
 .dull {
-    background-color: #d3d3d3;
-
+    background-color: #ffffff;
+	position: relative;
 }
 
 
@@ -942,11 +965,13 @@ h1.icon-check::before {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+
+
+
 .page-second-header p.sub-text {
     text-align:center;
-    margin-bottom:0px;
     font-weight:300;
-    margin-bottom:0px;
+    margin-bottom:10px;
     font-size:30px;
 }
 

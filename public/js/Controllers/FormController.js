@@ -37,6 +37,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		$scope.submitted_phone = false;
 		$scope.submitted_income = false;
 		$scope.submitted_household = false;
+		$scope.submitted_expenses = false;
 		$scope.has_phone = true;
 		$scope.has_address = true;
 		$scope.completed_first_name = false;
@@ -134,11 +135,9 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		 * else determine which field invalidated the submission, set flag for errors, send event for error
 		 * **/
 		$scope.completedName = function() {
-			if($scope.snapForm.$valid) {
+			if($scope.snapForm.$valid && $scope.formData.name.first_name && $scope.formData.name.last_name) {
 				updateProgress('name');
-
 				$state.go('form.address');
-
 			}
 			else {
 				var field_invalid = $scope.snapForm.$error.required,
@@ -176,10 +175,8 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		$scope.completedAddress = function(){
 			$scope.submitted_address = true;
 
-			console.log($scope.formData.address);
-			console.log($scope.snapForm.street_address);
-			console.log($scope.snapForm.zip);
 			if($scope.snapForm.street_address.$pristine && $scope.snapForm.zip.$pristine){
+				updateProgress('address');
 				if($scope.formData.household && $scope.formData.income){
 					$state.go('form.telephone');
 				}
@@ -189,7 +186,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			}
 			else if($scope.snapForm.street_address.$valid && $scope.snapForm.zip.$valid
 				&& $scope.formData.address.street_address && $scope.formData.address.zip){
-
+				updateProgress('address');
 				if($scope.formData.household && $scope.formData.income){
 					$state.go('form.telephone');
 				}
@@ -201,7 +198,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				&& ($scope.formData.address.street_address === "" || (typeof $scope.formData.address.street_address === "undefined"))
 				&& ($scope.formData.address.zip === null || (typeof $scope.formData.address.zip === "undefined" )
 				&& $scope.snapForm.street_address.$valid && $scope.snapForm.zip.$valid)){
-
+				updateProgress('address');
 				if($scope.formData.household && $scope.formData.income){
 					$state.go('form.telephone');
 				}
@@ -231,15 +228,16 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				}
 				else {
 					updateProgress('telephone');
-
-					$state.go('form.basic-confirmation');
-
+					$scope.remove_progress_bar = true;
+					$scope.submitBasicApp()
 				}
 			}
 			else if($scope.snapForm.$valid) {
 				updateProgress('telephone');
+				$scope.remove_progress_bar = true;
+				$scope.submitBasicApp();
 
-				$state.go('form.basic-confirmation');
+
 
 			}
 			else {
@@ -268,7 +266,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			if ($scope.snapForm.income.$valid) {
 				updateProgress('income');
 
-				$state.go('form.telephone');
+				$state.go('form.expenses');
 
 			}
 			else {
@@ -303,6 +301,16 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			}
 		};
 
+		$scope.completedExpenses = function() {
+			$scope.submitted_expenses = true;
+			if($scope.snapForm.expenses.$valid){
+
+				updateProgress('expenses');
+				$state.go('form.telephone')
+			}
+		};
+
+
 		$scope.completedEligibilityIncome = function() {
 			$scope.submitted_income = true;
 
@@ -314,6 +322,8 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			};
 
 		$scope.completedEligibilityHousehold = function() {
+
+			$scope.submitted_household = true;
 			if($scope.snapForm.household.$valid) {
 				updateEligibilityProgress('household');
 				$state.go('form.income');
@@ -322,11 +332,14 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		};
 
 		$scope.completeEligibilityCalc = function() {
-			calculateBenefit();
-			updateProgress('expenses');
-			$scope.show_progress_bar = false;
-			$scope.remove_progress_bar = true;
-			$state.go('form.eligibility')
+			$scope.submitted_expenses = true;
+			if($scope.snapForm.expenses.$valid){
+				calculateBenefit();
+				updateProgress('expenses');
+				$scope.show_progress_bar = false;
+				$scope.remove_progress_bar = true;
+				$state.go('form.eligibility')
+			}
 		};
 
 
@@ -403,7 +416,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		}
 
 		$scope.$on('show-progress-bar', function() {
-			$scope.show_progress_bar = true
+			$scope.show_progress_bar = true;
 		});
 
 		$scope.$on('dont-show-progress-bar', function() {
@@ -412,6 +425,10 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 		$scope.$on('remove_progress_bar', function() {
 			$scope.remove_progress_bar = true;
+		});
+
+		$scope.$on('add-progress-bar', function() {
+			$scope.remove_progress_bar = false;
 		});
 
 		$scope.$on('show-elig-progress-bar', function() {
@@ -455,10 +472,6 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		 *
 		 */
 		$scope.submitBasicApp = function() {
-			$scope.basic_confirmation_agree = true;
-			$scope.submitted_basic_information = true;
-			$scope.disable_submit = true;
-
 			calculateBenefit();
 			updateProgress('confirmation');
 
@@ -467,13 +480,12 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 					$scope.formData.user_id = user_id;
 					userDataFactory.userData.user.formData = $scope.formData;
 					$scope.remove_progress_bar = true;
-					$scope.disable_submit = false;
 					$state.go('form.basic-app-submitted');
 
 				}
 				else {
 					alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
-					$scope.disable_submit = false;
+
 				}
 			});
 		};
@@ -544,7 +556,9 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				toState.name === 'form.document-upload' ||
 				toState.name === 'form.document-detail' ||
 				toState.name === 'form.eligibility' ||
-				toState.name === 'form.eligibility-expenses')) {
+				toState.name === 'form.eligibility-expenses' ||
+				toState.name === 'form.expenses'
+				)) {
 
 				$scope.show_progress = true;
 			}

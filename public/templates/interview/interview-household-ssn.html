@@ -2,8 +2,7 @@
 
 <div ng-repeat="person in user.household_members track by $index" class="household-ssn" ng-show="person.applying">
     <h6 for="ssn_{{ $index }}">What is {{ person.name }}'s SSN?</h6>
-    <input id="ssn_{{ $index }}" type="number" ng-maxlength="9" ng-minlength="9" name="ssn"
-           min="100000000" max="999999999" placeholder="XXXXXXXXX" ng-model="person.ssn"/>
+    <input id="ssn_{{ $index }}" type="number"  name="ssn" placeholder="XXXXXXXXX" ng-model="person.ssn"/>
 </div>
 
 <div class="yellow-button" ui-sref="int.household-dob">Continue</div>
