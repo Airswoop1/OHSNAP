@@ -172,6 +172,9 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				income = (typeof $scope.user.monthly_income !== 'undefined') ? $scope.user.monthly_income : parseInt($scope.user.income),
 				expenses = (typeof $scope.user.eligibility_expenses !== 'undefined') ? $scope.user.eligibility_expenses : 0;
 
+			if(typeof $scope.user.utilities.rent !== 'undefined'){
+				expenses += parseInt($scope.user.utilities);
+			}
 
 			for(var users in $scope.user.household_members){
 
@@ -195,7 +198,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			console.log('expenses : ' + expenses);
 
 
-			if($scope.user.personal_disabled === true) {
+			if($scope.user.personal_disabled === "Yes" || $scope.user.disabled === "yes") {
 
 				if( (house === 1 && grossIncome <= 1915) ||
 					(house === 2 && grossIncome <= 2585) ||
@@ -290,7 +293,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.submitBasicApp = function() {
 			API.uploadPartialInterviewInfo($scope.user, function(result){
 				if(result) {
-					$state.go('form.basic-app-submitted');
+					$state.go('upload.documents');
 				}
 				else {
 					alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
