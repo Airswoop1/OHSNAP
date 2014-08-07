@@ -13,5 +13,6 @@
 </div>
 </div>
 
-<div class="yellow-button" ui-sref="int.household-ssn">Continue</div>
+<div ng-show="hasApplyingMembers()" class="yellow-button" ui-sref="int.household-ssn">Continue</div>
+<div ng-show="!hasApplyingMembers()" ng-click="$emit('int-main','household')" class="yellow-button" ui-sref="int.main">Continue</div>
 

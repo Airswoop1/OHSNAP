@@ -1,5 +1,4 @@
-<div class="yellow-button" ui-sref="upload.documents" ng-hide="interviewCompleted.income && interviewCompleted.household &&
-                                    interviewCompleted.income && interviewCompleted.expenses">Finish this step</div>
+<div class="yellow-button" ui-sref="int.info-confirmation">Finish this step</div>
 
 <div class="question-sections">
     <div class="question-section odd" ng-class="{'finished': interviewCompleted.eligibility}"
@@ -16,15 +15,8 @@
         <p ng-hide="interviewCompleted.household">Save 10 mins</p>
         <p ng-show="interviewCompleted.household">Saved 10 mins</p>
     </div>
-    <div ng-hide="user.income" class="question-section odd" ng-class="{'finished': interviewCompleted.income}"
+    <div class="question-section odd" ng-class="{'finished': interviewCompleted.income}"
          ui-sref="int.income-frequency">
-        <span>3</span>
-        <h2>INCOME</h2>
-        <p ng-hide="interviewCompleted.income">Save 5 mins</p>
-        <p ng-show="interviewCompleted.income">Saved 5 mins</p>
-    </div>
-    <div ng-show="user.income" class="question-section odd" ng-class="{'finished': interviewCompleted.income}"
-         ui-sref="int.income-household-frequency">
         <span>3</span>
         <h2>INCOME</h2>
         <p ng-hide="interviewCompleted.income">Save 5 mins</p>
