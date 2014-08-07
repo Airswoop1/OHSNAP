@@ -4,8 +4,8 @@
 </p>
 
 <div class="form-group" ng-class="{'has-success':snapForm.household.$pristine ,'has-error': snapForm.household.$invalid }">
-    <input class="form-control" type="number" name="household"  id="household" ng-model="formData.household" autofocus="true" required min="1"/>
-    <span class="help-block" ng-show="submitted_household && (!(snapForm.household.$error.valid) || snapForm.household.$error.required)">
+    <input class="form-control" type="number" name="household"  id="household" ng-model="formData.household" autofocus="true" required min="1" ng-enter/>
+    <span class="help-block" ng-show="submitted_household && (snapForm.household.$invalid || snapForm.household.$error.required || snapForm.household.$error.min)">
         Number of people living with you is required. Must be greater than 0. </span>
 </div>
 

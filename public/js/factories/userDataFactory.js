@@ -43,9 +43,9 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				"expenses":false
 			},
 
-			'user':{}
+			//'user':{}
 
-		/*user: { "formData": {
+		user: { "formData": {
 			"address": {
 			"street_address": "4118 Crescent St.",
 				"apt_number": "4B",
@@ -119,7 +119,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 		},
 			"wk_month": 4
 		}
-		}*/
+		}
 		};
 
 

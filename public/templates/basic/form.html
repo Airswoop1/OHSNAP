@@ -19,9 +19,9 @@
         </div>
     </div>
 
-    <div class="page-header eligibility"  ng-show="!show_progress_bar">
+    <div class="page-header eligibility"   ng-show="!show_progress_bar">
         <div class="header" ng-click="goBack()">
-            <h4>Eligibility estimator</h4>
+            <h4>ELIGIBILITY</h4>
         </div>
         <div class="progress" ng-show="show_elig_progress_bar" ng-class="{'remove-progress': remove_progress_bar }">
             <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: progress +'%'}">
@@ -32,7 +32,7 @@
 
     
     <!-- use ng-submit to catch the form submission and use our Angular function -->
-    <form name="snapForm" id="signup-form" ng-submit="processForm()" novalidate>
+    <form name="snapForm" id="signup-form" novalidate>
         <!-- our nested state views will be injected here -->
         <div class="form-wrapper" ui-view></div>
         <modal-dialog show='modalShown' width='90%' height='100%'>

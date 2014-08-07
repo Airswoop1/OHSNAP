@@ -96,7 +96,7 @@
     <div class="household-members-confirm">
         <h6>Applicants in your household</h6>
         <div ng-repeat="person in user.household_members track by $index" ng-show="person.applying">
-            <div class="yellow-button person-name" ng-class="{'close': , 'open': }" ng-click="showHouseholdMember(person.name)">{{ person.name }}</div>
+            <div class="person-name" ng-class="{'close': true, 'open': false}" ng-click="showHouseholdMember(person.name)">{{ person.name }}</div>
             <div ng-show="person.show">
                 <h6>Name</h6>
                 <input type="text" ng-model="person.name"/>
