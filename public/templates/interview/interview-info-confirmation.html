@@ -96,14 +96,14 @@
     <div class="household-members-confirm"  ng-show="hasApplyingMembers()">
         <h6>Applicants in your household</h6>
         <div ng-repeat="person in user.household_members track by $index" ng-show="person.applying">
-            <div class="yellow-button person-name" ng-class="{'close': , 'open': }" ng-click="showHouseholdMember(person.name)">{{ person.name }}</div>
+            <h5  ng-class="{'close': !person.show, 'open': person.show}" ng-click="showHouseholdMember(person.name)">{{ person.name }}</h5>
             <div ng-show="person.show">
                 <h6>Name</h6>
                 <input type="text" ng-model="person.name"/>
                 <h6>SSN</h6>
                 <input type="text" ng-model="person.ssn"  placeholder="XXX - XX - XXXX" maxlength="9"/>
                 <h6>DOB</h6>
-                <input type="date" ng-model="person.dob" class="name-input"/>
+                <input type="date" ng-model="person.dob" class="dob-input"/>
                 <h6>Relation</h6>
                 <select name="relationship" id="relation_{{ $index }}" ng-model="person.relation.relation" ng-options="opt.value as opt.name for opt in relationshipOptions" ></select>
                 <h6>Income</h6>

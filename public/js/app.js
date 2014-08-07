@@ -62,6 +62,11 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/basic/form-eligible-expenses.html'
 			})
 
+			.state('form.expenses', {
+				url:'/expenses',
+				templateUrl:'templates/basic/form-expenses.html'
+			})
+
 			.state('form.eligibility', {
 				url:'/elibility',
 				templateUrl:'templates/basic/form-eligibility.html'

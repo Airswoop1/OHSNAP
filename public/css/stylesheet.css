@@ -318,9 +318,16 @@ h5.title {
 }
 
 .person-name{
-    background-color:lightgrey;text-align:left
+    background-color:lightgrey;
+    text-align:left;
+    height:40px;
+    line-height: 43px;
+    text-indent: 14px;
+    font-size: 22px;
+    font-weight: 300;
 }
 
+h5.open::after,
 .person-name.open::after {
 	position: absolute;
 	content: "\e611";
@@ -340,6 +347,7 @@ h5.title {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
+h5.close::after,
 .person-name.close::after {
 	position: absolute;
 	content: "\e613";
@@ -365,6 +373,18 @@ h6 {
 	padding: 0;
 	margin: 10px 0;
 	font-weight: 300;
+}
+
+.each-month {
+    text-align: center;
+    display: block;
+    font-weight: 700;
+    font-size: 27px;
+    margin-bottom: 10px;
+}
+
+.eligible-for {
+    text-align: center;
 }
 
 .bolt-logo {
@@ -917,11 +937,13 @@ h1.icon-check::before {
 	-moz-osx-font-smoothing: grayscale;
 }
 
+
+
+
 .page-second-header p.sub-text {
     text-align:center;
-    margin-bottom:0px;
     font-weight:300;
-    margin-bottom:0px;
+    margin-bottom:10px;
     font-size:30px;
 }
 

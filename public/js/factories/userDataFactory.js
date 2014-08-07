@@ -43,9 +43,9 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				"expenses":false
 			},
 
-			'user':{}
+			//'user':{}
 
-		/*user: { "formData": {
+		user: { "formData": {
 			"address": {
 			"street_address": "4118 Crescent St.",
 				"apt_number": "4B",
@@ -68,7 +68,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 			"utilities_total": 0
 		},
 			"hours_wk": 23,
-			"household": 4,
+			"household": 5,
 			"household_members": {
 			"0": {
 				"applying": true,
@@ -119,7 +119,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 		},
 			"wk_month": 4
 		}
-		}*/
+		}
 		};
 
 

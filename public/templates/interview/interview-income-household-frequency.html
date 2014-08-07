@@ -1,10 +1,14 @@
 <h1>Household members monthly hours worked?</h1>
 
 <div ng-repeat="person in user.household_members track by $index" class="household-income" ng-show="person.applying">
-    <label for="household_monthly_income_{{$index}}">Hours worked per month for {{ person.name }}</label>
-    <div class="input-group dollar-input">
-        <input type="number" name="monthly_income" placeholder="0" id="household_monthly_income_{{$index}}" ng-model="person.income" min="0"/>
-    </div>
+    <h5>Hours worked per month for {{ person.name }}</h5>
+
+    <h6 for="{{$index}}_monthly_hours_wk">Hours per Week</h6>
+    <input ng-model="person.hours_wk" id="{{$index}}_monthly_hours_wk" type="number" class="name-input income-input" name="weekly_hours">
+
+    <h6 for="{{$index}}_weeks_monthly">Weeks per Month</h6>
+    <input ng-model="person.wk_month" id="{{$index}}_weeks_monthly" type="number" class="name-input income-input" name="weeks_monthly">
+
 </div>
 
 <div class="yellow-button" ng-click="$emit('int-main', 'income')" ui-sref="int.main">Continue</div>
