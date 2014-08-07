@@ -93,7 +93,7 @@
         </div>
     </div>
 
-    <div class="household-members-confirm">
+    <div class="household-members-confirm"  ng-show="hasApplyingMembers()">
         <h6>Applicants in your household</h6>
         <div ng-repeat="person in user.household_members track by $index" ng-show="person.applying">
             <div class="yellow-button" style="background-color:lightgrey;text-align:left" ng-click="showHouseholdMember(person.name)">{{ person.name }}</div>

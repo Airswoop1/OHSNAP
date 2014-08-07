@@ -56,14 +56,17 @@
 
 [ui-view].form-wrapper.ng-enter {
   opacity: 0;
+  display: block;
 }
 
 [ui-view].form-wrapper.ng-enter-active {
   opacity: 1;
+  display: block;
 }
 
 [ui-view].form-wrapper.ng-leave {
   opacity: 1;
+  display: none;
 }
 
 [ui-view].form-wrapper.ng-leave-active {
@@ -609,7 +612,7 @@ textarea {
 	height: 66px;
 	background-color: #000000;
 	color: #ffffff;
-	font-weight: 900;
+	font-weight: 300;
 	font-size: 24px;
 	line-height: 30px;
 	text-align: center;
@@ -677,7 +680,7 @@ textarea {
     height: 60px;
     line-height: 60px;
     text-indent: 15px;
-    font-size: 24px;
+    font-size: 20px;
     font-weight: 700;
     width: 100%;
     margin: 20px 0 0 0;
@@ -686,8 +689,8 @@ textarea {
 }
 
 .dull {
-    background-color: #d3d3d3;
-
+    background-color: #ffffff;
+	position: relative;
 }
 
 
