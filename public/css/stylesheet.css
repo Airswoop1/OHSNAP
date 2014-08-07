@@ -534,6 +534,23 @@ input.dob-input {
     width:100%;
 }
 
+.household-members-confirm div input,
+.household-members-confirm div select{
+    margin-bottom:10px;
+    background-color:white;
+}
+
+.household-members-confirm h6.name{
+    font-weight:700;
+}
+
+.household-members-confirm div h6 em {
+    font-size:14px;
+}
+.confirm-info div select{
+    background-color: white;
+}
+
 .household-income {
     margin-bottom:10px;
 }

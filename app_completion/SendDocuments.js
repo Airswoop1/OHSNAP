@@ -3,7 +3,7 @@
  */
 
 var Phaxio = require('phaxio'),
-
+	MongoClient = require('../database.js'),
     fs = require('fs'),
     config = require("../config.js"),
     phaxio = new Phaxio(config.phaxio.key,config.phaxio.secret);

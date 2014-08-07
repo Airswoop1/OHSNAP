@@ -188,6 +188,11 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl: 'templates/interview/interview-expenses-utilities-total.html'
 			})
 
+			.state('int.info-confirmation', {
+				url: '/confirmation',
+				templateUrl: 'templates/interview/interview-info-confirmation.html'
+			})
+
 
 		/********************* DOCUMENTS ****************************************/
 

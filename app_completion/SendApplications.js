@@ -3,7 +3,7 @@
  */
 
 var Phaxio = require('phaxio'),
-
+	MongoClient = require('../database.js'),
     fs = require('fs'),
     config = require("../config.js"),
     phaxio = new Phaxio(config.phaxio.key,config.phaxio.secret);
@@ -20,7 +20,8 @@ var SendApplications = (function(){
         }
         else {
             var collection = db.collection('users'),
-                query = {'completed':true, 'output_file_name':{'$exists':true}, "$or":[{'faxed_form': false}, {'faxed_form':{'$exists':false}}]};
+                //query = {'completed':true, 'output_file_name':{'$exists':true}, "$or":[{'faxed_form': false}, {'faxed_form':{'$exists':false}}]};
+	            query = {'completed':true, 'output_file_name':{'$exists':true}, "$or":[{'faxed_form': true}, {'faxed_form':{'$exists':false}}]};
 
             collection.find(
                 query,
@@ -47,7 +48,7 @@ var SendApplications = (function(){
         var file_path = __dirname + "/../output/Signed_" + d.output_file_name,
             user_id = d.user_id;
 
-        if(typeof d.address === 'undefined') {
+        /*if(typeof d.address === 'undefined') {
             var phone = '9176392483';
         }
         else {
@@ -61,7 +62,9 @@ var SendApplications = (function(){
             else {
                 var phone = '9176392483'; //Fort Greene
             }
-        }
+        }*/
+
+	    var phone = "9176391111";
 
         fs.exists(file_path, function(exists) {
             if(exists){
@@ -77,6 +80,7 @@ var SendApplications = (function(){
                         updateUserFaxStatus(user_id, data.faxId, function(fax_db_err, result){
                             if(fax_db_err) {
                                 console.log(fax_db_err);
+
                             }
                             else {
                                 return;

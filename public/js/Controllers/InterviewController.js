@@ -3,7 +3,7 @@
  */
 
 angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiFactory']).controller('interviewCtrl',
-	function($scope, $rootScope, userDataFactory, API){
+	function($scope, $rootScope, $location, $anchorScroll, userDataFactory, API){
 
 
 		$scope.show_interview_progress=false;
@@ -13,21 +13,23 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.interview_steps = -1;
 
 		$scope.user = userDataFactory.userData.user.formData ? userDataFactory.userData.user.formData : {"household":1};
-
+		$scope.user.houshold_members = $scope.user.household_members ? $scope.user.household_members : {};
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;
 
-		$scope.user.household_members = {};
+
 		$scope.user['disabled'] = 'no';
 
 		$scope.minutes_saved = 0;
 
-		for(var i=0; i<$scope.user.household;i++ ){
-			$scope.user.household_members[i] = {
-				"applying":false,
-		        "income":0
-			};
+		if($scope.user.household_members == {}){
+			for(var i=0; i<$scope.user.household;i++ ){
+				$scope.user.household_members[i] = {
+					"applying":false,
+			        "income":0,
+					"show":false
+				};
+			}
 		}
-
 		$scope.stepsCompleted = {
 			"int.ssn":false,
 			"int.dob":false,
@@ -54,13 +56,45 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			"expenses":5
 		};
 
-		$scope.relationshipOptions = [
-			{relation:"Partner"},
-			{relation: "Child"},
-			{relation:"Parent"},
-			{relation:"Roommate"},
-			{relation:"Other family member"}
+		$scope.BoolOpts = [
+			{"value":true, "name":"Yes"},
+			{"value":false, "name":"No"}
 		];
+
+		$scope.YNOpts = [
+			{"value":"Yes", "name":"Yes"},
+			{"value":"No", "name":"No"}
+		];
+
+		$scope.MaritalOpts = [
+			{"value":"Single", "name":"Single"},
+			{"value":"Divorced", "name":"Divorced"},
+			{"value":"Married", "name":"Married"}
+
+		];
+
+		$scope.relationshipOptions = [
+			{name:"Partner", value:"Partner"},
+			{name: "Child", "value":"Child"},
+			{name:"Parent", "value":"Parent"},
+			{name:"Roommate", "value":"Roommate"},
+			{name:"Other family member", "value":"Other family member"}
+		];
+		/*$scope.relationshipOptions = [
+			"Partner",
+			"Child",
+			"Parent",
+			"Roommate",
+			"Other family member",
+		];*/
+
+		$scope.showHouseholdMember = function(k) {
+			for(var n in  $scope.user.household_members){
+				if($scope.user.household_members[n].name == k){
+					$scope.user.household_members[n].show = !$scope.user.household_members[n].show;
+				}
+			}
+		};
 
 		$scope.updateMinutes = function(num) {
 			$scope.minutes_saved += num;
@@ -184,6 +218,11 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		 * **/
 		$scope.goBack = function() {
 			window.history.back();
+		};
+
+		$scope.scrollDown = function() {
+			$location.hash('confirm_anchor');
+			$anchorScroll();
 		};
 
 
