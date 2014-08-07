@@ -13,7 +13,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.interview_steps = -1;
 
 		$scope.user = userDataFactory.userData.user.formData ? userDataFactory.userData.user.formData : {"household":1};
-		$scope.user.houshold_members = $scope.user.household_members ? $scope.user.household_members : {};
+		$scope.user.household_members = $scope.user.household_members ? $scope.user.household_members : {};
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;
 
 
@@ -21,7 +21,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 		$scope.minutes_saved = 0;
 
-		if($scope.user.household_members == {}){
+		if(!isEmpty($scope.user.household_members)){
+			console.log("creating household members data")
 			for(var i=0; i<$scope.user.household;i++ ){
 				$scope.user.household_members[i] = {
 					"applying":false,
@@ -30,6 +31,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				};
 			}
 		}
+		console.log($scope.user.household_members);
+
 		$scope.stepsCompleted = {
 			"int.ssn":false,
 			"int.dob":false,
@@ -80,13 +83,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			{name:"Roommate", "value":"Roommate"},
 			{name:"Other family member", "value":"Other family member"}
 		];
-		/*$scope.relationshipOptions = [
-			"Partner",
-			"Child",
-			"Parent",
-			"Roommate",
-			"Other family member",
-		];*/
+
 
 		$scope.showHouseholdMember = function(k) {
 			for(var n in  $scope.user.household_members){
@@ -95,6 +92,14 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				}
 			}
 		};
+
+		$scope.hasApplyingMembers = function() {
+			var isApplying = false;
+			for(var member in $scope.user.household_members){
+				isApplying = isApplying || $scope.user.household_members[member].applying;
+			}
+			return isApplying;
+		}
 
 		$scope.updateMinutes = function(num) {
 			$scope.minutes_saved += num;
@@ -225,6 +230,15 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			$anchorScroll();
 		};
 
+		function isEmpty(object) {
+
+			for(var i in object) {
+				if(object.hasOwnProperty(i)){
+					return true;
+				}
+			}
+			return false;
+		}
 
 
 	});

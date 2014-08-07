@@ -313,7 +313,12 @@ h5 {
 h5.title {
 	margin-bottom: 0;
 }
-h5.open::after {
+
+.person-name{
+    background-color:lightgrey;text-align:left
+}
+
+.person-name.open::after {
 	position: absolute;
 	content: "\e611";
 	font-family: 'icomoon';
@@ -332,7 +337,7 @@ h5.open::after {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
-h5.close::after {
+.person-name.close::after {
 	position: absolute;
 	content: "\e613";
 	font-family: 'icomoon';
