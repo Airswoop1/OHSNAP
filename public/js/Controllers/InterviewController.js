@@ -173,7 +173,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				expenses = (typeof $scope.user.eligibility_expenses !== 'undefined') ? $scope.user.eligibility_expenses : 0;
 
 			if(typeof $scope.user.utilities.rent !== 'undefined'){
-				expenses += parseInt($scope.user.utilities);
+				expenses += parseInt($scope.user.utilities.rent);
 			}
 
 			for(var users in $scope.user.household_members){
@@ -186,16 +186,9 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			}
 
 			var house = applying;
-
 			var grossIncome = income - expenses;
-
 			var benefit = 0;
 			var eligible = false;
-
-			console.log('gross income '+grossIncome);
-			console.log('applying ' + applying);
-			console.log('income ' + income);
-			console.log('expenses : ' + expenses);
 
 
 			if($scope.user.personal_disabled === "Yes" || $scope.user.disabled === "yes") {
