@@ -4,6 +4,7 @@ $green: #8cc63f;
 $darkGreen: #39b54a;
 $grey: #e6e6e6;
 
+
 @mixin animation($animate...) {
     $max: length($animate);
     $animations: '';
@@ -82,6 +83,7 @@ $grey: #e6e6e6;
 	-o-transition:all .6s ease-in;
 	transition:all .6s ease-in;
 }
+
 
 .container>[ui-view].ng-enter {
   opacity: 0;

@@ -18,6 +18,7 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 		};
 
 		$scope.current_type = $state.params.type;
+		$scope.docSafetyOpen = false;
 
 		$rootScope.$on('$stateChangeStart',function(event, toState, toParams, fromState){
 			if(toParams){
@@ -42,6 +43,10 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 		$scope.goToDocUpload = function(name) {
 			$state.go('upload.detail', {'type':name});
 
+		};
+
+		$scope.docSafe = function() {
+			$scope.docSafetyOpen = !$scope.docSafetyOpen;
 		};
 
 		$scope.getCurrentContent = function(){

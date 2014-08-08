@@ -168,8 +168,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				income = (typeof $scope.user.monthly_income !== 'undefined') ? $scope.user.monthly_income : parseInt($scope.user.income),
 				expenses = (typeof $scope.user.eligibility_expenses !== 'undefined') ? $scope.user.eligibility_expenses : 0;
 
-			if(typeof $scope.user.utilities.rent !== 'undefined'){
-				expenses += parseInt($scope.user.utilities.rent);
+			if(typeof $scope.user.rent !== 'undefined'){
+				expenses += parseInt($scope.user.rent);
 			}
 
 			for(var users in $scope.user.household_members){
