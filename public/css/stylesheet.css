@@ -58,6 +58,11 @@
     transform: rotate(359deg);
   }
 }
+.container {
+  width: 600px;
+  margin: 0 auto;
+}
+
 @media (min-width: 1200px) {
   .container {
     width: 600px;
