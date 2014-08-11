@@ -61,10 +61,6 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 
 		};
 
-		$scope.docSafe = function() {
-			$scope.docSafetyOpen = !$scope.docSafetyOpen;
-		};
-
 		$scope.getCurrentContent = function(){
 			var type =  $state.params.type;
 			$scope.current_sample_image = $scope.docContent[type].sample_image;
