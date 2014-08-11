@@ -165,6 +165,8 @@ angularFileUpload.directive('ngFileSelect', [ '$parse', '$timeout', function($pa
 	};
 } ]);
 
+
+
 angularFileUpload.directive('ngFileDropAvailable', [ '$parse', '$timeout', function($parse, $timeout) {
 	return function(scope, elem, attr) {
 		if ('draggable' in document.createElement('span')) {

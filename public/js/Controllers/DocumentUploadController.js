@@ -2,7 +2,7 @@
  * Created by airswoop1 on 7/23/14.
  */
 
-angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formApp.userDataFactory', 'formApp.sampleDocumentsDirective']).controller('documentUploadCtrl',
+angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'formApp.DocumentUploader','formApp.userDataFactory', 'formApp.sampleDocumentsDirective']).controller('documentUploadCtrl',
 	function($scope, $upload, $state, $stateParams, $rootScope, $location, $window, documentUpload, userDataFactory){
 
 		$scope.docs = userDataFactory.userData.docs;
