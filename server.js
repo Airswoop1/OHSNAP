@@ -18,6 +18,7 @@ var https_server = https.createServer(config.ssl, app);
 app.set('port', config.web.http_port);
 app.set('view engine', 'html');
 app.use(express.favicon());
+app.use(express.compress());
 app.use(express.urlencoded());
 app.use(express.bodyParser());
 app.use(express.cookieParser('asdfa9asdfxxc0'));
@@ -27,7 +28,7 @@ app.use(express.session());
 
 
 app.configure('sandbox', function(){
-    app.use(express.logger('dev'));
+    app.use(express.logger());
     app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
 
