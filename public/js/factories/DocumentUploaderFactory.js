@@ -47,7 +47,9 @@ angular.module('formApp.DocumentUploader',[]).factory('documentUpload', function
 
 
                 var dataURL = canvas.toDataURL(file.type);
+
 	            renderFn(doc_type ,dataURL);
+
                 callback(dataURL);
             }
         }
