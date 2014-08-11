@@ -20,7 +20,7 @@ angular.module('formApp.sampleDocumentsDirective',[]).directive('sampleDocuments
 
 			$scope.exampleActive = {};
 			$scope.currentContent = $scope.$parent.docContent[$scope.$parent.$parent.current_type];
-			console.log($scope.currentContent);
+
 			for(var x in $scope.currentContent.valid_docs){
 				$scope.exampleActive[$scope.currentContent.valid_docs[x].name] = false;
 			}

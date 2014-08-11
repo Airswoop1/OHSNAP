@@ -24,8 +24,11 @@
 		<p><strong>Picture successfully uploaded</strong></p>
 		<div class="yellow-button add-picture">
 			Retake
-			<input type="file">
+			<input type="file" ng-file-select="uploadFile($files)">
 		</div>
+        <div class="picture-wrapper">
+            <img ng-src="{{ localDocs[getCurrentType()] }}" style="width:100%" />
+        </div>
 
         <div class="yellow-button" ui-sref="upload.documents">
             Continue
