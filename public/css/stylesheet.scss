@@ -52,6 +52,11 @@ $red: #FF3D2E;
     transform: rotate(359deg);
   }
 }
+
+.container {
+	width: 600px;
+	margin: 0 auto;
+}
 @media (min-width: 1200px) {
   .container {
   	width: 600px;
@@ -87,7 +92,6 @@ $red: #FF3D2E;
 		display: none;
 	}
 }
-
 .container>[ui-view].ng-enter, 
 .container>[ui-view].ng-leave {
 	  position: absolute;
