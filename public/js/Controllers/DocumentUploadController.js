@@ -3,18 +3,30 @@
  */
 
 angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formApp.userDataFactory', 'formApp.sampleDocumentsDirective']).controller('documentUploadCtrl',
-	function($scope, $upload, $state, $stateParams, $rootScope, documentUpload, userDataFactory){
+	function($scope, $upload, $state, $stateParams, $rootScope, $location, $window, documentUpload, userDataFactory){
 
 		$scope.docs = userDataFactory.userData.docs;
 		$scope.docProgress = userDataFactory.userData.docProgress;
 
-		$scope.user = userDataFactory.userData.user.formData;
-
+		$scope.user = (typeof userDataFactory.userData.user.formData !== "undefined") ? userDataFactory.userData.user.formData : {};
 
 		$scope.DOC_STATUS = {
 			"UPLOADED": 2,
 			"IN_PROGRESS":1,
 			"NOT_UPLOADED":0
+		};
+
+		$scope.localDocs = {
+			'IDENTITY':0,
+				'RESIDENCE':0,
+				'HOUSEHOLD_COMPOSITION':0,
+				'AGE':0,
+				'SSN':0,
+				'CITIZENSHIP':0,
+				'ALIEN_STATUS':0,
+				'EARNED_INCOME':0,
+				'ALT_INCOME':0,
+				'RESOURCES':0
 		};
 
 		$scope.current_type = $state.params.type;
@@ -26,6 +38,10 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 			}
 		});
 
+
+		$scope.renderImg = function(type, url) {
+				$scope.localDocs[type] = url;
+		};
 
 		$scope.isNotUploaded = function(name) {
 			return $scope.docs[name] === $scope.DOC_STATUS.NOT_UPLOADED;
@@ -74,25 +90,28 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 			//display upload in progress;
 			var type = $state.params.type;
 
-			userDataFactory.userData.docs[type] = $scope.DOC_STATUS.IN_PROGRESS;
+			$scope.docs[type] = $scope.DOC_STATUS.IN_PROGRESS;
 			$scope.uploadProgress(type);
+			console.log($files);
+
 			documentUpload.onFileSelect($files, $scope, type, $scope.user.user_id).then(
 				//it succeeeded
 				function(result){
+
 					$scope.docProgress[type] = 100;
-					userDataFactory.userData.docs[type] = $scope.DOC_STATUS.UPLOADED;
+					$scope.docs[type] = $scope.DOC_STATUS.UPLOADED;
 				},
 				//it failed
 				function(reason){
-					userDataFactory.userData.docs[type] = $scope.DOC_STATUS.NOT_UPLOADED;
+					$scope.docs[type] = $scope.DOC_STATUS.NOT_UPLOADED;
 					//throw some sort of error indicating failure.
-					alert('aw no upload');
-					alert(reason);
+					alert('Sorry we were unable to upload your documents, please try again');
+
 				})
 		};
 
 		$scope.uploadProgress = function(type) {
-			$scope.docProgress[type] += 10
+			$scope.docProgress[type] += 10;
 
 			var upload = setInterval(function(){
 
@@ -111,6 +130,7 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 
 		//update status based on whats in the db
 		$scope.updateUploadedFilesStatus = function(data) {
+
 			var status = data.status;
 			if(status){
 				for (var uploaded in status){
@@ -122,9 +142,37 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 
 		};
 
+
+		$window.onbeforeunload = function(){
+			var message = 'Your documents are still uploading! If you leave now they won\'t be submitted.';
+
+			if($scope.docStillUploading()){
+
+				if (typeof event == 'undefined') {
+					event = window.event;
+				}
+				if (event) {
+					event.returnValue = message;
+				}
+				return message;
+			}
+			else{
+				return null;
+			}
+		};
+
+
+		$scope.docStillUploading = function() {
+			var uploading = false;
+			for(var x in $scope.docs){
+				uploading = (uploading || ($scope.docs[x] === $scope.DOC_STATUS.IN_PROGRESS)) ;
+			}
+
+			return uploading;
+
+		};
+
 		//API.getDocumentStatus($scope.user_id, $scope.updateUploadedFilesStatus);
-
-
 
 		$scope.docContent = {
 			'IDENTITY':{

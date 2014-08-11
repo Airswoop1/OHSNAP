@@ -5,14 +5,16 @@
 
 angular.module('formApp.DocumentUploader',[]).factory('documentUpload', function($http, $upload, $q) {
 
-    function resizeDocument(file, callback) {
+    function resizeDocument(file, doc_type, renderFn, callback) {
 
         var reader = new FileReader();
         reader.readAsDataURL(file);
 
-        reader.onloadend = function() {
+
+        reader.onloadend = function(evt) {
             var tempImg = new Image();
             tempImg.src = reader.result;
+
 
             tempImg.onload = function () {
 
@@ -45,7 +47,7 @@ angular.module('formApp.DocumentUploader',[]).factory('documentUpload', function
 
 
                 var dataURL = canvas.toDataURL(file.type);
-
+	            renderFn(doc_type ,dataURL);
                 callback(dataURL);
             }
         }
@@ -69,7 +71,14 @@ angular.module('formApp.DocumentUploader',[]).factory('documentUpload', function
             if(/(iPad|iPhone|iPod)/g.test( navigator.userAgent )){
 
                 data['platform'] = 'ios';
+	            if (window.FileReader) {
+					var fileReader = new FileReader();
+		            fileReader.readAsDataURL(file);
+		            fileReader.onloadend = function(evt){
+			            $scope.renderImg(type, evt.target.result);
+		            }
 
+	            }
                 $scope.upload = $upload.upload(
                     {
                         'url': '/upload_docs',
@@ -81,11 +90,8 @@ angular.module('formApp.DocumentUploader',[]).factory('documentUpload', function
                     return deferred.promise;
                 })
                 .success(function(d, status, headers, config) {
-                    console.log("within onFileSelect")
-		                console.log(status);
-		                console.log(config);
-		                console.log(headers);
                     // file is uploaded successfully
+
                     return deferred.resolve(d);
                 })
                 .error(function(err, data){
@@ -95,7 +101,7 @@ angular.module('formApp.DocumentUploader',[]).factory('documentUpload', function
 
             }
             else{
-                resizeDocument(file, function(file_url){
+                resizeDocument(file, type, $scope.renderImg, function(file_url){
 
                     data['file_base64'] = file_url;
                     data['platform'] = 'other';
@@ -110,8 +116,10 @@ angular.module('formApp.DocumentUploader',[]).factory('documentUpload', function
 
                         })
                         .success(function(d, status, headers, config) {
+		                    d["data"] = data;
+
                             // file is uploaded successfully
-                            return deferred.resolve(d,data);
+                            return deferred.resolve(d);
                         })
                         .error(function(err){
                             return deferred.reject(err);
