@@ -839,6 +839,7 @@ textarea {
 	color: #ffffff;
 	box-sizing: border-box;
 	padding: 20px 25px;
+	position: relative;
 }
 
 .remove-progress {
@@ -1397,8 +1398,13 @@ input[type=file]{
 	left: 0;
 	bottom: 0;
 	right: 0;
+	background-color: rgba(255,255,255,0.8);
+	text-align: center;
 }
 
+.picture-wrapper.fullscreen img {
+	display: inline-block;
+}
 .done-button {
 	position: absolute;
 	right: 25px;
