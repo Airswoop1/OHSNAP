@@ -3,6 +3,7 @@ $blue: #00a4ff;
 $green: #8cc63f;
 $darkGreen: #39b54a;
 $grey: #e6e6e6;
+$red: #FF3D2E;
 
 
 @mixin animation($animate...) {
@@ -172,8 +173,14 @@ $grey: #e6e6e6;
 	}
 }
 
-.has-error .form-control {
-	border-color: #FF3D2E;
+.ng-invalid.ng-dirty {
+	border-color: $red;
+	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+}
+
+.ng-valid.ng-dirty {
+	border-color: $green !important;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 	box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
 }
@@ -196,7 +203,7 @@ input[type=time]:focus,
 input[type=url]:focus, 
 input[type=week]:focus, 
 textarea:focus {
-	border-color: #62c462;
+	border-color: $blue;
 	outline: 0;
 	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(98,196,98,.6);
 	-moz-box-shadow: inset 0 1px 1px rgba(0,0,0,.075),0 0 8px rgba(98,196,98,.6);
