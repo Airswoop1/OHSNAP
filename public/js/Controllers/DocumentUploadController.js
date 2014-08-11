@@ -333,14 +333,6 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 				sample_image:"sample_altincome.png",
 				valid_docs : [
 					{
-						"name":"Statement from person paying child support",
-						"link":"http://info.legalzoom.com/evidence-child-support-payments-23480.html"
-					},
-					{
-						"name":"Check stubs from child support",
-						"link":"http://info.legalzoom.com/evidence-child-support-payments-23480.html"
-					},
-					{
 						"name":"Current unemployment award certificate",
 						"image":"sample_unemploymentcert.jpg",
 						"link":"http://www.ehow.com/how_8421455_do-proof-unemployment.html"
@@ -351,7 +343,18 @@ angular.module('formApp.documentUploadCtrl', ['formApp.DocumentUploader','formAp
 						"link":"http://www.ssa.gov/pubs/EN-05-10552.pdf"
 					},
 					{
+						"name":"Statement from person paying child support",
+						"image":"empty.jpg",
+						"link":"http://info.legalzoom.com/evidence-child-support-payments-23480.html"
+					},
+					{
+						"name":"Check stubs from child support",
+						"image":"empty.jpg",
+						"link":"http://info.legalzoom.com/evidence-child-support-payments-23480.html"
+					},
+					{
 						"name":"Current veteran's benefit check",
+						"image":"empty.jpg",
 					},
 					{
 						"name":"Current worker's compensation certificate",
