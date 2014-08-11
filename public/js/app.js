@@ -239,13 +239,4 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 
 	}]);
 
-app.directive('ngDocumentFullscreen', function(){
-	return {
-		restrict: "A",
-		link: function(scope, elem, attr, ctrl) {
-			elem.bind('click', function(e) {
-				this.classList.toggle('fullscreen');
-			});
-		}
-	}
-})
+
