@@ -20,11 +20,13 @@ var SendApplications = (function(){
         }
         else {
             var collection = db.collection('users'),
-                //query = {'completed':true, 'output_file_name':{'$exists':true}, "$or":[{'faxed_form': false}, {'faxed_form':{'$exists':false}}]};
-	            query = {'completed':true, 'output_file_name':{'$exists':true}, "$or":[{'faxed_form': true}, {'faxed_form':{'$exists':false}}]};
+	            opts = {"limit":50},
+                query = {'completed':true, 'output_file_name':{'$exists':true}, "$or":[{'faxed_form': false}, {'faxed_form':{'$exists':false}}]};
+	            //query = {'completed':true, 'output_file_name':{'$exists':true}, "$or":[{'faxed_form': true}, {'faxed_form':{'$exists':false}}]};
 
             collection.find(
                 query,
+	            opts,
                 function(err, cursor){
                     if(err){
                         console.log("error with query in send application!");
@@ -32,7 +34,7 @@ var SendApplications = (function(){
                     }
                     else{
                         cursor.toArray(function(e, docs){
-                            //console.log(docs.length);
+                            console.log(docs.length);
                             docs.forEach(faxApplication);
 
                         })
@@ -73,24 +75,23 @@ var SendApplications = (function(){
                     filenames : file_path
                 }, function(err, data) {
                     if(err){
-                        console.log("Error sending fax!");
-                        console.log(err);
+                        console.log("Error sending fax for: " + user_id);
+
                     }
                     else if(data.success) {
                         updateUserFaxStatus(user_id, data.faxId, function(fax_db_err, result){
                             if(fax_db_err) {
                                 console.log(fax_db_err);
-
+								console.log("did not update db for: " + user_id);
                             }
                             else {
-                                return;
+                                console.log('done');
                             }
-                        })
-                        console.log("Success!");
-                        console.log(data);
+                        });
                     }
                     else {
-                        console.log("error!!!");
+
+                        console.log("error while sending: " + user_id);
                         console.log(data);
 
                     }
