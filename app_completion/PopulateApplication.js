@@ -37,7 +37,7 @@ var PopulateApplication = (function(){
                     else{
                         cursor.toArray(function(e, docs){
                             total = docs.length;
-							docs.forEach(function(i){
+							/*docs.forEach(function(i){
 								var percent_completed=0;
 
 								for(var x in i){
@@ -47,8 +47,8 @@ var PopulateApplication = (function(){
 								}
 
 								console.log(i.user_id + ", " + i.name.first_name + " " + i.name.last_name + ", " + i.phone_main + ", " + i.ssn + ", " + percent_completed);
-							});
-	                        //docs.forEach(processApp);
+							});*/
+	                        docs.forEach(processApp);
                             return;
                         })
                     }
