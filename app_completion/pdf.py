@@ -1,5 +1,5 @@
 from pyPdf import PdfFileWriter, PdfFileReader
-import csv
+
 from fdfgen import forge_fdf
 import os
 import sys, getopt
@@ -49,6 +49,7 @@ for opt, a in opts:
         formatted_data.append(('Tel', a))
     elif opt=='--Date':
         formatted_data.append(('sig_date', a))
+        formatted_data.append(('sig_date_pg_five', a))
     elif opt=='--ID':
         tmp_id = a
     elif opt=='--1_SSN':
@@ -242,16 +243,20 @@ os.remove(tmp_file)
 
 input = PdfFileReader(file( output_file , "rb"))
 watermark = PdfFileReader(file("./app_completion/sig.pdf" , "rb"))
+watermark2 = PdfFileReader(file("./app_completion/sig2.pdf" , "rb"))
 output = PdfFileWriter()
 
 page1 = input.getPage(1)
 page1.mergePage(watermark.getPage(0))
+page2 = input.getPage(5)
+page2.mergePage(watermark2.getPage(0))
 
 output.addPage(input.getPage(1))
 output.addPage(input.getPage(2))
 output.addPage(input.getPage(3))
+output.addPage(input.getPage(5))
 
-outputStream = file(os.getcwd() + "/output/Signed_"+filename_prefix+".pdf" , "wb")
+outputStream = file(os.getcwd() + "/output/Signed_"+filename_prefix+".pdf", "wb")
 output.write(outputStream)
 outputStream.close()
 os.remove(output_file)

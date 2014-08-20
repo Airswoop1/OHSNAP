@@ -2,10 +2,9 @@
  * Created by airswoop1 on 7/11/14.
  */
 
-var MongoClient = require('../database.js');
-var exec = require('child_process').exec;
-var cities = require('cities');
-
+var MongoClient = require('../database.js'),
+	exec = require('child_process').exec,
+	cities = require('cities');
 
 
 var PopulateApplication = (function(){
@@ -13,7 +12,9 @@ var PopulateApplication = (function(){
     console.log("executing PopulateApplication")
     var success_ct = 0,
         error_ct = 0,
+	    error_array = [],
         total = 0;
+
 
     MongoClient.getConnection(function(db_err, db){
         if(db_err) {
@@ -24,9 +25,9 @@ var PopulateApplication = (function(){
 
             var collection = db.collection('users'),
 	            //opts = {"limit":50},
-	            //query = {"user_id":"b1883805-7a5e-409e-a630-6f543a59198f"};
+	            //query = {"user_id":"7005dcc2-8037-4596-af0e-548c8be23cff"};
                 //query = {$or:[{'completed':{$exists:false}},{'completed':false}], "documents":{'$exists':false} ,'created_on':{'$lt':1407798000000}};
-	            query = {'completed':true, "documents":{'$exists':false} ,'created_on':{'$lt':1407798000000}};
+	            query = {"documents":{'$exists':true} ,'created_on':{'$lt':1407798000000}, 'completed':false};
 
             collection.find(query, //opts,
                 function(err, cursor){
@@ -37,6 +38,7 @@ var PopulateApplication = (function(){
                     else{
                         cursor.toArray(function(e, docs){
                             total = docs.length;
+	                        //used to provide breakdown of users apps submitted
 							/*docs.forEach(function(i){
 								var percent_completed=0;
 
@@ -48,6 +50,7 @@ var PopulateApplication = (function(){
 
 								console.log(i.user_id + ", " + i.name.first_name + " " + i.name.last_name + ", " + i.phone_main + ", " + i.ssn + ", " + percent_completed);
 							});*/
+	                        //console.log(total);
 	                        docs.forEach(processApp);
                             return;
                         })
@@ -74,6 +77,7 @@ var PopulateApplication = (function(){
 
 	    if(r.name.first_name.length <= 2 || r.name.last_name.length <= 2 || r.name.first_name == "test" || r.name.first_name == "Test"){
 		    error_ct++;
+		    error_array.push(r.user_id);
 		    cb("bad data");
 	    }
 
@@ -262,6 +266,7 @@ var PopulateApplication = (function(){
                 console.log(data.tmp_id);
 
                 error_ct++;
+	            error_array.push(data.user_id);
                 cb(error,data.user_id, data.tmp_id);
             }
             else {
@@ -301,6 +306,7 @@ var PopulateApplication = (function(){
                         if((error_ct+success_ct) === total){
                             console.log("successfully created " + success_ct + " pdfs!");
                             console.log("errored out on " + error_ct + " pdfs");
+	                        console.log(error_array)
                             process.exit(0);
                         }
                     })

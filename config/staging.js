@@ -4,8 +4,8 @@
 
 var fs = require('fs');
 var mongolab_pw = process.env.MONGOLAB_PW,
-    phaxio_prod_key = process.env.PHAXIO_TEST_KEY,
-    phaxio_prod_secret = process.env.PHAXIO_TEST_SECRET,
+    phaxio_test_key = process.env.PHAXIO_TEST_KEY,
+    phaxio_test_secret = process.env.PHAXIO_TEST_SECRET,
     AWS_ACCESS_KEY = process.env.AWS_SL_ACCESS_KEY_ID,
     AWS_SECRET_KEY = process.env.AWS_SL_SECRET_ACCESS_KEY;
 
@@ -31,8 +31,8 @@ module.exports = {
         "https_port" : 8080
     },
     "phaxio" : {
-        "key":phaxio_prod_key,
-        "secret":phaxio_prod_secret
+        "key":phaxio_test_key,
+        "secret":phaxio_test_secret
     }
 
 }
