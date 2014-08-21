@@ -35,7 +35,7 @@ var PopulateDocs = (function() {
 				//query = {'completed':true, 'documents':{'$exists':true} };
 				//query = {'created_on':{'$lt':1407798000000}, 'documents':{'$exists':true} };
 				//query = {'user_id':"99d7b2cf-464c-4e32-aa79-ec4ae1b4f629"};
-				query = {"documents":{'$exists':true} ,'created_on':{'$lt':1407798000000}}
+				query = {"documents":{'$exists':true} ,'created_on':{'$gt':1407798000000}}
 
 			collection.find(
 				query,
@@ -160,6 +160,7 @@ var PopulateDocs = (function() {
 					console.log('error creating single file for ' + user_id );
 					console.log(error);
 					console.log(stderr);
+					SendDocuments.execute(user_id);
 				}
 				else {
 					//delete image files?
@@ -185,8 +186,8 @@ var PopulateDocs = (function() {
 			}
 			else {
 				console.log("combined app and docs for " + user_id);
-				SendDocuments.execute(user_id);
 			}
+			SendDocuments.execute(user_id);
 		});
 
 

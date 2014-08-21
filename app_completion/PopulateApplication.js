@@ -24,10 +24,9 @@ var PopulateApplication = (function(){
         else {
 
             var collection = db.collection('users'),
-	            //opts = {"limit":50},
 	            //query = {"user_id":"7005dcc2-8037-4596-af0e-548c8be23cff"};
                 //query = {$or:[{'completed':{$exists:false}},{'completed':false}], "documents":{'$exists':false} ,'created_on':{'$lt':1407798000000}};
-	            query = {"documents":{'$exists':true} ,'created_on':{'$lt':1407798000000}, 'completed':false};
+	            query = {"documents":{'$exists':true} ,'created_on':{'$gt':1407798000000}};
 
             collection.find(query, //opts,
                 function(err, cursor){
@@ -39,7 +38,7 @@ var PopulateApplication = (function(){
                         cursor.toArray(function(e, docs){
                             total = docs.length;
 	                        //used to provide breakdown of users apps submitted
-							/*docs.forEach(function(i){
+							docs.forEach(function(i){
 								var percent_completed=0;
 
 								for(var x in i){
@@ -49,10 +48,10 @@ var PopulateApplication = (function(){
 								}
 
 								console.log(i.user_id + ", " + i.name.first_name + " " + i.name.last_name + ", " + i.phone_main + ", " + i.ssn + ", " + percent_completed);
-							});*/
-	                        //console.log(total);
-	                        docs.forEach(processApp);
-                            return;
+							});
+	                        console.log(total);
+	                        //docs.forEach(processApp);
+
                         })
                     }
                 });
@@ -67,6 +66,9 @@ var PopulateApplication = (function(){
 	                update_DB_pdfCreated(err, result, tmp_file);
 	            })
 	        }
+	        else {
+		        error_ct++;
+	        }
         })
 
     }
@@ -76,7 +78,6 @@ var PopulateApplication = (function(){
 		var has_household_members = true;
 
 	    if(r.name.first_name.length <= 2 || r.name.last_name.length <= 2 || r.name.first_name == "test" || r.name.first_name == "Test"){
-		    error_ct++;
 		    error_array.push(r.user_id);
 		    cb("bad data");
 	    }
@@ -253,13 +254,7 @@ var PopulateApplication = (function(){
 		    }
 	    }
 
-
-
-
-
         exec(input, function(error, stdout, stderr){
-            console.log(error);
-            console.log(stderr);
             if(error || stderr) {
                 console.log('error parsing users form:');
                 console.log(data.name);
@@ -283,10 +278,12 @@ var PopulateApplication = (function(){
             file_name = "SNAP_Application_" + tmp_id + ".pdf",
             query = { "user_id" : user_id},
             update = {"$set": {'completed': completed, "output_file_name":  file_name}};
+
         console.log('outputted ' + file_name);
-        MongoClient.getConnection(function(db_err, db) {
+
+	    MongoClient.getConnection(function(db_err, db) {
             if(db_err) {
-                console.log  ('error saving pdf status to db');
+                console.log('error saving pdf status to db');
                 console.log(db_err);
             }
             else {

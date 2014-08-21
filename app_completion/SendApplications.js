@@ -13,7 +13,7 @@ var SendApplications = (function(){
 
     console.log("executing send applications");
 
-    MongoClient.getConnection(function(db_err, db){
+    /*MongoClient.getConnection(function(db_err, db){
         if(db_err) {
             console.log(db_err);
             return;
@@ -35,6 +35,7 @@ var SendApplications = (function(){
                     else{
                         cursor.toArray(function(e, docs){
                             console.log(docs.length);
+
                             docs.forEach(faxApplication);
 
                         })
@@ -43,12 +44,25 @@ var SendApplications = (function(){
                 })
 
         }
-    });
+    });*/
+	var tempArray = ["SNAP_Application_39f9947b613d498a8afe93e425e2e089.pdf",
+		"SNAP_Application_83df66bcaa5d48959292cf1738b89664.pdf",
+		"SNAP_Application_abe1615efa754c519cd8bfe5ecb0cfce.pdf",
+		"SNAP_Application_0175ca74bb3948938bde32db836b10c1.pdf",
+		"SNAP_Application_3e3144af4f6a4544a7b6ce3f80f8ecc3.pdf",
+		"SNAP_Application_6af751fa14144170862aab47e13b6678.pdf",
+		"SNAP_Application_b67db5e95f6846129583af6364a10a03.pdf",
+		"SNAP_Application_d1fd56997cca4de58eabd05dfabcaae9.pdf",
+		"SNAP_Application_587e5177f5d242c5ab57378a924434b3.pdf" ];
+	tempArray.forEach(faxApplication);
 
     function faxApplication(d) {
 
-        var file_path = __dirname + "/../output/Signed_" + d.output_file_name,
-            user_id = d.user_id;
+	    var file_path = __dirname + "/../output/Signed_" + d,
+		    user_id = "";
+
+        /*var file_path = __dirname + "/../output/Signed_" + d.output_file_name,
+            user_id = d.user_id;*/
 
         /*if(typeof d.address === 'undefined') {
             var phone = '9176392483';
