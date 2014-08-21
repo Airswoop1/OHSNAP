@@ -8,16 +8,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 	function($scope, $state, $http, $rootScope, $upload, $location, $window, API, userDataFactory) {
 
 		// we will store all of our form data in this object
-		$scope.formData = {
-			"name": {
-				"entered_name":""
-			},
-			"address":{
-				"street_address":undefined,
-				"zip":undefined
-			},
-			"phone":undefined
-		};
+		$scope.formData = userDataFactory.userData.user.formData;
 
 
 		//data objects for holding input temporarily

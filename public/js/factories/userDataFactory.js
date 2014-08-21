@@ -43,7 +43,19 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				"expenses":false
 			},
 
-			'user':{}
+			'user':{
+				formData: {
+					"name": {
+						'first_name':undefined,
+						'last_name':undefined
+					},
+					"address":{
+						"street_address":undefined,
+						"zip":undefined
+					},
+					"phone":undefined
+				}
+			}
 		};
 
 
