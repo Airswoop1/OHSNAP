@@ -6,7 +6,8 @@ var Index = require('./Index.js'),
 	UpdateUserInfo = require('./UpdateUserInfo.js'),
     DocumentationUpload = require('./DocumentationUpload.js'),
     SubmitFeedback = require('./SubmitFeedback.js'),
-    DocumentStatus = require('./DocumentStatus.js');
+    DocumentStatus = require('./DocumentStatus.js'),
+	SignatureData = require('./SignatureData.js');
 
 
 var api = (function(){
@@ -19,6 +20,7 @@ var api = (function(){
         app.post('/upload_docs', DocumentationUpload.execute);
         app.post('/submit_feedback', SubmitFeedback.execute);
         app.post('/get_doc_status', DocumentStatus.execute);
+	    app.post('/send_sig_data', SignatureData.execute);
     }
 
     return {

@@ -21,36 +21,36 @@
         <h4>Sign application</h4>
     </div>
     <div class="top-container">
-        <p>Preview your application below, and sign it in 2 places to complete it.</p>
+        <p>Thank you for your recent application for SNAP! To submit your application, you need to sign it in 2 places. Tap the button below to begin.</p>
         <div class="yellow-button" id="ready2sign">I'm ready to sign</div>
     </div>
 
     <div class="img_container">
-        <img src="images/sig/1.jpg" alt=""/>
+        <img src="" alt=""/>
         <div id="sig_container1">
             <div id="sig_capture1"></div>
 
             <div id="sig_prompt1">
-                Write your signature in the box above to sign.
+                Sign in the box with your finger.
                 <div id="sig_continue" class="sig_button">
-                    Continue to final signature
+                    Continue
                 </div>
             </div>
         </div>
     </div>
     <div class="img_container">
-        <img src="images/sig/2.jpg" alt=""/>
+        <img src="" alt=""/>
     </div>
     <div class="img_container">
-        <img src="images/sig/3.jpg" alt=""/>
+        <img src="" alt=""/>
     </div>
     <div class="img_container" id="sig2img_container">
-        <img src="images/sig/4.jpg" alt=""/>
+        <img src="" alt=""/>
         <div id="sig_container2">
             <div id="sig_capture2"></div>
 
             <div class="sig_prompt">
-                Write your signature in the box above to sign.
+                Sign in the box with your finger.
                 <div class="sig_button" id="submit_application">
                     Submit application
                 </div>
@@ -67,20 +67,31 @@
 
 
 
-
-
-
-
 <script>
 
-    var data = {
-        user_id:"a user id",
-        sig1 : undefined,
-        sig2 : undefined
+    var user_id = window.location.search.substring(1).split("=")[1];
+    if(typeof user_id == 'undefined'){
+        alert("Something went wrong, please go back and tap on the link again.")
     }
 
+    var data = {
+        'user_id': user_id,
+        'sig1': undefined,
+        'sig2' : undefined
+    };
+
+
+    $('.img_container > img').each(function(index){
+        console.log("setting src for image")
+
+        $(this).attr("src", "/images/sig/" + user_id + "_" + (index+1) + ".jpg");
+    });
+
+
     $(document).ready(function() {
-        var jsig1 = $("#sig_capture1").jSignature(),
+
+
+        var jsig1 = $("#sig_capture1").jSignature({'UndoButton':true}),
             jsig2 = undefined;
 
         jsig1.jSignature("reset");
@@ -96,7 +107,7 @@
         function goToSign2() {
 
             data.sig1 = jsig1.jSignature('getData');
-            jsig2 = $('#sig_capture2').jSignature();
+            jsig2 = $('#sig_capture2').jSignature({'UndoButton':true});
 
             document.getElementById('sig_container2').scrollIntoView(true);
             document.getElementById('sig2img_container').scrollLeft = 168;
@@ -104,30 +115,31 @@
 
         function goToConfirmation() {
             data.sig2 = jsig2.jSignature("getData");
-            console.log(data);
-            window.location.href = "/sig_completed.html";
+
+            if(typeof data.sig1 === 'undefined' || typeof data.sig2 === 'undefined'){
+                alert("Signatures are required to submit your application.");
+            }
+            else {
+                sendDataToServer();
+            }
+
         }
 
         function sendDataToServer() {
 
-
+            $.ajax('/send_sig_data',{
+                "type": "POST",
+                "data": data
+            })
+            .done(function(html){
+                  console.log(html);
+                  alert('DOne!');
+                  //window.location.href = "/sig_completed.html";
+            })
         }
 
 
     });
-
-    // Returns signature image as data URL
-
-
-    // Draws signature image from data URL
-
-
-    // Clears the canvas
-    //signaturePad.clear();
-
-    // Returns true if canvas is empty, otherwise returns false
-    //signaturePad.isEmpty();
-
 
 </script>
 

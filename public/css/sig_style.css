@@ -67,7 +67,7 @@ p {
 }
 
 #sig_capture1 {
-    border: 1px solid red;
+
     width:100%;
     height: 45px;
 
@@ -94,7 +94,7 @@ p {
 }
 
 #sig_capture2 {
-    border: 1px solid red;
+
     width:100%;
     height: 45px;
     z-index: 100;
@@ -130,7 +130,7 @@ p {
     width:100%;
     height:400px;
     overflow:scroll;
-    border:1px solid red;
+    border:4px solid red;
 }
 
 .img_container img {
