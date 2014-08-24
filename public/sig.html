@@ -12,19 +12,10 @@
     <script type="text/javascript" src="js/sig/flashcanvas.js"></script>
     <![endif]-->
     <script src="js/sig/jSignature.min.js"></script>
-
-    <script>
-        $(document).ready(function() {
-            $("#sig_capture1").jSignature();
-            //$("#sig_capture2").jSignature();
-        })
-    </script>
-
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=3">
 
 </head>
 <body>
-<form action="">
 <div class="page_container" >
     <div id="header">
         <h4>Sign application</h4>
@@ -33,6 +24,7 @@
         <p>Preview your application below, and sign it in 2 places to complete it.</p>
         <div class="yellow-button" id="ready2sign">I'm ready to sign</div>
     </div>
+
     <div class="img_container">
         <img src="images/sig/1.jpg" alt=""/>
         <div id="sig_container1">
@@ -72,9 +64,7 @@
 
 </div>
 
-    <input type="submit" name="sig_submit" id="sig_submit" value="Save Signatures" />
 
-</form>
 
 
 
@@ -89,10 +79,11 @@
         sig2 : undefined
     }
 
-    document.onload = (function(){
-        /*var canvas = document.querySelector('canvas'),
-            signaturePad = new SignaturePad(canvas);*/
+    $(document).ready(function() {
+        var jsig1 = $("#sig_capture1").jSignature(),
+            jsig2 = undefined;
 
+        jsig1.jSignature("reset");
 
         document.getElementById('ready2sign').addEventListener("click", goToSign1);
         document.getElementById('sig_continue').addEventListener("click", goToSign2);
@@ -104,18 +95,26 @@
 
         function goToSign2() {
 
+            data.sig1 = jsig1.jSignature('getData');
+            jsig2 = $('#sig_capture2').jSignature();
+
             document.getElementById('sig_container2').scrollIntoView(true);
             document.getElementById('sig2img_container').scrollLeft = 168;
         }
 
         function goToConfirmation() {
-
+            data.sig2 = jsig2.jSignature("getData");
             console.log(data);
             window.location.href = "/sig_completed.html";
         }
 
+        function sendDataToServer() {
 
-    }());
+
+        }
+
+
+    });
 
     // Returns signature image as data URL
 
