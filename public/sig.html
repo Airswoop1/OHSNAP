@@ -2,12 +2,29 @@
 <html>
 <head>
     <title>Capture Signature for PDF</title>
-    <script src="js/sig/signature_pad.js"></script>
+    <!--<script src="js/sig/signature_pad.js"></script>-->
     <link rel="stylesheet" href="css/sig_style.css"/>
+
+
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+    <!--[if lt IE 9]>
+    <script type="text/javascript" src="js/sig/flashcanvas.js"></script>
+    <![endif]-->
+    <script src="js/sig/jSignature.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#sig_capture1").jSignature();
+            //$("#sig_capture2").jSignature();
+        })
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=3">
 
 </head>
 <body>
+<form action="">
 <div class="page_container" >
     <div id="header">
         <h4>Sign application</h4>
@@ -19,7 +36,7 @@
     <div class="img_container">
         <img src="images/sig/1.jpg" alt=""/>
         <div id="sig_container1">
-            <canvas id="sig_capture1"></canvas>
+            <div id="sig_capture1"></div>
 
             <div id="sig_prompt1">
                 Write your signature in the box above to sign.
@@ -38,7 +55,7 @@
     <div class="img_container" id="sig2img_container">
         <img src="images/sig/4.jpg" alt=""/>
         <div id="sig_container2">
-            <canvas id="sig_capture2"></canvas>
+            <div id="sig_capture2"></div>
 
             <div class="sig_prompt">
                 Write your signature in the box above to sign.
@@ -55,6 +72,9 @@
 
 </div>
 
+    <input type="submit" name="sig_submit" id="sig_submit" value="Save Signatures" />
+
+</form>
 
 
 
@@ -70,8 +90,8 @@
     }
 
     document.onload = (function(){
-        var canvas = document.querySelector('canvas'),
-            signaturePad = new SignaturePad(canvas);
+        /*var canvas = document.querySelector('canvas'),
+            signaturePad = new SignaturePad(canvas);*/
 
 
         document.getElementById('ready2sign').addEventListener("click", goToSign1);
@@ -83,8 +103,6 @@
         }
 
         function goToSign2() {
-            //signaturePad.fromDataURL("data:image/png;base64,iVBORw0K...");
-            data.sig1 = signaturePad.toDataURL();
 
             document.getElementById('sig_container2').scrollIntoView(true);
             document.getElementById('sig2img_container').scrollLeft = 168;
@@ -92,7 +110,6 @@
 
         function goToConfirmation() {
 
-            data.sig2 = signaturePad.toDataURL();
             console.log(data);
             window.location.href = "/sig_completed.html";
         }
