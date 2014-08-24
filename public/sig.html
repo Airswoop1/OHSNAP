@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Capture Signature for PDF</title>
+    <script src="js/sig/signature_pad.js"></script>
+    <link rel="stylesheet" href="css/sig_style.css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=3">
+
+</head>
+<body>
+<div class="page_container" >
+    <div id="header">
+        <h4>Sign application</h4>
+    </div>
+    <div class="top-container">
+        <p>Preview your application below, and sign it in 2 places to complete it.</p>
+        <div class="yellow-button" id="ready2sign">I'm ready to sign</div>
+    </div>
+    <div class="img_container">
+        <img src="images/sig/1.jpg" alt=""/>
+        <div id="sig_container1">
+            <canvas id="sig_capture1"></canvas>
+
+            <div id="sig_prompt1">
+                Write your signature in the box above to sign.
+                <div id="sig_continue" class="sig_button">
+                    Continue to final signature
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="img_container">
+        <img src="images/sig/2.jpg" alt=""/>
+    </div>
+    <div class="img_container">
+        <img src="images/sig/3.jpg" alt=""/>
+    </div>
+    <div class="img_container" id="sig2img_container">
+        <img src="images/sig/4.jpg" alt=""/>
+        <div id="sig_container2">
+            <canvas id="sig_capture2"></canvas>
+
+            <div class="sig_prompt">
+                Write your signature in the box above to sign.
+                <div class="sig_button" id="submit_application">
+                    Submit application
+                </div>
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+
+
+
+
+<script>
+
+    var data = {
+        user_id:"a user id",
+        sig1 : undefined,
+        sig2 : undefined
+    }
+
+    document.onload = (function(){
+        var canvas = document.querySelector('canvas'),
+            signaturePad = new SignaturePad(canvas);
+
+
+        document.getElementById('ready2sign').addEventListener("click", goToSign1);
+        document.getElementById('sig_continue').addEventListener("click", goToSign2);
+        document.getElementById('submit_application').addEventListener("click", goToConfirmation);
+
+        function goToSign1() {
+            document.getElementById('sig_container1').scrollIntoView(true);
+        }
+
+        function goToSign2() {
+            //signaturePad.fromDataURL("data:image/png;base64,iVBORw0K...");
+            data.sig1 = signaturePad.toDataURL();
+
+            document.getElementById('sig_container2').scrollIntoView(true);
+            document.getElementById('sig2img_container').scrollLeft = 168;
+        }
+
+        function goToConfirmation() {
+
+            data.sig2 = signaturePad.toDataURL();
+            console.log(data);
+            window.location.href = "/sig_completed.html";
+        }
+
+
+    }());
+
+    // Returns signature image as data URL
+
+
+    // Draws signature image from data URL
+
+
+    // Clears the canvas
+    //signaturePad.clear();
+
+    // Returns true if canvas is empty, otherwise returns false
+    //signaturePad.isEmpty();
+
+
+</script>
+
+
+
+</body>
+</html>
