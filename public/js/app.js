@@ -88,6 +88,12 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/basic/form-feedback-submitted.html'
 			})
 
+			.state('form.redirect_page', {
+				url: '/redirect',
+				templateUrl:'templates/basic/form-redirect.html'
+			})
+
+
 
 
 			/************************ Step 2 - INTERVIEW ****************/
