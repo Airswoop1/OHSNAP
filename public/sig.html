@@ -27,6 +27,7 @@
 
     <div class="img_container">
         <img src="" alt=""/>
+        <div id="app_signature_label1">APPLICANT/REPRESENTATIVE SIGNATURE</div>
         <div id="sig_container1">
             <div id="sig_capture1"></div>
 
@@ -44,8 +45,12 @@
     <div class="img_container">
         <img src="" alt=""/>
     </div>
+    <div class="img_container">
+        <img src="" alt=""/>
+    </div>
     <div class="img_container" id="sig2img_container">
         <img src="" alt=""/>
+        <div id="app_signature_label2"></div>
         <div id="sig_container2">
             <div id="sig_capture2"></div>
 
@@ -80,12 +85,37 @@
         'sig2' : undefined
     };
 
-
+    var skip = false;
     $('.img_container > img').each(function(index){
-        console.log("setting src for image")
+        if(index == 3){
+            $(this)
+                    .error(sendErrorLoading)
+                    .attr("src", "/images/sig/" + user_id + "/" + user_id + "-info.png");
 
-        $(this).attr("src", "/images/sig/" + user_id + "_" + (index+1) + ".jpg");
+            skip = true;
+        }
+        else if(skip){
+            $(this)
+                    .error(sendErrorLoading)
+                    .attr("src", "/images/sig/" + user_id + "/" + user_id + "-" + (index-1) + ".png");
+        }
+        else {
+            $(this)
+                    .error(sendErrorLoading)
+                    .attr("src", "/images/sig/" + user_id + "/" + user_id + "-" + (index) + ".png");
+        }
+
     });
+
+    function sendErrorLoading() {
+        $.ajax('/report_error_loading_images',{
+            "type": "POST",
+            "data": {
+                'user_id':user_id
+            }
+        })
+
+    }
 
 
     $(document).ready(function() {
@@ -98,7 +128,7 @@
 
         document.getElementById('ready2sign').addEventListener("click", goToSign1);
         document.getElementById('sig_continue').addEventListener("click", goToSign2);
-        document.getElementById('submit_application').addEventListener("click", goToConfirmation);
+        $('#submit_application').bind("click", goToConfirmation);
 
         function goToSign1() {
             document.getElementById('sig_container1').scrollIntoView(true);
@@ -107,14 +137,19 @@
         function goToSign2() {
 
             data.sig1 = jsig1.jSignature('getData');
-            jsig2 = $('#sig_capture2').jSignature({'UndoButton':true});
+
+            if(typeof jsig2 == 'undefined'){
+                jsig2 = $('#sig_capture2').jSignature({'UndoButton':true});
+            }
 
             document.getElementById('sig_container2').scrollIntoView(true);
             document.getElementById('sig2img_container').scrollLeft = 168;
         }
 
         function goToConfirmation() {
+
             data.sig2 = jsig2.jSignature("getData");
+
 
             if(typeof data.sig1 === 'undefined' || typeof data.sig2 === 'undefined'){
                 alert("Signatures are required to submit your application.");
@@ -126,6 +161,25 @@
         }
 
         function sendDataToServer() {
+            $('#submit_application')
+                    .unbind("click", goToConfirmation)
+                    .html("Submitting application")
+                    .css("background-color","#C0C0C0");
+
+
+            var dots = 0;
+            setInterval(type, 600);
+
+            function type() {
+                if(dots < 3) {
+                    $('#submit_application').append('.');
+                    dots++;
+                } else {
+                    $('#submit_application').html('Submitting application');
+                    dots = 0;
+                }
+            }
+
 
             $.ajax('/send_sig_data',{
                 "type": "POST",
@@ -133,10 +187,11 @@
             })
             .done(function(html){
 
-
-                  window.location.href = "/sig_completed.html";
+                window.location.href = "/sig_completed.html";
             })
         }
+
+
 
 
     });

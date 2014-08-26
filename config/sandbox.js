@@ -18,7 +18,8 @@ module.exports = {
             "secretAccessKey": AWS_SECRET_KEY,
             "region": "us-west-2"
         },
-        "s3_bucket":"significance.labs.snapcoach.documents"
+        "s3_bucket":"significance.labs.snapcoach.documents",
+	    "s3_signature_bucket": "sandbox.easyfoodstamps.signatures"
     },
     "ssl" : {
         "key":fs.readFileSync('./config/ssl/sandbox/key.pem'),

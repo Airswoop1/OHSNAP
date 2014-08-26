@@ -20,7 +20,8 @@ module.exports = {
 			"secretAccessKey": AWS_SECRET_KEY,
 			"region": "us-west-2"
 		},
-		"s3_bucket":"significancelabs.easyfoodstamps.documents"
+		"s3_bucket":"significancelabs.easyfoodstamps.documents",
+		"s3_signature_bucket": "easyfoodstamps.signatures"
 	},
 	"ssl" : {
 		"key":fs.readFileSync('./config/ssl/ssl.key'),

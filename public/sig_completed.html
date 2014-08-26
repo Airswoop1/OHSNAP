@@ -14,8 +14,22 @@
         </div>
 
         <div class="top-container">
-            <p style="text-align: center;text-justify:kashida">You've signed and submitted your SNAP application form.</p>
-            <div class="yellow-button" id="ready2sign">Email me a copy</div>
+            <p style="text-align: center;text-justify:kashida">You've signed and submitted your SNAP application form.
+                If you haven't received one already you should expect a call from a SNAP worker in the next few days.
+                <br/>
+                <br/>
+                In the meantime click the button below if you'd like to checkout a free cookbook for those on a tight budget.</p>
+
+            <div class="yellow-button" id="goToCookbook" onclick="goToCookbook()">Cookbook!</div>
+                <br/>
+            <a style="font-size:14px" href="tel://1-917-727-6855">Questions? Click here to give us a call.</a>
+
         </div>
+            <script>
+                function goToCookbook() {
+                    var win = window.open("http://www.leannebrown.ca/good-and-cheap-pdf", '_blank');
+                    win.focus();
+                }
+            </script>
 </body>
 </html>
