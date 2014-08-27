@@ -920,7 +920,8 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				toState.name === 'form.document-detail' ||
 				toState.name === 'form.eligibility' ||
 				toState.name === 'form.eligibility-expenses' ||
-				toState.name === 'form.expenses'
+				toState.name === 'form.expenses' ||
+				toState.name === 'form.redirect'
 				)) {
 
 				$scope.show_progress = true;
