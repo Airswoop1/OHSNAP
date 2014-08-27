@@ -22,6 +22,7 @@ module.exports = {
         },
         "s3_bucket":"staging.significancelabs.easyfoodstamps.documents",
 	    "s3_signature_bucket": "staging.easyfoodstamps.signatures"
+
     },
     "ssl" : {
         "key":fs.readFileSync('./config/ssl/sandbox/key.pem'),

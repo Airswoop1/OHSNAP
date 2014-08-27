@@ -14,6 +14,9 @@ var app = express();
 var server = http.createServer(app);
 var https_server = https.createServer(config.ssl, app);
 
+var compression = require('compression')
+app.use(compression())
+
 
 app.set('port', config.web.http_port);
 app.set('view engine', 'html');

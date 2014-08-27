@@ -19,7 +19,8 @@ module.exports = {
             "region": "us-west-2"
         },
         "s3_bucket":"significance.labs.snapcoach.documents",
-	    "s3_signature_bucket": "sandbox.easyfoodstamps.signatures"
+	    "s3_signature_bucket": "sandbox.easyfoodstamps.signatures",
+	    "s3_apps_bucket":"sandbox.easyfoodstamps.applications"
     },
     "ssl" : {
         "key":fs.readFileSync('./config/ssl/sandbox/key.pem'),
