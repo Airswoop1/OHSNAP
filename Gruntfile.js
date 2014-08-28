@@ -53,16 +53,67 @@ module.exports = function(grunt) {
 				dest:'public/css/',
 				ext:'.min.css'
 			}
+		},
+		template : {
+			'index_for_prod': {
+				'options': {
+					'data': {
+						'angular': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js',
+						'angular_ui_router': '//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.min.js',
+						'angular_animate': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.min.js',
+						'angular_touch':'//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-touch.min.js',
+						'jquery_1_11_1': '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'
+					},
+					'delimiters': 'handlebars-like-delimiters'
+				},
+				'files': {
+					'public/index.html': ['public/src/index.html.tpl']
+				}
+			},
+			'index_for_dev':{
+				'options': {
+					'data': {
+						'angular': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js',
+						'angular_ui_router': '//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js',
+						'angular_animate': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js',
+						'angular_touch':'//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-touch.js',
+						'jquery_1_11_1': '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
+					},
+					'delimiters': 'handlebars-like-delimiters'
+				},
+				'files': {
+					'public/index.html': ['public/src/index.html.tpl']
+				}
+			}
+
+		},
+		env : {
+			options : {
+				//Shared Options Hash
+			},
+			sandbox : {
+				NODE_ENV : 'sandbox'
+				//DEST     : 'temp'
+			},
+			prod : {
+				NODE_ENV : 'prod'
+				//DEST     : 'dist',
+			}
 		}
+
 	});
 
 	// Load the plugin that provides the "uglify" task.
 	grunt.loadNpmTasks('grunt-contrib-uglify');
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-ng-annotate');
+	grunt.loadNpmTasks('grunt-template');
+	grunt.loadNpmTasks('grunt-env');
 
 	// Default task(s).
-	grunt.registerTask('default', ['ngAnnotate', 'uglify', 'cssmin']);
+	//grunt.registerTask('default', ['ngAnnotate', 'uglify', 'cssmin']);
+	grunt.registerTask('dev', ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_dev']);
+	grunt.registerTask('prod', ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_prod']);
 
 	// A very basic default task.
 	grunt.registerTask('logging', 'Log some stuff.', function() {

@@ -60,11 +60,11 @@
 
 </div>
 </body>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-touch.js"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js"></script>
+<script src="<%= angular %>"></script>
+<script src="<%= angular_ui_router %>"></script>
+<script src="<%= angular_animate %>"></script>
+<script src="<%= angular_touch %>"></script>
+<script src="<%= jquery_1_11_1 %>"></script>
 
 <script src="js/angular-file-upload.min.js"></script>
 <script src="js/ui-bootstrap.min.js"></script>

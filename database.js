@@ -10,20 +10,17 @@ var mongoDatabase;
 function getConnection(callback) {
 
     if (mongoDatabase) {
-        callback(null,mongoDatabase);
+        callback(null, mongoDatabase);
     }
     else {
-        console.log("Connecting to mongo database...");
 
         MongoClient.connect(mongo_url, function(err,db) {
             if(err) {
-                console.log("Unable to connect to Mongo database.");
-
+                console.error("Unable to connect to Mongo database.");
                 mongoDatabase = null;
                 callback(err, null);
             }
             else {
-                console.log("Connected to Mongo database.");
                 mongoDatabase = db;
                 callback(null, mongoDatabase);
             }

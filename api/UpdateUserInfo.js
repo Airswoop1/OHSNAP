@@ -32,7 +32,7 @@ var UpdateUserInfo = (function(){
 
 					MongoClient.getConnection(function(db_err, db){
 						if(db_err) {
-							console.log(db_err);
+							console.error(db_err);
 							var response = new Response();
 							response.status = 404;
 							response.message = 'error connecting to db';
@@ -56,8 +56,8 @@ var UpdateUserInfo = (function(){
 								{"upsert":false, "multi": false},
 								function (err, updated) {
 									if(err){
-										console.log("error writing to the db for user: " + request.user_id);
-										console.log(err);
+										console.error("error writing to the db for user: " + request.user_id);
+										console.error(err);
 										var response = new Response();
 										response.status = 500;
 										response.message = "error writing to db";

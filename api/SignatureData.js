@@ -25,14 +25,14 @@ var SignatureData = (function(){
 
 			fs.writeFile(sig1_path, new Buffer(formatted_sig1_data, 'base64'), function (err) {
 				if(err) {
-					console.log(err);
+					console.error(err);
 					res.send(404);
 				}
 				else {
 
 					fs.writeFile(sig2_path, new Buffer(formatted_sig2_data, 'base64'), function (err) {
 						if(err) {
-							console.log(err);
+							console.error(err);
 							res.send(404);
 						}
 						else {
@@ -47,7 +47,7 @@ var SignatureData = (function(){
 													res.send(200);
 												}
 												else {
-													console.log(err);
+													console.error(err);
 													res.send(404);
 												}
 											})

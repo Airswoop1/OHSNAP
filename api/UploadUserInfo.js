@@ -1,8 +1,12 @@
 /**
  * Created by airswoop1 on 6/17/14.
  */
-var MongoClient = require('../database.js');
-var uuid = require('node-uuid');
+var MongoClient = require('../database.js'),
+	uuid = require('node-uuid'),
+	sanitizer = require('sanitizer'),
+	util = require('util');
+
+
 
 var UploadUserInfo = (function(){
 
@@ -29,7 +33,7 @@ var UploadUserInfo = (function(){
 
                     MongoClient.getConnection(function(db_err, db){
                         if(db_err) {
-                            console.log(db_err);
+                            console.error(db_err);
                             var response = new Response();
                             response.status = 404;
                             response.message = 'error connecting to db';
@@ -51,8 +55,8 @@ var UploadUserInfo = (function(){
                                 {"upsert":true, "multi": false},
                                 function (err, updated) {
                                     if(err){
-                                        console.log("error writing to the db for user: " + user_id);
-                                        console.log(err);
+                                        console.error("error writing to the db for user: " + user_id);
+                                        console.error(err);
                                         var response = new Response();
                                         response.status = 500;
                                         response.message = "error writing to db";
@@ -74,7 +78,8 @@ var UploadUserInfo = (function(){
                     })
                 }
                 else {
-                    var response = new Response();
+                    console.error("Request body not valid user data");
+	                var response = new Response();
                     response.status = 400;
                     response.message = 'input data incorrect';
                     res.send(400,response);
@@ -86,7 +91,31 @@ var UploadUserInfo = (function(){
 
 
     function validate_data(data, callback) {
-        if(!(data.name.first_name && data.name.last_name)) {
+
+
+	    /**
+	     * Should really do recursive sanitization here for each sub-object in data
+	     */
+	    for(var value in data) {
+
+		    if(data.hasOwnProperty(value)){
+
+			    if(typeof data[value] === 'object'){
+				    for(var sub in data[value]){
+					    if(data[value].hasOwnProperty(sub)){
+						   data[value][sub] = sanitizer.escape(data[value][sub]);
+					    }
+				    }
+			    }
+			    else {
+				    data[value] = sanitizer.escape(data[value]);
+			    }
+
+		    }
+
+	    }
+
+	    if(!(data.name.first_name && data.name.last_name && ( data.phone_main || data.address.street_address))) {
             callback(null);
         }
         else {

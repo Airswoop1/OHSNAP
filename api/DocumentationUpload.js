@@ -80,8 +80,8 @@ var DocumentationUpload = (function(){
             if(request.platform === 'ios'){
                 processiOSDocumentUpload( my_path, tmpPath, request, function(error, result) {
                     if(error){
-	                    console.log("error uploading document");
-	                    console.log(error);
+	                    console.error("error uploading document");
+	                    console.error(error);
 	                    res.send(400);
                     }
 	                else {
@@ -98,8 +98,8 @@ var DocumentationUpload = (function(){
 
                 processOtherDocumentUpload( my_path, base64Data, request, function(error, result) {
                     if(error){
-	                    console.log("error uploading document");
-	                    console.log(error);
+	                    console.error("error uploading document");
+	                    console.error(error);
                     }else{
 	                    console.log(result)
 	                    res.send(200);

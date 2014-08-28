@@ -36,7 +36,7 @@ var SubmitFeedback = (function(){
 
         MongoClient.getConnection(function(db_err, db) {
             if(db_err) {
-                console.log(db_err);
+                console.error(db_err);
                 var response = new Response();
                 response.status = 500;
                 response.message = 'error connecting to db';
@@ -61,7 +61,7 @@ var SubmitFeedback = (function(){
                     {"upsert":true, "multi": false},
                     function(err, updated) {
                         if(err){
-                            console.log(err);
+                            console.error(err);
                             var response = new Response();
                             response.status = 500;
                             response.message = 'error inserting feedback into db';
