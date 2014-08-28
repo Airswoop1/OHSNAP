@@ -1,0 +1,214 @@
+<h1>Great! You're almost done!</h1>
+<p> Review your information. After you sign in two locations we'll submit your application.</p>
+<div class="yellow-button" style="text-align: left;">Go To First Signature</div>
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Roboto', sans-serif;
+        -webkit-font-smoothing: antialiased !important;
+        background-color: #ffffff;
+    }
+
+    h4 {
+        font-size: 22px;
+        font-weight: 900;
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        line-height: 35px;
+    }
+
+    p {
+        font-size: 18px;
+        font-weight: 500;
+        line-height: 21px;
+        margin: 0;
+        padding: 0;
+    }
+
+
+    .yellow-button {
+        background-color: #fcee21;
+        color: #000000;
+        height: 60px;
+        line-height: 60px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+        width: 200px;
+        margin: 10px auto 20px auto;
+        border: none;
+
+    }
+
+    #sig_container1 {
+        position: absolute;
+        top: 196px;
+        left: 472px;
+        width: 300px;
+        border: 5px solid green;
+        z-index: 1000;
+    }
+
+    #app_signature_label1 {
+        position:absolute;
+        z-index:500;
+        background-color:white;
+        width:320px;
+        height:39px;
+        top:207px;
+        left:483px;
+        font-size:13px;
+    }
+
+    .data_overlay {
+        position:absolute;
+        z-index:500;
+        background-color:transparent;
+        font-size:13px;
+    }
+
+    #sig_capture1 {
+
+        width:100%;
+        height: 45px;
+
+    }
+
+    #sig_prompt1 {
+        margin-top:22px;
+        height:50px;
+        width:100%;
+        background-color:green;
+        color:white;
+        text-align:center;
+        font-size:21px;
+        line-height:1.2;
+        white-space: normal;
+    }
+
+    #sig_container2 {
+        position: absolute;
+        top: 564px;
+        left: 168px;
+        width: 300px;
+        border: 5px solid green;
+        z-index:1000;
+    }
+
+
+    #app_signature_label2 {
+        position:absolute;
+        z-index:100;
+        background-color:white;
+        width:320px;
+
+        height: 57px;
+        top: 569px;
+        left: 167px;
+        font-size: 13px;
+    }
+
+    #sig_capture2 {
+
+        width:100%;
+        height: 45px;
+        z-index: 500;
+    }
+
+    .sig_prompt {
+        margin-top:22px;
+        height:50px;
+        width:100%;
+        background-color:green;
+        color:white;
+        text-align:center;
+        font-size:22px;
+        line-height:1.2;
+        white-space: normal;
+    }
+
+    .sig_button {
+        background-color:#fcee21;
+        color:#000000;
+        height:60px;
+        line-height:60px;
+        text-align:center;
+        font-size:18px;
+        font-weight:700;
+        width:100%;
+        margin-top:15px;
+        white-space: normal;
+    }
+
+    .img_container {
+        position:relative;
+        width:100%;
+        height:400px;
+        overflow:scroll;
+        border:4px solid red;
+    }
+
+    .img_container img {
+        zoom:0.45;
+    }
+
+    #app_name {
+        width: 200px;
+        height: 20px;
+        top: 107px;
+        left: 86px;
+    }
+
+    #app_telephone {
+        width: 150px;
+        height: 20px;
+        top: 107px;
+        left: 150px;
+    }
+</style>
+
+
+
+<div class="img_container">
+    <img src="images/app1.png" alt=""/>
+    <div class="data_overlay" id="app_name">{{ user.name.first_name + " " + user.name.last_name }}</div>
+    <div class="data_overlay" id="app_telephone">{{ user.phone_main }}</div>
+    <div id="app_signature_label1">APPLICANT/REPRESENTATIVE SIGNATURE</div>
+    <div id="sig_container1">
+        <div id="sig_capture1"></div>
+
+        <div id="sig_prompt1">
+            Sign in the box with your finger.
+            <div id="sig_continue" class="sig_button">
+                Continue
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="img_container">
+    <img src="images/app2.png" alt=""/>
+</div>
+<div class="img_container">
+    <img src="images/app3.png" alt=""/>
+</div>
+<div class="img_container">
+    <img src="images/app4.png" alt=""/>
+</div>
+<div class="img_container" id="sig2img_container">
+    <img src="images/app5.png" alt=""/>
+    <div id="app_signature_label2"></div>
+    <div id="sig_container2">
+        <div id="sig_capture2"></div>
+
+        <div class="sig_prompt">
+            Sign in the box with your finger.
+            <div class="sig_button" id="submit_application">
+                Submit application
+            </div>
+        </div>
+    </div>
+</div>

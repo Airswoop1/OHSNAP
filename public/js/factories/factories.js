@@ -258,7 +258,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				"expenses":false
 			},
 
-			'user':{
+			/*'user':{
 				formData: {
 					"name": {
 						'first_name':undefined,
@@ -270,7 +270,25 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 					},
 					"phone":undefined
 				}
+			}*/
+			'user' :  {
+				formData : {
+
+					"name": {
+						'first_name':"Kevin",
+						'last_name':"Miller"
+					},
+					"address":{
+						"street_address":"4118 Crescent Street",
+						"apt_number":"4B",
+						"zip":11101
+					},
+					"phone":2016551789
+
+
+				}
 			}
+
 		};
 
 
