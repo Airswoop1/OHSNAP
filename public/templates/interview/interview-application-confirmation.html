@@ -1,5 +1,5 @@
-<h1>Great! You're almost done!</h1>
-<p> Review your information. After you sign in two locations we'll submit your application.</p>
+<script src="js/sig/jSignature.min.js"></script>
+<p> Below is a preview of your actual SNAP Application. After you sign in two locations we'll submit your application!</p>
 <div class="yellow-button" style="text-align: left;">Go To First Signature</div>
 
 <style>
@@ -50,6 +50,7 @@
         width: 300px;
         border: 5px solid green;
         z-index: 1000;
+        opacity:0.1;
     }
 
     #app_signature_label1 {
@@ -163,11 +164,264 @@
     }
 
     #app_telephone {
-        width: 150px;
+        width: 139px;
         height: 20px;
         top: 107px;
-        left: 150px;
+        left: 436px;
     }
+
+    #app_street {
+        width: 200px;
+        height: 20px;
+        top: 127px;
+        left: 171px;
+    }
+
+    #app_apt {
+        width: 35px;
+        height: 20px;
+        top: 129px;
+        left: 458px;
+    }
+
+    #app_city {
+        width: 157px;
+        height: 20px;
+        top: 129px;
+        left: 526px;
+    }
+
+    #app_zip {
+        width: 100px;
+        height: 20px;
+        top: 129px;
+        left: 787px;
+    }
+
+
+    #app_applying {
+        width: 10px;
+        height: 10px;
+        top: 172px;
+        left: 332px;
+    }
+
+    #app_date {
+        width: 150px;
+        height: 40px;
+        top: 220px;
+        left: 850px;
+    }
+
+    #app_citizen_yes {
+        width: 10px;
+        height: 10px;
+        top: 573px;
+        left: 275px;
+    }
+
+    #app_citizen_no {
+        width: 10px;
+        height: 10px;
+        top: 573px;
+        left: 313px;
+    }
+
+    #app_disabled_yes {
+        width: 10px;
+        height: 10px;
+        top: 659px;
+        left: 328px;
+    }
+
+    #app_disabled_no {
+        width: 10px;
+        height: 10px;
+        top: 659px;
+        left: 370px;
+    }
+
+    #app_0_income_name {
+        width: 225px;
+        height: 16px;
+        top: 152px;
+        left: 44px;
+    }
+    #app_0_income_hours {
+        width: 150px;
+        height: 16px;
+        top: 152px;
+        left: 451px;
+    }
+    #app_0_income_amount {
+        width: 150px;
+        height: 16px;
+        top: 152px;
+        left: 810px;
+    }
+
+    #app_1_income_name {
+        width: 225px;
+        height: 16px;
+        top: 172px;
+        left: 44px;
+    }
+    #app_1_income_hours {
+        width: 150px;
+        height: 16px;
+        top: 172px;
+        left: 451px;
+    }
+    #app_1_income_amount {
+        width: 150px;
+        height: 16px;
+        top: 172px;
+        left: 810px;
+    }
+
+    #app_2_income_name {
+        width: 225px;
+        height: 16px;
+        top: 192px;
+        left: 44px;
+    }
+    #app_2_income_hours {
+        width: 150px;
+        height: 16px;
+        top: 192px;
+        left: 451px;
+    }
+    #app_2_income_amount {
+        width: 150px;
+        height: 16px;
+        top: 192px;
+        left: 810px;
+    }
+
+    #app_total_resources {
+        width: 80px;
+        height: 16px;
+        top: 422px;
+        left: 178px;
+    }
+
+    #app_rent {
+        width: 80px;
+        height: 16px;
+        top: 654px;
+        left: 232px;
+    }
+
+    #app_household_0_first_name {
+        width: 90px;
+        height: 16px;
+        top: 353px;
+        left: 50px;
+        overflow:hidden;
+    }
+
+    #app_household_0_last_name {
+        width: 115px;
+        height: 16px;
+        top: 353px;
+        left: 167px;
+        overflow: hidden;
+    }
+
+    #app_household_0_ssn {
+        width: 115px;
+        height: 16px;
+        top: 353px;
+        left: 290px;
+        overflow: hidden;
+    }
+
+    #app_household_0_dob {
+        width: 68px;
+        height: 16px;
+        top: 353px;
+        left: 409px;
+        overflow: hidden;
+    }
+
+    .household_container div {
+        position:absolute;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+
+    .household_container {
+        width: 100%;
+        height: 16px;
+        left: 50px;
+    }
+
+    #household_user_1 {
+        top: 379px;
+    }
+
+    #household_user_2 {
+        top: 405px;
+    }
+
+    #household_user_3 {
+        top: 431px;
+    }
+
+    #household_user_4 {
+        top: 457px;
+    }
+
+    #household_user_5 {
+        top: 484px;
+    }
+
+    #household_user_6 {
+        top: 511px;
+    }
+
+    #household_user_7 {
+        top: 538px;
+    }
+
+
+    .hh_first_name {
+      left:0px;
+        width:90px
+    }
+
+    .hh_last_name {
+        left:117px;
+        width:115px;
+    }
+
+    .hh_ssn {
+        left:240px;
+        width:115px;
+    }
+
+    .hh_dob {
+        left: 356px;
+        width:72px;
+    }
+
+    .hh_applying {
+        left:544px;
+        width:10px
+    }
+
+    .hh_not_applying {
+        left:575px;
+        width:10px
+    }
+
+    .hh_relation {
+        left:596px;
+        width:128px;
+        font-size:11px;
+
+    }
+
 </style>
 
 
@@ -175,7 +429,39 @@
 <div class="img_container">
     <img src="images/app1.png" alt=""/>
     <div class="data_overlay" id="app_name">{{ user.name.first_name + " " + user.name.last_name }}</div>
-    <div class="data_overlay" id="app_telephone">{{ user.phone_main }}</div>
+    <div class="data_overlay" id="app_telephone">{{ user.phone_main | tel }}</div>
+    <div class="data_overlay" id="app_street">{{ user.address.street_address }}</div>
+    <div class="data_overlay" id="app_apt">{{ user.address.apt_number }}</div>
+    <div class="data_overlay" id="app_city">{{ user.address.city }}</div>
+    <div class="data_overlay" id="app_zip">{{ user.address.zip }}</div>
+    <div class="data_overlay" id="app_applying">X</div>
+    <div class="data_overlay" id="app_date">{{ today }}</div>
+
+
+    <div class="data_overlay" id="app_citizen_yes">X</div>
+    <div class="data_overlay" id="app_citizen_no">X</div>
+
+    <div class="data_overlay" id="app_disabled_yes">X</div>
+    <div class="data_overlay" id="app_disabled_no">X</div>
+
+    <div class="data_overlay" id="app_household_0_first_name">{{ user.name.first_name }}</div>
+    <div class="data_overlay" id="app_household_0_last_name">{{ user.name.last_name }}</div>
+    <div class="data_overlay" id="app_household_0_ssn">{{ user.ssn | ssn}}</div>
+    <div class="data_overlay" id="app_household_0_dob">{{ user.dob }}</div>
+
+
+    <div  ng-repeat="person in user.household_members track by $index" class="data_overlay household_container" id="household_user_{{$index + 1}}">
+        <div class="hh_first_name">{{ person.name.split(' ')[0] }}</div>
+        <div class="hh_last_name">{{ person.name.split(' ')[1] }}</div>
+        <div class="hh_ssn">{{ person.ssn | ssn }}</div>
+        <div class="hh_dob">{{ person.dob }}</div>
+        <div class="hh_applying" ng-show="person.applying">X</div>
+        <div class="hh_not_applying" ng-hide="person.applying">X</div>
+        <div class="hh_relation">{{ person.relation }}</div>
+
+    </div>
+
+
     <div id="app_signature_label1">APPLICANT/REPRESENTATIVE SIGNATURE</div>
     <div id="sig_container1">
         <div id="sig_capture1"></div>
@@ -191,6 +477,16 @@
 
 <div class="img_container">
     <img src="images/app2.png" alt=""/>
+    <div ng-repeat="person in personsWithIncome track by $index">
+        <div class="data_overlay" id="app_{{ $index }}_income_name">{{ person.name }}</div>
+        <div class="data_overlay" id="app_{{ $index }}_income_hours">{{ person.hours_per_month }}</div>
+        <div class="data_overlay" id="app_{{ $index }}_income_amount">${{ person.amount }}</div>
+
+    </div>
+
+    <div class="data_overlay" id="app_total_resources">{{ user.total_resources || 0 }}</div>
+    <div class="data_overlay" id="app_rent">{{ user.rent || 0 }}</div>
+
 </div>
 <div class="img_container">
     <img src="images/app3.png" alt=""/>
@@ -212,3 +508,84 @@
         </div>
     </div>
 </div>
+
+<script>
+
+    $(document).ready(function() {
+
+
+        var jsig1 = $("#sig_capture1").jSignature({'UndoButton':true}),
+                jsig2 = undefined;
+
+        jsig1.jSignature("reset");
+
+        document.getElementById('ready2sign').addEventListener("click", goToSign1);
+        document.getElementById('sig_continue').addEventListener("click", goToSign2);
+        $('#submit_application').bind("click", goToConfirmation);
+
+        function goToSign1() {
+            document.getElementById('sig_container1').scrollIntoView(true);
+        }
+
+        function goToSign2() {
+
+            data.sig1 = jsig1.jSignature('getData');
+
+            if(typeof jsig2 == 'undefined'){
+                jsig2 = $('#sig_capture2').jSignature({'UndoButton':true});
+            }
+
+            document.getElementById('sig_container2').scrollIntoView(true);
+            document.getElementById('sig2img_container').scrollLeft = 168;
+        }
+
+        function goToConfirmation() {
+
+            data.sig2 = jsig2.jSignature("getData");
+
+
+            if(typeof data.sig1 === 'undefined' || typeof data.sig2 === 'undefined'){
+                alert("Signatures are required to submit your application.");
+            }
+            else {
+                sendDataToServer();
+            }
+
+        }
+
+        function sendDataToServer() {
+            $('#submit_application')
+                    .unbind("click", goToConfirmation)
+                    .html("Submitting application")
+                    .css("background-color","#C0C0C0");
+
+
+            var dots = 0;
+            setInterval(type, 600);
+
+            function type() {
+                if(dots < 3) {
+                    $('#submit_application').append('.');
+                    dots++;
+                } else {
+                    $('#submit_application').html('Submitting application');
+                    dots = 0;
+                }
+            }
+
+
+            $.ajax('/send_sig_data',{
+                "type": "POST",
+                "data": data
+            })
+                    .done(function(html){
+
+                        window.location.href = "/sig_completed.html";
+                    })
+        }
+
+
+
+
+    });
+</script>

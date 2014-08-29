@@ -3,7 +3,7 @@
  */
 angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch',
 		'NoContactModal','formApp.infoFooterDirective', 'formApp.ngEnterDirective',
-		'formApp.telephoneFilter', 'formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective',
+		'formApp.telephoneFilter', 'formApp.ssnFilter','formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective',
 		'formApp.modalDirective', 'formApp.documentUploadCtrl', 'formApp.userDataFactory']).controller('formController',
 	function($scope, $state, $http, $rootScope, $upload, $location, $window, API, userDataFactory) {
 

@@ -70,6 +70,17 @@ angular.module('formApp.apiFactory',[]).factory('API', function($http) {
 			    });
 
 
+	    },
+
+	    getCityFromZip : function(zip, callback) {
+		    $http.get('http://maps.googleapis.com/maps/api/geocode/json?address='+zip+'&sensor=true')
+			    .success(function(data, status){
+				    callback(null, data);
+			    })
+			    .error(function(data){
+				    callback(data,null);
+			    })
+
 	    }
 
 

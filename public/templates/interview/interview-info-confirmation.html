@@ -89,7 +89,7 @@
     <div>
         <h6>Mortgage/Rent</h6>
         <div class="input-group dollar-input" ng-class="{'has-success':snapForm.mortgage.$pristine ,'has-error': snapForm.mortgage.$invalid }">
-            <input type="number" id="mortgage" ng-model="user.utilities.rent" ng-value="user.utilities.rent"/>
+            <input type="number" id="mortgage" ng-model="user.rent" ng-value="user.rent"/>
         </div>
     </div>
 
@@ -114,10 +114,10 @@
 
 </div>
 
-<div id="confirm_anchor" class="checkbox-group">
+<!--<div id="confirm_anchor" class="checkbox-group">
     <input type="checkbox" class="agree-checkbox big-checkbox" id="agree_to_legal"  ng-model="basic_confirmation_agree"/>
     <span style="padding-left:10px">I certify that the information I am submitting is true and authorize Easy Food Stamps to sign my application on my behalf.</span>
-</div>
-<div ng-show="!basic_confirmation_agree || snapForm.validation.$error" class="yellow-button disabled" ng-click="checkboxAlert()">Confirm answers</div>
-<div ng-show="basic_confirmation_agree && !snapForm.validation.$error && !disable_submit" class="yellow-button" ng-click="submitBasicApp()">Confirm answers</div>
-<div ng-show="basic_confirmation_agree && disable_submit" class="yellow-button spinner-button"><i></i></div>
+</div>-->
+
+<div id="confirm_anchor" class="yellow-button" ui-sref="int.interview-preview-sign">Preview & Sign</div>
+

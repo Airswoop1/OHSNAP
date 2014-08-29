@@ -375,7 +375,7 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
  */
 angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch',
 		'NoContactModal','formApp.infoFooterDirective', 'formApp.ngEnterDirective',
-		'formApp.telephoneFilter', 'formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective',
+		'formApp.telephoneFilter', 'formApp.ssnFilter','formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective',
 		'formApp.modalDirective', 'formApp.documentUploadCtrl', 'formApp.userDataFactory']).controller('formController',
 	["$scope", "$state", "$http", "$rootScope", "$upload", "$location", "$window", "API", "userDataFactory", function($scope, $state, $http, $rootScope, $upload, $location, $window, API, userDataFactory) {
 
@@ -961,6 +961,14 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;
 		$scope.estimated_benefit = $scope.user.benefit_amount;
 
+		$scope.today = new Date();
+		var	dd = $scope.today.getDate(),
+			mm = $scope.today.getMonth()+1,
+			yyyy = $scope.today.getFullYear();
+
+		if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
+		$scope.today = mm+'/'+dd+'/'+yyyy;
+
 		$scope.user['disabled'] = 'no';
 
 		$scope.minutes_saved = 0;
@@ -1023,10 +1031,10 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.relationshipOptions = [
 			{name:"Select", value:"Select"},
 			{name:"Partner", value:"Partner"},
-			{name: "Child", "value":"Child"},
+			{name:"Child", "value":"Child"},
 			{name:"Parent", "value":"Parent"},
 			{name:"Roommate", "value":"Roommate"},
-			{name:"Other family member", "value":"Other family member"}
+			{name:"Family", "value":"Family"}
 		];
 
 
@@ -1214,6 +1222,10 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			    case "int.expenses-mortgage":
 			        $scope.interview_steps = 3;
 			        break;
+				case "int.interview-preview-sign":
+				case "int.info-confirmation":
+					$scope.interview_steps = 4;
+					break;
 			    case "int.main":
 			        $scope.interview_steps = -1;
 			        break;
@@ -1222,6 +1234,61 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			}
 			updateProgressStatus();
 		});
+
+
+
+		$scope.getCity = function() {
+			if(typeof $scope.user.address.zip !== 'undefined'){
+				API.getCityFromZip($scope.user.address.zip, function(err, data){
+					if(!err){
+						$scope.user.address.city = (data.results[0].address_components[1].long_name.length > 27) ? data.results[0].address_components[1].short_name : data.results[0].address_components[1].long_name;
+					}
+					else {
+						$scope.user.address.city = " ";
+					}
+				})
+			}
+			else {
+				$scope.user.address.city = " ";
+			}
+
+		};
+
+		$scope.getCity();
+
+
+		$scope.calcPersonsWithIncome = function() {
+			$scope.personsWithIncome = [];
+
+			if(typeof $scope.user.monthly_income !== 'undefined'){
+				$scope.personsWithIncome.push({
+					'name': $scope.user.name.first_name + " " + $scope.user.name.last_name,
+					'amount' : $scope.user.monthly_income,
+					'hours_per_month' : (typeof $scope.user.hours_wk === 'number' && typeof $scope.user.wk_month === 'number') ? ($scope.user.wk_month * $scope.user.hours_wk) : " "
+				})
+			}
+
+			for(var p in $scope.user.household_members){
+				if($scope.user.household_members.hasOwnProperty(p) &&
+					$scope.user.household_members[p].applying === true &&
+					typeof $scope.user.household_members[p].income === 'number'){
+
+					$scope.personsWithIncome.push({
+						'name': $scope.user.household_members[p].name,
+						'amount': $scope.user.household_members[p].income,
+						hours_per_month: (typeof $scope.user.household_members[p].hours_wk === 'number' && typeof $scope.user.household_members[p].wk_month === 'number') ? ($scope.user.household_members[p].wk_month * $scope.user.household_members[p].hours_wk) : " "
+					})
+
+				}
+			}
+
+			$scope.personsWithIncome = ($scope.personsWithIncome.length > 3) ? $scope.personsWithIncome.slice(0,3) : $scope.personsWithIncome;
+
+			console.log($scope.personsWithIncome);
+
+		};
+
+		$scope.calcPersonsWithIncome();
 
 
 		$scope.submitBasicApp = function() {

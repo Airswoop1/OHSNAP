@@ -27,6 +27,11 @@ module.exports = function(grunt) {
 							'public/js/factories/DocumentUploaderFactory.js',
 							'public/js/factories/apiFactory.js',
 							'public/js/factories/userDataFactory.js'
+						],
+					'public/js/filters/filters.js' :
+						[
+							'public/js/filters/telephoneFilter.js',
+							'public/js/filters/ssnFilter.js'
 						]
 
 				}
@@ -41,7 +46,8 @@ module.exports = function(grunt) {
 				files: {
 					'public/js/Controllers/controller.min.js': ['public/js/Controllers/controller.js'],
 					'public/js/directives/directives.min.js':['public/js/directives/directives.js'],
-					'public/js/factories/factories.min.js':['public/js/factories/factories.js']
+					'public/js/factories/factories.min.js':['public/js/factories/factories.js'],
+					'public/js/filters/filters.min.js':['public/js/filters/filters.js']
 				}
 			}
 		},
