@@ -20,7 +20,8 @@ module.exports = function(grunt) {
 							'public/js/directives/modalDirective.js',
 							'public/js/directives/ngDocumentFullscreenDirective.js',
 							'public/js/directives/ngEnterDirective.js',
-							'public/js/directives/sampleDocumentsDirective.js'
+							'public/js/directives/sampleDocumentsDirective.js',
+							'public/js/directives/jSignatureDirective.js'
 						],
 					'public/js/factories/factories.js' :
 						[

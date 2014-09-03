@@ -5,7 +5,7 @@
 // create our angular app and inject ngAnimate and ui-router
 // =============================================================================
 var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formController',
-		'formApp.interviewCtrl','formApp.documentUploadCtrl'])
+		'formApp.interviewCtrl','formApp.documentUploadCtrl', 'formApp.jSignature'])
 
 // configuring our routes
 // =============================================================================

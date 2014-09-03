@@ -1,6 +1,6 @@
 <script src="js/sig/jSignature.min.js"></script>
 <p> Below is a preview of your actual SNAP Application. After you sign in two locations we'll submit your application!</p>
-<div class="yellow-button" style="text-align: left;">Go To First Signature</div>
+<div class="yellow-button" ng-click="goToSig1()" style="text-align: left;">Go To First Signature</div>
 
 <style>
     body {
@@ -50,7 +50,7 @@
         width: 300px;
         border: 5px solid green;
         z-index: 1000;
-        opacity:0.1;
+        /*opacity:0.1;*/
     }
 
     #app_signature_label1 {
@@ -426,7 +426,7 @@
 
 
 
-<div class="img_container">
+<div class="img_container" id="image_wrapper_sig1">
     <img src="images/app1.png" alt=""/>
     <div class="data_overlay" id="app_name">{{ user.name.first_name + " " + user.name.last_name }}</div>
     <div class="data_overlay" id="app_telephone">{{ user.phone_main | tel }}</div>
@@ -464,11 +464,11 @@
 
     <div id="app_signature_label1">APPLICANT/REPRESENTATIVE SIGNATURE</div>
     <div id="sig_container1">
-        <div id="sig_capture1"></div>
+        <j-signature id="sig_capture1"></j-signature>
 
         <div id="sig_prompt1">
             Sign in the box with your finger.
-            <div id="sig_continue" class="sig_button">
+            <div id="sig_continue" class="sig_button" ng-click="goToSig2();">
                 Continue
             </div>
         </div>
@@ -494,98 +494,24 @@
 <div class="img_container">
     <img src="images/app4.png" alt=""/>
 </div>
-<div class="img_container" id="sig2img_container">
+<div class="img_container" id="image_wrapper_sig2">
     <img src="images/app5.png" alt=""/>
     <div id="app_signature_label2"></div>
     <div id="sig_container2">
-        <div id="sig_capture2"></div>
+        <j-signature id="sig_capture2"></j-signature>
 
         <div class="sig_prompt">
             Sign in the box with your finger.
-            <div class="sig_button" id="submit_application">
+            <div ng-hide="appSubmissionInProcess" class="sig_button" id="submit_application" ng-click="submitSignedApplication();">
                 Submit application
+            </div>
+            <div ng-show="appSubmissionInProcess" style="background-color:gray" class="sig_button">
+                Submitting application...
             </div>
         </div>
     </div>
 </div>
+<div style="clear:both;height:500px"></div>
 
-<script>
+<!--<script src="js/sig/jSignature.js"></script>-->
 
-    $(document).ready(function() {
-
-
-        var jsig1 = $("#sig_capture1").jSignature({'UndoButton':true}),
-                jsig2 = undefined;
-
-        jsig1.jSignature("reset");
-
-        document.getElementById('ready2sign').addEventListener("click", goToSign1);
-        document.getElementById('sig_continue').addEventListener("click", goToSign2);
-        $('#submit_application').bind("click", goToConfirmation);
-
-        function goToSign1() {
-            document.getElementById('sig_container1').scrollIntoView(true);
-        }
-
-        function goToSign2() {
-
-            data.sig1 = jsig1.jSignature('getData');
-
-            if(typeof jsig2 == 'undefined'){
-                jsig2 = $('#sig_capture2').jSignature({'UndoButton':true});
-            }
-
-            document.getElementById('sig_container2').scrollIntoView(true);
-            document.getElementById('sig2img_container').scrollLeft = 168;
-        }
-
-        function goToConfirmation() {
-
-            data.sig2 = jsig2.jSignature("getData");
-
-
-            if(typeof data.sig1 === 'undefined' || typeof data.sig2 === 'undefined'){
-                alert("Signatures are required to submit your application.");
-            }
-            else {
-                sendDataToServer();
-            }
-
-        }
-
-        function sendDataToServer() {
-            $('#submit_application')
-                    .unbind("click", goToConfirmation)
-                    .html("Submitting application")
-                    .css("background-color","#C0C0C0");
-
-
-            var dots = 0;
-            setInterval(type, 600);
-
-            function type() {
-                if(dots < 3) {
-                    $('#submit_application').append('.');
-                    dots++;
-                } else {
-                    $('#submit_application').html('Submitting application');
-                    dots = 0;
-                }
-            }
-
-
-            $.ajax('/send_sig_data',{
-                "type": "POST",
-                "data": data
-            })
-                    .done(function(html){
-
-                        window.location.href = "/sig_completed.html";
-                    })
-        }
-
-
-
-
-    });
-</script>

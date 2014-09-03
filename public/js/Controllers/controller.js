@@ -947,12 +947,13 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
  * Created by airswoop1 on 7/31/14.
  */
 
-angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiFactory']).controller('interviewCtrl',
-	["$scope", "$state", "$rootScope", "$location", "$anchorScroll", "userDataFactory", "API", function($scope, $state, $rootScope, $location, $anchorScroll, userDataFactory, API){
+angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiFactory','formApp.jSignature']).controller('interviewCtrl',
+	["$scope", "$state", "$rootScope", "$location", "$anchorScroll", "$window", "userDataFactory", "API", function($scope, $state, $rootScope, $location, $anchorScroll, $window, userDataFactory, API){
 
 
 		$scope.show_interview_progress=false;
 		$scope.int_progress = 0;
+		$scope.appSubmissionInProcess = false;
 
 		$scope.interview_progress_status = 0;
 		$scope.interview_steps = -1;
@@ -1087,6 +1088,19 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				}
 			});
 		});
+
+
+		$scope.goToSig1 = function() {
+			$location.hash('sig_container1');
+			$anchorScroll();
+			document.getElementById('image_wrapper_sig1').scrollLeft = 500;
+		};
+
+		$scope.goToSig2 = function() {
+			$location.hash('sig_container2');
+			$anchorScroll();
+			document.getElementById('image_wrapper_sig2').scrollLeft = 100;
+		};
 
 		function updateProgress(name) {
 			$scope.stepsCompleted[name] = true;
@@ -1291,12 +1305,14 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.calcPersonsWithIncome();
 
 
-		$scope.submitBasicApp = function() {
+		$scope.submitSignedApplication = function() {
+			$scope.appSubmissionInProcess = true;
 			API.uploadPartialInterviewInfo($scope.user, function(result){
 				if(result) {
 					$state.go('upload.documents');
 				}
 				else {
+					$scope.appSubmissionInProcess = false;
 					alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
 				}
 			});
