@@ -954,6 +954,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.show_interview_progress=false;
 		$scope.int_progress = 0;
 		$scope.appSubmissionInProcess = false;
+		$scope.show_sig1 = false;
+		$scope.show_sig2 = false;
 
 		$scope.interview_progress_status = 0;
 		$scope.interview_steps = -1;
@@ -1091,15 +1093,17 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 
 		$scope.goToSig1 = function() {
+			$scope.show_sig1 = true;
 			$location.hash('sig_container1');
 			$anchorScroll();
-			document.getElementById('image_wrapper_sig1').scrollLeft = 500;
+			document.getElementById('image_wrapper_sig1').scrollLeft = 467;
 		};
 
 		$scope.goToSig2 = function() {
+			$scope.show_sig2 = true;
 			$location.hash('sig_container2');
 			$anchorScroll();
-			document.getElementById('image_wrapper_sig2').scrollLeft = 100;
+			document.getElementById('image_wrapper_sig2').scrollLeft = 163;
 		};
 
 		function updateProgress(name) {
@@ -1306,16 +1310,21 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 
 		$scope.submitSignedApplication = function() {
-			$scope.appSubmissionInProcess = true;
-			API.uploadPartialInterviewInfo($scope.user, function(result){
-				if(result) {
-					$state.go('upload.documents');
-				}
-				else {
-					$scope.appSubmissionInProcess = false;
-					alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
-				}
-			});
+			if(typeof $scope.user.sig1 !== 'undefined' && typeof $scope.user.sig2 !== 'undefined' ){
+				$scope.appSubmissionInProcess = true;
+				API.uploadPartialInterviewInfo($scope.user, function(result){
+					if(result) {
+						$state.go('upload.documents');
+					}
+					else {
+						$scope.appSubmissionInProcess = false;
+						alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
+					}
+				});
+			}
+			else {
+				alert("Note you must sign the form in both signature boxes in order to submit an application.");
+			}
 		};
 
 		/**
@@ -1332,6 +1341,16 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		 * **/
 		$scope.goBack = function() {
 			window.history.back();
+		};
+
+		$scope.goToTop = function() {
+			$location.hash('topOfSignPage');
+			$anchorScroll();
+		};
+
+		$scope.goTo = function(index) {
+			$location.hash('page_header' + index);
+			$anchorScroll();
 		};
 
 		$scope.scrollDown = function() {

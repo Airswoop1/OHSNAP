@@ -1,6 +1,15 @@
-<script src="js/sig/jSignature.min.js"></script>
-<p> Below is a preview of your actual SNAP Application. After you sign in two locations we'll submit your application!</p>
-<div class="yellow-button" ng-click="goToSig1()" style="text-align: left;">Go To First Signature</div>
+<!--<script src="js/sig/jSignature.min.js"></script>-->
+<div style="padding:25px;">
+<p> Preview the official NYC SNAP application with your answers filed in below. We'll fax it to the NYC HRA on your behalf, once your sign it in two places.</p>
+<div class="yellow-button" id="goToFirstSigButton" ng-click="goToSig1()" style="text-align: left;">I'm ready to sign</div>
+<div class="yellow-button page_button" ng-click="goTo(1);">Page 1: Basics</div>
+<div class="yellow-button page_button" ng-click="goTo(2);">Page 2: Income</div>
+<div class="yellow-button page_button" ng-click="goTo(3);">Page 3: Expenses</div>
+<div class="yellow-button page_button" ng-click="goTo(4);">Page 4: Legal</div>
+<div class="yellow-button page_button" ng-click="goTo(5);">Page 5: Final Signature</div>
+
+
+</div>
 
 <style>
     body {
@@ -48,7 +57,7 @@
         top: 196px;
         left: 472px;
         width: 300px;
-        border: 5px solid green;
+        border: 5px solid #00bd54;
         z-index: 1000;
         /*opacity:0.1;*/
     }
@@ -82,7 +91,7 @@
         margin-top:22px;
         height:50px;
         width:100%;
-        background-color:green;
+        background-color:#00bd54;
         color:white;
         text-align:center;
         font-size:21px;
@@ -95,7 +104,7 @@
         top: 564px;
         left: 168px;
         width: 300px;
-        border: 5px solid green;
+        border: 5px solid #00bd54;
         z-index:1000;
     }
 
@@ -123,7 +132,7 @@
         margin-top:22px;
         height:50px;
         width:100%;
-        background-color:green;
+        background-color:#00bd54;
         color:white;
         text-align:center;
         font-size:22px;
@@ -149,7 +158,7 @@
         width:100%;
         height:400px;
         overflow:scroll;
-        border:4px solid red;
+
     }
 
     .img_container img {
@@ -422,10 +431,64 @@
 
     }
 
+    .hide_sig {
+        opacity: 0;
+    }
+
+    .show_sig {
+        opacity: 1;
+    }
+
+    .app_page_header {
+        background-color: #e4e4e4;
+        color: black;
+        font-weight: 800;
+        width: 100%;
+        height: 60px;
+        line-height: 3.4;
+        text-indent: 20px;
+        font-size: 18px;
+    }
+
+    .form-wrapper {
+        padding:0px!important;
+    }
+
+    .top_button {
+        background-color: #fff819;
+        width: 60px;
+        font-weight: 800;
+        margin-left: 45%;
+        padding: 6px;
+    }
+
+    .top_button::before {
+        content: "\e616";
+        font-family: 'icomoon';
+        font-size: 26px;
+        line-height: 0px;
+        vertical-align: sub;
+        speak: none;
+        font-style: normal;
+        font-weight: normal;
+        font-variant: normal;
+        text-transform: none;
+        /* Better Font Rendering =========== */
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+    }
+
+    .page_button {
+        background-color: #e4e4e4;
+        text-align:left!important;
+        margin-bottom:10px;
+        margin-top:0px;
+    }
+
 </style>
 
 
-
+<div class="app_page_header" id="page_header1">PAGE 1 <span class="top_button" ng-click="goToTop()">TOP</span></div>
 <div class="img_container" id="image_wrapper_sig1">
     <img src="images/app1.png" alt=""/>
     <div class="data_overlay" id="app_name">{{ user.name.first_name + " " + user.name.last_name }}</div>
@@ -463,7 +526,7 @@
 
 
     <div id="app_signature_label1">APPLICANT/REPRESENTATIVE SIGNATURE</div>
-    <div id="sig_container1">
+    <div id="sig_container1" ng-class="{hide_sig: !show_sig1, show_sig: show_sig1}">
         <j-signature id="sig_capture1"></j-signature>
 
         <div id="sig_prompt1">
@@ -474,7 +537,7 @@
         </div>
     </div>
 </div>
-
+<div class="app_page_header" id="page_header2">PAGE 2 <span class="top_button" ng-click="goToTop()">TOP</span></div>
 <div class="img_container">
     <img src="images/app2.png" alt=""/>
     <div ng-repeat="person in personsWithIncome track by $index">
@@ -488,16 +551,19 @@
     <div class="data_overlay" id="app_rent">{{ user.rent || 0 }}</div>
 
 </div>
+<div class="app_page_header" id="page_header3">PAGE 3 <span class="top_button" ng-click="goToTop()">TOP</span></div>
 <div class="img_container">
     <img src="images/app3.png" alt=""/>
 </div>
+<div class="app_page_header" id="page_header4">PAGE 4 <span class="top_button" ng-click="goToTop()">TOP</span></div>
 <div class="img_container">
     <img src="images/app4.png" alt=""/>
 </div>
+<div class="app_page_header" id="page_header5">PAGE 5 <span class="top_button" ng-click="goToTop()">TOP</span></div>
 <div class="img_container" id="image_wrapper_sig2">
     <img src="images/app5.png" alt=""/>
     <div id="app_signature_label2"></div>
-    <div id="sig_container2">
+    <div id="sig_container2" ng-class="{hide_sig: !show_sig1, show_sig: show_sig1}">
         <j-signature id="sig_capture2"></j-signature>
 
         <div class="sig_prompt">

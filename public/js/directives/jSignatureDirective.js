@@ -30,7 +30,7 @@ angular.module('formApp.jSignature',['formApp.userDataFactory']).directive('jSig
 
 				// Create Settings Object
 				var settings = {
-					UndoButton: true
+					'UndoButton': true
 				};
 
 				// Build jSignature Element
