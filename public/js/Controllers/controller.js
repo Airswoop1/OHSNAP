@@ -1340,7 +1340,13 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		 * Back Button
 		 * **/
 		$scope.goBack = function() {
-			window.history.back();
+			if($state.current.name === 'int.interview-preview-sign'){
+				$state.go('int.info-confirmation');
+			}
+			else{
+				window.history.back();
+			}
+
 		};
 
 		$scope.goToTop = function() {
