@@ -16,10 +16,10 @@
     </div>
 </div>
 
-<div ng-show="formData.name.first_name" class="yellow-button" ng-class="{'disabled': snapForm.household.$invalid}"
+<div ng-show="!goingThroughEligibility" class="yellow-button" ng-class="{'disabled': snapForm.household.$invalid}"
      ng-click="completedHousehold()">Continue</div>
 
-<div ng-show="!formData.name.first_name" class="yellow-button" ng-class="{'disabled': snapForm.household.$invalid}"
+<div ng-show="goingThroughEligibility" class="yellow-button" ng-class="{'disabled': snapForm.household.$invalid}"
      ng-click="completedEligibilityHousehold()">Continue</div>
 
 

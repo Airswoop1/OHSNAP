@@ -38,6 +38,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		$scope.show_progress_bar = true;
 		$scope.remove_progress_bar = false;
 		$scope.show_elig_progress_bar = false;
+		$scope.goingThroughEligibility = false;
 
 		$scope.completed_items = {
 			"name": false,
@@ -424,6 +425,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 		$scope.$on('show-elig-progress-bar', function() {
 			$scope.show_elig_progress_bar = true;
+			$scope.goingThroughEligibility = true;
 		});
 
 
@@ -553,6 +555,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				)) {
 
 				$scope.show_progress = true;
+
 			}
 			else {
 				if(fromState.name === 'form.intro') {
@@ -561,6 +564,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 				if(toState.name == 'form.intro') {
 					$scope.show_progress_bar = true;
+					$scope.goingThroughEligibility = false;
 				}
 
 				$scope.show_progress = false;

@@ -106,6 +106,15 @@ module.exports = function(grunt) {
 				NODE_ENV : 'prod'
 				//DEST     : 'dist',
 			}
+		},
+		watch: {
+			scripts: {
+				files: ['public/js/**/*'],
+				tasks: ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_dev'],
+				options: {
+					spawn: false
+				}
+			}
 		}
 
 	});
@@ -116,15 +125,20 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-ng-annotate');
 	grunt.loadNpmTasks('grunt-template');
 	grunt.loadNpmTasks('grunt-env');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// Default task(s).
 	//grunt.registerTask('default', ['ngAnnotate', 'uglify', 'cssmin']);
-	grunt.registerTask('dev', ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_dev']);
+	grunt.registerTask('dev', ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_dev', 'watch']);
 	grunt.registerTask('prod', ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_prod']);
 
 	// A very basic default task.
 	grunt.registerTask('logging', 'Log some stuff.', function() {
 		grunt.log.write('Logging some stuff...WOO!').ok();
+	});
+
+	grunt.event.on('watch', function(action, filepath, target) {
+		grunt.log.writeln(target + ': ' + filepath + ' has ' + action);
 	});
 
 };

@@ -410,6 +410,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		$scope.show_progress_bar = true;
 		$scope.remove_progress_bar = false;
 		$scope.show_elig_progress_bar = false;
+		$scope.goingThroughEligibility = false;
 
 		$scope.completed_items = {
 			"name": false,
@@ -796,6 +797,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 		$scope.$on('show-elig-progress-bar', function() {
 			$scope.show_elig_progress_bar = true;
+			$scope.goingThroughEligibility = true;
 		});
 
 
@@ -925,6 +927,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				)) {
 
 				$scope.show_progress = true;
+
 			}
 			else {
 				if(fromState.name === 'form.intro') {
@@ -933,6 +936,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 				if(toState.name == 'form.intro') {
 					$scope.show_progress_bar = true;
+					$scope.goingThroughEligibility = false;
 				}
 
 				$scope.show_progress = false;
@@ -958,7 +962,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.show_sig2 = false;
 
 		$scope.interview_progress_status = 0;
-		$scope.interview_steps = -1;
+		//$scope.interview_steps = -1;
+		$scope.interview_steps = 4;
 		$scope.user = userDataFactory.userData.user.formData; //? userDataFactory.userData.user.formData : {"household":1};
 		$scope.user.household_members = (typeof $scope.user.household_members!== 'undefined') ? $scope.user.household_members : {};
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;
@@ -1248,7 +1253,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			        $scope.interview_steps = -1;
 			        break;
 			    default:
-			        $scope.interview_steps = -1;
+			        //$scope.interview_steps = -1;
+				    $scope.interview_steps = 4;
 			}
 			updateProgressStatus();
 		});
@@ -1354,7 +1360,53 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			$anchorScroll();
 		};
 
-		$scope.goTo = function(index) {
+		$scope.backToMainSign = function(index) {
+
+			var img_container = document.getElementById('image_wrapper_sig' + index),
+				header = document.getElementById('page_header'+ index),
+				pg_header = document.getElementById('sign_header'),
+				tp_sign_page = document.getElementById('topOfSignPage');
+
+			pg_header.style.display = 'block';
+			tp_sign_page.style.display = 'block';
+
+			header.style.display = 'none';
+			/*header.style.position = 'absolute';
+			header.style.top = '0';
+			header.style.left = '0';*/
+
+			img_container.style.display = 'none';
+			/*img_container.style.position = 'absolute';
+			img_container.style.top = '50px';
+			img_container.style.left = '0';*/
+			$location.hash('topOfSignPage');
+			$anchorScroll();
+		};
+
+
+		$scope.expandThumbnail = function(index) {
+			var img_container = document.getElementById('image_wrapper_sig' + index),
+				header = document.getElementById('page_header'+ index),
+				pg_header = document.getElementById('sign_header'),
+				tp_sign_page = document.getElementById('topOfSignPage');
+
+			pg_header.style.display = 'none';
+			tp_sign_page.style.display = 'none';
+
+			header.style.display = 'block';
+			header.style.position = 'absolute';
+			header.style.top = '0';
+			header.style.left = '0';
+
+
+			img_container.style.display = 'block';
+			img_container.style.position = 'absolute';
+			img_container.style.top = '50px';
+			img_container.style.left = '0';
+
+			/*var bod = document.getElementsByTagName('body')[0];
+			bod.style.position = 'static';
+			bod.style['overflow-y'] = 'hidden';*/
 			$location.hash('page_header' + index);
 			$anchorScroll();
 		};
