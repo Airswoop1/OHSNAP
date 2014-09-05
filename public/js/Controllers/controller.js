@@ -965,8 +965,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.show_sig2 = false;
 
 		$scope.interview_progress_status = 0;
-		//$scope.interview_steps = -1;
-		$scope.interview_steps = 4;
+		$scope.interview_steps = -1;
+		//$scope.interview_steps = 4;
 		$scope.user = userDataFactory.userData.user.formData; //? userDataFactory.userData.user.formData : {"household":1};
 		$scope.user.household_members = (typeof $scope.user.household_members!== 'undefined') ? $scope.user.household_members : {};
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;
@@ -1248,9 +1248,11 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			    case "int.expenses-mortgage":
 			        $scope.interview_steps = 3;
 			        break;
-				case "int.interview-preview-sign":
 				case "int.info-confirmation":
 					$scope.interview_steps = 4;
+					break;
+				case "int.interview-preview-sign":
+					$scope.interview_steps = 5;
 					break;
 			    case "int.main":
 			        $scope.interview_steps = -1;
@@ -1281,7 +1283,11 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 		};
 
-		$scope.getCity();
+
+		$scope.$on('process-app-data', function(){
+			$scope.getCity();
+			$scope.calcPersonsWithIncome();
+		});
 
 
 		$scope.calcPersonsWithIncome = function() {
@@ -1315,7 +1321,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 		};
 
-		$scope.calcPersonsWithIncome();
+
 
 
 		$scope.submitSignedApplication = function() {

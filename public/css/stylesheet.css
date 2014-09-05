@@ -811,6 +811,24 @@ textarea {
   border-color: #8cc63f transparent transparent transparent;
 }
 
+.steps-triangle::before {
+    position: absolute;
+    content: "\e611";
+    font-family: 'icomoon';
+    font-size: 38px;
+    line-height: 30px;
+    right: -21px;
+    top: -62px;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
 .steps p {
   margin-top: 30px;
 }
@@ -967,7 +985,7 @@ textarea {
   content: "\e610";
   font-family: 'icomoon';
   font-size: 24px;
-  line-height: 70px;
+  line-height: 38px;
   speak: none;
   font-style: normal;
   font-weight: normal;
