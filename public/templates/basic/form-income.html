@@ -18,9 +18,9 @@
     </div>
 </div>
 
-<div class="yellow-button" ng-show="formData.name.first_name" ng-class="{'disabled':snapForm.income.$invalid}"
+<div class="yellow-button" ng-show="!goingThroughEligibility" ng-class="{'disabled':snapForm.income.$invalid}"
      ng-click="completedIncome()">Continue</div>
 
-<div class="yellow-button" ng-show="!formData.name.first_name" ng-class="{'disabled':snapForm.income.$invalid}"
+<div class="yellow-button" ng-show="goingThroughEligibility" ng-class="{'disabled':snapForm.income.$invalid}"
      ng-click="completedEligibilityIncome()">Continue</div>
 

@@ -169,6 +169,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 			if($scope.snapForm.street_address.$pristine && $scope.snapForm.zip.$pristine){
 				updateProgress('address');
+				$scope.has_address = false;
 				if($scope.formData.household && $scope.formData.income){
 					$state.go('form.telephone');
 				}
@@ -191,14 +192,13 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				&& ($scope.formData.address.zip === null || (typeof $scope.formData.address.zip === "undefined" )
 				&& $scope.snapForm.street_address.$valid && $scope.snapForm.zip.$valid)){
 				updateProgress('address');
+				$scope.has_address = false;
 				if($scope.formData.household && $scope.formData.income){
 					$state.go('form.telephone');
 				}
 				else {
 					$state.go('form.household');
 				}
-			}else {
-
 			}
 
 		};
@@ -214,6 +214,9 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 			if(!$scope.formData.phone_main && $scope.snapForm.phone.$pristine) {
 				$scope.has_phone = false;
+
+				console.log("has phone : " + $scope.has_phone );
+				console.log("has_address : " + $scope.has_address);
 
 				if(!$scope.has_phone && !$scope.has_address) {
 					showNoContactModal();
