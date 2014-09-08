@@ -1,14 +1,14 @@
 <!--<script src="js/sig/jSignature.min.js"></script>-->
-<div style="padding:25px;" id="sign_header">
-    <h1>Sign your official application</h1>
-    <p> Below is the official NYC SNAP application form, filled in with your information. We'll fax it to the NYC
-        HRA on your behalf, after you preview and sign it.</p>
-    <div class="yellow-button" id="goToFirstSigButton" ng-click="goToSig1()" style="text-align: left;">I'm ready to sign</div>
-    <div class="yellow-button page_button" ng-click="expandThumbnail(1);">Page 1: Basics</div>
-    <div class="yellow-button page_button" ng-click="expandThumbnail(2);">Page 2: Income</div>
-    <div class="yellow-button page_button" ng-click="expandThumbnail(3);">Page 3: Expenses</div>
-    <div class="yellow-button page_button" ng-click="expandThumbnail(4);">Page 4: Legal</div>
-    <div class="yellow-button page_button" ng-click="expandThumbnail(5);">Page 5: Final Signature</div>
+<div style="padding:25px;">
+<p> Below is the official NYC SNAP application form, filled in with your information. We'll fax it to the NYC HRA on your behalf, after you preview and sign it.</p>
+<div class="yellow-button" id="goToFirstSigButton" ng-click="goToSig1()" style="text-align: left;">I'm ready to sign</div>
+<div class="yellow-button page_button" ng-click="goTo(1);">Page 1: Basics</div>
+<div class="yellow-button page_button" ng-click="goTo(2);">Page 2: Income</div>
+<div class="yellow-button page_button" ng-click="goTo(3);">Page 3: Expenses</div>
+<div class="yellow-button page_button" ng-click="goTo(4);">Page 4: Legal</div>
+<div class="yellow-button page_button" ng-click="goTo(5);">Page 5: Final Signature</div>
+
+
 </div>
 
 <style>
@@ -158,7 +158,6 @@
         width:100%;
         height:400px;
         overflow:scroll;
-        display:none;
 
     }
 
@@ -441,34 +440,14 @@
     }
 
     .app_page_header {
-        background-color: #00bd54;
-        color: white;
-        z-index:1500;
+        background-color: #e4e4e4;
+        color: black;
         font-weight: 800;
         width: 100%;
-        height: 80px;
+        height: 60px;
         line-height: 3.4;
         text-indent: 20px;
-        text-align:center;
-        font-size: 22px;
-        display:none;
-    }
-
-    .app_page_header::before {
-        content: "\e610";
-        font-family: 'icomoon';
-        font-size: 26px;
-        line-height: 3.2;
-        float:left;
-        vertical-align: sub;
-        speak: none;
-        font-style: normal;
-        font-weight: normal;
-        font-variant: normal;
-        text-transform: none;
-        /* Better Font Rendering =========== */
-        -webkit-font-smoothing: antialiased;
-        -moz-osx-font-smoothing: grayscale;
+        font-size: 18px;
     }
 
     .form-wrapper {
@@ -506,33 +485,10 @@
         margin-top:0px;
     }
 
-    .display-none {
-        display:none;
-    }
-    .display {
-        display:block;
-    }
-
-
-    .header-to-top {
-        display:block;
-        position:absolute;
-        top:0;
-        left:0;
-    }
-
-    .image-to-top {
-        display:block;
-        position:absolute;
-        top:50px;
-        left:0;
-    }
-
-
 </style>
 
 
-<div class="app_page_header" id="page_header1" ng-click="backToMainSign(1)">Page 1: Basics</div>
+<div class="app_page_header" id="page_header1">PAGE 1 <span class="top_button" ng-click="goToTop()">TOP</span></div>
 <div class="img_container" id="image_wrapper_sig1">
     <img src="images/app1.png" alt=""/>
     <div class="data_overlay" id="app_name">{{ user.name.first_name + " " + user.name.last_name }}</div>
@@ -581,7 +537,7 @@
         </div>
     </div>
 </div>
-<div class="app_page_header" id="page_header2" ng-click="backToMainSign(2)">Page 2: Income</div>
+<div class="app_page_header" id="page_header2">PAGE 2 <span class="top_button" ng-click="goToTop()">TOP</span></div>
 <div class="img_container">
     <img src="images/app2.png" alt=""/>
     <div ng-repeat="person in personsWithIncome track by $index">
@@ -595,15 +551,15 @@
     <div class="data_overlay" id="app_rent">{{ user.rent || 0 }}</div>
 
 </div>
-<div class="app_page_header" id="page_header3" ng-click="backToMainSign(3)">Page 3: Expenses</div>
+<div class="app_page_header" id="page_header3">PAGE 3 <span class="top_button" ng-click="goToTop()">TOP</span></div>
 <div class="img_container">
     <img src="images/app3.png" alt=""/>
 </div>
-<div class="app_page_header" id="page_header4" ng-click="backToMainSign(4)">Page 4: Legal</div>
+<div class="app_page_header" id="page_header4">PAGE 4 <span class="top_button" ng-click="goToTop()">TOP</span></div>
 <div class="img_container">
     <img src="images/app4.png" alt=""/>
 </div>
-<div class="app_page_header" id="page_header5" ng-click="backToMainSign(4)">Page 5: Final Signature</div>
+<div class="app_page_header" id="page_header5">PAGE 5 <span class="top_button" ng-click="goToTop()">TOP</span></div>
 <div class="img_container" id="image_wrapper_sig2">
     <img src="images/app5.png" alt=""/>
     <div id="app_signature_label2"></div>
