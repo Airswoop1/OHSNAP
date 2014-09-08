@@ -927,6 +927,17 @@ textarea {
   left: -25px;
 }
 
+.page-third-header {
+    background-color: #8cc63f;
+    width: 100%;
+    color: #fff;
+    padding: 0 25px 20px;
+    position: relative;
+    height: 90px;
+    top: 26px;
+    left: -23px;
+}
+
 .page-header {
   background-color: #00a4ff;
   width: 100%;
@@ -1118,6 +1129,40 @@ h1.icon-check::before {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1.icon-check-docs {
+    position: relative;
+    padding-left: 90px;
+    padding-bottom: 4px;
+    padding-top: 10px;
+}
+
+h1.icon-check-docs::before {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    content: "\e604";
+    font-family: 'icomoon';
+    font-size: 50px;
+    line-height: 70px;
+    width: 70px;
+    float: left;
+    padding: 0 10px 10px 10px;
+    margin-right: 20px;
+    box-sizing: border-box;
+    height: 70px;
+    background-color: #548F01;
+    color: #fcee21;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
 .page-second-header p.sub-text {
   text-align: center;
   font-weight: 300;
@@ -1131,6 +1176,10 @@ h1.icon-check::before {
 
 .page-second-header.completed-basics h1 {
   padding: 0px 0px 0px 85px;
+}
+
+.page-third-header.completed-documents h1 {
+    padding: 0px 0px 0px 85px;
 }
 
 div.confirm-info div {

@@ -10,6 +10,11 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 
 		$scope.user = (typeof userDataFactory.userData.user.formData !== "undefined") ? userDataFactory.userData.user.formData : {};
 
+
+		$scope.date = new Date();
+		$scope.date_of_interview = new Date();
+		$scope.date_of_interview.setDate($scope.date.getDate() + 10);
+
 		$scope.DOC_STATUS = {
 			"UPLOADED": 2,
 			"IN_PROGRESS":1,
@@ -59,6 +64,10 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 		$scope.goToDocUpload = function(name) {
 			$state.go('upload.detail', {'type':name});
 
+		};
+
+		$scope.goToCompletion = function() {
+			$state.go('upload.completion', {'type':'Completion'});
 		};
 
 		$scope.getCurrentContent = function(){
@@ -354,7 +363,7 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 					},
 					{
 						"name":"Current veteran's benefit check",
-						"image":"empty.jpg",
+						"image":"empty.jpg"
 					},
 					{
 						"name":"Current worker's compensation certificate",
@@ -618,6 +627,20 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 					which = 'tel_nan'
 				}
 				$window.ga('send','event','telephone_validate','tap',which,1);
+			}
+
+		};
+
+		$scope.completedSSN = function() {
+
+			$scope.submitted_SSN = true;
+
+			if(!$scope.formData.ssn && $scope.snapForm.ssn.$pristine){
+				$scope.has_ssn = false;
+				$state.go('form.telephone');
+			}
+			else if(!$scope.formData.ssn && $scope.snapForm.ssn.$dirty) {
+
 			}
 
 		};

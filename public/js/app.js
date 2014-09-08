@@ -67,6 +67,11 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/basic/form-expenses.html'
 			})
 
+			.state('form.ssn', {
+				url:'/ssn',
+				templateUrl:'templates/basic/form-ssn.html'
+			})
+
 			.state('form.eligibility', {
 				url:'/elibility',
 				templateUrl:'templates/basic/form-eligibility.html'
@@ -229,6 +234,11 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 			.state('upload.detail',{
 				url:'/detail?type',
 				templateUrl:'templates/documents/form-document-detail.html'
+			})
+
+			.state('upload.completion', {
+				url:'/completion?type',
+				templateUrl: 'templates/documents/form-document-completion.html'
 			})
 
 

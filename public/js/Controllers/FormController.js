@@ -250,6 +250,20 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 		};
 
+		$scope.completedSSN = function() {
+
+			$scope.submitted_SSN = true;
+
+			if(!$scope.formData.ssn && $scope.snapForm.ssn.$pristine){
+				$scope.has_ssn = false;
+				$state.go('form.telephone');
+			}
+			else if(!$scope.formData.ssn && $scope.snapForm.ssn.$dirty) {
+
+			}
+
+		};
+
 		/**
 		 * fn completedIncom
 		 *
