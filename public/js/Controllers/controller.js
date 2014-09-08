@@ -1275,6 +1275,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 					$scope.interview_steps = 4;
 					break;
 				case "int.interview-preview-sign":
+					$scope.goToTop();
 					$scope.interview_steps = 5;
 					break;
 			    case "int.main":
