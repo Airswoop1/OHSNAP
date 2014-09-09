@@ -148,15 +148,10 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 					wk_month: 4,
 					total_resources: 140,
 					rent: 900
-
-
 				}
 			}
 
 		};
-
-
-
 
 		return {
 			"userData":userData
