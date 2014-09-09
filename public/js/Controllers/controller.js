@@ -1124,17 +1124,56 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 
 		$scope.goToSig1 = function() {
+			console.log("Trying to go to sig1");
+			var img1 = document.getElementById('image_wrapper1'),
+				img2 = document.getElementById('image_wrapper2'),
+				img3 = document.getElementById('image_wrapper3'),
+				img4 = document.getElementById('image_wrapper4'),
+				img5 = document.getElementById('image_wrapper5'),
+				h1 = document.getElementById('page_alt_header1'),
+				h2 = document.getElementById('page_alt_header2'),
+				h3 = document.getElementById('page_alt_header3'),
+				h4 = document.getElementById('page_alt_header4'),
+				h5 = document.getElementById('page_alt_header5');
+
+			img1.style.display = 'block';
+			img1.style.opacity = '1';
+			img2.style.display = 'block';
+			img3.style.display = 'block';
+			img4.style.display = 'block';
+			img5.style.display = 'block';
+			img5.style.opacity = '1';
+
+			h1.style.display = 'block';
+			h2.style.display = 'block';
+			h3.style.display = 'block';
+			h4.style.display = 'block';
+			h5.style.display = 'block';
+
+			h1.style.position = 'relative';
+			h2.style.position = 'relative';
+			h3.style.position = 'relative';
+			h4.style.position = 'relative';
+			h5.style.position = 'relative';
+
+			img1.style.position = 'relative';
+			img2.style.position = 'relative';
+			img3.style.position = 'relative';
+			img4.style.position = 'relative';
+			img5.style.position = 'relative';
+
+
 			$scope.show_sig1 = true;
 			$location.hash('sig_container1');
 			$anchorScroll();
-			document.getElementById('image_wrapper_sig1').scrollLeft = 467;
+			document.getElementById('image_wrapper1').scrollLeft = 467;
 		};
 
 		$scope.goToSig2 = function() {
 			$scope.show_sig2 = true;
 			$location.hash('sig_container2');
 			$anchorScroll();
-			document.getElementById('image_wrapper_sig2').scrollLeft = 163;
+			document.getElementById('image_wrapper2').scrollLeft = 163;
 		};
 
 		function updateProgress(name) {
@@ -1272,6 +1311,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			        $scope.interview_steps = 3;
 			        break;
 				case "int.info-confirmation":
+					$scope.goToTop();
 					$scope.interview_steps = 4;
 					break;
 				case "int.interview-preview-sign":
@@ -1394,30 +1434,34 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 		$scope.backToMainSign = function(index) {
 
-			var img_container = document.getElementById('image_wrapper_sig' + index),
+			var img_container = document.getElementById('image_wrapper' + index),
 				header = document.getElementById('page_header'+ index),
 				pg_header = document.getElementById('sign_header'),
-				tp_sign_page = document.getElementById('topOfSignPage');
+				tp_sign_page = document.getElementById('topOfSignPage'),
+				sign_btn = document.getElementById('goToFirstSigButton');
+
+
 
 			pg_header.style.display = 'block';
 			tp_sign_page.style.display = 'block';
 
 			header.style.display = 'none';
-			/*header.style.position = 'absolute';
-			header.style.top = '0';
-			header.style.left = '0';*/
 
-			img_container.style.display = 'none';
-			/*img_container.style.position = 'absolute';
-			img_container.style.top = '50px';
-			img_container.style.left = '0';*/
+			if(index === 1 || index === 5){
+				img_container.style.opacity = '0';
+				img_container.style.zIndex = '0';
+			}
+			else {
+				img_container.style.display = 'none';
+			}
+
 			$location.hash('topOfSignPage');
 			$anchorScroll();
 		};
 
 
 		$scope.expandThumbnail = function(index) {
-			var img_container = document.getElementById('image_wrapper_sig' + index),
+			var img_container = document.getElementById('image_wrapper' + index),
 				header = document.getElementById('page_header'+ index),
 				pg_header = document.getElementById('sign_header'),
 				tp_sign_page = document.getElementById('topOfSignPage');
@@ -1425,20 +1469,29 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			pg_header.style.display = 'none';
 			tp_sign_page.style.display = 'none';
 
+
+
 			header.style.display = 'block';
 			header.style.position = 'absolute';
 			header.style.top = '0';
 			header.style.left = '0';
 
 
-			img_container.style.display = 'block';
+
+			if(index === 1 || index === 5){
+
+				img_container.style.zIndex = '1000';
+				img_container.style.opacity = '1';
+			}
+			else {
+				img_container.style.display = 'block';
+			}
 			img_container.style.position = 'absolute';
 			img_container.style.top = '50px';
 			img_container.style.left = '0';
 
-			/*var bod = document.getElementsByTagName('body')[0];
-			bod.style.position = 'static';
-			bod.style['overflow-y'] = 'hidden';*/
+
+
 			$location.hash('page_header' + index);
 			$anchorScroll();
 		};
