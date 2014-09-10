@@ -1,0 +1,21 @@
+<h1>What's your immigration status?</h1>
+<p>Your status affects your eligibility for SNAP benefits. Applying for SNAP or receiving benefits will not affect your immigration case.</p>
+<br/>
+<input ng-model="formData.citizenship" id="us_citizen" type="radio" class="name-input marital-input" value="us_citizen" name="citizenship" required><label
+        for="us_citizen">I'm a US Citizen</label>
+<br/>
+<input ng-model="formData.citizenship" id="legal_immigrant" type="radio" class="name-input marital-input" value="legal_immigrant" name="citizenship"><label
+        for="legal_immigrant">I've been a legal immigrant since 2009 or earlier</label>
+<br/>
+<input ng-model="formData.citizenship" id="non_citizen_18" type="radio" class="name-input marital-input" value="non_citizen_18" name="citizenship"><label
+        for="non_citizen_18">I'm a non-citizen under 18</label>
+<br/>
+<input ng-model="formData.citizenship" id="refugee" type="radio" class="name-input marital-input" value="refugee" name="citizenship"><label
+        for="refugee">I'm a refugee</label>
+<br/>
+<input ng-model="formData.citizenship" id="none" type="radio" class="name-input marital-input" value="none" name="citizenship"><label
+        for="none">None of the above</label>
+
+<span class="help-block" style="color:red;" ng-show="submitted_citizenship && !formData.citizenship">Citizenship selection required.</span>
+
+<div class="yellow-button" ng-class="{'disabled': !formData.citizenship }" ng-click="completedCitizenship()">Continue</div>

@@ -13,8 +13,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.show_sig2 = false;
 
 		$scope.interview_progress_status = 0;
-		//$scope.interview_steps = -1;
-		$scope.interview_steps = 5;
+		$scope.interview_steps = -1;
+		//$scope.interview_steps = 5;
 		$scope.user = userDataFactory.userData.user.formData; //? userDataFactory.userData.user.formData : {"household":1};
 		$scope.user.household_members = (typeof $scope.user.household_members!== 'undefined') ? $scope.user.household_members : {};
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;

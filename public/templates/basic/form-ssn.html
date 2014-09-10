@@ -3,12 +3,9 @@
 <p>If you have a social security number, enter it here. It will help you track the status of your application,
     and upload your documents sooner.</p>
 <div class="form-group" ng-class="{'has-success':snapForm.ssn.$pristine ,'has-error': snapForm.ssn.$invalid}">
-    <input class="form-control" type="number" name="ssn" id="ssn" ng-model="formData.ssn" minlength="9" maxlength="9" autofocus="true"/>
-    <span class="help-block" ng-show="submitted_ssn && snapForm.ssn.$invalid">SSN Required</span>
+    <input class="form-control" type="text" name="ssn" id="ssn" ng-model="formData.ssn" ng-minlength="9" ng-maxlength="11" ng-pattern="/^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/" autofocus="true"/>
+    <span class="help-block" ng-show="submitted_ssn && !snapForm.ssn.$valid">9 digit SSN Required</span>
 </div>
 
-<div class="yellow-button" ng-class="{'disabled':snapForm.ssn.$invalid}"
+<div class="yellow-button" ng-class="{'disabled':!snapForm.ssn.$valid || snapForm.ssn.$error.minlength || snapForm.ssn.$error.minlength }"
      ng-click="completedSSN()">Continue</div>
-
-
-

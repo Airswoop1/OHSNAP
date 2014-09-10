@@ -428,12 +428,15 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			"income" : false,
 			"household" : false,
 			"expenses":false,
+			"ssn":false,
+			"citizenship":false,
 			"confirmation" : false
 		};
 
 		$scope.eligibilityCompleted = {
 			"household":false,
 			"income":false,
+			"citizenship":false,
 			"expenses":false
 		};
 
@@ -555,7 +558,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 					$state.go('form.telephone');
 				}
 				else {
-					$state.go('form.household');
+					$state.go('form.citizenship');
 				}
 			}
 			else if($scope.snapForm.street_address.$valid && $scope.snapForm.zip.$valid
@@ -565,7 +568,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 					$state.go('form.telephone');
 				}
 				else {
-					$state.go('form.household');
+					$state.go('form.citizenship');
 				}
 			}
 			else if(($scope.snapForm.street_address.$dirty || $scope.snapForm.zip.$dirty)
@@ -578,7 +581,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 					$state.go('form.telephone');
 				}
 				else {
-					$state.go('form.household');
+					$state.go('form.citizenship');
 				}
 			}
 
@@ -593,60 +596,37 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		$scope.completedTelephone = function(){
 			$scope.submitted_phone = true;
 
+			console.log($scope.snapForm.phone);
+
 			if(!$scope.formData.phone_main && $scope.snapForm.phone.$pristine) {
-				$scope.has_phone = false;
 
-				console.log("has phone : " + $scope.has_phone );
-				console.log("has_address : " + $scope.has_address);
-
-				if(!$scope.has_phone && !$scope.has_address) {
-					showNoContactModal();
-				}
-				else {
-					updateProgress('telephone');
-					$scope.remove_progress_bar = true;
-					$scope.submitBasicApp()
-				}
 			}
 			else if($scope.snapForm.$valid) {
 				updateProgress('telephone');
 				$scope.remove_progress_bar = true;
 				$scope.submitBasicApp();
-
-
-
-			}
-			else {
-				var field_invalid = $scope.snapForm.$error,
-					which = "";
-
-				if(field_invalid.minlength){
-					which = 'tel_length';
-				}
-				else if(field_invalid.number){
-					which = 'tel_nan'
-				}
-				$window.ga('send','event','telephone_validate','tap',which,1);
+				calculateBenefit();
 			}
 
 		};
 
 		$scope.completedSSN = function() {
 
-			$scope.submitted_SSN = true;
+			$scope.submitted_ssn = true;
 
-			if(!$scope.formData.ssn && $scope.snapForm.ssn.$pristine){
-				$scope.has_ssn = false;
-				$state.go('form.telephone');
+			if(!$scope.formData.ssn && $scope.snapForm.ssn.$valid){
+				showNoContactModal();
+				submitted_ssn = false;
 			}
-			else if(!$scope.formData.ssn && $scope.snapForm.ssn.$dirty) {
-
+			else if($scope.formData.ssn && $scope.snapForm.ssn.$valid){
+				updateProgress('ssn');
+				$state.go('form.telephone');
 			}
 
 		};
 
 		/**
-		 * fn completedIncom
+		 * fn completedIncome
 		 *
 		 */
 
@@ -696,7 +676,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			if($scope.snapForm.expenses.$valid){
 
 				updateProgress('expenses');
-				$state.go('form.telephone')
+				$state.go('form.ssn')
 			}
 		};
 
@@ -721,13 +701,34 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			}
 		};
 
+		$scope.completedCitizenship = function() {
+			$scope.submitted_citizenship = true;
+			console.log($scope.snapForm.citizenship);
+
+			if($scope.formData.citizenship){
+				if($scope.formData.citizenship == 'none'){
+					$state.go('form.ineligible');
+				}
+				else if($scope.goingThroughEligibility){
+					updateEligibilityProgress('citizenship');
+					$state.go('form.household');
+				}
+				else {
+					updateProgress('citizenship');
+					$state.go('form.household');
+				}
+			}
+		};
+
 		$scope.completeEligibilityCalc = function() {
 			$scope.submitted_expenses = true;
 			if($scope.snapForm.expenses.$valid){
 				calculateBenefit();
 				updateProgress('expenses');
-				$scope.show_progress_bar = false;
+				$scope.show_elig_progress_bar = false;
+				$scope.show_progress_bar = true;
 				$scope.remove_progress_bar = true;
+
 				$state.go('form.eligibility')
 			}
 		};
@@ -806,10 +807,12 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		}
 
 		$scope.$on('show-progress-bar', function() {
+			console.log("show progress bar being called!!");
 			$scope.show_progress_bar = true;
 		});
 
 		$scope.$on('dont-show-progress-bar', function() {
+
 			$scope.show_progress_bar = false;
 		});
 
@@ -823,9 +826,14 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 		$scope.$on('show-elig-progress-bar', function() {
 			$scope.show_elig_progress_bar = true;
+			$scope.show_progress_bar = false;
 			$scope.goingThroughEligibility = true;
 		});
 
+
+		$scope.updateProgress = function(u) {
+			updateProgress(u);
+		};
 
 		/**
 		 * fn updateProgress
@@ -837,7 +845,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			$scope.progress = 0;
 			for(var comp in $scope.completed_items){
 				if($scope.completed_items[comp]){
-					$scope.progress += 17;
+					$scope.progress += 12.5;
 				}
 			}
 		}
@@ -921,9 +929,11 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			 hack so that user cannot go back after submitting an app
 			 Not really effective since they can just use their back button on their browser
 			 */
+
 			if($state.current.name !== 'form.basic-app-submitted'){
 				window.history.back();
 			}
+
 
 		};
 
@@ -949,8 +959,15 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				toState.name === 'form.eligibility' ||
 				toState.name === 'form.eligibility-expenses' ||
 				toState.name === 'form.expenses' ||
-				toState.name === 'form.redirect'
+				toState.name === 'form.redirect' ||
+				toState.name === 'form.ssn' ||
+				toState.name === 'form.citizenship' ||
+				toState.name === 'form.ineligible'
 				)) {
+
+				if($scope.goingThroughEligibility && toState.name == 'form.name'){
+					$scope.show_progress_bar = true;
+				}
 
 				$scope.show_progress = true;
 
@@ -988,8 +1005,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.show_sig2 = false;
 
 		$scope.interview_progress_status = 0;
-		//$scope.interview_steps = -1;
-		$scope.interview_steps = 5;
+		$scope.interview_steps = -1;
+		//$scope.interview_steps = 5;
 		$scope.user = userDataFactory.userData.user.formData; //? userDataFactory.userData.user.formData : {"household":1};
 		$scope.user.household_members = (typeof $scope.user.household_members!== 'undefined') ? $scope.user.household_members : {};
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;

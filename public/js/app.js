@@ -72,6 +72,16 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/basic/form-ssn.html'
 			})
 
+			.state('form.citizenship', {
+				url:'/citizenship',
+				templateUrl:'templates/basic/form-citizenship.html'
+			})
+
+			.state('form.ineligible', {
+				url:'/ineligible',
+				templateUrl:'templates/basic/form-ineligible.html'
+			})
+
 			.state('form.eligibility', {
 				url:'/elibility',
 				templateUrl:'templates/basic/form-eligibility.html'
@@ -267,6 +277,20 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				$window.ga('send', 'pageview', { page: $location.path() });
 			});
 
-	}]);
+	}])
 
 
+
+
+.config(['$provide', function ($provide) {
+	$provide.decorator('$rootScope', function ($delegate) {
+		var _emit = $delegate.$emit;
+
+		$delegate.$emit = function () {
+			console.log.apply(console, arguments);
+			_emit.apply(this, arguments);
+		};
+
+		return $delegate;
+	});
+}]);

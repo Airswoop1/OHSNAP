@@ -8,30 +8,29 @@ angular.module('formApp.modalDirective',[]).directive('modalDialog',function(){
             show: '='
         },
         replace: true, // Replace with the template below
-        transclude: true, // we want to insert custom content inside the directive
+
+	    transclude: true, // we want to insert custom content inside the directive
+
         link: function(scope, element, attrs) {
             scope.dialogStyle = {
 	            width:'90%',
 	            height:'60%'
             };
 
-            /*if (attrs.width)
-                scope.dialogStyle.width = attrs.width;
-            if (attrs.height)
-                scope.dialogStyle.height = attrs.height;*/
-
             scope.hideModal = function() {
                 scope.show = false;
             };
 
-            scope.goToAddress = function() {
+            scope.goToTelephone = function() {
                 scope.show = false;
-                goAddress();
+                goTelephone();
             }
+
         },
-        controller : function($state){
-          goAddress = function(){
-              $state.go('form.address');
+        controller : function($state, $scope){
+          goTelephone = function(){
+	          $scope.$parent.updateProgress('ssn');
+              $state.go('form.telephone');
           };
 
         },
