@@ -45,11 +45,11 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		}
 
 		$scope.stepsCompleted = {
-			"int.ssn":false,
+			//"int.ssn":false,
 			"int.dob":false,
 			"int.marital_status":false,
 			"int.disabled":false,
-			"int.citizen":false,
+			//"int.citizen":false,
 			"int.household":false,
 			"int.household-applying":false,
 			"int.household-ssn":false,
