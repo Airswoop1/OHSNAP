@@ -83,9 +83,14 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 		$scope.getCurrentType = function() {
 			if($state.params.type == "ALT_INCOME") {
 				return "OTHER INCOME";
-			} else if($state.params.type == "EARNED_INCOME") {
+			}
+			else if($state.params.type == "EARNED_INCOME") {
 				return "INCOME";
-			} else {
+			}
+			else if($state.params.type == "HOUSING_EXPENSE"){
+				return "HOUSING EXPENSES"
+			}
+			else {
 				return $state.params.type ? $state.params.type : "Documents";
 			}
 		};
@@ -371,6 +376,11 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 					}
 
 				]
+			},
+			'OTHER' : {
+				header:"Take a picture of 1 of these documents to confirm alternate sources of income.",
+				sample_image:"sample_utilities.png",
+				valid_docs : []
 			}
 		};
 
