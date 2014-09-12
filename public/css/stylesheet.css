@@ -928,6 +928,16 @@ textarea {
   left: -25px;
 }
 
+.page-second-header-confirmation {
+    background-color: #39b54a;
+    width: 100%;
+    color: #fff;
+    padding: 0 25px 41px;
+    position: relative;
+    top: -25px;
+    left: -25px;
+}
+
 .page-third-header {
     background-color: #8cc63f;
     width: 100%;
@@ -1164,6 +1174,39 @@ h1.icon-check-docs::before {
     -moz-osx-font-smoothing: grayscale;
 }
 
+
+h1.icon-check-app-submission {
+    position: relative;
+    padding-left: 90px;
+    padding-bottom: 4px;
+    padding-top: 10px;
+}
+
+h1.icon-check-app-submission::before {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    content: "\e604";
+    font-family: icomoon;
+    font-size: 50px;
+    line-height: 70px;
+    width: 70px;
+    float: left;
+    padding: 0 10px 10px;
+    margin-right: 20px;
+    box-sizing: border-box;
+    height: 70px;
+    background-color: #106301;
+    color: #fcee21;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
 
 .page-second-header p.sub-text {
   text-align: center;

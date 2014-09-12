@@ -1150,6 +1150,12 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			});
 		});
 
+		$scope.$on('start-last-step', function() {
+			API.uploadPartialInterviewInfo($scope.user, function(result){
+
+			})
+		});
+
 		$scope.goToSignPage = function() {
 			$state.go('int.interview-preview-sign');
 			$scope.show_sig1 = true;
@@ -1319,6 +1325,9 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				case "int.info-review":
 					$scope.interview_steps = 5;
 					break;
+				case "int.app-submission":
+					$scope.interview_steps = 6;
+					break;
 			    case "int.main":
 			        $scope.interview_steps = -1;
 			        break;
@@ -1394,7 +1403,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				$scope.appSubmissionInProcess = true;
 				API.uploadPartialInterviewInfo($scope.user, function(result){
 					if(result) {
-						$state.go('upload.documents');
+						$state.go('int.app-submission');
 					}
 					else {
 						$scope.appSubmissionInProcess = false;

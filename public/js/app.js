@@ -234,6 +234,11 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl: 'templates/interview/interview-application-signature.html'
 			})
 
+			.state('int.app-submission', {
+				url:'/submission',
+				templateUrl:'templates/interview/interview-application-submission.html'
+			})
+
 
 
 
