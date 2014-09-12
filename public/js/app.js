@@ -221,12 +221,17 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 
 			.state('int.info-review', {
 				url:'/review',
-				templateUrl: 'templates/interview/interview-explore-app.html'
+				templateUrl: 'templates/interview/interview-review-app.html'
+			})
+
+			.state('int.info-esig-confirm', {
+				url:'/confirm-esignature',
+				templateUrl:'templates/interview/interview-esignature-legal.html'
 			})
 
 			.state('int.interview-preview-sign', {
 				url: '/sign',
-				templateUrl: 'templates/interview/interview-application-confirmation.html'
+				templateUrl: 'templates/interview/interview-application-signature.html'
 			})
 
 

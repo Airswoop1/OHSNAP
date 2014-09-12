@@ -11,10 +11,11 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.appSubmissionInProcess = false;
 		$scope.show_sig1 = false;
 		$scope.show_sig2 = false;
+		$scope.show_esig_info = false;
 
 		$scope.interview_progress_status = 0;
-		$scope.interview_steps = -1;
-		//$scope.interview_steps = 5;
+		//$scope.interview_steps = -1;
+		$scope.interview_steps = 5;
 		$scope.user = userDataFactory.userData.user.formData; //? userDataFactory.userData.user.formData : {"household":1};
 		$scope.user.household_members = (typeof $scope.user.household_members!== 'undefined') ? $scope.user.household_members : {};
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;
@@ -175,7 +176,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 					$scope.int_progress += 7.4;
 				}
 			}
-		};
+		}
 
 		function updateProgressStatus(){
 			if( $scope.interviewCompleted.eligibility &&
