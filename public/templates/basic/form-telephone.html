@@ -1,10 +1,11 @@
 <!-- form-telephone.html -->
 <h1>What’s your phone number?</h1>
 <div class="form-group" ng-class="{'has-success':snapForm.phone.$pristine ,'has-error': !snapForm.phone.$valid}">
-    <input class="form-control" type="tel" placeholder="Phone Number" name="phone" id="phone" ng-model="formData.phone_main" ng-pattern="/^(?:\([2-9]\d{2}\)\ ?|[2-9]\d{2}(?:\-?|\ ?))[2-9]\d{2}[- ]?\d{4}$/" autofocus="true"/>
+    <input class="form-control" type="tel" placeholder="Phone Number" name="phone" id="phone" ng-model="formData.phone_main" ng-pattern="/^1?(?:\([2-9]\d{2}\)\ ?|[2-9]\d{2}(?:\-?|\ ?))[2-9]\d{2}[- ]?\d{4}$/" autofocus="true" ng-required="true"/>
     <span class="help-block" ng-show="submitted_phone && !snapForm.phone.$valid">Ten Digit Telephone Number Required</span>
 </div>
+
 <p>A phone number is required for submitting your application through easyfoodstamps.com.
 </p>
-<button class="yellow-button" ng-click="completedTelephone()">Continue</button>
-
+<button class="yellow-button" ng-hide="submitting_app" ng-class="{'disabled': !snapForm.phone.$valid }" ng-click="completedTelephone()">Continue</button>
+<div class="yellow-button" style="background-color: #00bd54" ng-show="submitting_app" >Submitting Application</div>

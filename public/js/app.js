@@ -108,7 +108,15 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/basic/form-redirect.html'
 			})
 
+			.state('form.non-citizen', {
+				url:'/non-us-citizen',
+				templateUrl:'templates/basic/form-non-citizen.html'
+			})
 
+			.state('form.citizenship-false', {
+				url:'/citizenship-false',
+				templateUrl:'templates/basic/form-illegal-citizen.html'
+			})
 
 
 			/************************ Step 2 - INTERVIEW ****************/

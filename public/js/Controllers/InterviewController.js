@@ -77,8 +77,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		];
 
 		$scope.YNOpts = [
-			{"value":"Yes", "name":"Yes"},
-			{"value":"No", "name":"No"}
+			{"value":"yes", "name":"yes"},
+			{"value":"no", "name":"no"}
 		];
 
 		$scope.MaritalOpts = [
@@ -321,6 +321,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 					break;
 				case "int.interview-preview-sign":
 				case "int.info-review":
+					$scope.scrollUpSignPage();
 					$scope.interview_steps = 5;
 					break;
 				case "int.app-submission":
@@ -488,6 +489,11 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 		$scope.scrollDown = function() {
 			$location.hash('confirm_anchor');
+			$anchorScroll();
+		};
+
+		$scope.scrollUpSignPage = function() {
+			$location.hash('sign_header');
 			$anchorScroll();
 		};
 
