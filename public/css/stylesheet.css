@@ -63,7 +63,7 @@
   margin: 0 auto;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   .container {
     width: 600px;
     margin: 0 auto;
@@ -83,7 +83,7 @@
     border-width: 45px 300px 0 300px !important;
   }
 }
-@media (max-width: 767px) {
+@media (min-width: 322px) and (max-width: 767px) {
   .container {
     width: 100%;
   }
@@ -96,7 +96,7 @@
     display: none;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 322px) {
   .container {
     width: 100%;
   }
@@ -832,7 +832,7 @@ textarea {
     font-family: 'icomoon';
     font-size: 38px;
     line-height: 30px;
-    right: -21px;
+    right: -20px;
     top: -62px;
     speak: none;
     font-style: normal;
