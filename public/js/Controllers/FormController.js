@@ -175,7 +175,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				updateProgress('address');
 				$scope.has_address = false;
 				if($scope.formData.household && $scope.formData.income){
-					$state.go('form.telephone');
+					$state.go('form.ssn');
 				}
 				else {
 					$state.go('form.citizenship');
@@ -185,7 +185,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				&& $scope.formData.address.street_address && $scope.formData.address.zip){
 				updateProgress('address');
 				if($scope.formData.household && $scope.formData.income){
-					$state.go('form.telephone');
+					$state.go('form.ssn');
 				}
 				else {
 					$state.go('form.citizenship');
@@ -198,7 +198,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				updateProgress('address');
 				$scope.has_address = false;
 				if($scope.formData.household && $scope.formData.income){
-					$state.go('form.telephone');
+					$state.go('form.ssn');
 				}
 				else {
 					$state.go('form.citizenship');

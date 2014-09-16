@@ -566,7 +566,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				updateProgress('address');
 				$scope.has_address = false;
 				if($scope.formData.household && $scope.formData.income){
-					$state.go('form.telephone');
+					$state.go('form.ssn');
 				}
 				else {
 					$state.go('form.citizenship');
@@ -576,7 +576,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				&& $scope.formData.address.street_address && $scope.formData.address.zip){
 				updateProgress('address');
 				if($scope.formData.household && $scope.formData.income){
-					$state.go('form.telephone');
+					$state.go('form.ssn');
 				}
 				else {
 					$state.go('form.citizenship');
@@ -589,7 +589,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				updateProgress('address');
 				$scope.has_address = false;
 				if($scope.formData.household && $scope.formData.income){
-					$state.go('form.telephone');
+					$state.go('form.ssn');
 				}
 				else {
 					$state.go('form.citizenship');
@@ -1374,7 +1374,21 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		};
 
 
+		function removeHouseholdMembersNotApplying() {
+			for(var i=0; i<$scope.user.household-1;i++ ){
+				if(typeof $scope.user.household_members[i] !== 'undefined' &&
+
+					($scope.user.household_members[i].applying == false ||
+					typeof $scope.user.household_members[i].name == 'undefined')){
+
+					$scope.user.household_members[i].relation = ' ';
+				}
+			}
+		}
+
+
 		$scope.$on('process-app-data', function(){
+			removeHouseholdMembersNotApplying();
 			$scope.getCity();
 			$scope.calcPersonsWithIncome();
 		});

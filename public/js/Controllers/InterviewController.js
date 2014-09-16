@@ -357,7 +357,21 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		};
 
 
+		function removeHouseholdMembersNotApplying() {
+			for(var i=0; i<$scope.user.household-1;i++ ){
+				if(typeof $scope.user.household_members[i] !== 'undefined' &&
+
+					($scope.user.household_members[i].applying == false ||
+					typeof $scope.user.household_members[i].name == 'undefined')){
+
+					$scope.user.household_members[i].relation = ' ';
+				}
+			}
+		}
+
+
 		$scope.$on('process-app-data', function(){
+			removeHouseholdMembersNotApplying();
 			$scope.getCity();
 			$scope.calcPersonsWithIncome();
 		});
