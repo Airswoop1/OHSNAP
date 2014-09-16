@@ -14,7 +14,7 @@ angular.module('formApp.modalDirective',[]).directive('modalDialog',function(){
         link: function(scope, element, attrs) {
             scope.dialogStyle = {
 	            width:'90%',
-	            height:'60%'
+	            height:'100%'
             };
 
             scope.hideModal = function() {
