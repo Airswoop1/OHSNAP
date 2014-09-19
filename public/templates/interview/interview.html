@@ -43,6 +43,29 @@
         </div>
     </div>
 
+    <div  ng-switch-when="4" id="topOfInfoPage" class="page-header step-two">
+        <div class="back-button" ng-click="goBack()"></div>
+        <div class="header">
+            <h4>Review answers</h4>
+        </div>
+    </div>
+
+    <div  ng-switch-when="5" id="topOfSignPage" class="page-header step-two">
+        <div class="back-button" ng-click="goBack()"></div>
+        <div class="header">
+            <h4>Sign application</h4>
+        </div>
+    </div>
+
+    <div  ng-switch-when="6" class="page-header step-two">
+        <div class="back-button" ng-click="goBack()"></div>
+        <div class="header">
+            <h3>Step 2 of 3</h3>
+            <h4>CONFIRMATION</h4>
+        </div>
+    </div>
+
+
     <div  ng-switch-when="-1" class="page-header step-two">
 
         <div class="back-button" ng-click="goBack()"></div>
@@ -70,7 +93,7 @@
                 <h2>Estimated interview</h2>
             </div>
             <div class="benefit-estimate">  
-                <h1>${{ estimated_benefit }}</h1>
+                <h1>${{ estimated_benefit || 0 }}</h1>
                 <h2>Estimated benefit</h2>
             </div>
             <div class="clear"></div>

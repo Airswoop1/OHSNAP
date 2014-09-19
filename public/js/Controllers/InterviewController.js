@@ -2,19 +2,32 @@
  * Created by airswoop1 on 7/31/14.
  */
 
-angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiFactory']).controller('interviewCtrl',
-	function($scope, $state, $rootScope, $location, $anchorScroll, userDataFactory, API){
+angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiFactory','formApp.jSignature']).controller('interviewCtrl',
+	function($scope, $state, $rootScope, $location, $anchorScroll, $window, userDataFactory, API){
 
 
 		$scope.show_interview_progress=false;
 		$scope.int_progress = 0;
+		$scope.appSubmissionInProcess = false;
+		$scope.show_sig1 = false;
+		$scope.show_sig2 = false;
+		$scope.show_esig_info = false;
 
 		$scope.interview_progress_status = 0;
 		$scope.interview_steps = -1;
+		//$scope.interview_steps = 5;
 		$scope.user = userDataFactory.userData.user.formData; //? userDataFactory.userData.user.formData : {"household":1};
 		$scope.user.household_members = (typeof $scope.user.household_members!== 'undefined') ? $scope.user.household_members : {};
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;
 		$scope.estimated_benefit = $scope.user.benefit_amount;
+
+		$scope.today = new Date();
+		var	dd = $scope.today.getDate(),
+			mm = $scope.today.getMonth()+1,
+			yyyy = $scope.today.getFullYear();
+
+		if(dd<10){dd='0'+dd} if(mm<10){mm='0'+mm}
+		$scope.today = mm+'/'+dd+'/'+yyyy;
 
 		$scope.user['disabled'] = 'no';
 
@@ -33,11 +46,11 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		}
 
 		$scope.stepsCompleted = {
-			"int.ssn":false,
+			//"int.ssn":false,
 			"int.dob":false,
 			"int.marital_status":false,
 			"int.disabled":false,
-			"int.citizen":false,
+			//"int.citizen":false,
 			"int.household":false,
 			"int.household-applying":false,
 			"int.household-ssn":false,
@@ -64,8 +77,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		];
 
 		$scope.YNOpts = [
-			{"value":"Yes", "name":"Yes"},
-			{"value":"No", "name":"No"}
+			{"value":"yes", "name":"yes"},
+			{"value":"no", "name":"no"}
 		];
 
 		$scope.MaritalOpts = [
@@ -78,10 +91,10 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.relationshipOptions = [
 			{name:"Select", value:"Select"},
 			{name:"Partner", value:"Partner"},
-			{name: "Child", "value":"Child"},
+			{name:"Child", "value":"Child"},
 			{name:"Parent", "value":"Parent"},
 			{name:"Roommate", "value":"Roommate"},
-			{name:"Other family member", "value":"Other family member"}
+			{name:"Family", "value":"Family"}
 		];
 
 
@@ -135,6 +148,32 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			});
 		});
 
+		$scope.$on('start-last-step', function() {
+			API.uploadPartialInterviewInfo($scope.user, function(result){
+
+			})
+		});
+
+		$scope.goToSignPage = function() {
+			$state.go('int.interview-preview-sign');
+			$scope.show_sig1 = true;
+		};
+
+
+		$scope.goToSig1 = function() {
+			$scope.show_sig1 = true;
+			$location.hash('sig_container1');
+			$anchorScroll();
+			document.getElementById('image_wrapper_1').scrollLeft = 467;
+		};
+
+		$scope.goToSig2 = function() {
+			$scope.show_sig2 = true;
+			$location.hash('sig_container2');
+			$anchorScroll();
+			document.getElementById('image_wrapper_5').scrollLeft = 163;
+		};
+
 		function updateProgress(name) {
 			$scope.stepsCompleted[name] = true;
 			$scope.int_progress = 0;
@@ -143,7 +182,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 					$scope.int_progress += 7.4;
 				}
 			}
-		};
+		}
 
 		function updateProgressStatus(){
 			if( $scope.interviewCompleted.eligibility &&
@@ -232,6 +271,13 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		}
 
 
+		$rootScope.$on('$viewContentLoaded', function(event, toState, toParams, fromState){
+
+			if($state.current.name == 'int.interview-preview-sign') {
+				$scope.goToSig1();
+				document.getElementById('topOfSignPage').style.display = 'none';
+			}
+		});
 
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {
 			if(fromState.name !== 'int.main' && $scope.int_progress < 100){
@@ -269,25 +315,118 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			    case "int.expenses-mortgage":
 			        $scope.interview_steps = 3;
 			        break;
+				case "int.info-confirmation":
+					$scope.goToTop();
+					$scope.interview_steps = 4;
+					break;
+				case "int.interview-preview-sign":
+				case "int.info-review":
+					$scope.scrollUpSignPage();
+					$scope.interview_steps = 5;
+					break;
+				case "int.app-submission":
+					$scope.interview_steps = 6;
+					break;
 			    case "int.main":
 			        $scope.interview_steps = -1;
 			        break;
 			    default:
-			        $scope.interview_steps = -1;
+			        //$scope.interview_steps = -1;
+				    $scope.interview_steps = 4;
 			}
 			updateProgressStatus();
 		});
 
 
-		$scope.submitBasicApp = function() {
-			API.uploadPartialInterviewInfo($scope.user, function(result){
-				if(result) {
-					$state.go('upload.documents');
+
+		$scope.getCity = function() {
+			if(typeof $scope.user.address.zip !== 'undefined'){
+				API.getCityFromZip($scope.user.address.zip, function(err, data){
+					if(!err){
+						$scope.user.address.city = (data.results[0].address_components[1].long_name.length > 27) ? data.results[0].address_components[1].short_name : data.results[0].address_components[1].long_name;
+					}
+					else {
+						$scope.user.address.city = " ";
+					}
+				})
+			}
+			else {
+				$scope.user.address.city = " ";
+			}
+
+		};
+
+
+		function removeHouseholdMembersNotApplying() {
+			for(var i=0; i<$scope.user.household-1;i++ ){
+				if(typeof $scope.user.household_members[i] !== 'undefined' &&
+
+					($scope.user.household_members[i].applying == false ||
+					typeof $scope.user.household_members[i].name == 'undefined')){
+
+					$scope.user.household_members[i].relation = ' ';
 				}
-				else {
-					alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
+			}
+		}
+
+
+		$scope.$on('process-app-data', function(){
+			removeHouseholdMembersNotApplying();
+			$scope.getCity();
+			$scope.calcPersonsWithIncome();
+		});
+
+
+		$scope.calcPersonsWithIncome = function() {
+			$scope.personsWithIncome = [];
+
+			if(typeof $scope.user.monthly_income !== 'undefined'){
+				$scope.personsWithIncome.push({
+					'name': $scope.user.name.first_name + " " + $scope.user.name.last_name,
+					'amount' : $scope.user.monthly_income,
+					'hours_per_month' : (typeof $scope.user.hours_wk === 'number' && typeof $scope.user.wk_month === 'number') ? ($scope.user.wk_month * $scope.user.hours_wk) : " "
+				})
+			}
+
+			for(var p in $scope.user.household_members){
+				if($scope.user.household_members.hasOwnProperty(p) &&
+					$scope.user.household_members[p].applying === true &&
+					typeof $scope.user.household_members[p].income === 'number'){
+
+					$scope.personsWithIncome.push({
+						'name': $scope.user.household_members[p].name,
+						'amount': $scope.user.household_members[p].income,
+						hours_per_month: (typeof $scope.user.household_members[p].hours_wk === 'number' && typeof $scope.user.household_members[p].wk_month === 'number') ? ($scope.user.household_members[p].wk_month * $scope.user.household_members[p].hours_wk) : " "
+					})
+
 				}
-			});
+			}
+
+			$scope.personsWithIncome = ($scope.personsWithIncome.length > 3) ? $scope.personsWithIncome.slice(0,3) : $scope.personsWithIncome;
+
+			console.log($scope.personsWithIncome);
+
+		};
+
+
+
+
+		$scope.submitSignedApplication = function() {
+			if(typeof $scope.user.sig1 !== 'undefined' && typeof $scope.user.sig2 !== 'undefined' ){
+				$scope.appSubmissionInProcess = true;
+				API.uploadPartialInterviewInfo($scope.user, function(result){
+					if(result) {
+						$state.go('int.app-submission');
+					}
+					else {
+						$scope.appSubmissionInProcess = false;
+						alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
+					}
+				});
+			}
+			else {
+				alert("Note you must sign the form in both signature boxes in order to submit an application.");
+			}
 		};
 
 		/**
@@ -303,11 +442,72 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		 * Back Button
 		 * **/
 		$scope.goBack = function() {
-			window.history.back();
+			if($state.current.name === 'int.interview-preview-sign'){
+				document.getElementById('topOfSignPage').style.display = 'block';
+				$state.go('int.info-review');
+			}
+			else{
+				window.history.back();
+			}
+
+		};
+
+		$scope.goToTop = function() {
+			$location.hash('topOfSignPage');
+			$anchorScroll();
+		};
+
+		$scope.backToMainSign = function(index) {
+
+			var img_container = document.getElementById('image_wrapper' + index),
+				header = document.getElementById('page_header'+ index),
+				pg_header = document.getElementById('sign_header'),
+				tp_sign_page = document.getElementById('topOfSignPage');
+
+			pg_header.style.display = 'block';
+			tp_sign_page.style.display = 'block';
+
+			header.style.display = 'none';
+
+			img_container.style.display = 'none';
+			img_container.style.bottom = '0';
+
+
+			$location.hash('topOfSignPage');
+			$anchorScroll();
+		};
+
+
+		$scope.expandThumbnail = function(index) {
+			var img_container = document.getElementById('image_wrapper' + index),
+				header = document.getElementById('page_header'+ index),
+				pg_header = document.getElementById('sign_header'),
+				tp_sign_page = document.getElementById('topOfSignPage');
+
+			pg_header.style.display = 'none';
+			tp_sign_page.style.display = 'none';
+
+			header.style.display = 'block';
+			header.style.position = 'absolute';
+			header.style.top = '0';
+			header.style.left = '0';
+
+			img_container.style.display = 'block';
+			img_container.style.position = 'absolute';
+			img_container.style.top = '50px';
+			img_container.style.left = '0';
+
+			$location.hash('page_header' + index);
+			$anchorScroll();
 		};
 
 		$scope.scrollDown = function() {
 			$location.hash('confirm_anchor');
+			$anchorScroll();
+		};
+
+		$scope.scrollUpSignPage = function() {
+			$location.hash('sign_header');
 			$anchorScroll();
 		};
 

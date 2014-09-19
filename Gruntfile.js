@@ -20,13 +20,19 @@ module.exports = function(grunt) {
 							'public/js/directives/modalDirective.js',
 							'public/js/directives/ngDocumentFullscreenDirective.js',
 							'public/js/directives/ngEnterDirective.js',
-							'public/js/directives/sampleDocumentsDirective.js'
+							'public/js/directives/sampleDocumentsDirective.js',
+							'public/js/directives/jSignatureDirective.js'
 						],
 					'public/js/factories/factories.js' :
 						[
 							'public/js/factories/DocumentUploaderFactory.js',
 							'public/js/factories/apiFactory.js',
 							'public/js/factories/userDataFactory.js'
+						],
+					'public/js/filters/filters.js' :
+						[
+							'public/js/filters/telephoneFilter.js',
+							'public/js/filters/ssnFilter.js'
 						]
 
 				}
@@ -41,7 +47,8 @@ module.exports = function(grunt) {
 				files: {
 					'public/js/Controllers/controller.min.js': ['public/js/Controllers/controller.js'],
 					'public/js/directives/directives.min.js':['public/js/directives/directives.js'],
-					'public/js/factories/factories.min.js':['public/js/factories/factories.js']
+					'public/js/factories/factories.min.js':['public/js/factories/factories.js'],
+					'public/js/filters/filters.min.js':['public/js/filters/filters.js']
 				}
 			}
 		},
@@ -99,6 +106,15 @@ module.exports = function(grunt) {
 				NODE_ENV : 'prod'
 				//DEST     : 'dist',
 			}
+		},
+		watch: {
+			scripts: {
+				files: ['public/js/**/*'],
+				tasks: ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_dev'],
+				options: {
+					spawn: false
+				}
+			}
 		}
 
 	});
@@ -109,15 +125,20 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-ng-annotate');
 	grunt.loadNpmTasks('grunt-template');
 	grunt.loadNpmTasks('grunt-env');
+	grunt.loadNpmTasks('grunt-contrib-watch');
 
 	// Default task(s).
 	//grunt.registerTask('default', ['ngAnnotate', 'uglify', 'cssmin']);
-	grunt.registerTask('dev', ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_dev']);
+	grunt.registerTask('dev', ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_dev', 'watch']);
 	grunt.registerTask('prod', ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_prod']);
 
 	// A very basic default task.
 	grunt.registerTask('logging', 'Log some stuff.', function() {
 		grunt.log.write('Logging some stuff...WOO!').ok();
+	});
+
+	grunt.event.on('watch', function(action, filepath, target) {
+		grunt.log.writeln(target + ': ' + filepath + ' has ' + action);
 	});
 
 };

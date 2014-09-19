@@ -63,7 +63,7 @@
   margin: 0 auto;
 }
 
-@media (min-width: 1200px) {
+@media (min-width: 992px) {
   .container {
     width: 600px;
     margin: 0 auto;
@@ -83,16 +83,20 @@
     border-width: 45px 300px 0 300px !important;
   }
 }
-@media (max-width: 767px) {
+@media (min-width: 322px) and (max-width: 767px) {
   .container {
     width: 100%;
   }
+
+  .steps-triangle {
+    border-width: 45px 50vw 0 50vw !important;
+    }
 
   .mobile-notice {
     display: none;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 322px) {
   .container {
     width: 100%;
   }
@@ -100,6 +104,13 @@
   .mobile-notice {
     display: none;
   }
+
+  .steps-triangle {
+      border-width: 52px 160px 48px !important;
+      bottom: -100px!important;
+      left: 0!important;
+  }
+
 }
 .container > [ui-view].ng-enter,
 .container > [ui-view].ng-leave {
@@ -574,8 +585,8 @@ p {
   background-size: cover;
   color: #ffffff;
   box-sizing: border-box;
-  padding: 50px 25px;
-  box-shadow: inset 0 -50px 50px rgba(0, 0, 0, 0.95);
+  padding: 15px 25px;
+  box-shadow: inset 0 -70px 50px rgba(0, 0, 0, 0.95);
 }
 
 .intro-header h1 {
@@ -610,6 +621,7 @@ input[type=text],
 input[type=number],
 input[type=password],
 input[type=date],
+input[type=tel],
 select {
   line-height: 60px;
   height: 60px;
@@ -769,7 +781,7 @@ textarea {
   width: 100%;
   padding: 0 25px 50px 25px;
   position: relative;
-  top: -50px;
+  top: -70px;
   left: -25px;
 }
 
@@ -792,11 +804,14 @@ textarea {
   height: 0;
   border-style: solid;
   border-width: 45px 50vw 0 50vw;
+  /*border-width: 52px 200px 48px;*/
   border-color: #000000 transparent transparent transparent;
   z-index: 999;
   position: absolute;
   bottom: -45px;
   left: 0;
+  /*bottom: -100px;
+  left: 0;*/
 }
 
 .steps-triangle.step-triangle-1 {
@@ -809,6 +824,24 @@ textarea {
 
 .steps-triangle.step-triangle-3 {
   border-color: #8cc63f transparent transparent transparent;
+}
+
+.steps-triangle::before {
+    position: absolute;
+    content: "\e611";
+    font-family: 'icomoon';
+    font-size: 38px;
+    line-height: 30px;
+    right: -20px;
+    top: -62px;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .steps p {
@@ -909,6 +942,27 @@ textarea {
   left: -25px;
 }
 
+.page-second-header-confirmation {
+    background-color: #39b54a;
+    width: 100%;
+    color: #fff;
+    padding: 0 25px 41px;
+    position: relative;
+    top: -25px;
+    left: -25px;
+}
+
+.page-third-header {
+    background-color: #8cc63f;
+    width: 100%;
+    color: #fff;
+    padding: 0 25px 20px;
+    position: relative;
+    height: 90px;
+    top: 26px;
+    left: -23px;
+}
+
 .page-header {
   background-color: #00a4ff;
   width: 100%;
@@ -967,7 +1021,7 @@ textarea {
   content: "\e610";
   font-family: 'icomoon';
   font-size: 24px;
-  line-height: 70px;
+  line-height: 38px;
   speak: none;
   font-style: normal;
   font-weight: normal;
@@ -1006,6 +1060,7 @@ textarea {
 
 .form-wrapper input[type=text],
 .form-wrapper input[type=number],
+.form-wrapper input[type=tel],
 .form-wrapper input[type=password],
 .form-wrapper select {
   width: 100%;
@@ -1100,6 +1155,73 @@ h1.icon-check::before {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1.icon-check-docs {
+    position: relative;
+    padding-left: 90px;
+    padding-bottom: 4px;
+    padding-top: 10px;
+}
+
+h1.icon-check-docs::before {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    content: "\e604";
+    font-family: 'icomoon';
+    font-size: 50px;
+    line-height: 70px;
+    width: 70px;
+    float: left;
+    padding: 0 10px 10px 10px;
+    margin-right: 20px;
+    box-sizing: border-box;
+    height: 70px;
+    background-color: #548F01;
+    color: #fcee21;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+
+h1.icon-check-app-submission {
+    position: relative;
+    padding-left: 90px;
+    padding-bottom: 4px;
+    padding-top: 10px;
+}
+
+h1.icon-check-app-submission::before {
+    position: absolute;
+    left: 0;
+    top: 10px;
+    content: "\e604";
+    font-family: icomoon;
+    font-size: 50px;
+    line-height: 70px;
+    width: 70px;
+    float: left;
+    padding: 0 10px 10px;
+    margin-right: 20px;
+    box-sizing: border-box;
+    height: 70px;
+    background-color: #106301;
+    color: #fcee21;
+    speak: none;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+}
+
 .page-second-header p.sub-text {
   text-align: center;
   font-weight: 300;
@@ -1113,6 +1235,10 @@ h1.icon-check::before {
 
 .page-second-header.completed-basics h1 {
   padding: 0px 0px 0px 85px;
+}
+
+.page-third-header.completed-documents h1 {
+    padding: 0px 0px 0px 85px;
 }
 
 div.confirm-info div {

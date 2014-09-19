@@ -10,6 +10,11 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 
 		$scope.user = (typeof userDataFactory.userData.user.formData !== "undefined") ? userDataFactory.userData.user.formData : {};
 
+
+		$scope.date = new Date();
+		$scope.date_of_interview = new Date();
+		$scope.date_of_interview.setDate($scope.date.getDate() + 10);
+
 		$scope.DOC_STATUS = {
 			"UPLOADED": 2,
 			"IN_PROGRESS":1,
@@ -61,6 +66,10 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 
 		};
 
+		$scope.goToCompletion = function() {
+			$state.go('upload.completion', {'type':'Completion'});
+		};
+
 		$scope.getCurrentContent = function(){
 			var type =  $state.params.type;
 			$scope.current_sample_image = $scope.docContent[type].sample_image;
@@ -74,9 +83,14 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 		$scope.getCurrentType = function() {
 			if($state.params.type == "ALT_INCOME") {
 				return "OTHER INCOME";
-			} else if($state.params.type == "EARNED_INCOME") {
+			}
+			else if($state.params.type == "EARNED_INCOME") {
 				return "INCOME";
-			} else {
+			}
+			else if($state.params.type == "HOUSING_EXPENSE"){
+				return "HOUSING EXPENSES"
+			}
+			else {
 				return $state.params.type ? $state.params.type : "Documents";
 			}
 		};
@@ -354,7 +368,7 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 					},
 					{
 						"name":"Current veteran's benefit check",
-						"image":"empty.jpg",
+						"image":"empty.jpg"
 					},
 					{
 						"name":"Current worker's compensation certificate",
@@ -362,6 +376,11 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 					}
 
 				]
+			},
+			'OTHER' : {
+				header:"Take a picture of 1 of these documents to confirm alternate sources of income.",
+				sample_image:"sample_utilities.png",
+				valid_docs : []
 			}
 		};
 

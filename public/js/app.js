@@ -5,7 +5,7 @@
 // create our angular app and inject ngAnimate and ui-router
 // =============================================================================
 var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formController',
-		'formApp.interviewCtrl','formApp.documentUploadCtrl'])
+		'formApp.interviewCtrl','formApp.documentUploadCtrl', 'formApp.jSignature'])
 
 // configuring our routes
 // =============================================================================
@@ -67,6 +67,21 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/basic/form-expenses.html'
 			})
 
+			.state('form.ssn', {
+				url:'/ssn',
+				templateUrl:'templates/basic/form-ssn.html'
+			})
+
+			.state('form.citizenship', {
+				url:'/citizenship',
+				templateUrl:'templates/basic/form-citizenship.html'
+			})
+
+			.state('form.ineligible', {
+				url:'/ineligible',
+				templateUrl:'templates/basic/form-ineligible.html'
+			})
+
 			.state('form.eligibility', {
 				url:'/elibility',
 				templateUrl:'templates/basic/form-eligibility.html'
@@ -93,7 +108,15 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/basic/form-redirect.html'
 			})
 
+			.state('form.non-citizen', {
+				url:'/non-us-citizen',
+				templateUrl:'templates/basic/form-non-citizen.html'
+			})
 
+			.state('form.citizenship-false', {
+				url:'/citizenship-false',
+				templateUrl:'templates/basic/form-illegal-citizen.html'
+			})
 
 
 			/************************ Step 2 - INTERVIEW ****************/
@@ -204,6 +227,30 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl: 'templates/interview/interview-info-confirmation.html'
 			})
 
+			.state('int.info-review', {
+				url:'/review',
+				templateUrl: 'templates/interview/interview-review-app.html'
+			})
+
+			.state('int.info-esig-confirm', {
+				url:'/confirm-esignature',
+				templateUrl:'templates/interview/interview-esignature-legal.html'
+			})
+
+			.state('int.interview-preview-sign', {
+				url: '/sign',
+				templateUrl: 'templates/interview/interview-application-signature.html'
+			})
+
+			.state('int.app-submission', {
+				url:'/submission',
+				templateUrl:'templates/interview/interview-application-submission.html'
+			})
+
+
+
+
+
 
 		/********************* DOCUMENTS ****************************************/
 
@@ -225,6 +272,11 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/documents/form-document-detail.html'
 			})
 
+			.state('upload.completion', {
+				url:'/completion?type',
+				templateUrl: 'templates/documents/form-document-completion.html'
+			})
+
 
 		// catch all route
 		// send users to the form page
@@ -243,6 +295,20 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				$window.ga('send', 'pageview', { page: $location.path() });
 			});
 
-	}]);
+	}])
 
 
+
+
+.config(['$provide', function ($provide) {
+	$provide.decorator('$rootScope', function ($delegate) {
+		var _emit = $delegate.$emit;
+
+		$delegate.$emit = function () {
+			console.log.apply(console, arguments);
+			_emit.apply(this, arguments);
+		};
+
+		return $delegate;
+	});
+}]);

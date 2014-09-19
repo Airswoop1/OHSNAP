@@ -3,17 +3,18 @@
     <div class='ng-modal-dialog' ng-style='dialogStyle'>
 
         <div class="modal-header">
-            <h1>Sorry we can't continue!</h1>
+            <h1>Are you sure you don't want to input your SSN?</h1>
         </div>
         <div class="modal-body m-body" style="margin-bottom:-20px">
-            <p class="lead">We are unable to process your application if you do not provide either your phone number OR your address.</p>
+            <p class="lead">It will be easier for us to track the status of your application if you provide us your Social Security Number.
+                Don't worry, we keep it safe with encryption and do not share it with anyone.</p>
         </div>
         <div class="modal-footer">
                 <button type="button" class="yellow-button"
-                        data-ng-click="hideModal()">Edit Phone</button>
+                        data-ng-click="hideModal()">Enter SSN</button>
 
                 <button class="yellow-button"
-                        data-ng-click="goToAddress()">Edit Address</button>
+                        data-ng-click="goToTelephone()">Continue</button>
             </div>
     </div>
 </div>

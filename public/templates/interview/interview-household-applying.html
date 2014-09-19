@@ -1,10 +1,13 @@
 <h1>Which ones are you applying for?</h1>
-
-<p>You can apply with other people if:<br/>
--  You live together, and you buy and cook food together, or<br/>
--  You live with and are applying for your child, or<br/>
--  You live with and are applying for your husband or wife
-</p>
+<style>
+    li,ul {list-style-type: disc; list-style-position: outside; margin-left:10px; }
+</style>
+<p>You can apply with other people if:</p>
+<ul>
+<li>You live together, and you buy and cook food together, or</li>
+<li>You live with and are applying for your child, or</li>
+<li>You live with and are applying for your husband or wife</li>
+</ul>
 
 <div ng-repeat="person in user.household_members track by $index" class="household-applying" ng-show="person.name">
 <div class="checkbox-group">

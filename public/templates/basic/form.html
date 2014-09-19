@@ -4,7 +4,7 @@
         <h1>Get food stamps, <br/>without the <br/>hassle.</h1>
         <div>
             <div ng-click="$emit('show-progress-bar')" ui-sref="form.name" class="intro-button">Apply now</div>
-            <div ng-click="$emit('show-elig-progress-bar', 'dont-show-progress-bar')" ui-sref="form.household" class="intro-button dull">Am I eligible?</div>
+            <div ng-click="$emit('show-elig-progress-bar', 'dont-show-progress-bar')" ui-sref="form.citizenship" class="intro-button dull">Am I eligible?</div>
         </div>
     </div>
 
@@ -24,7 +24,7 @@
             <h4>ELIGIBILITY</h4>
         </div>
         <div class="progress" ng-show="show_elig_progress_bar" ng-class="{'remove-progress': remove_progress_bar }">
-            <div class="progress-bar" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: progress +'%'}">
+            <div class="progress-bar" role="progressbar" aria-valuenow="{{eligibility_progress}}" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: eligibility_progress +'%'}">
             </div>
         </div>
 

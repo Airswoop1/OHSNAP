@@ -14,6 +14,7 @@
     z-index:10000;
     position: absolute;
     width: 50%; /* Default */
+    height: 60%;
 
     /* Center the dialog */
     top: 50%;

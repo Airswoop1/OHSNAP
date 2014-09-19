@@ -1,4 +1,15 @@
 <h1>How much are your monthly expenses?</h1>
+<p>This includes:</p>
+<style>
+    li,ul {list-style-type: disc; list-style-position: outside; margin-left:10px; }
+</style>
+<ul style="margin-bottom:10px;margin-top:-14px;">
+    <li>Rent</li>
+    <li>Utility Bills</li>
+    <li>Child Support Payments</li>
+    <li>Medical expenses for elderly or disabled household members which are not covered by insurance</li>
+</ul>
+
 
 <div class="input-group dollar-input" ng-class="{'has-success':snapForm.expenses.$pristine ,'has-error': snapForm.expenses.$invalid }">
     <input class="form-control" type="number" name="expenses"  id="expenses"
