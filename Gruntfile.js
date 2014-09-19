@@ -33,6 +33,11 @@ module.exports = function(grunt) {
 						[
 							'public/js/filters/telephoneFilter.js',
 							'public/js/filters/ssnFilter.js'
+						],
+					'public/js/services/services.js' :
+						[
+							'public/js/services/NoContactModalService.js',
+							'public/js/services/XlatService.js'
 						]
 
 				}
@@ -48,7 +53,8 @@ module.exports = function(grunt) {
 					'public/js/Controllers/controller.min.js': ['public/js/Controllers/controller.js'],
 					'public/js/directives/directives.min.js':['public/js/directives/directives.js'],
 					'public/js/factories/factories.min.js':['public/js/factories/factories.js'],
-					'public/js/filters/filters.min.js':['public/js/filters/filters.js']
+					'public/js/filters/filters.min.js':['public/js/filters/filters.js'],
+					'public/js/services/services.min.js':['public/js/services/services.js']
 				}
 			}
 		},

@@ -8,7 +8,8 @@ var Index = require('./Index.js'),
     SubmitFeedback = require('./SubmitFeedback.js'),
     DocumentStatus = require('./DocumentStatus.js'),
 	SignatureData = require('./SignatureData.js'),
-	ErrorLoadingImages = require('./ErrorLoadingImages.js');
+	ErrorLoadingImages = require('./ErrorLoadingImages.js'),
+	GetTranslationMap = require('./GetTranslationMap.js');
 
 
 var api = (function(){
@@ -23,6 +24,8 @@ var api = (function(){
         app.post('/get_doc_status', DocumentStatus.execute);
 	    app.post('/send_sig_data', SignatureData.execute);
 	    app.post('/report_error_loading_images', ErrorLoadingImages.execute);
+	    app.get('/getTranslationMap', GetTranslationMap.execute)
+
     }
 
     return {

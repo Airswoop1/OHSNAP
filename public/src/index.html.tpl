@@ -70,7 +70,8 @@
 <script src="js/angular-file-upload.min.js"></script>
 <script src="js/ui-bootstrap.min.js"></script>
 <!--<script src="js/jquery.min.js"></script>-->
-<script src="js/services/NoContactModalService.js"></script>
+<script src="js/services/services.min.js"></script>
+<script src="/getTranslationMap?callback=BuildTranslateMap"></script>
 <script src="js/filters/filters.min.js"></script>
 <script src="js/Controllers/controller.min.js"></script>
 <script src="js/directives/directives.min.js"></script>

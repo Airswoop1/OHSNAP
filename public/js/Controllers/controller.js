@@ -393,10 +393,10 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
  * Created by airswoop1 on 7/31/14.
  */
 angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch',
-		'NoContactModal','formApp.infoFooterDirective', 'formApp.ngEnterDirective',
+		'formApp.NoContactModal','formApp.infoFooterDirective', 'formApp.ngEnterDirective',
 		'formApp.telephoneFilter', 'formApp.ssnFilter','formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective',
-		'formApp.modalDirective', 'formApp.documentUploadCtrl', 'formApp.userDataFactory']).controller('formController',
-	["$scope", "$state", "$http", "$rootScope", "$upload", "$location", "$window", "API", "userDataFactory", function($scope, $state, $http, $rootScope, $upload, $location, $window, API, userDataFactory) {
+		'formApp.modalDirective', 'formApp.documentUploadCtrl', 'formApp.userDataFactory', 'formApp.xlat']).controller('formController',
+	["$scope", "$state", "$http", "$rootScope", "$upload", "$location", "$window", "API", "userDataFactory", "xlatService", function($scope, $state, $http, $rootScope, $upload, $location, $window, API, userDataFactory, xlatService) {
 
 		// we will store all of our form data in this object
 		$scope.formData = userDataFactory.userData.user.formData;
@@ -943,7 +943,12 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		};
 
 
+		$scope.setLanguage = function(language) {
+			xlatService.setCurrentLanguage(language);
+		};
+
 		/**
+		 *
 		 * fn goBack
 		 * Event handler for back button on top left of page
 		 */
