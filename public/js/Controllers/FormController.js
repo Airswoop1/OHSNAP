@@ -2,10 +2,10 @@
  * Created by airswoop1 on 7/31/14.
  */
 angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch',
-		'NoContactModal','formApp.infoFooterDirective', 'formApp.ngEnterDirective',
+		'NoContactModal', 'formApp.CalcBenefitService' ,'formApp.infoFooterDirective', 'formApp.ngEnterDirective',
 		'formApp.telephoneFilter', 'formApp.ssnFilter','formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective',
 		'formApp.modalDirective', 'formApp.documentUploadCtrl', 'formApp.userDataFactory']).controller('formController',
-	function($scope, $state, $http, $rootScope, $upload, $location, $window, API, userDataFactory) {
+	function($scope, $state, $http, $rootScope, $upload, $location, $window, API, userDataFactory, calcBenefitService) {
 
 		// we will store all of our form data in this object
 		$scope.formData = userDataFactory.userData.user.formData;
@@ -18,7 +18,6 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		$scope.date_of_interview.setDate($scope.date.getDate() + 10);
 		$scope.date_of_phone_call = new Date();
 		$scope.date_of_phone_call.setDate($scope.date.getDate() + 7);
-
 
 
 		//data flags for optional fields
@@ -73,57 +72,8 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			{label: '2', value:2},
 			{label: 'Absolutely Not - 1', value:1}
 		];
-
 		$scope.selected_rating = $scope.rating_options[0];
-
 		$scope.show_progress = !($state.current.name === 'form.intro');
-
-		/**
-		 * fn: initNameStart
-		 * attempt to parse value of name input on intro screen
-		 * if person enters string value with no spaces it is first_name : go-to form.name
-		 * if person enters string value with space consider it first_name + " " + last_name : go-to form.address
-		 * if person enters string with more than 3 spaces then there is a first middle and last name : go-to form.address
-		 * if person enters no value : go-to form.name
-		 * */
-		$scope.initNameStart = function(){
-			var split_name = ""
-
-			if($scope.formData.name.entered_name){
-				split_name = ($scope.formData.name.entered_name).split(' ');
-				$window.ga('send','event','name','tap','exists',1);
-			}
-			else {
-				$window.ga('send','event','name','tap','empty',1);
-			}
-
-			$scope.formData.name.first_name = split_name[0];
-
-			if((split_name.length === 1) && (split_name !== "")) {
-				$scope.completed_first_name = true;
-				$state.go('form.name');
-
-			}
-			else if(split_name.length === 2) {
-				this.formData.name.last_name = split_name[1];
-				updateProgress('name');
-				$state.go('form.address');
-			}
-			else if(split_name.length >= 3) {
-				this.formData.name.middle_name = split_name[1];
-				this.formData.name.last_name = split_name[2];
-				updateProgress('name');
-
-				$state.go('form.address');
-
-
-			}
-			else {
-
-				$state.go('form.name');
-
-			}
-		};
 
 		/**
 		 * fn: completedName
@@ -221,10 +171,14 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				updateProgress('telephone');
 				$scope.remove_progress_bar = true;
 				$scope.submitBasicApp();
-				calculateBenefit();
+				calcBenefitService.calculate($scope.formData);
 			}
 
 		};
+
+		/**
+		 * fn completedSSN
+		 */
 
 		$scope.completedSSN = function() {
 
@@ -278,19 +232,15 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 			if($scope.snapForm.household.$valid) {
 				updateProgress('household');
-
 				$state.go('form.income');
+			}
 
-			}
-			else {
-				$window.ga('send','event','household_validate','tap','bad',1);
-			}
 		};
 
 		$scope.completedExpenses = function() {
 			$scope.submitted_expenses = true;
-			if($scope.snapForm.expenses.$valid){
 
+			if($scope.snapForm.expenses.$valid){
 				updateProgress('expenses');
 				$state.go('form.ssn')
 			}
@@ -355,7 +305,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		$scope.completeEligibilityCalc = function() {
 			$scope.submitted_expenses = true;
 			if($scope.snapForm.expenses.$valid){
-				calculateBenefit();
+				calcBenefitService.calculate($scope.formData);
 				updateProgress('expenses');
 				$scope.show_elig_progress_bar = false;
 				$scope.show_progress_bar = true;
@@ -365,68 +315,6 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			}
 		};
 
-
-		/**
-		 * fn calculateBenefit
-		 * Use data from household and income to determine whether the individual is eligible for SNAP and if so
-		 * how much they are eligible for.
-		 * Uses the standard matrix provided by NYC HRA
-		 */
-
-		function calculateBenefit() {
-
-			var house = ($scope.formData.household !== "undefined") ? $scope.formData.household : 1;
-			var income = ($scope.formData.income !== "undefined") ? parseInt($scope.formData.income,10) : 0;
-			if($scope.formData.eligibility_expenses) {
-				income -= $scope.formData.eligibility_expenses;
-				income = (income >= 0) ? income : 0;
-			}
-			var benefit = 0;
-			var eligible = false;
-
-			if($scope.formData.disabled === true) {
-
-				if( (house === 1 && income <= 1915) ||
-					(house === 2 && income <= 2585) ||
-					(house === 3 && income <= 3255) ||
-					(house === 4 && income <= 3925) )
-				{
-					eligible = true;
-				}
-				else if(house >= 5 && (income <= (((house-4)*670)+3925)) ){
-					eligible = true;
-				}
-			}
-			else {
-				if( (house === 1 && income <= 1245) ||
-					(house === 2 && income <= 1681) ||
-					(house === 3 && income <= 2116) ||
-					(house === 4 && income <= 2552) )
-				{
-					eligible = true;
-				}
-				else if(house >= 5 && (income <= (((house-4)*436)+2552)) ){
-					eligible = true;
-				}
-			}
-
-			if(eligible){
-				if(house === 1){ benefit=189; }
-				else if(house === 2){ benefit=347;}
-				else if(house === 3){ benefit=497;}
-				else if(house === 4){ benefit=632;}
-				else if(house === 5){ benefit=750;}
-				else if(house === 6){ benefit=900;}
-				else if(house === 7){ benefit=995;}
-				else if(house === 8){ benefit=1137}
-				else if(house >= 9) {
-					benefit = 1337 + (142*(house-8))
-				}
-			}
-
-			$scope.formData.benefit_amount = benefit;
-
-		}
 
 		/**
 		 * fn showNoContactModal
@@ -503,7 +391,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		 *
 		 */
 		$scope.submitBasicApp = function() {
-			calculateBenefit();
+			calcBenefitService.calculate($scope.formData);
 			updateProgress('confirmation');
 
 			API.uploadBasicInfo($scope.formData, function(result, user_id){

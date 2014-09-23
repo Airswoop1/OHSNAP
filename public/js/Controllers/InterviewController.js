@@ -2,8 +2,9 @@
  * Created by airswoop1 on 7/31/14.
  */
 
-angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiFactory','formApp.jSignature']).controller('interviewCtrl',
-	function($scope, $state, $rootScope, $location, $anchorScroll, $window, userDataFactory, API){
+angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiFactory','formApp.jSignature', 
+		'formApp.CalcBenefitService']).controller('interviewCtrl',
+	function($scope, $state, $rootScope, $location, $anchorScroll, $window, userDataFactory, API, calcBenefitService){
 
 
 		$scope.show_interview_progress=false;
@@ -135,7 +136,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 			$scope.interviewCompleted[type] = true;
 			$scope.show_interview_progress = false;
-			calculateBenefit();
+			calcBenefitService.calculate($scope.user);
 
 
 			API.uploadPartialInterviewInfo($scope.user, function(result){
@@ -198,75 +199,6 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			} else {
 				$scope.interview_progress_status = 1;
 			}
-
-		}
-
-		function calculateBenefit() {
-
-			var applying = $scope.interviewCompleted.household ? 1 : $scope.user.household,
-				income = (typeof $scope.user.monthly_income !== 'undefined') ? $scope.user.monthly_income : parseInt($scope.user.income),
-				expenses = (typeof $scope.user.eligibility_expenses !== 'undefined') ? $scope.user.eligibility_expenses : 0;
-
-			if(typeof $scope.user.rent !== 'undefined'){
-				expenses += parseInt($scope.user.rent);
-			}
-
-			for(var users in $scope.user.household_members){
-
-				if($scope.user.household_members[users].applying){
-					applying += 1;
-					income += (typeof $scope.user.household_members[users].income !== 'undefined') ? parseInt($scope.user.household_members[users].income) : 0;
-				}
-
-			}
-
-			var house = applying;
-			var grossIncome = income - expenses;
-			var benefit = 0;
-			var eligible = false;
-
-
-			if($scope.user.personal_disabled === "Yes" || $scope.user.disabled === "yes") {
-
-				if( (house === 1 && grossIncome <= 1915) ||
-					(house === 2 && grossIncome <= 2585) ||
-					(house === 3 && grossIncome <= 3255) ||
-					(house === 4 && grossIncome <= 3925) )
-				{
-					eligible = true;
-				}
-				else if(house >= 5 && (grossIncome <= (((house-4)*670)+3925)) ){
-					eligible = true;
-				}
-			}
-			else {
-				if( (house === 1 && grossIncome <= 1245) ||
-					(house === 2 && grossIncome <= 1681) ||
-					(house === 3 && grossIncome <= 2116) ||
-					(house === 4 && grossIncome <= 2552) )
-				{
-					eligible = true;
-				}
-				else if(house >= 5 && (grossIncome <= (((house-4)*436)+2552)) ){
-					eligible = true;
-				}
-			}
-
-			if(eligible){
-				if(house === 1){ benefit=189; }
-				else if(house === 2){ benefit=347;}
-				else if(house === 3){ benefit=497;}
-				else if(house === 4){ benefit=632;}
-				else if(house === 5){ benefit=750;}
-				else if(house === 6){ benefit=900;}
-				else if(house === 7){ benefit=995;}
-				else if(house === 8){ benefit=1137}
-				else if(house >= 9) {
-					benefit = 1337 + (142*(house-8))
-				}
-			}
-
-			$scope.estimated_benefit = benefit;
 
 		}
 
