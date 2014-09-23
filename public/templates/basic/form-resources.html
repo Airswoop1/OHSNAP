@@ -1,0 +1,28 @@
+<!-- form-resources.html -->
+<h1>What is the total amount of money that your household has?</h1>
+<p>This includes money in:</p>
+<style>
+    li,ul {list-style-type: disc; list-style-position: outside; margin-left:10px; }
+</style>
+<ul style="margin-bottom:10px;margin-top:-14px;">
+    <li>Cash</li>
+    <li>Savings Accounts</li>
+    <li>Checking Accounts</li>
+</ul>
+
+<div class="form-group">
+    <div class="input-group dollar-input" ng-class="{'has-success':snapForm.total_resources.$pristine ,'has-error': snapForm.total_resources.$invalid }">
+        <input class="form-control" type="number" name="total_resources" min="0" id="total_resources" ng-model="formData.total_resources" autofocus="true" required ng-enter/>
+        <span class="help-block"  ng-show="submitted_resources && snapForm.total_resources.$error.required">
+            Please input 0 if none. </span>
+        <span class="help-block"  ng-show="submitted_resources && snapForm.resources.$error.min">
+            Minimum resources is 0.</span>
+    </div>
+</div>
+
+<div class="yellow-button" ng-show="!goingThroughEligibility" ng-class="{'disabled':snapForm.total_resources.$invalid}"
+     ng-click="completedResources()">Continue</div>
+
+<div class="yellow-button" ng-show="goingThroughEligibility" ng-class="{'disabled':snapForm.total_resources.$invalid}"
+     ng-click="completedEligibilityResources()">Continue</div>
+

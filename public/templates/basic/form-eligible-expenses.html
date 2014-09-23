@@ -12,7 +12,7 @@
 
 <div class="input-group dollar-input" ng-class="{'has-success':snapForm.expenses.$pristine ,'has-error': snapForm.expenses.$invalid }">
     <input class="form-control" type="number" name="expenses"  id="expenses"
-           ng-model="formData.eligibility_expenses" autofocus="true" min="0" required ng-enter/>
+           ng-model="formData.expenses" autofocus="true" min="0" required ng-enter/>
     <span class="help-block"  ng-show="submitted_expenses && snapForm.expenses.$error.min">
             Minimum expenses is 0.</span>
     <span class="help-block"  ng-show="submitted_expenses && snapForm.expenses.$invalid && !snapForm.expenses.$error.min">

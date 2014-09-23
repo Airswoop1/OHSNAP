@@ -430,6 +430,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		$scope.show_elig_progress_bar = false;
 		$scope.goingThroughEligibility = false;
 		$scope.submitting_app = false;
+		$scope.inputOtherUtils = false;
 
 		$scope.completed_items = {
 			"name": false,
@@ -440,7 +441,10 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			"expenses":false,
 			"ssn":false,
 			"citizenship":false,
-			"confirmation": false
+			"school_district":false,
+			"township":false,
+			"lived_at_duration":false
+
 		};
 
 		$scope.eligibilityCompleted = {
@@ -596,20 +600,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 			if ($scope.snapForm.income.$valid) {
 				updateProgress('income');
-
-				$state.go('form.expenses');
-
-			}
-			else {
-				var field_invalid = $scope.snapForm.$error,
-					which = "";
-				if(field_invalid.minlength){
-					which = 'income_length';
-				}
-				else if(field_invalid.number){
-					which = 'income_nan'
-				}
-				$window.ga('send','event','income_validate','tap',which,1);
+				$state.go('form.resources');
 			}
 
 		};
@@ -628,14 +619,53 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 		};
 
+		$scope.completedResources = function() {
+			$scope.submitted_resources = true;
+
+			if($scope.snapForm.total_resources.$valid) {
+				updateProgress('resources');
+				$state.go('form.expenses')
+			}
+
+
+		}
+
 		$scope.completedExpenses = function() {
 			$scope.submitted_expenses = true;
 
 			if($scope.snapForm.expenses.$valid){
+
 				updateProgress('expenses');
-				$state.go('form.ssn')
+
+				if(calcPotentialImmeditateBenefit()) {
+					$scope.show_progress_bar = false;
+					$state.go('form.quick-snap-1');
+				}
+				else {
+					$state.go('form.ssn');
+				}
+
+
 			}
 		};
+
+
+		$scope.goToNextQuickSnap = function(num) {
+			if(num == 0){
+				//TODO:calcQuickSnapElig***
+				$state.go('form.quick-snap-eligible');
+			}
+			else {
+				$state.go('form.quick-snap-' + num);
+			}
+
+		};
+
+		$scope.inputOtherUtilities = function() {
+			console.log($scope.inputOtherUtils);
+			$scope.inputOtherUtils = true;
+		};
+
 
 
 		$scope.completedEligibilityIncome = function() {
@@ -643,7 +673,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 			if ($scope.snapForm.income.$valid) {
 				updateEligibilityProgress('income');
-				$state.go('form.eligibility-expenses');
+				$state.go('form.resources');
 			}
 
 			};
@@ -705,6 +735,17 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				$state.go('form.eligibility')
 			}
 		};
+
+
+		function calcPotentialImmeditateBenefit() {
+
+			return (
+				$scope.formData.total_resources <= 100 ||
+				$scope.formData.income <= 150 ||
+				($scope.formData.income+$scope.formData.total_resources) <= $scope.formData.expenses
+				);
+
+		}
 
 
 		/**
@@ -856,7 +897,23 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		 */
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState){
 
-			if((toState.name === 'form.name' ||
+
+			if(toState.name == 'form.intro') {
+				$window.scrollTo(0,0);
+				$scope.show_progress_bar = true;
+				$scope.goingThroughEligibility = false;
+				$scope.show_progress = false;
+
+			}
+			else {
+				if($scope.goingThroughEligibility && toState.name == 'form.name'){
+					$scope.show_progress_bar = true;
+				}
+
+				$scope.show_progress = true;
+			}
+
+			/*if((toState.name === 'form.name' ||
 				toState.name === 'form.address' ||
 				toState.name === 'form.telephone' ||
 				toState.name === 'form.basic-confirmation'||
@@ -875,7 +932,8 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				toState.name === 'form.citizenship' ||
 				toState.name === 'form.ineligible' ||
 				toState.name === 'form.non-citizen' ||
-				toState.name === 'form.citizenship-false'
+				toState.name === 'form.citizenship-false' ||
+				toState.name === 'form.resources'
 				)) {
 
 				if($scope.goingThroughEligibility && toState.name == 'form.name'){
@@ -896,7 +954,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				}
 
 				$scope.show_progress = false;
-			}
+			}*/
 		});
 
 

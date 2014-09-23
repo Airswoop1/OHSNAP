@@ -11,8 +11,8 @@ angular.module('formApp.CalcBenefitService',[]).service('calcBenefitService', [
 			var house = (formData.household !== "undefined") ? formData.household : 1;
 			var income = (formData.income !== "undefined") ? parseInt(formData.income,10) : 0;
 
-			if(formData.eligibility_expenses) {
-				income -= formData.eligibility_expenses;
+			if(formData.expenses) {
+				income -= formData.expenses;
 				income = (income >= 0) ? income : 0;
 			}
 

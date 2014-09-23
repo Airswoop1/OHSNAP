@@ -87,6 +87,45 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/basic/form-eligibility.html'
 			})
 
+			.state('form.resources', {
+				url:'/resources',
+				templateUrl:'templates/basic/form-resources.html'
+			})
+
+			.state('form.quick-snap-1', {
+				url: '/quickSnap1',
+				templateUrl: 'templates/basic/form-quick-snap-1.html'
+			})
+
+			.state('form.quick-snap-2', {
+				url: '/quickSnap2',
+				templateUrl: 'templates/basic/form-quick-snap-2.html'
+			})
+
+			.state('form.quick-snap-3', {
+				url: '/quickSnap3',
+				templateUrl: 'templates/basic/form-quick-snap-3.html'
+			})
+
+			.state('form.quick-snap-4', {
+				url: '/quickSnap4',
+				templateUrl: 'templates/basic/form-quick-snap-4.html'
+			})
+
+			.state('form.quick-snap-5', {
+				url: '/quickSnap5',
+				templateUrl: 'templates/basic/form-quick-snap-5.html'
+			})
+
+			.state('form.quick-snap-6', {
+				url: '/quickSnap6',
+				templateUrl: 'templates/basic/form-quick-snap-6.html'
+			})
+
+			.state('form.quick-snap-eligible', {
+				url: '/quickSnapEligible',
+				templateUrl: 'templates/basic/form-quick-snap-eligible.html'
+			})
 
 			.state('form.basic-confirmation', {
 				url: '/basic-confirmation',
