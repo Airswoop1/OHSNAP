@@ -1018,21 +1018,26 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		}
 
 		$scope.stepsCompleted = {
-			//"int.ssn":false,
+
 			"int.dob":false,
+			"int.self-gender":false,
 			"int.marital_status":false,
-			"int.disabled":false,
-			//"int.citizen":false,
+			"int.state_id":false,
+			"int.school":false,
+			"int.pregnant":false,
+
 			"int.household":false,
 			"int.household-applying":false,
 			"int.household-ssn":false,
 			"int.household-dob":false,
 			"int.household-relation":false,
+
 			"int.income-frequency":false,
 			"int.income-hours":false,
 			"int.income-household-amount":false,
 			"int.income-household-frequency":false,
 			"int.resources":false,
+
 			"int.expenses-mortgage":false
 		};
 
@@ -1194,11 +1199,14 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			}
 
 			switch(toState.name) {
-			    case "int.ssn":
 			    case "int.dob":
-			    case "int.marital_status":
+				case "int.self-gender":
+				case "int.marital_status":
+				case "int.state_id":
+				case "int.school":
+				case "int.pregnant":
+
 			    case "int.disabled":
-			    case "int.citizen":
 			        $scope.interview_steps = 0;
 			        break;
 			    case "int.household":
@@ -1360,6 +1368,11 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			$anchorScroll();
 		};
 
+		$scope.updateCurrentAndGoToNext = function(current, next) {
+				updateProgress(current);
+				$state.go(next);
+		};
+
 		$scope.backToMainSign = function(index) {
 
 			var img_container = document.getElementById('image_wrapper' + index),
@@ -1422,6 +1435,11 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				}
 			}
 			return false;
+		}
+
+		$scope.debug = function(obj) {
+			console.log("Debug! ");
+			console.log(interviewForm.state_id);
 		}
 
 

@@ -186,9 +186,29 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/interview/interview-dob.html'
 			})
 
+			.state('int.self-gender', {
+				url:'/gender',
+				templateUrl:'templates/interview/interview-self-gender.html'
+			})
+
 			.state('int.marital_status', {
 				url:'/marital_status',
 				templateUrl:'templates/interview/interview-marital-status.html'
+			})
+
+			.state('int.state_id', {
+				url:'/state_id',
+				templateUrl:'templates/interview/interview-self-state-id.html'
+			})
+
+			.state('int.school', {
+				url:'/school',
+				templateUrl:'templates/interview/interview-self-school.html'
+			})
+
+			.state('int.pregnant', {
+				url:'/pregnant',
+				templateUrl:"templates/interview/interview-self-pregnant.html"
 			})
 
 			.state('int.disabled', {
