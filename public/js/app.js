@@ -92,6 +92,11 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/basic/form-resources.html'
 			})
 
+			.state('form.lived-at-duration', {
+				url:'/livedAt',
+				templateUrl:'templates/basic/form-housing-duration.html'
+			})
+
 			.state('form.quick-snap-1', {
 				url: '/quickSnap1',
 				templateUrl: 'templates/basic/form-quick-snap-1.html'

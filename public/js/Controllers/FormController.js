@@ -261,8 +261,9 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 		$scope.goToNextQuickSnap = function(num) {
 			if(num == 0){
-				//TODO:calcQuickSnapElig***
+
 				$state.go('form.quick-snap-eligible');
+
 			}
 			else {
 				$state.go('form.quick-snap-' + num);
@@ -271,7 +272,6 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		};
 
 		$scope.inputOtherUtilities = function() {
-			console.log($scope.inputOtherUtils);
 			$scope.inputOtherUtils = true;
 		};
 
