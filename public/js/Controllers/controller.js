@@ -519,22 +519,12 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			if($scope.snapForm.street_address.$pristine && $scope.snapForm.zip.$pristine){
 				updateProgress('address');
 				$scope.has_address = false;
-				if($scope.formData.household && $scope.formData.income){
-					$state.go('form.ssn');
-				}
-				else {
-					$state.go('form.citizenship');
-				}
+				$state.go('form.lived-at-duration');
 			}
 			else if($scope.snapForm.street_address.$valid && $scope.snapForm.zip.$valid
 				&& $scope.formData.address.street_address && $scope.formData.address.zip){
 				updateProgress('address');
-				if($scope.formData.household && $scope.formData.income){
-					$state.go('form.ssn');
-				}
-				else {
-					$state.go('form.citizenship');
-				}
+				$state.go('form.lived-at-duration');
 			}
 			else if(($scope.snapForm.street_address.$dirty || $scope.snapForm.zip.$dirty)
 				&& ($scope.formData.address.street_address === "" || (typeof $scope.formData.address.street_address === "undefined"))
@@ -542,14 +532,18 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				&& $scope.snapForm.street_address.$valid && $scope.snapForm.zip.$valid)){
 				updateProgress('address');
 				$scope.has_address = false;
-				if($scope.formData.household && $scope.formData.income){
-					$state.go('form.ssn');
-				}
-				else {
-					$state.go('form.citizenship');
-				}
+				$state.go('form.lived-at-duration');
 			}
 
+		};
+
+		$scope.completedLivedAt = function() {
+			if($scope.formData.household && $scope.formData.income){
+				$state.go('form.ssn');
+			}
+			else {
+				$state.go('form.citizenship');
+			}
 		};
 
 
@@ -649,6 +643,20 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			}
 		};
 
+
+		$scope.addToPaidUtilities = function(type) {
+			if(typeof $scope.formData.utilities_paid === 'undefined') {
+				$scope.formData.utilities_paid = [];
+			}
+
+			if($scope.formData.utilities_paid.indexOf(type) < 0) {
+				$scope.formData.utilities_paid.push(type);
+			}
+			else {
+				$scope.formData.utilities_paid.splice($scope.formData.utilities_paid.indexOf(type),1);
+			}
+
+		};
 
 		$scope.goToNextQuickSnap = function(num) {
 			if(num == 0){
