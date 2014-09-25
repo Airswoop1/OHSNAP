@@ -1,0 +1,8 @@
+<h1>What is the name of your school?</h1>
+
+<div class="form-control">
+    <input name="school_name" id="school_name" type="text" ng-require="true" ng-model="user.schoolName" />
+</div>
+
+<div ng-hide="interviewForm.school_name.$valid" class="yellow-button disabled">Continue</div>
+<div ng-show="interviewForm.school_name.$valid" class="yellow-button" ui-sref="int.school-FT">Continue</div>

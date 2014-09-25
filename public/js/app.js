@@ -206,9 +206,34 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/interview/interview-self-school.html'
 			})
 
+			.state('int.school-grade', {
+				url:'/school-grade',
+				templateUrl:'templates/interview/interview-self-grade.html'
+			})
+
+			.state('int.school-name', {
+				url:'/school-name',
+				templateUrl:'templates/interview/interview-self-school-name.html'
+			})
+
+			.state('int.school-FT', {
+				url:'/school-FT',
+				templateUrl:'templates/interview/interview-self-school-ft.html'
+			})
+
 			.state('int.pregnant', {
 				url:'/pregnant',
 				templateUrl:"templates/interview/interview-self-pregnant.html"
+			})
+
+			.state('int.pregnant-due-date', {
+				url:'/pregnant-due-date',
+				templateUrl:"templates/interview/interview-self-pregnant-due-date.html"
+			})
+
+			.state('int.pregnant-num-babies', {
+				url:'/pregnant-num-babies',
+				templateUrl:"templates/interview/interview-self-pregnant-num-babies.html"
 			})
 
 			.state('int.disabled', {

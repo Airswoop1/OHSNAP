@@ -87,6 +87,28 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			{"value":"no", "name":"no"}
 		];
 
+		$scope.Grade = [
+			{"value":"K", "name":"Kindergarden"},
+			{"value":"1", "name":"1st"},
+			{"value":"2" ,"name":"2nd"},
+			{"value":"3" ,"name":"3rd"},
+			{"value":"4" ,"name":"4th"},
+			{"value":"5" ,"name":"5th"},
+			{"value":"6" ,"name":"6th"},
+			{"value":"7" ,"name":"7th"},
+			{"value":"8" ,"name":"8th"},
+			{"value":"9" ,"name":"9th"},
+			{"value":"10" ,"name":"10th"},
+			{"value":"11" ,"name":"11th"},
+			{"value":"12" ,"name":"12th"},
+			{"value":"Freshman" ,"name":"College-Freshman"},
+			{"value":"Sophomore" ,"name":"College-Sophomore"},
+			{"value":"Junior" ,"name":"College-Junior"},
+			{"value":"Senior" ,"name":"College-Senior"},
+			{"value":"Graduate" ,"name":"Graduate"}
+
+		];
+
 		$scope.MaritalOpts = [
 			{"value":"Single", "name":"Single"},
 			{"value":"Divorced", "name":"Divorced"},
