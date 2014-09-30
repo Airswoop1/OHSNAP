@@ -1,0 +1,16 @@
+<h1>Does anyone get cash assistance, Medical Assistance or SNAP in another state now?</h1>
+
+<input ng-click="inputOtherStateBenefits();" ng-model="user.other_state_benefits" id="other_state_benefits_yes" type="radio" class="name-input marital-input" value="yes" name="other_state_benefits"><label
+        for="other_state_benefits_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.other-state-benefits', 'int.disqualification')" ng-model="user.other_state_benefits" id="other_state_benefits_no" type="radio" class="name-input marital-input" value="no" name="other_state_benefits"><label
+        for="other_state_benefits_no">No</label>
+<br/>
+<div ng-show="otherStateBenefits">
+    <p>Which state and county?</p>
+
+    <input type="text" ng-model="user.other_state_benefits_input" ng-required="true" id="other_state_benefits_input" name="other_state_benefits_input"/>
+
+    <div ng-hide="interviewForm.other_state_benefits_input.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.other_state_benefits_input.$valid" class="yellow-button" ng-click="updateCurrentAndGoToNext('int.other-state-benefits', 'int.disqualification')">Continue</div>
+</div>

@@ -13,6 +13,14 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		$scope.show_sig1 = false;
 		$scope.show_sig2 = false;
 		$scope.show_esig_info = false;
+		$scope.otherStateBenefits = false;
+		$scope.inputDisqualified = false;
+		$scope.inputDiffName = false;
+		$scope.inputFosterCare = false;
+		$scope.inputFosterCareEnd = false;
+		$scope.inputMedNeed = false;
+		$scope.inputMedMedication = false;
+
 
 		$scope.interview_progress_status = 0;
 		$scope.interview_steps = -1;
@@ -60,6 +68,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			"int.household-ssn":false,
 			"int.household-dob":false,
 			"int.household-relation":false,
+
+			"int.other-state-benefits":false,
 
 			"int.income-frequency":false,
 			"int.income-hours":false,
@@ -265,6 +275,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			    case "int.household-ssn":
 			    case "int.household-dob":
 			    case "int.household-relation":
+				case "int.other-state-benefits":
 			        $scope.interview_steps = 1;
 			        break;
 			    case "int.income-frequency":
@@ -298,6 +309,31 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			}
 			updateProgressStatus();
 		});
+
+
+		$scope.inputOtherStateBenefits = function() {
+			$scope.otherStateBenefits = true;
+		};
+
+		$scope.inputDisqualification = function() {
+			$scope.inputDisqualified = true;
+		};
+
+		$scope.inputDifferentName = function() {
+			$scope.inputDiffName = true;
+		};
+
+		$scope.inputInFosterCare = function() {
+			$scope.inputFosterCare = true;
+		};
+
+		$scope.inputFosterCareEndedDueToAge = function() {
+			$scope.inputFosterCareEnd = true;
+		};
+
+		$scope.inputMedicalNeed = function() {
+			$scope.inputMedNeed = true;
+		};
 
 
 

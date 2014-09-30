@@ -1,0 +1,21 @@
+<h1>Is anyone disabled, seriously ill, or in need of
+    medical attention?</h1>
+
+<input ng-click="inputMedicalNeed();" ng-model="user.medical_need" id="medical_need_yes" type="radio" class="name-input marital-input" value="yes" name="medical_need"><label
+        for="medical_need_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.medical-need', 'int.medical-lt-care')" ng-model="user.medical_need" id="medical_need_no" type="radio" class="name-input marital-input" value="no" name="medical_need"><label
+        for="medical_need_no" >No</label>
+<br/>
+<div ng-show="inputMedNeed">
+    <p>Who?</p>
+
+    <input type="text" ng-model="user.medical_need_input" ng-required="true" id="medical_need_input" name="medical_need_input"/>
+
+    <p>What disability</p>
+    <input type="text" ng-model="user.medical_need_input_disability" ng-required="true" id="medical_need_input_disability" name="medical_need_input_disability"/>
+    
+    <div ng-hide="interviewForm.medical_need_input.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.medical_need_input.$valid && interviewForm.medical_need_input_disability.$valid"
+         class="yellow-button" ng-click="updateCurrentAndGoToNext('int.medical-need', 'int.medical-lt-care')">Continue</div>
+</div>

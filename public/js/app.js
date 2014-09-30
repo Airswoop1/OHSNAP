@@ -271,6 +271,108 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl: 'templates/interview/interview-household-relation.html'
 			})
 
+			.state('int.other-state-benefits', {
+				url:'/other-benefits',
+				templateUrl:'templates/interview/interview-household-other-state-benefits.html'
+			})
+
+			.state('int.disqualification', {
+				url:'/disqualification',
+				templateUrl:'templates/interview/interview-household-disqualification.html'
+			})
+
+			.state('int.other-name-applied', {
+				url:'/other-name-applied',
+				templateUrl:'templates/interview/interview-household-other-name-applied.html'
+			})
+
+			.state('int.in-military', {
+				url:'/in-military',
+				templateUrl:'templates/interview/interview-household-in-military.html'
+			})
+
+			.state('int.in-military-family', {
+				url:'/in-military-family',
+				templateUrl:'templates/interview/interview-household-in-military-family.html'
+			})
+
+			.state('int.foster-care', {
+				url:'/foster-care',
+				templateUrl:'templates/interview/interview-household-foster-care.html'
+			})
+
+			.state('int.foster-care-end', {
+				url:'/foster-care-end',
+				templateUrl:'templates/interview/interview-household-foster-care-end.html'
+			})
+
+			.state('int.medical-need', {
+				url:'/medical-need',
+				templateUrl:'templates/interview/interview-household-medical-need.html'
+			})
+
+			.state('int.medical-lt-care', {
+				url:'/medical-lt-care',
+				templateUrl:'templates/interview/interview-household-medical-lt-care.html'
+			})
+
+			.state('int.medical-unpaid', {
+				url:'/medical-unpaid',
+				templateUrl:'templates/interview/interview-household-medical-unpaid.html'
+			})
+
+			.state('int.domestic-abuse', {
+				url:'/domestic-abuse',
+				templateUrl:'templates/interview/interview-household-domestic-abuse.html'
+			})
+
+			.state('int.medical-medication', {
+				url:'/medical-medication',
+				templateUrl:'templates/interview/interview-household-medical-medication.html'
+			})
+
+			.state('int.drug-abuse', {
+				url:'/drug-abuse',
+				templateUrl:'templates/interview/interview-household-drug-abuse.html'
+			})
+
+			.state('int.criminal-fines-payment', {
+				url:'/criminal-fines-payment',
+				templateUrl:'templates/interview/interview-household-criminal-fines-payment.html'
+			})
+
+			.state('int.criminal-payment-plan', {
+				url:'/criminal-payment-plan',
+				templateUrl:'templates/interview/interview-household-criminal-payment-plan.html'
+			})
+
+			.state('int.criminal-probation', {
+				url:'/criminal-probation',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "is anyone on probation?";
+					$scope.route_name = "criminal-probation";
+					$scope.data_name = "criminal_probation";
+					$scope.to_route_name = "welfare-fraud";
+					$scope.model_for_route = $scope.user['criminal-probation'];
+					$scope.show_input = false;
+				}
+			})
+
+
+			.state('int.welfare-fraud', {
+				url:'/welfare-fraud',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "Has anyone been convicted of welfare fraud?";
+					$scope.route_name = "welfare-fraud";
+					$scope.data_name = "welfare_fraud";
+					$scope.to_route_name = "main";
+					$scope.model_for_route = $scope.user['welfare-fraud'];
+					$scope.show_input = false;
+				}
+			})
+
 			.state('int.income-frequency', {
 				url: '/income-frequency',
 				templateUrl: 'templates/interview/interview-income-frequency.html'

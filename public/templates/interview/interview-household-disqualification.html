@@ -1,0 +1,16 @@
+<h1>Have you or anyone in your household been disqualified or agreed to be disqualified for food stamps or SNAP benefits in another state?</h1>
+
+<input ng-click="inputDisqualification();" ng-model="user.snap_disqualification" id="snap_disqualification_yes" type="radio" class="name-input marital-input" value="yes" name="snap_disqualification"><label
+        for="snap_disqualification_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.disqualification', 'int.other-name-applied')" ng-model="user.snap_disqualification" id="snap_disqualification_no" type="radio" class="name-input marital-input" value="no" name="snap_disqualification"><label
+        for="snap_disqualification_no" >No</label>
+<br/>
+<div ng-show="inputDisqualified">
+    <p>Who?</p>
+
+    <input type="text" ng-model="user.snap_disqualification_input" ng-required="true" id="snap_disqualification_input" name="snap_disqualification_input"/>
+
+    <div ng-hide="interviewForm.snap_disqualification_input.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.snap_disqualification_input.$valid" class="yellow-button" ng-click="updateCurrentAndGoToNext('int.disqualification', 'int.other-name-applied')">Continue</div>
+</div>

@@ -1,0 +1,19 @@
+<h1>Does anyone owe fines, costs or restitution for a felony or misdemeanor offense?</h1>
+
+<input ng-click="inputCriminalFine = true" ng-model="user.criminal_fine_payment" id="criminal_fine_payment_yes"
+       type="radio" class="name-input marital-input" value="yes" name="criminal_fine_payment"><label
+        for="criminal_fine_payment_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.criminal-fines-payment', 'int.criminal-probation')" ng-model="user.criminal_fine_payment"
+       id="criminal_fine_payment_no" type="radio" class="name-input marital-input" value="no" name="criminal_fine_payment">
+        <label for="criminal_fine_payment_no" >No</label>
+<br/>
+<div ng-show="inputCriminalFine">
+    <p>Who?</p>
+
+    <input type="text" ng-model="user.criminal_fine_payment_input" ng-required="true" id="criminal_fine_payment_input" name="criminal_fine_payment_input"/>
+
+    <div ng-hide="interviewForm.criminal_fine_payment_input.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.criminal_fine_payment_input.$valid" class="yellow-button" 
+         ng-click="updateCurrentAndGoToNext('int.criminal-fines-payment', 'int.criminal-payment-plan')">Continue</div>
+</div>
