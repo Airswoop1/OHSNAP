@@ -15,20 +15,20 @@ var SendTM = require('./SendTextMessage');
 
 	var map = [];
 
-	fs.readFile(__dirname + '/to_text.csv', function(err, data) {
+	fs.readFile(__dirname + '/first_to_text.csv', function(err, data) {
 		if(err) {console.log(err);return;}
 
-		SendTM.send_sms("Hi it's easyfoodstamps.com! Since we last spoke have you submitted your documents to the HRA? Please reply Yes or No", "+12016551789", function(err, result) {
-			storeResultInDB({'type':"NO_DOCS",'number':'+12016551789', 'name':"Kevin Miller", 'message': "Hi it's easyfoodstamps.com! Since we last spoke have you submitted your documents to the HRA? Please reply Yes or No"}, result, err);
-		});
+		/*SendTM.send_sms("all the way", "+12016551789", function(err, result) {
+			storeResultInDB({'type':"ALL_THE_WAY",'number':'+12016551789', 'name':"Kevin Miller", 'message': "All the way"}, result, err);
+		});*/
 
-		/*csv.parse(data,{}, function(err, output) {
+		csv.parse(data,{}, function(err, output) {
 			if(err) {console.log(err);return;}
 
 			_.each(output, function(element, index, list){
-				var user_num = element[2];
+				var user_num = element[2].toString().trim();
 
-				if(user_num[0]===1 && user_num.length == 11){
+				if(user_num[0]==='1' && user_num.length == 11){
 					user_num = "+" + user_num;
 				}
 				else if(user_num.length == 10) {
@@ -41,6 +41,8 @@ var SendTM = require('./SendTextMessage');
 					'number' : user_num
 				})
 			});
+
+			console.log(map);
 
 			var text_ct = -1;
 
@@ -74,7 +76,7 @@ var SendTM = require('./SendTextMessage');
 
 
 
-		})*/
+		})
 	})
 
 	function storeResultInDB(obj, result, error) {
@@ -96,6 +98,7 @@ var SendTM = require('./SendTextMessage');
 				insertion['text_status'] = (typeof result !== 'undefined') ? result.status : 'null';
 				insertion['error'] = error;
 				insertion['response_array'] = [];
+				insertion['time_sent'] = new Date().getTime();
 				insertion['sent_array'] = [ obj.message ];
 
 				calls.update(query, insertion, {'upsert':true}, function(err, result) {

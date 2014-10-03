@@ -50,7 +50,7 @@ var ReceiveSMSResponse = (function() {
 					console.error(err);
 					res.status(500).end();
 				}
-				else if( userRequest.retries > 4 ){
+				else if( userRequest && userRequest.retries > 4 ){
 					storeMessageInDBAnyway();
 					res.status(500).end();
 				}
@@ -127,7 +127,7 @@ var ReceiveSMSResponse = (function() {
 				case 'ALL_THE_WAY' :
 					if(userRequest.userData.sequence_num == 1) {
 						if(answer == 'yes'){
-							cb(null, 'Great! Are you approved to get food stamps? Please reply Yes or No');
+							cb(null, 'Great! Did the HRA approve your food stamps application? Please reply Yes or No');
 						}
 						else if(answer == 'no') {
 							userRequest.userData.sequence_num = 10;
@@ -138,7 +138,7 @@ var ReceiveSMSResponse = (function() {
 
 					else if(userRequest.userData.sequence_num == 2){
 						if(answer == 'yes'){
-							cb(null, 'Great! Thanks for letting us know. If you don\'t mind sharing with us can you tell us what your monthly amount is?' );
+							cb(null, 'Awesome! Thanks for letting us know. If you don\'t mind sharing with us can you tell us what your monthly amount is?' );
 						}
 						else if(answer == 'no') {
 							cb(null, 'Ah, sorry to hear that. What\'s the reason they provided?');
@@ -149,7 +149,7 @@ var ReceiveSMSResponse = (function() {
 						}
 					}
 					else if(userRequest.userData.sequence_num == 3){
-						cb(null, "Thanks for letting us know.");
+						cb(null, "Cool! Thanks for letting us know!");
 					}
 
 
@@ -185,7 +185,7 @@ var ReceiveSMSResponse = (function() {
 					else if(userRequest.userData.sequence_num == 2){
 
 						if(answer == 'yes'){
-							cb(null, 'Great! Are you currently receiving food stamps? Please reply Yes or No');
+							cb(null, 'Great! Did the HRA approve your application for food stamps? Please reply Yes or No');
 						}
 						else if(answer == 'no') {
 							userRequest.userData.sequence_num = 10;
@@ -194,7 +194,7 @@ var ReceiveSMSResponse = (function() {
 					}
 					else if(userRequest.userData.sequence_num == 3){
 						if(answer == 'yes'){
-							cb(null, 'Great! Thanks for letting us know. If you don\'t mind sharing with us can you tell us what your monthly amount is?' );
+							cb(null, 'Awesome! Thanks for letting us know. If you don\'t mind sharing with us can you tell us what your monthly amount is?' );
 						}
 						else if(answer == 'no') {
 							cb(null, 'Ah, sorry to hear that. What\'s the reason they provided?');
@@ -227,7 +227,7 @@ var ReceiveSMSResponse = (function() {
 				case 'NO_CONTACT' :
 					if(userRequest.userData.sequence_num == 1) {
 						if(answer == 'yes'){
-							cb(null, 'Great! Are you currently receiving food stamps? Please reply Yes or No');
+							cb(null, 'Great! Did the HRA approve your application for food stamps? Please reply Yes or No');
 						}
 						else if(answer == 'no') {
 							userRequest.userData.sequence_num = 10;
@@ -292,11 +292,12 @@ var ReceiveSMSResponse = (function() {
 								},
 								update = {'$set':{}};
 
-								update['$push'] = {'response_array' : { 'body' : userRequest.Body, 'num':userRequest.userData.sequence_num }, 'sent_array' : msg },
+								update['$push'] = {'response_array' : { 'body' : userRequest.Body, 'time': new Date().getTime(), 'num':userRequest.userData.sequence_num }, 'sent_array' : msg },
 
 								update['$set'] = {
 									'sequence_num' : ++userRequest.userData.sequence_num,
-									'retries' : userRequest.userData.retries
+									'retries' : userRequest.userData.retries,
+									'time_updated' : new Date().getTime()
 								};
 
 							collection.update(query, update, {'upsert':false, 'multi':false}, cb);
@@ -317,7 +318,7 @@ var ReceiveSMSResponse = (function() {
 						},
 						update = {};
 
-					update['$push'] = {'response_array' : { 'body' : userRequest.Body, 'num':userRequest.userData.sequence_num } };
+					update['$push'] = {'response_array' : { 'body' : userRequest.Body, 'time': new Date().getTime(), 'num':userRequest.userData.sequence_num } };
 
 					collection.update(query,update,{},function(err,res){
 						if(err) { console.error(err); }
