@@ -1,26 +1,12 @@
 /**
  * Created by airswoop1 on 10/1/14.
  */
+var SendTM = require('./SendTextMessage');
 
-var accountSid = process.env.sl_TWILIO_LIVE_ACCOUNT_SID;
-var authToken = process.env.sl_TWILIO_LIVE_AUTH_TOKEN;
-//var from_number = "+15005550006"; //test
-var to_number = "+12016551789";
-var from_number = "+13474298954"; //LIVE
-var status_callback_url = "https://5b1ff84d.ngrok.com/receive_twilio_response";
-
-
-var client = require('twilio')(accountSid, authToken);
-
-client.messages.create({
-	to: to_number,
-	from: from_number,
-	body: "Testtttt...",
-	statusCallback: status_callback_url
-}, function(err,msg){
-
-	console.log(err);
-	console.log(msg);
+SendTM.send_sms("Hi it's easyfoodstamps.com! Since we last spoke have you submitted your documents to the HRA? Please reply Yes or No",
+	"+12016551789", function(err, result) {
+	console.error(err);
+	console.log(result);
 });
 
 

@@ -35,41 +35,49 @@ var ReceiveSMSResponse = (function() {
 
 	var execute = function(req, res) {
 
-		var userRequest = req.body;
 
- 		//determine which message it's responding to
-		lookUpNumber(function(err) {
-			if(err) {
-				console.error("error on looking up number for " + userRequest.From);
-				console.error(err);
-				res.status(500).end();
-			}
-			else if( userRequest.retries > 4 ){
-				storeMessageInDBAnyway();
-				res.status(500).end();
-			}
-			else {
+		if(typeof req.body === 'undefined'){
+			res.status(500).end();
+		}
+		else {
 
-				determineResponseMessage(function(err, responseMessage) {
-					if(err) {
-						storeMessageInDBAnyway();
-						res.status(500).end();
-					}
-					else {
-						sendMessageAndStoreInDB(responseMessage, function(err){
-							if(err){
-								console.error("error on sending message for " + userRequest.From);
-								console.error(err);
-								res.status(500).end();
-							}
-							else {
-								res.status(200).end();
-							}
-						})
-					}
-				})
-			}
-		});
+			var userRequest = req.body;
+
+	        //determine which message it's responding to
+			lookUpNumber(function(err) {
+				if(err) {
+					console.error("error on looking up number for " + userRequest.From);
+					console.error(err);
+					res.status(500).end();
+				}
+				else if( userRequest.retries > 4 ){
+					storeMessageInDBAnyway();
+					res.status(500).end();
+				}
+				else {
+
+					determineResponseMessage(function(err, responseMessage) {
+						if(err) {
+							storeMessageInDBAnyway();
+							res.status(500).end();
+						}
+						else {
+							sendMessageAndStoreInDB(responseMessage, function(err){
+								if(err){
+									console.error("error on sending message for " + userRequest.From);
+									console.error(err);
+									res.status(500).end();
+								}
+								else {
+									res.status(200).end();
+								}
+							})
+						}
+					})
+				}
+
+			});
+		}
 
 		function lookUpNumber(cb) {
 			MongoClient.getConnection(function(db_err, db){
