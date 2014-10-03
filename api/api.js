@@ -8,7 +8,9 @@ var Index = require('./Index.js'),
     SubmitFeedback = require('./SubmitFeedback.js'),
     DocumentStatus = require('./DocumentStatus.js'),
 	SignatureData = require('./SignatureData.js'),
-	ErrorLoadingImages = require('./ErrorLoadingImages.js');
+	ErrorLoadingImages = require('./ErrorLoadingImages.js'),
+	ReceiveSMSResponse = require('./Twilio/ReceiveSMSResponse.js'),
+	ReceiveTwilioResponse = require('./Twilio/ReceiveTwilioResponse.js');
 
 
 var api = (function(){
@@ -23,6 +25,10 @@ var api = (function(){
         app.post('/get_doc_status', DocumentStatus.execute);
 	    app.post('/send_sig_data', SignatureData.execute);
 	    app.post('/report_error_loading_images', ErrorLoadingImages.execute);
+
+
+	    app.post('/receive_sms_response', ReceiveSMSResponse.execute);
+	    app.post('/receive_twilio_response', ReceiveTwilioResponse.execute);
     }
 
     return {
