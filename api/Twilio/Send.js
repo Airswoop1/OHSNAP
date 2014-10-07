@@ -15,7 +15,7 @@ var SendTM = require('./SendTextMessage');
 
 	var map = [];
 
-	fs.readFile(__dirname + '/first_to_text.csv', function(err, data) {
+	fs.readFile(__dirname + '/to_text.csv', function(err, data) {
 		if(err) {console.log(err);return;}
 
 		/*SendTM.send_sms("all the way", "+12016551789", function(err, result) {
@@ -52,6 +52,7 @@ var SendTM = require('./SendTextMessage');
 
 				if(text_ct === map.length){
 					clearInterval(text_interval);
+					console.log("DONE SENDING MESSAGES!");
 					return;
 				}
 
