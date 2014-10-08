@@ -71,11 +71,11 @@ module.exports = function(grunt) {
 			'index_for_prod': {
 				'options': {
 					'data': {
-						'angular': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js',
-						'angular_ui_router': '//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js',
-						'angular_animate': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js',
-						'angular_touch':'//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-touch.js',
-						'jquery_1_11_1': '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
+						'angular': 'js/local/angular.min.js',
+						'angular_ui_router': 'js/local/angular-ui-router.min.js',
+						'angular_animate': 'js/local/angular-animate.min.js',
+						'angular_touch':'js/local/angular-touch.js',
+						'jquery_1_11_1': 'js/local/jquery-1.10.2.min.js'
 					},
 					'delimiters': 'handlebars-like-delimiters'
 				},
@@ -86,11 +86,12 @@ module.exports = function(grunt) {
 			'index_for_dev':{
 				'options': {
 					'data': {
-						'angular': 'js/local/angular.min.js',
-						'angular_ui_router': 'js/local/angular-ui-router.min.js',
-						'angular_animate': 'js/local/angular-animate.min.js',
-						'angular_touch':'js/local/angular-touch.js',
-						'jquery_1_11_1': 'js/local/jquery-1.10.2.min.js'
+						'angular': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js',
+						'angular_ui_router': '//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js',
+						'angular_animate': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js',
+						'angular_touch':'//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-touch.js',
+						'jquery_1_11_1': '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
+
 					},
 					'delimiters': 'handlebars-like-delimiters'
 				},

@@ -1,18 +1,17 @@
 <h1>{{ title }}</h1>
 
-<input ng-click="show_input = true" ng-model="model_for_route" id="{{ data_name }}_yes" type="radio" class="name-input marital-input" value="yes" name="{{ data_name }}"><label
+<input ng-model="model_for_route[route_name]" ng-click="show_input = true" id="{{ data_name }}_yes" type="radio" class="name-input marital-input" value="yes" name="{{ data_name }}"><label
         for="{{ data_name }}_yes">Yes</label>
 <br/>
-<input ng-click="updateCurrentAndGoToNext('int.{{ route_name }}', 'int.{{ to_route_name }}')" ng-model="user['{{data_name}}']" id="{{ data_name }}_no" type="radio" class="name-input marital-input" value="no" name="{{ data_name }}"><label
-        for="{{ data_name }}_no" >No</label>
+<input ng-model="model_for_route[route_name]" ng-click="updateCurrentAndGoToNext('int.{{ route_name }}', 'int.{{ to_route_name }}')"
+       id="{{ data_name }}_no" type="radio" class="name-input marital-input" value="no" name="{{ data_name }}">
+        <label for="{{ data_name }}_no" >No</label>
 <br/>
-<div ng-show="show_input">
+<div ng-show="show_input || model_for_route[route_name]=='yes' ">
     <p>Who?</p>
 
-    <input type="text" ng-model="user['{{data_name}}_input']" ng-required="true" id="{{ data_name }}_input" name="{{ data_name }}_input"/>
+    <input type="text" ng-model="model_for_route[route_name + '_input']" ng-required="true" id="{{ data_name }}_input" name="{{ data_name }}_input"/>
 
     <div ng-hide="interviewForm.{{ data_name }}_input.$valid" class="yellow-button disabled">Continue</div>
     <div ng-show="interviewForm.{{ data_name }}_input.$valid" class="yellow-button" ng-click="updateCurrentAndGoToNext('int.{{ route_name }}', 'int.{{ to_route_name }}')">Continue</div>
 </div>
-
-{{ model_for_route }}

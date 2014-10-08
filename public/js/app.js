@@ -5,7 +5,7 @@
 // create our angular app and inject ngAnimate and ui-router
 // =============================================================================
 var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formController',
-		'formApp.interviewCtrl','formApp.documentUploadCtrl', 'formApp.jSignature'])
+		'formApp.interviewCtrl','formApp.documentUploadCtrl', 'formApp.jSignature', 'formApp.userDataFactory'])
 
 // configuring our routes
 // =============================================================================
@@ -336,6 +336,21 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl:'templates/interview/interview-household-drug-abuse.html'
 			})
 
+
+			.state('int.criminal-defendant', {
+				url:'/criminal-defendant',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+
+					$scope.title = "Does anyone have a summons or warrant to appear as a defendant at a criminal court proceeding?";
+					$scope.route_name = "criminal-defendant";
+					$scope.data_name = "criminal_defendant";
+					$scope.to_route_name = "criminal-fines-payment";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
 			.state('int.criminal-fines-payment', {
 				url:'/criminal-fines-payment',
 				templateUrl:'templates/interview/interview-household-criminal-fines-payment.html'
@@ -350,11 +365,13 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				url:'/criminal-probation',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
 				controller: function($scope){
+
+					console.log("scope for parent: ",$scope.$parent);
 					$scope.title = "is anyone on probation?";
 					$scope.route_name = "criminal-probation";
 					$scope.data_name = "criminal_probation";
 					$scope.to_route_name = "welfare-fraud";
-					$scope.model_for_route = $scope.user['criminal-probation'];
+					$scope.model_for_route = $scope.$parent.user;
 					$scope.show_input = false;
 				}
 			})
@@ -364,11 +381,26 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				url:'/welfare-fraud',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
 				controller: function($scope){
+
 					$scope.title = "Has anyone been convicted of welfare fraud?";
 					$scope.route_name = "welfare-fraud";
 					$scope.data_name = "welfare_fraud";
+					$scope.to_route_name = "law-enforcement";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.law-enforcement', {
+				url:'/law-enforcement',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+
+					$scope.title = "Is anyone fleeing from law enforcement?";
+					$scope.route_name = "law-enforcement";
+					$scope.data_name = "law_enforcement";
 					$scope.to_route_name = "main";
-					$scope.model_for_route = $scope.user['welfare-fraud'];
+					$scope.model_for_route = $scope.$parent.user;
 					$scope.show_input = false;
 				}
 			})

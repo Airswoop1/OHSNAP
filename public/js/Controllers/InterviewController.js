@@ -456,8 +456,10 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		};
 
 		$scope.updateCurrentAndGoToNext = function(current, next) {
-				updateProgress(current);
-				$state.go(next);
+				setTimeout( function() {
+					updateProgress(current);
+					$state.go(next);
+				},200);
 		};
 
 		$scope.backToMainSign = function(index) {
