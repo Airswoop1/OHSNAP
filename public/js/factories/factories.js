@@ -269,20 +269,20 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				"expenses":false
 			},
 
-			/*'user':{
-			 formData: {
-			 "name": {
-			 'first_name':undefined,
-			 'last_name':undefined
-			 },
-			 "address":{
-			 "street_address":undefined,
-			 "zip":undefined
-			 },
-			 "phone":undefined
+			'user':{
+				 formData: {
+					 "name": {
+					    'first_name':undefined,
+					    'last_name':undefined
+					 },
+					 "address":{
+					    "street_address":undefined,
+					    "zip":undefined
+					 },
+					 "phone":undefined
+				 }
 			 }
-			 }*/
-			'user' :  {
+			/*'user' :  {
 				formData : {
 
 					name: { first_name: 'Kevin', last_name: 'Miller' },
@@ -375,7 +375,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 					total_resources: 140,
 					rent: 900
 				}
-			}
+			}*/
 
 		};
 
