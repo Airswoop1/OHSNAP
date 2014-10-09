@@ -112,7 +112,7 @@
   }
 
 }
-.container > [ui-view].ng-enter,
+/*.container > [ui-view].ng-enter,
 .container > [ui-view].ng-leave {
   position: absolute;
   left: 0;
@@ -184,7 +184,7 @@
 
 [ui-view].form-wrapper.ng-leave-active {
   opacity: 0;
-}
+}*/
 
 .mobile-notice {
   text-align: center;

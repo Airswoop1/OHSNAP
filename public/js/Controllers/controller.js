@@ -1135,6 +1135,32 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			return has_members;
 		};
 
+		$scope.current_resource_name = "";
+		$scope.current_resource_kind = "";
+		$scope.current_resource_amount = "";
+		$scope.current_resource_location = "";
+
+
+		$scope.addResource = function() {
+			alert('adding resource');
+			if(!$scope.user.resources){
+				$scope.user.resources = [];
+			}
+
+			$scope.user.resources.push({
+				'person_name': $scope.current_resource_name,
+				'type' : $scope.current_resource_kind,
+				'amount' : $scope.current_resource_amount,
+				'location' : $scope.current_resource_location
+			});
+
+			$scope.current_resource_name = "";
+			$scope.current_resource_kind = "";
+			$scope.current_resource_amount = "";
+			$scope.current_resource_location = "";
+
+			alert('done with adding resources')
+		};
 
 		$scope.$on('int-main', function(meta, type){
 

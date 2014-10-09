@@ -1,7 +1,31 @@
-<h1>How much money do you and those that you are applying with have?</h1>
-<p>For example, on your person; in your home, in checking and savings accounts, or other locations, including jointly held accounts</p>
-<div class="input-group dollar-input">
-    <input ng-model="user.total_resources" id="total_resources" type="number" class="name-input resources-input" name="total_resources">
+<h1>List all resources that you and those you are applying with have.</h1>
+<p>For example: cash, money in checking and savings accounts, US Savings Bonds, Stocks and Bonds, Trust fund, IRA, 401K, Certificates of Deposit</p>
+
+<div ng-repeat="item in user.resources">
+    <div>{{ item.person_name }}</div>
+    <div>{{ item.type }}</div>
+    <div>{{ item.amount }}</div>
+    <div>{{ item.location }}</div>
 </div>
 
+
+<label for="resource_name">Name of Person with Resource</label>
+<input type="text" name="resource_name" id="resource_name" class="name-input resources-input" ng-model="current_resource_name"/>
+
+<label for="resource_kind">Kind of resource</label>
+<input type="text" name="resource_kind" id="resource_kind" class="name-input resources-input" ng-model="current_resource_kind"/>
+
+<div class="input-group dollar-input">
+    <input ng-model="user.total_resources" id="total_resources" type="number" class="name-input resources-input" name="total_resources" ng-model="current_resource_amount">
+</div>
+
+<label for="resource_location">Where is this resource located?</label>
+<input type="text" name="resource_location" id="resource_location" class="name-input resources-input" ng-model="current_resource_location"/>
+
+<div class="yellow-button" style="background-color:#07a7fc" ng-click="addResource();">Add Resource</div>
+
+
 <div class="yellow-button" ui-sref="int.expenses-mortgage">Continue</div>
+
+
+        {{ user.resources }}

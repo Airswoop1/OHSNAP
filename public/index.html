@@ -15,7 +15,11 @@
 
     <!-- JS-->
     <script src="js/angular-file-upload-shim.js"></script>
-
+    <style>
+        [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+            display: none !important;
+        }
+    </style>
 
 
     <script>
