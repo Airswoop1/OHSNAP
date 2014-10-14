@@ -354,9 +354,9 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				case "int.drug-abuse":
 				case "int.criminal-defendant":
 				case "int.criminal-fines-payment":
-				case "int.crinimal-payment-plan":
+				case "int.criminal-payment-plan":
 				case "int.criminal-probation":
-				case "int.welfase-fraud":
+				case "int.welfare-fraud":
 				case "int.law-enforcement":
 				/*case "int.household-applying":
 			    case "int.household-ssn":
