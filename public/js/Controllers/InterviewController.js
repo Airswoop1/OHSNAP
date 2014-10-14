@@ -279,7 +279,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			$scope.int_progress = 0;
 			for(var x in $scope.stepsCompleted) {
 				if($scope.stepsCompleted[x] === true){
-					$scope.int_progress += 7.4;
+					$scope.int_progress += 2.5;
 				}
 			}
 		}
@@ -327,29 +327,73 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				case "int.marital_status":
 				case "int.state_id":
 				case "int.school":
+				case "int.school-grade":
+				case "int.school-name":
+				case "int.school-FT":
 				case "int.pregnant":
-
+				case "int.pregnant-due-date":
+				case "int.pregnant-num-babies":
 			    case "int.disabled":
+				//case "int.citizen":
 			        $scope.interview_steps = 0;
 			        break;
 			    case "int.household":
-			    case "int.household-applying":
+
+				case "int.other-state-benefits":
+				case "int.disqualification":
+				case "int.other-name-applied":
+				case "int.in-military":
+				case "int.in-military-family":
+				case "int.foster-care":
+				case "int.foster-care-end":
+				case "int.medical-need":
+				case "int.medical-lt-care":
+				case "int.medical-unpaid":
+				case "int.domestic-abuse":
+				case "int.medical-medication":
+				case "int.drug-abuse":
+				case "int.criminal-defendant":
+				case "int.criminal-fines-payment":
+				case "int.crinimal-payment-plan":
+				case "int.criminal-probation":
+				case "int.welfase-fraud":
+				case "int.law-enforcement":
+				/*case "int.household-applying":
 			    case "int.household-ssn":
 			    case "int.household-dob":
-			    case "int.household-relation":
-				case "int.other-state-benefits":
+			    case "int.household-relation":*/
+
 			        $scope.interview_steps = 1;
 			        break;
-			    case "int.income-frequency":
-			    case "int.income-hours":
-			    case "int.income-household-amount":
-			    case "int.income-household-frequency":
+				case "int.income":
+				case "int.other-income-worked-90-days":
+				case "int.other-income-worked-reduced-hours":
+				case "int.stopped-working":
+				case "int.on-strike":
+				case "int.on-social-security":
+				case "int.on-ssi":
+				case "int.applied-for-workers-comp":
+				case "int.applied-for-social-security":
+				case "int.applied-for-unemployment-compensation":
+				case "int.applied-for-veterans-benefits":
+				case "int.applied-for-ssi":
+				case "int.daycare-for-school":
+				case "int.cost-for-income":
+				case "int.resources":
 			        $scope.interview_steps = 2;
 			        break;
-			    case "int.resources":
-			    case "int.expenses-mortgage":
+
+				case "int.expenses-child-support":
+				case "int.expenses-housing-assistance":
+				case "int.monthly-expenses-rent":
+				case "int.monthly-expenses-condo":
+				case "int.monthly-expenses-property-insurance":
+				case "int.monthly-expenses-property-taxes":
+				case "int.expenses-utilities":
+			    case "int.expenses-medical":
 			        $scope.interview_steps = 3;
 			        break;
+
 				case "int.info-confirmation":
 					$scope.goToTop();
 					$scope.interview_steps = 4;
@@ -369,6 +413,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			        //$scope.interview_steps = -1;
 				    $scope.interview_steps = 4;
 			}
+			$scope.goToTop();
 			updateProgressStatus();
 		});
 

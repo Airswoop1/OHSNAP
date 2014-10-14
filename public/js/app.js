@@ -409,6 +409,20 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 					$scope.show_input = false;
 				}
 			})
+		/**
+		 ******************** END HOUSEHOLD
+		 */
+
+
+
+		/**
+		 ******************** INCOME
+		 */
+			.state('int.income', {
+				url:'/income',
+				'templateUrl':'templates/interview/interview-income.html',
+				controller:'interviewCtrl'
+			})
 
 			.state('int.other-income-worked-90-days', {
 				url:'/worked-90-days',
@@ -573,6 +587,23 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				}
 			})
 
+
+			.state('int.resources', {
+				url: '/resources',
+				templateUrl: 'templates/interview/interview-resources.html',
+				controller: 'interviewCtrl'
+			})
+
+		/**
+		 * *************** END INCOME
+		 */
+
+
+
+		/**
+		 * **************** EXPENSES
+ 		 */
+
 			.state('int.expenses-child-support', {
 				url:'/child-support-expenses',
 				templateUrl:'templates/interview/interview-expenses-child-support-expenses.html',
@@ -644,42 +675,6 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 
 			})
 
-			.state('int.income', {
-				url:'/income',
-				'templateUrl':'templates/interview/interview-income.html',
-				controller:'interviewCtrl'
-			})
-
-			/*.state('int.income-frequency', {
-				url: '/income-frequency',
-				templateUrl: 'templates/interview/interview-income-frequency.html'
-			})
-
-			.state('int.income-hours', {
-				url: '/income-hours',
-				templateUrl: 'templates/interview/interview-income-hours.html'
-			})
-
-			.state('int.income-household-amount', {
-				url: '/income-household-amount',
-				templateUrl: 'templates/interview/interview-income-household-amount.html'
-			})
-
-			.state('int.income-household-frequency', {
-				url: '/income-household-frequency',
-				templateUrl: 'templates/interview/interview-income-household-frequency.html'
-			})*/
-
-			.state('int.resources', {
-				url: '/resources',
-				templateUrl: 'templates/interview/interview-resources.html',
-				controller: 'interviewCtrl'
-			})
-
-			.state('int.expenses-mortgage', {
-				url: '/expenses-mortgage',
-				templateUrl: 'templates/interview/interview-expenses-mortgage.html'
-			})
 
 			.state('int.expenses-utilities', {
 				url: '/expenses-utilities',
@@ -692,10 +687,10 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				controller:'interviewCtrl'
 			})
 
-			.state('int.expenses-utilities-total', {
-				url: '/expenses-utilities-total',
-				templateUrl: 'templates/interview/interview-expenses-utilities-total.html'
-			})
+		/**
+		 * ******************* END EXPENSES
+		 */
+
 
 			.state('int.info-confirmation', {
 				url: '/confirmation',
