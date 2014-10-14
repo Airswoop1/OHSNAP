@@ -1,0 +1,18 @@
+<h1>Does anyone pay for childcare or the care of an adult with a disability so he or she can go to work, school or training?</h1>
+
+<input ng-click="inputPayForChildcare = true" ng-model="user.pay_for_care" id="pay_for_care_yes" type="radio" class="name-input marital-input" value="yes" name="pay_for_care"><label
+        for="pay_for_care_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.pay-for-care', 'int.cost-for-income'); inputPayForChildren = false;" ng-model="user.pay_for_care" id="pay_for_care_no" type="radio" class="name-input marital-input" value="no" name="pay_for_care"><label
+        for="pay_for_care_no" >No</label>
+<br/>
+<div ng-show="inputPayForChildcare">
+    <p>How much each month?</p>
+    <input type="text" ng-model="user.pay_for_care_input_amount" ng-required="true" id="pay_for_care_input_amount" name="pay_for_care_input_amount"/>
+
+    <p>Who receives care?</p>
+    <input type="text" ng-model="user.pay_for_care_input_who" ng-required="true" id="pay_for_care_input_who" name="pay_for_care_input_who"/>
+
+    <div ng-hide="interviewForm.pay_for_care_input_who.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.pay_for_care_input_who.$valid" class="yellow-button" ng-click="updateCurrentAndGoToNext('int.pay-for-care', 'int.cost-for-income')">Continue</div>
+</div>

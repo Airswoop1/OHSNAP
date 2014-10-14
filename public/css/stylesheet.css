@@ -734,6 +734,35 @@ input.dob-input {
   width: 100%;
 }
 
+.resources-input {
+    margin-bottom: 10px;
+}
+
+.resources-list {
+    border: 2px solid steelblue;
+    width:100%;
+    display:inline-block;
+}
+
+.resources-list div  {
+    float:left;
+    margin-right: 5px;
+    width:22%;
+
+}
+
+.income-list {
+    border: 2px solid steelblue;
+    width:100%;
+    display:inline-block;
+}
+
+.income-list div {
+    float:left;
+    margin-right: 5px;
+    width:18%;
+}
+
 .household-members-confirm div input,
 .household-members-confirm div select {
   margin-bottom: 10px;

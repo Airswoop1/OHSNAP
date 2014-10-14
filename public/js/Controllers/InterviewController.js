@@ -166,12 +166,12 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 		$scope.current_resource_name = "";
 		$scope.current_resource_kind = "";
-		$scope.current_resource_amount = "";
+		$scope.current_resource_amount = 0;
 		$scope.current_resource_location = "";
 
 
 		$scope.addResource = function() {
-			alert('adding resource');
+
 			if(!$scope.user.resources){
 				$scope.user.resources = [];
 			}
@@ -180,16 +180,52 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				'person_name': $scope.current_resource_name,
 				'type' : $scope.current_resource_kind,
 				'amount' : $scope.current_resource_amount,
-				'location' : $scope.current_resource_location
+				'location' : $scope.currentresource_location
 			});
 
 			$scope.current_resource_name = "";
 			$scope.current_resource_kind = "";
-			$scope.current_resource_amount = "";
+			$scope.current_resource_amount = 0;
 			$scope.current_resource_location = "";
 
-			alert('done with adding resources')
 		};
+
+		$scope.current_income_name = "";
+		$scope.current_income_kind = "";
+		$scope.current_income_amount = 0;
+		$scope.current_income_frequency = "";
+		$scope.current_income_recent_date = "";
+
+		$scope.addIncome = function() {
+
+			if(!$scope.user.income){
+				$scope.user.income = [];
+			}
+
+			console.log($scope.current_income_name);
+
+
+			$scope.user.income.push({
+				'person_name': $scope.current_income_name,
+				'type' : $scope.current_income_kind,
+				'amount' : $scope.current_income_amount,
+				'frequency' : $scope.current_income_frequency,
+				'recent_date' : $scope.current_income_recent_date
+			});
+
+			console.log($scope.user.income);
+
+			$scope.current_income_name = "";
+			$scope.current_income_kind = "";
+			$scope.current_income_amount = 0;
+			$scope.current_income_frequency = "";
+			$scope.current_income_recent_date = "";
+
+		};
+
+
+
+
 
 		$scope.$on('int-main', function(meta, type){
 

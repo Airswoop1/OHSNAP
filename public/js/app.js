@@ -247,6 +247,11 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 			})
 
 			.state('int.household', {
+				url:'/household',
+				templateUrl:'templates/interview/interview-household-placeholder.html'
+			})
+/*
+			.state('int.household', {
 				url:'/household-names',
 				templateUrl:'templates/interview/interview-household-names.html'
 			})
@@ -270,7 +275,7 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				url: '/household-relation',
 				templateUrl: 'templates/interview/interview-household-relation.html'
 			})
-
+*/
 			.state('int.other-state-benefits', {
 				url:'/other-benefits',
 				templateUrl:'templates/interview/interview-household-other-state-benefits.html'
@@ -367,7 +372,7 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				controller: function($scope){
 
 					console.log("scope for parent: ",$scope.$parent);
-					$scope.title = "is anyone on probation?";
+					$scope.title = "Is anyone on probation or parole?";
 					$scope.route_name = "criminal-probation";
 					$scope.data_name = "criminal_probation";
 					$scope.to_route_name = "welfare-fraud";
@@ -405,7 +410,247 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				}
 			})
 
-			.state('int.income-frequency', {
+			.state('int.other-income-worked-90-days', {
+				url:'/worked-90-days',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "Has anyone worked in the last 90 days?";
+					$scope.route_name = "worked-90-days";
+					$scope.data_name = "worked_90_days";
+					$scope.to_route_name = "other-income-worked-reduced-hours";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.other-income-worked-reduced-hours', {
+				url:'/worked-reduced-hours',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "Has anyone had work hours reduced in the last 60 days?";
+					$scope.route_name = "worked-reduced-hours";
+					$scope.data_name = "worked_reduced_hours";
+					$scope.to_route_name = "stopped-working";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.stopped-working', {
+				url:'/stopped-working',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "Has anyone stopped working at one or more jobs in the past 30 days?";
+					$scope.route_name = "stopped-working";
+					$scope.data_name = "stopped_working";
+					$scope.to_route_name = "on-strike";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.on-strike', {
+				url:'/on-strike',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "Is anyone on strike?";
+					$scope.route_name = "on-strike";
+					$scope.data_name = "on_strike";
+					$scope.to_route_name = "on-social-security";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.on-social-security', {
+				url:'/on-social-security',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "Has anyone received Social Security in the past?";
+					$scope.route_name = "on-social-security";
+					$scope.data_name = "on_social_security";
+					$scope.to_route_name = "on-ssi";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.on-ssi', {
+				url:'/on-ssi',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "Has anyone received Supplemental Security Income in the past?";
+					$scope.route_name = "on-ssi";
+					$scope.data_name = "on_ssi";
+					$scope.to_route_name = "applied-for-workers-comp";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.applied-for-workers-comp', {
+				url:'/applied-for-workers-comp',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "Has anyone applied for workers' compensation?";
+					$scope.route_name = "applied-for-workers-comp";
+					$scope.data_name = "applied_for_workers_comp";
+					$scope.to_route_name = "applied-for-social-security";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.applied-for-social-security', {
+				url:'/applied-for-social-security',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "Has anyone applied for social security?";
+					$scope.route_name = "applied-for-social-security";
+					$scope.data_name = "applied_for_social_security";
+					$scope.to_route_name = "applied-for-unemployment-compensation";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.applied-for-unemployment-compensation', {
+				url:'/applied-for-unemployment-compensation',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "Has anyone applied for unemployment compensation?";
+					$scope.route_name = "applied-for-unemployment-compensation";
+					$scope.data_name = "applied_for_workers_comp";
+					$scope.to_route_name = "applied-for-veterans-benefits";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.applied-for-veterans-benefits', {
+				url:'/applied-for-veterans-benefits',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "Has anyone applied for veterans benefits?";
+					$scope.route_name = "applied-for-veterans-benefits";
+					$scope.data_name = "applied_for_veterans_benefits";
+					$scope.to_route_name = "applied-for-ssi";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.applied-for-ssi', {
+				url:'/applied-for-ssi',
+				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+				controller: function($scope){
+					$scope.title = "Has anyone applied for Supplemental Security Income (SSI)?";
+					$scope.route_name = "applied-for-ssi";
+					$scope.data_name = "applied_for_ssi";
+					$scope.to_route_name = "daycare-for-school";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.daycare-for-school', {
+				url:'/daycare-for-school',
+				templateUrl:'templates/interview/interview-household-pay-care-for-school.html',
+				controller: 'interviewCtrl'
+			})
+
+
+			.state('int.cost-for-income', {
+				url:'/cost-for-income',
+				templateUrl:'templates/interview/interview-yesno-template.html',
+				controller: function($scope){
+					$scope.title = "Does it cost anyone anything to get the income listed above? (Such as transportation costs, court fees, bank or guardian fees, etc.)?";
+					$scope.route_name = "cost-for-income";
+					$scope.data_name = "cost_for_income";
+					$scope.to_route_name = "resources";
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.expenses-child-support', {
+				url:'/child-support-expenses',
+				templateUrl:'templates/interview/interview-expenses-child-support-expenses.html',
+				controller:'interviewCtrl'
+			})
+
+
+			.state('int.expenses-housing-assistance',{
+				url:'/receive-housing-assistance',
+				templateUrl:'templates/interview/interview-expenses-housing-assistance.html',
+				controller:'interviewCtrl'
+			})
+
+
+			.state('int.monthly-expenses-rent', {
+				url:'/monthly-expenses-rent',
+				templateUrl:'templates/interview/interview-monthly-expenses-template.html',
+				controller: function($scope) {
+					$scope.title = "rent, mortgage or lot rent";
+					$scope.alt_question = "Are meals included in your rent?";
+					$scope.alt_question_data = 'rent_meals_included';
+					$scope.route_name = 'monthly-expenses-rent';
+					$scope.data_name = 'monthly_expenses_rent';
+					$scope.to_route_name = 'monthly-expenses-condo';
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+
+			})
+
+
+			.state('int.monthly-expenses-condo', {
+				url:'/monthly-expenses-condo',
+				templateUrl:'templates/interview/interview-monthly-expenses-template.html',
+				controller: function($scope) {
+					$scope.title = "condominium fees";
+					$scope.route_name = 'monthly-expenses-condo';
+					$scope.data_name = 'monthly_expenses_condo';
+					$scope.to_route_name = 'monthly-expenses-property-insurance';
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.monthly-expenses-property-insurance', {
+				url:'/monthly-expenses-property-insurance',
+				templateUrl:'templates/interview/interview-monthly-expenses-template.html',
+				controller: function($scope) {
+					$scope.title = "property insurance";
+					$scope.route_name = 'monthly-expenses-property-insurance';
+					$scope.data_name = 'monthly_expenses_prop_insurance';
+					$scope.to_route_name = 'monthly-expenses-property-taxes';
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+			})
+
+			.state('int.monthly-expenses-property-taxes', {
+				url:'/monthly-expenses-property-taxes',
+				templateUrl:'templates/interview/interview-monthly-expenses-template.html',
+				controller: function($scope) {
+					$scope.title = "property taxes";
+					$scope.route_name = 'monthly-expenses-property-taxes';
+					$scope.data_name = 'monthly_expenses_prop_taxes';
+					$scope.to_route_name = 'expenses-utilities';
+					$scope.model_for_route = $scope.$parent.user;
+					$scope.show_input = false;
+				}
+
+			})
+
+			.state('int.income', {
+				url:'/income',
+				'templateUrl':'templates/interview/interview-income.html',
+				controller:'interviewCtrl'
+			})
+
+			/*.state('int.income-frequency', {
 				url: '/income-frequency',
 				templateUrl: 'templates/interview/interview-income-frequency.html'
 			})
@@ -423,11 +668,12 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 			.state('int.income-household-frequency', {
 				url: '/income-household-frequency',
 				templateUrl: 'templates/interview/interview-income-household-frequency.html'
-			})
+			})*/
 
 			.state('int.resources', {
 				url: '/resources',
-				templateUrl: 'templates/interview/interview-resources.html'
+				templateUrl: 'templates/interview/interview-resources.html',
+				controller: 'interviewCtrl'
 			})
 
 			.state('int.expenses-mortgage', {
@@ -438,6 +684,12 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 			.state('int.expenses-utilities', {
 				url: '/expenses-utilities',
 				templateUrl: 'templates/interview/interview-expenses-utilities.html'
+			})
+
+			.state('int.expenses-medical', {
+				url:'/expenses-medical',
+				templateUrl:'templates/interview/interview-expenses-medical.html',
+				controller:'interviewCtrl'
 			})
 
 			.state('int.expenses-utilities-total', {
@@ -503,6 +755,7 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 
 		// catch all route
 		// send users to the form page
+
 		$urlRouterProvider.otherwise('/form/intro');
 	})
 

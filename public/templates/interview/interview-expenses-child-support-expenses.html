@@ -1,0 +1,18 @@
+<h1>Does anyone in your home pay child support to a person who does not live with you?</h1>
+
+<input ng-click="yes_child_support_expense = true;" ng-model="user.child_support_expense" id="child_support_expense_yes" type="radio" class="name-input marital-input" value="yes" name="child_support_expense"><label
+        for="child_support_expense_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.expenses-child-support', 'int.expenses-housing-assistance')" ng-model="user.child_support_expense" id="child_support_expense_no" type="radio" class="name-input marital-input" value="no" name="child_support_expense"><label
+        for="child_support_expense_no" >No</label>
+<br/>
+<div ng-show="yes_child_support_expense">
+    <p>Is it court ordered?</p>
+
+    <input ng-click="updateCurrentAndGoToNext('int.expenses-child-support', 'int.expenses-housing-assistance')" ng-model="user.child_support_expense_court_ordered" id="child_support_expense_co_yes" type="radio" class="name-input marital-input" value="yes" name="child_support_expense_co"><label
+        for="child_support_expense_yes">Yes</label>
+    <br/>
+    <input ng-click="updateCurrentAndGoToNext('int.expenses-child-support', 'int.expenses-housing-assistance')" ng-model="user.child_support_expense_court_ordered" id="child_support_expense_co_no" type="radio" class="name-input marital-input" value="no" name="child_support_expense_co"><label
+        for="child_support_expense_no" >No</label>
+
+</div>
