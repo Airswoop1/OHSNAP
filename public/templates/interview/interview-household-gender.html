@@ -1,0 +1,12 @@
+<h1>What is the gender of the following people?</h1>
+
+<div ng-repeat="person in user.household_members track by $index" class="household-ssn" ng-show="person.applying">
+<h6>{{ person.name }}</h6>
+<input  ng-model="person.gender" id="male_{{$index}}" type="radio"
+       class="name-input marital-input" value="male" name="gender_{{$index}}"><label for="male_{{$index}}">Male</label>
+<br/>
+<input ng-model="person.gender" id="female_{{$index}}" type="radio"
+       class="name-input marital-input" value="female" name="gender_{{$index}}"><label for="female_{{$index}}">Female</label>
+</div>
+
+<div ng-click="updateCurrentAndGoToNext('int.household-gender', 'int.household-state-id')" class="yellow-button">Continue</div>

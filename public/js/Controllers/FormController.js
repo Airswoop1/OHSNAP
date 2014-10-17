@@ -305,6 +305,16 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			}
 		};
 
+		$scope.completedEligibilityResources = function() {
+
+			$scope.submitted_resources = true;
+			if($scope.snapForm.total_resources.$valid) {
+				updateEligibilityProgress('resources');
+				$state.go('form.eligibility-expenses');
+			}
+
+		};
+
 		$scope.completedCitizenship = function() {
 			$scope.submitted_citizenship = true;
 
@@ -355,13 +365,11 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 
 		function calcPotentialImmeditateBenefit() {
-
 			return (
 				$scope.formData.total_resources <= 100 ||
 				$scope.formData.income <= 150 ||
 				($scope.formData.income+$scope.formData.total_resources) <= $scope.formData.expenses
 				);
-
 		}
 
 

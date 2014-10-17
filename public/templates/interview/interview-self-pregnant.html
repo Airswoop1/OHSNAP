@@ -3,5 +3,5 @@
 <input ng-click="updateCurrentAndGoToNext('int.pregnant', 'int.pregnant-due-date')" ng-model="user.self_pregnant" id="yes_pregnant" type="radio"
        class="name-input marital-input" value="yes" name="pregnant"><label for="yes_pregnant">Yes</label>
 <br/>
-<input ng-model="user.self_pregnant" ng-click="updateCurrentAndGoToNext('int.pregnant', 'int.main');"  id="no_pregnant" type="radio"
+<input ng-model="user.self_pregnant" ng-click="updateCurrentAndGoToNext('int.pregnant', 'int.main');$emit('int-main', 'eligibility');"  id="no_pregnant" type="radio"
        class="name-input marital-input" value="no" name="pregnant"><label for="no_pregnant">No</label>

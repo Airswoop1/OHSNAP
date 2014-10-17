@@ -10,7 +10,7 @@
 <div ng-show="show_input || model_for_route[route_name]=='yes' ">
     <p>Who?</p>
 
-    <input type="text" ng-model="model_for_route[route_name + '_input']" ng-required="true" id="{{ data_name }}_input" name="{{ data_name }}_input"/>
+    <input type="text" ng-model="model_for_route[data_name_input]" ng-required="true" id="{{ data_name }}_input" name="{{ data_name }}_input"/>
 
     <div ng-hide="interviewForm.{{ data_name }}_input.$valid" class="yellow-button disabled">Continue</div>
     <div ng-show="interviewForm.{{ data_name }}_input.$valid" class="yellow-button" ng-click="updateCurrentAndGoToNext('int.{{ route_name }}', 'int.{{ to_route_name }}')">Continue</div>

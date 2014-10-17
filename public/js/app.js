@@ -247,11 +247,6 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 			})
 
 			.state('int.household', {
-				url:'/household',
-				templateUrl:'templates/interview/interview-household-placeholder.html'
-			})
-/*
-			.state('int.household', {
 				url:'/household-names',
 				templateUrl:'templates/interview/interview-household-names.html'
 			})
@@ -266,6 +261,50 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				templateUrl: 'templates/interview/interview-household-ssn.html'
 			})
 
+			.state('int.household-gender', {
+				url: '/household-gender',
+				templateUrl: 'templates/interview/interview-household-gender.html'
+			})
+
+			.state('int.household-state-id', {
+				url:'/household-state-id',
+				templateUrl: 'templates/interview/interview-household-state-id.html'
+			})
+
+			.state('int.household-marital-status',{
+				url:'/household-marital-status',
+				templateUrl:'templates/interview/interview-household-marital-status.html'
+			})
+
+			.state('int.household-lives-with',{
+				url:'/household-lives-with',
+				templateUrl:'templates/interview/interview-household-lives-with.html'
+			})
+
+			.state('int.household-in-school',{
+				url:'/household-in-school',
+				templateUrl:'templates/interview/interview-household-in-school.html'
+			})
+
+			.state('int.household-pregnant',{
+				url:'/household-pregnant',
+				templateUrl:'templates/interview/interview-household-pregnant.html'
+			})
+
+			.state('int.household-is-citizen',{
+				url:'/household-is-citizen',
+				templateUrl:'templates/interview/interview-household-citizenship.html'
+			})
+
+			/**      //Sex  - - int.household-gender
+					//Driver's license #  - - int.household-state-id *****
+					//marital status // int.household-marital-status
+					//Does this person live with you - - int.household-lives-with
+					//Is this person in school - - int.household-in-school
+					//is this person pregnant // int.household-pregnant
+ 					//is this person a us citizen or national //int.household-is-citizen
+			*/
+
 			.state('int.household-dob', {
 				url: '/household-dob',
 				templateUrl: 'templates/interview/interview-household-dob.html'
@@ -275,7 +314,7 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 				url: '/household-relation',
 				templateUrl: 'templates/interview/interview-household-relation.html'
 			})
-*/
+
 			.state('int.other-state-benefits', {
 				url:'/other-benefits',
 				templateUrl:'templates/interview/interview-household-other-state-benefits.html'
@@ -431,6 +470,7 @@ var app = angular.module('formApp',['ui.router', "ngAnimate", 'formApp.formContr
 					$scope.title = "Has anyone worked in the last 90 days?";
 					$scope.route_name = "worked-90-days";
 					$scope.data_name = "worked_90_days";
+					$scope.data_name_input = "worked_90_days_input";
 					$scope.to_route_name = "other-income-worked-reduced-hours";
 					$scope.model_for_route = $scope.$parent.user;
 					$scope.show_input = false;

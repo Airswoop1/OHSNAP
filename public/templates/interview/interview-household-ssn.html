@@ -5,5 +5,5 @@
     <input id="ssn_{{ $index }}" type="number"  name="ssn" placeholder="XXXXXXXXX" ng-model="person.ssn"/>
 </div>
 
-<div class="yellow-button" ui-sref="int.household-dob">Continue</div>
+<div class="yellow-button" ng-click="updateCurrentAndGoToNext('int.household-ssn', 'int.household-dob')" >Continue</div>
 

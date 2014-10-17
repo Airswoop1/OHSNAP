@@ -1,0 +1,12 @@
+<h1>Are any of the following in school?</h1>
+
+<div ng-repeat="person in user.household_members track by $index" class="household-ssn" ng-show="person.applying">
+    <h6>{{ person.name }}</h6>
+    <input  ng-model="person.in_schoool" id="in_schoool_yes_{{$index}}" type="radio"
+            class="name-input marital-input" value="yes" name="in_schoool_{{$index}}"><label for="in_schoool_yes_{{$index}}">Yes</label>
+    <br/>
+    <input ng-model="person.in_schoool" id="in_schoool_no_{{$index}}" type="radio"
+           class="name-input marital-input" value="no" name="in_schoool_{{$index}}"><label for="in_schoool_no_{{$index}}">No</label>
+</div>
+
+<div ng-click="updateCurrentAndGoToNext('int.household-in-school', 'int.household-pregnant')" class="yellow-button">Continue</div>

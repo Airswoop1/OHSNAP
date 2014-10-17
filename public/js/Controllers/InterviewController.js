@@ -5,7 +5,7 @@
 angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiFactory','formApp.jSignature', 
 		'formApp.CalcBenefitService']).controller('interviewCtrl',
 	function($scope, $state, $rootScope, $location, $anchorScroll, $window, userDataFactory, API, calcBenefitService){
-
+		console.log("loading interview controller!");
 
 		$scope.show_interview_progress=false;
 		$scope.int_progress = 0;
@@ -121,9 +121,10 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 		$scope.MaritalOpts = [
 			{"value":"Single", "name":"Single"},
+			{"value":"Married", "name":"Married"},
 			{"value":"Divorced", "name":"Divorced"},
-			{"value":"Married", "name":"Married"}
-
+			{"value":"Separated", "name":"Separated"},
+			{"value":"Widowed", "name":"Widowed"}
 		];
 
 		$scope.relationshipOptions = [
