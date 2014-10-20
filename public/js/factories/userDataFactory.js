@@ -43,7 +43,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				"expenses":false
 			},
 
-			'user':{
+			/*'user':{
 			 formData: {
 			 "name": {
 			 'first_name':undefined,
@@ -55,8 +55,8 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 			 },
 			 "phone":undefined
 			 }
-			 }
-			/*'user' :  {
+			 }*/
+			'user' :  {
 				formData : {
 
 					name: { first_name: 'Kevin', last_name: 'Miller' },
@@ -149,7 +149,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 					total_resources: 140,
 					rent: 900
 				}
-			}*/
+			}
 
 		};
 

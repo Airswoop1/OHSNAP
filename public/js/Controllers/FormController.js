@@ -298,10 +298,10 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		$scope.completedEligibilityHousehold = function() {
 
 			$scope.submitted_household = true;
+
 			if($scope.snapForm.household.$valid) {
 				updateEligibilityProgress('household');
 				$state.go('form.income');
-
 			}
 		};
 

@@ -1,0 +1,29 @@
+<h1>Has anyone sold, given away, or transferred a home, land, personal property, or any other resource in the past five years?</h1>
+
+<input ng-click="showInput = true;" ng-model="user.resources_sold_stuff" id="resources_sold_stuff_yes" type="radio"
+       class="name-input marital-input" value="yes" name="resources_sold_stuff"><label for="resources_sold_stuff_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.resources-sold-stuff', 'int.resources-own-property'); showInput=false;"
+       ng-model="user.resources_sold_stuff" id="resources_sold_stuff_no" type="radio"
+       class="name-input marital-input" value="no" name="resources_sold_stuff">
+<label for="resources_sold_stuff_no">No</label>
+
+
+<div ng-show="showInput">
+    <h4>Who?</h4>
+    <input type="text" ng-model="user.resources_sold_stuff_who" required/>
+    <br/>
+    <h4>What kind?</h4>
+    <input type="text" ng-model="user.resources_sold_stuff_kind" required/>
+    <br/>
+    <h4>When is it expected?</h4>
+    <input type="text" ng-model="user.resources_sold_stuff_when" required/>
+    <br/>
+    <h4>How much is expected?</h4>
+    <input type="number" name="resources_sold_stuff_amount" ng-model="user.resources_sold_stuff_amount" required/>
+    <br/>
+    <div ng-hide="interviewForm.resources_sold_stuff_amount.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.resources_sold_stuff_amount.$valid"
+         ng-click="updateCurrentAndGoToNext('int.resources-sold-stuff','int.resources-own-property')"
+         class="yellow-button">Continue</div>
+</div>

@@ -9,4 +9,4 @@
            class="name-input marital-input" value="no" name="is_citizen_{{$index}}"><label for="is_citizen_no_{{$index}}">No</label>
 </div>
 
-<div ng-click="updateCurrentAndGoToNext('int.household-is-citizen', 'int.main')" class="yellow-button">Continue</div>
+<div ng-click="updateCurrentAndGoToNext('int.household-is-citizen', 'int.main'); $emit('int-main','household')" class="yellow-button">Continue</div>
