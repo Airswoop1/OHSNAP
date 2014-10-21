@@ -563,6 +563,42 @@ angular.module('formApp.interviewConfig', ['ui.router', 'formApp.userDataFactory
 			}
 		})
 
+		.state('int.resources-owned-vehicles', {
+			url:'/resources-num-vehicles-owned',
+			templateUrl:'templates/interview/interview-resources-owned-vehicles.html',
+			controller:'interviewCtrl'
+		})
+
+		.state('int.resources-burial-agreement', {
+			url:'/resources-burial-agreement',
+			templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+			controller: function($scope, userDataFactory) {
+				$scope.current_user = userDataFactory.userData.user.formData;
+				$scope.title = "Does anyone have a burial agreement with a bank or funeral home?";
+				$scope.route_name = "resources-burial-agreement";
+				$scope.data_name = "resources_burial_agreement";
+				$scope.to_route_name = "resources-life-insurance";
+				$scope.model_for_route = $scope.current_user;
+				$scope.model_for_input = $scope.current_user;
+				$scope.show_input = false;
+			}
+		})
+
+		.state('int.resources-life-insurance', {
+			url:'/resources-life-insurance',
+			templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+			controller: function($scope, userDataFactory) {
+				$scope.current_user = userDataFactory.userData.user.formData;
+				$scope.title = "Does anyone have a life insurance policy?";
+				$scope.route_name = "resources-life-insurance";
+				$scope.data_name = "resources_life_insurance";
+				$scope.to_route_name = "main";
+				$scope.model_for_route = $scope.current_user;
+				$scope.model_for_input = $scope.current_user;
+				$scope.show_input = false;
+			}
+		})
+
 	/**
 	 * *************** END INCOME
 	 */

@@ -562,6 +562,8 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 				$scope.has_address = false;
 				$state.go('form.lived-at-duration');
 			}
+			console.log($scope.snapForm.street_address);
+			console.log($scope.snapForm.zip);
 
 		};
 
@@ -827,6 +829,17 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		});
 
 
+		$scope.updateCurrentAndGoToNext = function(current, next) {
+			if($scope.goingThroughEligibility){
+				updateEligibilityProgress(current.split('.')[1]);
+			}
+			else {
+				updateProgress(current.split('.'[1]));
+			}
+
+			$state.go(next);
+		};
+
 		$scope.updateProgress = function(u) {
 			updateProgress(u);
 		};
@@ -901,9 +914,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			if(rating.value != "-1" ) {
 				API.uploadFeedback($scope.formData, function(result){
 					if(result) {
-
 						$state.go('form.feedback-submitted');
-
 					}
 					else {
 						alert("Oops Looks like something went wrong. Your feedback was NOT submitted. Please wait and try again.")
@@ -941,7 +952,6 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 		 */
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState){
 
-
 			if(toState.name == 'form.intro') {
 				$window.scrollTo(0,0);
 				$scope.show_progress_bar = true;
@@ -956,49 +966,6 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 
 				$scope.show_progress = true;
 			}
-
-			/*if((toState.name === 'form.name' ||
-				toState.name === 'form.address' ||
-				toState.name === 'form.telephone' ||
-				toState.name === 'form.basic-confirmation'||
-				toState.name === 'form.basic-app-submitted' ||
-				toState.name === 'form.income' ||
-				toState.name === 'form.household' ||
-				toState.name === 'form.feedback-submitted' ||
-				toState.name === 'form.recert' ||
-				toState.name === 'form.document-upload' ||
-				toState.name === 'form.document-detail' ||
-				toState.name === 'form.eligibility' ||
-				toState.name === 'form.eligibility-expenses' ||
-				toState.name === 'form.expenses' ||
-				toState.name === 'form.redirect' ||
-				toState.name === 'form.ssn' ||
-				toState.name === 'form.citizenship' ||
-				toState.name === 'form.ineligible' ||
-				toState.name === 'form.non-citizen' ||
-				toState.name === 'form.citizenship-false' ||
-				toState.name === 'form.resources'
-				)) {
-
-				if($scope.goingThroughEligibility && toState.name == 'form.name'){
-					$scope.show_progress_bar = true;
-				}
-
-				$scope.show_progress = true;
-
-			}
-			else {
-				if(fromState.name === 'form.intro') {
-					$window.scrollTo(0,0);
-				}
-
-				if(toState.name == 'form.intro') {
-					$scope.show_progress_bar = true;
-					$scope.goingThroughEligibility = false;
-				}
-
-				$scope.show_progress = false;
-			}*/
 		});
 
 
@@ -1026,6 +993,11 @@ angular.module('formApp.interviewConfig', ['ui.router', 'formApp.userDataFactory
 			url:'/main',
 			templateUrl:'templates/interview/interview-main.html'
 		})
+
+	/**
+	 * *******************ELIGIBILITY
+	 */
+
 
 		.state('int.ssn', {
 			url:'/ssn',
@@ -1096,6 +1068,15 @@ angular.module('formApp.interviewConfig', ['ui.router', 'formApp.userDataFactory
 			url:'/citizen',
 			templateUrl:'templates/interview/interview-citizen.html'
 		})
+
+	/**
+	 *  ******************** END ELIGIBILITY
+	 */
+
+
+	/**
+	 * _********************** HOUSEHOLD
+	 */
 
 		.state('int.household', {
 			url:'/household-names',
@@ -1458,8 +1439,8 @@ angular.module('formApp.interviewConfig', ['ui.router', 'formApp.userDataFactory
 				$scope.current_user = userDataFactory.userData.user.formData;
 				$scope.title = "Has anyone applied for unemployment compensation?";
 				$scope.route_name = "applied-for-unemployment-compensation";
-				$scope.data_name = "applied_for_workers_comp";
-				$scope.data_name_input = "applied_for_workers_comp_input";
+				$scope.data_name = "applied_for_unemployment_comp";
+				$scope.data_name_input = "applied_for_unemployment_comp_input";
 				$scope.to_route_name = "applied-for-veterans-benefits";
 				$scope.model_for_route = $scope.current_user;
 				$scope.model_for_input = $scope.current_user;
@@ -1553,6 +1534,42 @@ angular.module('formApp.interviewConfig', ['ui.router', 'formApp.userDataFactory
 				$scope.model_for_input = $scope.current_user;
 				$scope.show_input = false;
 
+			}]
+		})
+
+		.state('int.resources-owned-vehicles', {
+			url:'/resources-num-vehicles-owned',
+			templateUrl:'templates/interview/interview-resources-owned-vehicles.html',
+			controller:'interviewCtrl'
+		})
+
+		.state('int.resources-burial-agreement', {
+			url:'/resources-burial-agreement',
+			templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+			controller: ["$scope", "userDataFactory", function($scope, userDataFactory) {
+				$scope.current_user = userDataFactory.userData.user.formData;
+				$scope.title = "Does anyone have a burial agreement with a bank or funeral home?";
+				$scope.route_name = "resources-burial-agreement";
+				$scope.data_name = "resources_burial_agreement";
+				$scope.to_route_name = "resources-life-insurance";
+				$scope.model_for_route = $scope.current_user;
+				$scope.model_for_input = $scope.current_user;
+				$scope.show_input = false;
+			}]
+		})
+
+		.state('int.resources-life-insurance', {
+			url:'/resources-life-insurance',
+			templateUrl:'templates/interview/interview-household-yesnowho-template.html',
+			controller: ["$scope", "userDataFactory", function($scope, userDataFactory) {
+				$scope.current_user = userDataFactory.userData.user.formData;
+				$scope.title = "Does anyone have a life insurance policy?";
+				$scope.route_name = "resources-life-insurance";
+				$scope.data_name = "resources_life_insurance";
+				$scope.to_route_name = "main";
+				$scope.model_for_route = $scope.current_user;
+				$scope.model_for_input = $scope.current_user;
+				$scope.show_input = false;
 			}]
 		})
 

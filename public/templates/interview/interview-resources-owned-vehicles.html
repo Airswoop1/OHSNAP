@@ -1,0 +1,8 @@
+<h1>How many vehicles do the people in your home own?</h1>
+
+<div class="form-group" ng-class="{'has-success':snapForm.resources_num_vehicles_owned.$pristine ,'has-error': snapForm.resources_num_vehicles_owned.$invalid}">
+    <input class="form-control" type="number" name="resources_num_vehicles_owned" id="resources_num_vehicles_owned" ng-model="user.resources_num_vehicles_owned" ng-required="true" autofocus="true"/>
+</div>
+
+<div class="yellow-button disabled">Continue</div>
+<div class="yellow-button" ng-click="updateCurrentAndGoToNext('int.resources-owned-vehicles','int.resources-burial-agreement')">Continue</div>
