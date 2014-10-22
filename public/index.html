@@ -74,6 +74,7 @@
 <script src="js/angular-file-upload.min.js"></script>
 <script src="js/ui-bootstrap.min.js"></script>
 <!--<script src="js/jquery.min.js"></script>-->
+<script src="js/configurations/states.js"></script>
 <script src="js/services/services.min.js"></script>
 <script src="js/factories/factories.min.js"></script>
 <script src="js/filters/filters.min.js"></script>

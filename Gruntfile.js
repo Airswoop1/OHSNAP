@@ -38,6 +38,12 @@ module.exports = function(grunt) {
 						[
 							'public/js/services/NoContactModalService.js',
 							'public/js/services/CalcBenefitService.js'
+						],
+					'public/js/configurations/states.js' :
+						[
+							'public/js/configurations/documentStates.js',
+							'public/js/configurations/formStates.js',
+							'public/js/configurations/interviewStates.js'
 						]
 
 				}
@@ -54,7 +60,8 @@ module.exports = function(grunt) {
 					'public/js/directives/directives.min.js':['public/js/directives/directives.js'],
 					'public/js/factories/factories.min.js':['public/js/factories/factories.js'],
 					'public/js/filters/filters.min.js':['public/js/filters/filters.js'],
-					'public/js/services/services.min.js':['public/js/services/services.js']
+					'public/js/services/services.min.js':['public/js/services/services.js'],
+					'public/js/configurations/states.min.js':['public/js/configurations/states.js']
 				}
 			}
 		},
