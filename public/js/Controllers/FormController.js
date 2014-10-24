@@ -435,7 +435,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			$scope.progress = 0;
 			for(var comp in $scope.completed_items){
 				if($scope.completed_items[comp]){
-					$scope.progress += 12.5;
+					$scope.progress += 10;
 				}
 			}
 		}

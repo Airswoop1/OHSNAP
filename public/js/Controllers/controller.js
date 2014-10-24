@@ -828,7 +828,7 @@ angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.b
 			$scope.progress = 0;
 			for(var comp in $scope.completed_items){
 				if($scope.completed_items[comp]){
-					$scope.progress += 12.5;
+					$scope.progress += 10;
 				}
 			}
 		}
@@ -972,8 +972,8 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 
 		$scope.interview_progress_status = 0;
-		$scope.interview_steps = -1;
-		//$scope.interview_steps = 5;
+		//$scope.interview_steps = -1;
+		$scope.interview_steps = 5;
 		$scope.user = userDataFactory.userData.user.formData; //? userDataFactory.userData.user.formData : {"household":1};
 		$scope.user.household_members = (typeof $scope.user.household_members!== 'undefined') ? $scope.user.household_members : {};
 		$scope.interviewCompleted = userDataFactory.userData.interviewProgress;
@@ -1132,7 +1132,7 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				'person_name': $scope.current_resource_name,
 				'type' : $scope.current_resource_kind,
 				'amount' : $scope.current_resource_amount,
-				'location' : $scope.currentresource_location
+				'location' : $scope.current_resource_location
 			});
 
 			$scope.current_resource_name = "";
@@ -1175,10 +1175,6 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			$scope.current_income_recent_date = "";
 
 		};
-
-
-
-
 
 		$scope.$on('int-main', function(meta, type){
 
@@ -1515,13 +1511,44 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 		};
 
 		$scope.updateCurrentAndGoToNext = function(current, next) {
-			console.log($scope.user);
+
 			setTimeout( function() {
 					updateProgress(current);
 					$state.go(next);
 				},200);
 		};
 
+		/**
+		 *
+		 * @param current - current state to update
+		 * @param next - state to transition to if condition is not met
+		 * @param condition - condition to logically compare
+		 * @param condition_next - if condition is met transition to this state
+		 */
+		$scope.updateCurrentAndGoToNextConditional = function(current, next, condition, condition_next) {
+
+			updateProgress(current);
+			var shouldBranch = false;
+			for(var x in  $scope.user.household_members) {
+				if($scope.user.household_members[x][condition] === 'yes') {
+					shouldBranch  = true;
+				}
+			}
+
+			if(shouldBranch) {
+				$state.go(condition_next);
+			}
+			else {
+				$state.go(next);
+			}
+
+		};
+
+
+		/**
+		 * Should be using a directive here...
+		 * @param index
+		 */
 		$scope.backToMainSign = function(index) {
 
 			var img_container = document.getElementById('image_wrapper' + index),

@@ -348,6 +348,16 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 				templateUrl:'templates/interview/interview-household-pregnant.html'
 			})
 
+			.state('int.household-pregnant-due-date', {
+				url:'/household-pregnant-due-date',
+				templateUrl:'templates/interview/interview-household-pregnant-due-date.html'
+			})
+
+			.state('int.household-pregnant-num-babies', {
+				url:'/household-pregnant-num-babies',
+				templateUrl:'templates/interview/interview-household-pregnant-num-babies.html'
+			})
+
 			.state('int.household-is-citizen',{
 				url:'/household-is-citizen',
 				templateUrl:'templates/interview/interview-household-citizenship.html'

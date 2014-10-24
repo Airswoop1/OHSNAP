@@ -1,0 +1,12 @@
+<h1>Are any of the following pregnant?</h1>
+
+<div ng-repeat="person in user.household_members track by $index" class="household-ssn" ng-show="person.applying && person.gender=='female'">
+    <h6>{{ person.name }}</h6>
+    <input  ng-model="person.pregnant" id="pregnant_yes_{{$index}}" type="radio"
+            class="name-input marital-input" value="yes" name="pregnant_{{$index}}"><label for="pregnant_yes_{{$index}}">Yes</label>
+    <br/>
+    <input ng-model="person.pregnant" id="pregnant_no_{{$index}}" type="radio"
+           class="name-input marital-input" value="no" name="pregnant_{{$index}}"><label for="pregnant_no_{{$index}}">No</label>
+</div>
+
+<div ng-click="updateCurrentAndGoToNextConditional('int.household-pregnant', 'int.household-in-school', 'pregnant', 'int.household-pregnant-due-date')" class="yellow-button">Continue</div>

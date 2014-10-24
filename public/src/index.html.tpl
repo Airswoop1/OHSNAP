@@ -66,7 +66,6 @@
 </body>
 <script src="<%= angular %>"></script>
 <script src="<%= angular_ui_router %>"></script>
-<script src="<%= angular_animate %>"></script>
 <script src="<%= angular_touch %>"></script>
 <script src="<%= jquery_1_11_1 %>"></script>
 <script src="js/sig/jSignature.js"></script>

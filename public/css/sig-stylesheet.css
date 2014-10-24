@@ -1,7 +1,3 @@
-<!--<link rel="stylesheet" href="css/app-signature-stylesheet.css"/>-->
-<style>
-
-
 .thumbnail_label {
     margin-left: 110px;
     width: 150px;
@@ -70,7 +66,7 @@ p {
     width: 300px;
     border: 5px solid #00bd54;
     z-index: 1000;
-
+    /*opacity:0.1;*/
 }
 
 #app_signature_label1 {
@@ -169,6 +165,7 @@ p {
     width:100%;
     height:400px;
     overflow:scroll;
+    display:none;
 
 }
 
@@ -179,44 +176,344 @@ p {
 #app_name {
     width: 200px;
     height: 20px;
-    top: 107px;
-    left: 86px;
+    top: 638px;
+    left: 72px;
 }
 
 #app_telephone {
     width: 139px;
     height: 20px;
-    top: 107px;
-    left: 436px;
+    top: 815px;
+    left: 88px;
 }
 
-#app_street {
-    width: 200px;
+#app_address {
+    width: 700px;
     height: 20px;
-    top: 127px;
-    left: 171px;
+    top: 699px;
+    left: 67px;
 }
-
+/*
+DEPRECATED
 #app_apt {
     width: 35px;
     height: 20px;
-    top: 129px;
-    left: 458px;
+    top: 699px;
+    left: 89px;
 }
 
 #app_city {
     width: 157px;
     height: 20px;
-    top: 129px;
-    left: 526px;
+    top: 699px;
+    left: 110px;
 }
 
 #app_zip {
     width: 100px;
     height: 20px;
-    top: 129px;
-    left: 787px;
+    top: 699px;
+    left: 150px;
+}*/
+
+#app_lived_at {
+    width: 200px;
+    height: 20px;
+    top: 750px;
+    left: 777px;
 }
+
+#app_qs_income {
+    width: 150px;
+    height: 20px;
+    top: 1022px;
+    left: 73px;
+}
+
+
+
+#app_qs_rent {
+    width: 200px;
+    height: 20px;
+    top: 1100px;
+    left: 73px;
+}
+
+#app_qs_resources {
+    width: 200px;
+    height: 20px;
+    top: 1171px;
+    left: 73px;
+}
+
+#app_qs_applying_yes {
+    width: 10px;
+    height: 10px;
+    top: 1024px;
+    left: 381px;
+
+}
+#app_qs_applying_no {
+    width: 10px;
+    height: 10px;
+    top: 1024px;
+    left: 437px;
+}
+#app_qs_telephone_yes {
+    width: 10px;
+    height: 10px;
+    top: 1083px;
+    left: 381px;
+}
+#app_qs_telephone_no {
+    width: 10px;
+    height: 10px;
+    top: 1084px;
+    left: 437px;
+
+}
+#app_qs_heating_yes {
+    width: 10px;
+    height: 10px;
+    top: 1172px;
+    left: 382px;
+
+}
+#app_qs_heating_no {
+    width: 10px;
+    height: 10px;
+    top: 1172px;
+    left: 437px;
+
+}
+#app_qs_utilities_yes {
+    width: 10px;
+    height: 10px;
+    top: 984px;
+    left: 954px;
+
+}
+#app_qs_utilities_no {
+    width: 10px;
+    height: 10px;
+    top: 984px;
+    left: 1009px;
+}
+#app_qs_migrant_yes {
+    width: 10px;
+    height: 10px;
+    top: 1102px;
+    left: 641px;
+}
+#app_qs_migrant_no {
+    width: 10px;
+    height: 10px;
+    top: 1102px;
+    left: 696px;
+
+}
+#app_qs_abused_yes {
+    width: 10px;
+    height: 10px;
+    top: 1173px;
+    left: 641px;
+}
+#app_qs_abused_no {
+    width: 10px;
+    height: 10px;
+    top: 1173px;
+    left: 696px;
+}
+
+#app_qs_utilties {
+    width: 394px;
+    height: 20px;
+    top: 1023px;
+    left: 645px;
+}
+
+
+#app_hh_name0 {
+    width: 400px;
+    height: 20px;
+    top: 382px;
+    left: 59px;
+}
+
+#app_hh_applying0 {
+    width: 10px;
+    height: 10px;
+    top: 381px;
+    left: 586px;
+}
+
+#app_hh_ssn0 {
+    width: 300px;
+    height: 20px;
+    top: 382px;
+    left: 821px;
+}
+
+
+#app_hh_dob0 {
+    width: 200px;
+    height: 20px;
+    top: 441px;
+    left: 59px;
+}
+
+#app_hh_gender_male0 {
+    width: 10px;
+    height: 10px;
+    top: 438px;
+    left: 238px;
+}
+
+#app_hh_gender_female0 {
+    width: 10px;
+    height: 10px;
+    top: 438px;
+    left: 282px;
+}
+
+
+#app_hh_state_id0 {
+    width: 200px;
+    height: 10px;
+    top: 438px;
+    left: 342px;
+}
+
+
+#app_hh_marital_single0 {
+    width:10px;
+    height:10px;
+    top: 419px;
+    left: 692px;
+}
+
+#app_hh_marital_divorced0 {
+    width: 10px;
+    height: 10px;
+    top: 445px;
+    left: 692px;
+}
+
+#app_hh_marital_separated0 {
+    width: 10px;
+    height: 10px;
+    top: 419px;
+    left: 827px;
+}
+
+#app_hh_marital_widowed0 {
+    width: 10px;
+    height: 10px;
+    top: 445px;
+    left: 826px;
+}
+
+#app_hh_marital_married0 {
+    width: 10px;
+    height: 10px;
+    top: 419px;
+    left: 962px;
+}
+
+#app_hh_student_yes0 {
+    width: 10px;
+    height: 10px;
+    top: 497px;
+    left: 55px;
+}
+
+#app_hh_student_no0 {
+    width: 10px;
+    height: 10px;
+    top: 497px;
+    left: 109px;
+}
+
+#app_hh_student_grade0 {
+    width: 200px;
+    height: 20px;
+    top: 497px;
+    left: 233px;
+}
+
+#app_hh_student_school0 {
+    width: 294px;
+    height: 20px;
+    top: 497px;
+    left: 393px;
+}
+
+#app_hh_student_FT_yes0 {
+    width: 10px;
+    height: 10px;
+    top: 490px;
+    left: 950px;
+}
+
+#app_hh_student_FT_no0 {
+    width: 10px;
+    height: 10px;
+    top: 490px;
+    left: 1009px;
+}
+
+
+#app_hh_pregnant_yes0 {
+    width: 10px;
+    height: 10px;
+    top: 557px;
+    left: 55px;
+}
+
+#app_hh_pregnant_no0 {
+    width: 10px;
+    height: 10px;
+    top: 557px;
+    left: 109px;
+}
+
+#app_hh_pregnant_due0 {
+    width: 200px;
+    height: 20px;
+    top: 557px;
+    left: 233px;
+}
+
+#app_hh_pregnant_num0 {
+    width: 294px;
+    height: 20px;
+    top: 557px;
+    left: 616px;
+}
+
+#app_hh_citizen_yes0 {
+    width: 10px;
+    height: 10px;
+    top: 596px;
+    left: 305px;
+}
+
+#app_hh_citizen_no0 {
+    width: 10px;
+    height: 10px;
+    top: 596px;
+    left: 361px;
+}
+
+
+#app_hh_name1 {
+    width: 400px;
+    height: 20px;
+    top: 911px;
+    left: 59px;
+}
+
+
 
 
 #app_applying {
@@ -461,23 +758,8 @@ p {
     text-indent: 20px;
     text-align:center;
     font-size: 22px;
-}
+    display:none;
 
-#page_alt_header1::before{
-    content: "\e610";
-    font-family: 'icomoon';
-    font-size: 26px;
-    line-height: 3.2;
-    float:left;
-    vertical-align: sub;
-    speak: none;
-    font-style: normal;
-    font-weight: normal;
-    font-variant: normal;
-    text-transform: none;
-    /* Better Font Rendering =========== */
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
 .app_page_header {
@@ -567,104 +849,3 @@ p {
     top:50px;
     left:0;
 }
-
-</style>
-
-<div class="app_alt_page_header" id="page_alt_header1" ng-click="goBack();">Page 1: Basics</div>
-<div class="img_container" id="image_wrapper_1" style="display:block;">
-    <img src="images/app1.png" alt=""/>
-    <div class="data_overlay" id="app_name">{{ user.name.first_name + " " + user.name.last_name }}</div>
-    <div class="data_overlay" id="app_telephone">{{ user.phone_main | tel }}</div>
-    <div class="data_overlay" id="app_street">{{ user.address.street_address }}</div>
-    <div class="data_overlay" id="app_apt">{{ user.address.apt_number }}</div>
-    <div class="data_overlay" id="app_city">{{ user.address.city }}</div>
-    <div class="data_overlay" id="app_zip">{{ user.address.zip }}</div>
-    <div class="data_overlay" id="app_applying">X</div>
-    <div class="data_overlay" id="app_date">{{ today }}</div>
-
-
-    <div class="data_overlay" id="app_citizen_yes">X</div>
-    <div class="data_overlay" id="app_citizen_no">X</div>
-
-    <div class="data_overlay" id="app_disabled_yes">X</div>
-    <div class="data_overlay" id="app_disabled_no">X</div>
-
-    <div class="data_overlay" id="app_household_0_first_name">{{ user.name.first_name }}</div>
-    <div class="data_overlay" id="app_household_0_last_name">{{ user.name.last_name }}</div>
-    <div class="data_overlay" id="app_household_0_ssn">{{ user.ssn | ssn}}</div>
-    <div class="data_overlay" id="app_household_0_dob">{{ user.dob }}</div>
-
-
-    <div  ng-repeat="person in user.household_members track by $index" class="data_overlay household_container" id="household_user_{{$index + 1}}">
-        <div class="hh_first_name">{{ person.name.split(' ')[0] }}</div>
-        <div class="hh_last_name">{{ person.name.split(' ')[1] }}</div>
-        <div class="hh_ssn">{{ person.ssn | ssn }}</div>
-        <div class="hh_dob">{{ person.dob }}</div>
-        <div class="hh_applying" ng-show="person.applying">X</div>
-        <div class="hh_not_applying" ng-hide="person.applying">X</div>
-        <div class="hh_relation">{{ person.relation }}</div>
-
-    </div>
-
-
-    <div id="app_signature_label1">APPLICANT/REPRESENTATIVE SIGNATURE</div>
-    <div id="sig_container1" ng-class="{hide_sig: !show_sig1, show_sig: show_sig1}">
-        <j-signature id="sig_capture1"></j-signature>
-
-        <div id="sig_prompt1">
-            Sign in the box with your finger.
-            <div id="sig_continue" class="sig_button" ng-click="goToSig2();">
-                Continue
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="app_alt_page_header" id="page_alt_header2" >Page 2: Income</div>
-<div class="img_container" id="image_wrapper_2" >
-    <img src="images/app2.png" alt=""/>
-    <div ng-repeat="person in personsWithIncome track by $index">
-        <div class="data_overlay" id="app_{{ $index }}_income_name">{{ person.name }}</div>
-        <div class="data_overlay" id="app_{{ $index }}_income_hours">{{ person.hours_per_month }}</div>
-        <div class="data_overlay" id="app_{{ $index }}_income_amount">${{ person.amount }}</div>
-
-    </div>
-
-    <div class="data_overlay" id="app_total_resources">{{ user.total_resources || 0 }}</div>
-    <div class="data_overlay" id="app_rent">{{ user.rent || 0 }}</div>
-
-</div>
-
-<div class="app_alt_page_header" id="page_alt_header3" >Page 3: Expenses</div>
-<div class="img_container" id="image_wrapper_3">
-    <img src="images/app3.png"  alt=""/>
-</div>
-
-<div class="app_alt_page_header" id="page_alt_header4" >Page 4: Legal</div>
-<div class="img_container" id="image_wrapper_4">
-    <img src="images/app4.png" alt=""/>
-</div>
-
-
-<div class="app_alt_page_header" id="page_alt_header5" >Page 5: Final Signature</div>
-<div class="img_container" id="image_wrapper_5" style="display:block;">
-    <img src="images/app5.png" alt=""/>
-    <div id="app_signature_label2"></div>
-    <div id="sig_container2" ng-class="{hide_sig: !show_sig1, show_sig: show_sig1}">
-        <j-signature id="sig_capture2"></j-signature>
-
-        <div class="sig_prompt">
-            Sign in the box with your finger.
-            <div ng-hide="appSubmissionInProcess" class="sig_button" id="submit_application" ng-click="submitSignedApplication();">
-                Submit application
-            </div>
-            <div ng-show="appSubmissionInProcess" style="background-color:gray" class="sig_button">
-                Submitting application...
-            </div>
-        </div>
-    </div>
-</div>
-<div style="clear:both;height:500px"></div>
-
-<!--<script src="js/sig/jSignature.js"></script>-->
-
