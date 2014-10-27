@@ -104,6 +104,52 @@
     <div ng-show="user.citizen=='No'" class="data_overlay" id="app_hh_citizen_no0">X</div>
 
 
+<!-------- PERSON 2 -------->
+
+    <div class="data_overlay" id="app_hh_name1">{{ user.household_members['1'].name }}</div>
+    <div ng-show="user.household_members['1'].applying=='true'" class="data_overlay" id="app_hh_applying1">X</div>
+
+    <div class="data_overlay" id="app_hh_ssn1">{{ user.household_members['1'].ssn | ssn}}</div>
+
+    <div class="data_overlay" id="app_hh_dob1">{{ user.household_members['1'].dob }}</div>
+
+    <div ng-show="user.household_members['1'].gender=='male'" class="data_overlay" id="app_hh_gender_male1">X</div>
+    <div ng-show="user.household_members['1'].gender=='female'" class="data_overlay" id="app_hh_gender_female1">X</div>
+
+    <div class="data_overlay" id="app_hh_state_id1">{{ user.household_members['1'].state_id }}</div>
+
+    <div ng-show="user.household_members['1'].marital=='Single'" class="data_overlay" id="app_hh_marital_single1">X</div>
+    <div ng-show="user.household_members['1'].marital=='Divorced'" class="data_overlay" id="app_hh_marital_divorced1">X</div>
+    <div ng-show="user.household_members['1'].marital=='Separated'" class="data_overlay" id="app_hh_marital_separated1">X</div>
+    <div ng-show="user.household_members['1'].marital=='Widowed'" class="data_overlay" id="app_hh_marital_widowed1">X</div>
+    <div ng-show="user.household_members['1'].marital=='Married'" class="data_overlay" id="app_hh_marital_married1">X</div>
+
+    <div ng-show="user.household_members['1'].student=='yes'" class="data_overlay" id="app_hh_student_yes1">X</div>
+    <div ng-show="user.household_members['1'].student=='no'" class="data_overlay" id="app_hh_student_no1">X</div>
+
+    <div class="data_overlay" id="app_hh_student_grade1">{{ user.household_members['1'].school_grade }}</div>
+    <div class="data_overlay" id="app_hh_student_school1">{{ user.household_members['1'].schoolName }}</div>
+
+    <div ng-show="user.household_members['1'].studentFT=='yes'" class="data_overlay" id="app_hh_student_FT_yes1">X</div>
+    <div ng-show="user.household_members['1'].studentFT=='no'" class="data_overlay" id="app_hh_student_FT_no1">X</div>
+
+    <div ng-show="user.household_members['1'].self_pregnant=='yes'" class="data_overlay" id="app_hh_pregnant_yes1">X</div>
+    <div ng-show="user.household_members['1'].self_pregnant=='no'" class="data_overlay" id="app_hh_pregnant_no1">X</div>
+
+    <div class="data_overlay" id="app_hh_pregnant_due1">{{ user.household_members['1'].pregnant_due_date }}</div>
+    <div class="data_overlay" id="app_hh_pregnant_num1">{{ user.household_members['1'].pregnant_num_babies }}</div>
+
+    <div ng-show="user.household_members['1'].citizen=='Yes'" class="data_overlay" id="app_hh_citizen_yes1">X</div>
+    <div ng-show="user.household_members['1'].citizen=='No'" class="data_overlay" id="app_hh_citizen_no1">X</div>
+
+
+
+
+
+
+
+
+
 </div>
 
 <div class="app_page_header" id="page_header4" ng-click="backToMainSign(4)">Household Info 2</div>

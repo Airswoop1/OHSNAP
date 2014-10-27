@@ -332,6 +332,7 @@ DEPRECATED
     left: 645px;
 }
 
+/**** PAGE 2  ****/
 
 #app_hh_name0 {
     width: 400px;
@@ -512,6 +513,194 @@ DEPRECATED
     top: 911px;
     left: 59px;
 }
+
+/****** *** *** *** *** ***  PERSON 2 ****** *** *** *** *** *** /
+
+
+/**** *** *** + 530 for top row*** *** *** *** *** *** *** *** *** ****** *** ***/
+
+#app_hh_name1 {
+    width: 400px;
+    height: 20px;
+    top:912px;
+    left: 59px;
+}
+
+#app_hh_applying1 {
+    width: 10px;
+    height: 10px;
+    top: 381px;
+    left: 586px;
+}
+
+#app_hh_ssn1 {
+    width: 300px;
+    height: 20px;
+    top: 382px;
+    left: 821px;
+}
+
+
+#app_hh_dob1 {
+    width: 200px;
+    height: 20px;
+    top: 971px;
+    left: 59px;
+}
+
+#app_hh_gender_male1 {
+    width: 10px;
+    height: 10px;
+    top: 438px;
+    left: 238px;
+}
+
+#app_hh_gender_female1 {
+    width: 10px;
+    height: 10px;
+    top: 438px;
+    left: 282px;
+}
+
+
+#app_hh_state_id1 {
+    width: 200px;
+    height: 10px;
+    top: 438px;
+    left: 342px;
+}
+
+
+#app_hh_marital_single1 {
+    width:10px;
+    height:10px;
+    top: 419px;
+    left: 692px;
+}
+
+#app_hh_marital_divorced1 {
+    width: 10px;
+    height: 10px;
+    top: 445px;
+    left: 692px;
+}
+
+#app_hh_marital_separated1 {
+    width: 10px;
+    height: 10px;
+    top: 419px;
+    left: 827px;
+}
+
+#app_hh_marital_widowed1 {
+    width: 10px;
+    height: 10px;
+    top: 445px;
+    left: 826px;
+}
+
+#app_hh_marital_married1 {
+    width: 10px;
+    height: 10px;
+    top: 419px;
+    left: 962px;
+}
+
+#app_hh_student_yes1 {
+    width: 10px;
+    height: 10px;
+    top: 497px;
+    left: 55px;
+}
+
+#app_hh_student_no1 {
+    width: 10px;
+    height: 10px;
+    top: 497px;
+    left: 109px;
+}
+
+#app_hh_student_grade1 {
+    width: 200px;
+    height: 20px;
+    top: 497px;
+    left: 233px;
+}
+
+#app_hh_student_school1 {
+    width: 294px;
+    height: 20px;
+    top: 497px;
+    left: 393px;
+}
+
+#app_hh_student_FT_yes1 {
+    width: 10px;
+    height: 10px;
+    top: 490px;
+    left: 950px;
+}
+
+#app_hh_student_FT_no1 {
+    width: 10px;
+    height: 10px;
+    top: 490px;
+    left: 1009px;
+}
+
+
+#app_hh_pregnant_yes1 {
+    width: 10px;
+    height: 10px;
+    top: 557px;
+    left: 55px;
+}
+
+#app_hh_pregnant_no1 {
+    width: 10px;
+    height: 10px;
+    top: 557px;
+    left: 109px;
+}
+
+#app_hh_pregnant_due1 {
+    width: 200px;
+    height: 20px;
+    top: 557px;
+    left: 233px;
+}
+
+#app_hh_pregnant_num1 {
+    width: 294px;
+    height: 20px;
+    top: 557px;
+    left: 616px;
+}
+
+#app_hh_citizen_yes1 {
+    width: 10px;
+    height: 10px;
+    top: 596px;
+    left: 305px;
+}
+
+#app_hh_citizen_no1 {
+    width: 10px;
+    height: 10px;
+    top: 596px;
+    left: 361px;
+}
+
+
+/*** PAGE 3 ***/
+
+
+
+
+
+
+
+
 
 
 
