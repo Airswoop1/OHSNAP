@@ -526,17 +526,24 @@ DEPRECATED
     left: 59px;
 }
 
-#app_hh_applying1 {
+#app_hh_applying_yes1 {
     width: 10px;
     height: 10px;
-    top: 381px;
-    left: 586px;
+    top: 912px;
+    left: 577px;
+}
+
+#app_hh_applying_no1 {
+    width: 10px;
+    height: 10px;
+    top: 912px;
+    left: 633px;
 }
 
 #app_hh_ssn1 {
     width: 300px;
     height: 20px;
-    top: 382px;
+    top: 912px;
     left: 821px;
 }
 
@@ -551,14 +558,14 @@ DEPRECATED
 #app_hh_gender_male1 {
     width: 10px;
     height: 10px;
-    top: 438px;
+    top: 971px;
     left: 238px;
 }
 
 #app_hh_gender_female1 {
     width: 10px;
     height: 10px;
-    top: 438px;
+    top: 971px;
     left: 282px;
 }
 
@@ -566,7 +573,7 @@ DEPRECATED
 #app_hh_state_id1 {
     width: 200px;
     height: 10px;
-    top: 438px;
+    top: 968px;
     left: 342px;
 }
 
@@ -574,122 +581,175 @@ DEPRECATED
 #app_hh_marital_single1 {
     width:10px;
     height:10px;
-    top: 419px;
+    top: 951px;
     left: 692px;
 }
 
 #app_hh_marital_divorced1 {
     width: 10px;
     height: 10px;
-    top: 445px;
+    top: 977px;
     left: 692px;
 }
 
 #app_hh_marital_separated1 {
     width: 10px;
     height: 10px;
-    top: 419px;
+    top: 451px;
     left: 827px;
 }
 
 #app_hh_marital_widowed1 {
     width: 10px;
     height: 10px;
-    top: 445px;
+    top: 977px;
     left: 826px;
 }
 
 #app_hh_marital_married1 {
     width: 10px;
     height: 10px;
-    top: 419px;
+    top: 451px;
     left: 962px;
 }
+
+#app_hh_marital_spouse1{
+    width:10px;
+    height:10px;
+    top: 1018px;
+    left: 304px;
+}
+
+#app_hh_marital_child1{
+    width:10px;
+    height:10px;
+    top: 1018px;
+    left: 402px;
+}
+
+#app_hh_marital_stepchild1{
+    width:10px;
+    height:10px;
+    top: 1018px;
+    left: 484px;
+}
+
+#app_hh_not_related1{
+    width:10px;
+    height:10px;
+    top: 1018px;
+    left: 601px;
+}
+
+#app_hh_marital_other1{
+    width:10px;
+    height:10px;
+    top: 1018px;
+    left: 728px;
+}
+
+#app_hh_lives_with_yes1 {
+    width:10px;
+    height:10px;
+    top: 1024px;
+    left: 821px;
+}
+
+#app_hh_lives_with_no1 {
+    width:10px;
+    height:10px;
+    top: 1024px;
+    left: 877px;
+}
+
+
 
 #app_hh_student_yes1 {
     width: 10px;
     height: 10px;
-    top: 497px;
+    top: 1078px;
     left: 55px;
 }
 
 #app_hh_student_no1 {
     width: 10px;
     height: 10px;
-    top: 497px;
-    left: 109px;
+    top: 1078px;
+    left: 112px;
 }
 
 #app_hh_student_grade1 {
     width: 200px;
     height: 20px;
-    top: 497px;
+    top: 1078px;
     left: 233px;
 }
 
 #app_hh_student_school1 {
     width: 294px;
     height: 20px;
-    top: 497px;
-    left: 393px;
+    top: 1078px;
+    left: 409px;
 }
 
 #app_hh_student_FT_yes1 {
     width: 10px;
     height: 10px;
-    top: 490px;
-    left: 950px;
+    top: 1137px;
+    left: 55px;
 }
 
 #app_hh_student_FT_no1 {
     width: 10px;
     height: 10px;
-    top: 490px;
-    left: 1009px;
+    top: 1137px;
+    left: 111px;
 }
 
 
 #app_hh_pregnant_yes1 {
     width: 10px;
     height: 10px;
-    top: 557px;
+    top: 1136px;
     left: 55px;
 }
 
 #app_hh_pregnant_no1 {
     width: 10px;
     height: 10px;
-    top: 557px;
-    left: 109px;
+    top: 1136px;
+    left: 112px;
 }
 
 #app_hh_pregnant_due1 {
     width: 200px;
     height: 20px;
-    top: 557px;
-    left: 233px;
+    top: 1136px;
+    left: 248px;
 }
 
 #app_hh_pregnant_num1 {
     width: 294px;
     height: 20px;
-    top: 557px;
-    left: 616px;
+    top: 1136px;
+    left: 603px;
 }
 
 #app_hh_citizen_yes1 {
     width: 10px;
     height: 10px;
-    top: 596px;
-    left: 305px;
+    top: 1176px;
+    left: 343px;
 }
 
 #app_hh_citizen_no1 {
     width: 10px;
     height: 10px;
-    top: 596px;
-    left: 361px;
+    top: 1176px;
+    left: 401px;
 }
+
+
 
 
 /*** PAGE 3 ***/

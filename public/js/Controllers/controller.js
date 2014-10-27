@@ -1080,11 +1080,11 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 		$scope.relationshipOptions = [
 			{name:"Select", value:"Select"},
-			{name:"Partner", value:"Partner"},
-			{name:"Child", "value":"Child"},
-			{name:"Parent", "value":"Parent"},
-			{name:"Roommate", "value":"Roommate"},
-			{name:"Family", "value":"Family"}
+			{name:"Spouse", value:"spouse"},
+			{name:"Child", "value":"child"},
+			{name:"Stepchild", "value":"stepchild"},
+			{name:"Not Related", "value":"not related"},
+			{name:"Other", "value":"other"}
 		];
 
 

@@ -269,7 +269,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				"expenses":false
 			},
 
-			/*'user':{
+			'user':{
 				formData: {
 					"name": {
 						'first_name':undefined,
@@ -281,8 +281,8 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 					},
 					"phone":undefined
 				}
-			}*/
-			'user' :  {
+			}
+			/*'user' :  {
 			 formData : {
 				 "name": {
 					 "first_name": "Kevin",
@@ -300,7 +300,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 						 "applying": true,
 						 "income": 900,
 						 "show": false,
-						 "relation": "Roommate",
+						 "relation": "other",
 						 "name": "Tiernan Kiefer",
 						 "ssn": 988999888,
 						 "dob": "1989-04-06",
@@ -313,21 +313,33 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 						 "in_schoool": "yes"
 					 },
 					 "1": {
-						 "applying": false,
+						 "applying": true,
 						 "income": 0,
 						 "show": false,
-						 "relation": "Roommate",
+						 "relation": "child",
 						 "name": "James Doyle",
 						 "ssn": 898989887,
 						 "dob": "1989-07-06",
 						 "hours_wk": 30,
-						 "wk_month": 2
+						 "wk_month": 2,
+						 "gender": "male",
+						 "state_id": 6666666,
+						 "marital_status": "Single",
+						 "lives_with": "yes",
+						 "in_schoool": "yes",
+						 "student":'yes',
+						 "school_grade": "Senior",
+						 "schoolName": "Lehigh",
+						 "studentFT": "yes",
+						 "pregnant":'yes',
+						 "pregnant_due_date": "2014-10-29",
+						 "pregnant_num_babies": 1
 					 },
 					 "2": {
 						 "applying": false,
 						 "income": 0,
 						 "show": false,
-						 "relation": "Roommate",
+						 "relation": "child",
 						 "name": "James Doyle",
 						 "ssn": 898989887,
 						 "dob": "1989-07-06",
@@ -338,7 +350,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 						 "applying": false,
 						 "income": 0,
 						 "show": false,
-						 "relation": "Roommate",
+						 "relation": "stepchild",
 						 "name": "James Doyle",
 						 "ssn": 898989887,
 						 "dob": "1989-07-06",
@@ -417,7 +429,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				 "migrant_worker": "yes",
 				 "shelter_abused": "yes"
 			 }
-			 }
+			 }*/
 
 		};
 

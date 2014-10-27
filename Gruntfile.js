@@ -75,7 +75,7 @@ module.exports = function(grunt) {
 			}
 		},
 		template : {
-			'index_for_prod': {
+			'index_for_offline': {
 				'options': {
 					'data': {
 						'angular': 'js/local/angular.min.js',
@@ -93,11 +93,11 @@ module.exports = function(grunt) {
 			'index_for_dev':{
 				'options': {
 					'data': {
-						'angular': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js',
-						'angular_ui_router': '//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js',
-						'angular_animate': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js',
-						'angular_touch':'//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-touch.js',
-						'jquery_1_11_1': '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js'
+						'angular': 'js/local/angular.min.js',
+						'angular_ui_router': 'js/local/angular-ui-router.min.js',
+						'angular_animate': 'js/local/angular-animate.min.js',
+						'angular_touch':'js/local/angular-touch.js',
+						'jquery_1_11_1': 'js/local/jquery-1.10.2.min.js'
 
 					},
 					'delimiters': 'handlebars-like-delimiters'
@@ -105,8 +105,22 @@ module.exports = function(grunt) {
 				'files': {
 					'public/index.html': ['public/src/index.html.tpl']
 				}
+			},
+			'index_for_prod': {
+				'options': {
+					'data': {
+						'angular': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.js',
+						'angular_ui_router': '//cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.10/angular-ui-router.js',
+						'angular_animate': '//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-animate.js',
+						'angular_touch':'//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-touch.js',
+						'jquery_1_11_1': '//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.js',
+					},
+					'delimiters': 'handlebars-like-delimiters'
+				},
+				'files': {
+					'public/index.html': ['public/src/index.html.tpl']
+				}
 			}
-
 		},
 		env : {
 			options : {
@@ -124,7 +138,8 @@ module.exports = function(grunt) {
 		watch: {
 			scripts: {
 				files: ['public/js/**/*'],
-				tasks: ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_dev'],
+				tasks: ['dev'],
+				//tasks: ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_dev'],
 				options: {
 					spawn: false
 				}
@@ -143,6 +158,7 @@ module.exports = function(grunt) {
 
 	// Default task(s).
 	//grunt.registerTask('default', ['ngAnnotate', 'uglify', 'cssmin']);
+	grunt.registerTask('offline', ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_offline', 'watch']);
 	grunt.registerTask('dev', ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_dev', 'watch']);
 	grunt.registerTask('prod', ['ngAnnotate', 'uglify', 'cssmin', 'template:index_for_prod']);
 

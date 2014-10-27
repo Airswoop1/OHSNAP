@@ -107,7 +107,8 @@
 <!-------- PERSON 2 -------->
 
     <div class="data_overlay" id="app_hh_name1">{{ user.household_members['1'].name }}</div>
-    <div ng-show="user.household_members['1'].applying=='true'" class="data_overlay" id="app_hh_applying1">X</div>
+    <div ng-show="user.household_members['1'].applying==true" class="data_overlay" id="app_hh_applying_yes1">X</div>
+    <div ng-show="user.household_members['1'].applying==false" class="data_overlay" id="app_hh_applying_no1">X</div>
 
     <div class="data_overlay" id="app_hh_ssn1">{{ user.household_members['1'].ssn | ssn}}</div>
 
@@ -118,11 +119,23 @@
 
     <div class="data_overlay" id="app_hh_state_id1">{{ user.household_members['1'].state_id }}</div>
 
-    <div ng-show="user.household_members['1'].marital=='Single'" class="data_overlay" id="app_hh_marital_single1">X</div>
-    <div ng-show="user.household_members['1'].marital=='Divorced'" class="data_overlay" id="app_hh_marital_divorced1">X</div>
-    <div ng-show="user.household_members['1'].marital=='Separated'" class="data_overlay" id="app_hh_marital_separated1">X</div>
-    <div ng-show="user.household_members['1'].marital=='Widowed'" class="data_overlay" id="app_hh_marital_widowed1">X</div>
-    <div ng-show="user.household_members['1'].marital=='Married'" class="data_overlay" id="app_hh_marital_married1">X</div>
+    <div ng-show="user.household_members['1'].marital_status=='Single'" class="data_overlay" id="app_hh_marital_single1">X</div>
+    <div ng-show="user.household_members['1'].marital_status=='Divorced'" class="data_overlay" id="app_hh_marital_divorced1">X</div>
+    <div ng-show="user.household_members['1'].marital_status=='Separated'" class="data_overlay" id="app_hh_marital_separated1">X</div>
+    <div ng-show="user.household_members['1'].marital_status=='Widowed'" class="data_overlay" id="app_hh_marital_widowed1">X</div>
+    <div ng-show="user.household_members['1'].marital_status=='Married'" class="data_overlay" id="app_hh_marital_married1">X</div>
+
+
+    <div ng-show="user.household_members['1'].relation=='spouse'" class="data_overlay" id="app_hh_marital_spouse1">X</div>
+    <div ng-show="user.household_members['1'].relation=='child'" class="data_overlay" id="app_hh_marital_child1">X</div>
+    <div ng-show="user.household_members['1'].relation=='stepchild'" class="data_overlay" id="app_hh_marital_stepchild1">X</div>
+    <div ng-show="user.household_members['1'].relation=='not related'" class="data_overlay" id="app_hh_not_related1">X</div>
+    <div ng-show="user.household_members['1'].relation=='other'" class="data_overlay" id="app_hh_marital_other1">X</div>
+
+
+    <div ng-show="user.household_members['1'].lives_with=='yes'" class="data_overlay" id="app_hh_lives_with_yes1">X</div>
+    <div ng-show="user.household_members['1'].lives_with=='no'" class="data_overlay" id="app_hh_lives_with_no1">X</div>
+
 
     <div ng-show="user.household_members['1'].student=='yes'" class="data_overlay" id="app_hh_student_yes1">X</div>
     <div ng-show="user.household_members['1'].student=='no'" class="data_overlay" id="app_hh_student_no1">X</div>
@@ -141,12 +154,6 @@
 
     <div ng-show="user.household_members['1'].citizen=='Yes'" class="data_overlay" id="app_hh_citizen_yes1">X</div>
     <div ng-show="user.household_members['1'].citizen=='No'" class="data_overlay" id="app_hh_citizen_no1">X</div>
-
-
-
-
-
-
 
 
 
