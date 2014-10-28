@@ -750,15 +750,361 @@ DEPRECATED
 }
 
 
+.x {
+    height:10px;
+    width:10px;
+}
 
 
 /*** PAGE 3 ***/
 
 
+#person3 {
+    width: 1063px;
+    height: 535px;
+    left: 41px;
+    top: 201px;
+    border: 1px solid red;
+}
+
+#person4 {
+    width: 1063px;
+    height: 535px;
+    left: 41px;
+    top: 781px;
+    border: 1px solid red;
+}
+
+#person5 {
+    width: 1063px;
+    height: 535px;
+    left: 41px;
+    top: 196px;
+    border: 1px solid red;
+}
+
+#person6 {
+    width: 1063px;
+    height: 535px;
+    left: 41px;
+    top: 776px;
+    border: 1px solid red;
+}
+
+
+.hh_name {
+    height: 20px;
+    width: 250px;
+    top: 34px;
+    left: 20px;
+}
+
+.hh_applying_yes {
+    height: 10px;
+    width:10px;
+    top:30px;
+    left:535px;
+}
+
+.hh_applying_no {
+    height: 10px;
+    width:10px;
+    top: 30px;
+    left: 591px;
+}
+
+
+.hh_ssn {
+    height:20px;
+    width:150px;
+    top:30px;
+    left:800px;
+}
+
+.hh_dob {
+    height: 20px;
+    width: 100px;
+    top: 91px;
+    left: 24px;
+}
+
+.hh_male {
+    top:91px;
+    left: 196px;
+}
+
+.hh_female {
+    top:91px;
+    left: 242px;
+}
+
+.hh_state_id {
+    top:91px;
+    left:297px;
+}
+
+.hh_marital_single {
+    top: 69px;
+    left: 649px;
+}
+
+.hh_marital_separated {
+    top: 69px;
+    left: 784px;
+}
+
+.hh_marital_married {
+    top: 69px;
+    left: 920px;
+}
+
+.hh_marital_divorced {
+    top: 96px;
+    left: 649px;
+}
+
+.hh_marital_widowed {
+    top: 96px;
+    left: 786px;
+}
+
+.hh_relation_spouse {
+    top: 135px;
+    left: 261px;
+}
+.hh_relation_child {
+    top: 135px;
+    left: 362px;
+}
+.hh_relation_stepchild {
+    top: 135px;
+    left: 442px;
+}
+.hh_relation_not_related {
+    top: 135px;
+    left: 559px;
+}
+.hh_relation_other {
+    top: 135px;
+    left: 687px;
+}
+
+.hh_lives_with_yes {
+    top: 142px;
+    left: 777px;
+}
+
+.hh_lives_with_no {
+    top: 142px;
+    left: 833px;
+}
+
+.hh_student_yes {
+    top: 197px;
+    left: 13px;
+}
+
+.hh_student_no {
+    top: 197px;
+    left: 69px;
+}
+
+
+.hh_student_grade {
+    width: 200px;
+    height: 20px;
+    top: 200px;
+    left: 199px;
+}
+
+.hh_student_school {
+    width: 294px;
+    height: 20px;
+    top: 197px;
+    left: 363px;
+}
+
+.hh_student_FT_yes {
+    top: 189px;
+    left: 918px;
+}
+
+.hh_student_FT_no {
+    top: 189px;
+    left: 978px;
+}
+
+
+.hh_pregnant_yes {
+    top: 255px;
+    left: 13px;
+}
+
+.hh_pregnant_no {
+    top: 255px;
+    left: 69px;
+}
+
+.hh_pregnant_due {
+    width: 200px;
+    height: 20px;
+    top: 250px;
+    left: 199px;
+}
+
+.hh_pregnant_num {
+    width: 200px;
+    height: 20px;
+    top: 250px;
+    left: 543px;
+}
+
+.hh_citizen_yes {
+    top: 294px;
+    left: 303px;
+}
+
+.hh_citizen_no {
+    top: 294px;
+    left: 359px;
+}
 
 
 
+/**** Page 5 ****/
 
+.general_household {
+    width: 1063px;
+    height: 1000px;
+    top: 220px;
+    left: 42px;
+    border: 1px solid red;
+}
+
+.general_household div {
+    position:absolute;
+}
+
+#rec_snap_yes {
+    top: 21px;
+    left: 354px;
+}
+
+#rec_snap_no {
+    top: 21px;
+    left: 407px;
+}
+
+#rec_snap_who {
+    top: 27px;
+    left: 485px;
+}
+
+
+#disqualified_yes {
+    top: 73px;
+    left: 354px;
+}
+
+#disqualified_no {
+    top: 73px;
+    left: 407px;
+}
+
+#snap_disqualification_who {
+    top: 76px;
+    left:485px;
+}
+
+#different_name_yes {
+    top: 126px;
+    left: 354px;
+}
+
+#different_name_no {
+    top: 126px;
+    left: 407px;
+}
+
+#different_name_who {
+    top: 134px;
+    left:485px;
+}
+
+#military_yes {
+    top: 172px;
+    left: 354px;
+}
+
+#military_no {
+    top: 172px;
+    left: 407px;
+}
+
+#military_family_yes {
+    top: 172px;
+    left: 942px;
+}
+
+#military_family_no {
+    top: 172px;
+    left: 1002px;
+}
+
+#foster_yes {
+    top: 218px;
+    left: 354px;
+}
+
+#foster_no {
+    top: 218px;
+    left: 407px;
+}
+
+#foster_who {
+    top: 226px;
+    left: 485px;
+}
+
+#foster_end_yes {
+    top: 264px;
+    left: 354px;
+}
+
+#foster_end_no {
+    top: 264px;
+    left: 407px;
+}
+
+#foster_end_age {
+    top: 263px;
+    left: 707px;
+}
+
+#foster_end_state {
+    top: 263px;
+    left: 807px;
+}
+
+#needs_medical_yes {
+    top: 311px;
+    left: 354px;
+}
+
+#needs_medical_no {
+    top: 311px;
+    left: 407px;
+}
+
+#mecial_need_who {
+    top: 311px;
+    left: 707px;
+}
+
+#medical_need_disability{
+    top: 311px;
+    left: 907px;
+}
 
 
 
@@ -951,7 +1297,7 @@ DEPRECATED
 }
 
 
-.hh_first_name {
+/*.hh_first_name {
     left:0px;
     width:90px
 }
@@ -961,10 +1307,6 @@ DEPRECATED
     width:115px;
 }
 
-.hh_ssn {
-    left:240px;
-    width:115px;
-}
 
 .hh_dob {
     left: 356px;
@@ -987,7 +1329,7 @@ DEPRECATED
     font-size:11px;
 
 }
-
+*/
 .hide_sig {
     opacity: 0;
 }

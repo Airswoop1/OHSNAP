@@ -15,13 +15,15 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				'IDENTITY':this.DOC_STATUS.NOT_UPLOADED,
 				'RESIDENCE':this.DOC_STATUS.NOT_UPLOADED,
 				'HOUSEHOLD_COMPOSITION':this.DOC_STATUS.NOT_UPLOADED,
+				'HOUSING_EXPENSE':this.DOC_STATUS.NOT_UPLOADED,
 				'AGE':this.DOC_STATUS.NOT_UPLOADED,
 				'SSN':this.DOC_STATUS.NOT_UPLOADED,
 				'CITIZENSHIP':this.DOC_STATUS.NOT_UPLOADED,
 				'ALIEN_STATUS':this.DOC_STATUS.NOT_UPLOADED,
 				'EARNED_INCOME':this.DOC_STATUS.NOT_UPLOADED,
 				'ALT_INCOME':this.DOC_STATUS.NOT_UPLOADED,
-				'RESOURCES':this.DOC_STATUS.NOT_UPLOADED
+				'RESOURCES':this.DOC_STATUS.NOT_UPLOADED,
+				'OTHER':this.DOC_STATUS.NOT_UPLOADED
 			},
 			docProgress : {
 				'IDENTITY':0,
@@ -43,7 +45,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				"expenses":false
 			},
 
-			'user':{
+			/*'user':{
 				formData: {
 					"name": {
 						'first_name':undefined,
@@ -55,8 +57,8 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 					},
 					"phone":undefined
 				}
-			}
-			/*'user' :  {
+			}*/
+			'user' :  {
 			 formData : {
 				 "name": {
 					 "first_name": "Kevin",
@@ -110,7 +112,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 						 "pregnant_num_babies": 1
 					 },
 					 "2": {
-						 "applying": false,
+						 "applying": true,
 						 "income": 0,
 						 "show": false,
 						 "relation": "child",
@@ -118,40 +120,92 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 						 "ssn": 898989887,
 						 "dob": "1989-07-06",
 						 "hours_wk": 30,
-						 "wk_month": 2
+						 "wk_month": 2,
+						 "gender": "male",
+						 "state_id": 6666666,
+						 "marital_status": "Single",
+						 "lives_with": "yes",
+						 "in_schoool": "yes",
+						 "student":'yes',
+						 "school_grade": "Senior",
+						 "schoolName": "Lehigh",
+						 "studentFT": "yes",
+						 "pregnant":"yes",
+						 "pregnant_due_date": "2014-10-29",
+						 "pregnant_num_babies": 1,
+						 "citizen":"Yes"
 					 },
 					 "3": {
-						 "applying": false,
+						 "applying": true,
 						 "income": 0,
 						 "show": false,
-						 "relation": "stepchild",
+						 "relation": "child",
 						 "name": "James Doyle",
 						 "ssn": 898989887,
 						 "dob": "1989-07-06",
 						 "hours_wk": 30,
-						 "wk_month": 2
+						 "wk_month": 2,
+						 "gender": "male",
+						 "state_id": 6666666,
+						 "marital_status": "Single",
+						 "lives_with": "yes",
+						 "in_schoool": "yes",
+						 "student":'yes',
+						 "school_grade": "Senior",
+						 "schoolName": "Lehigh",
+						 "studentFT": "yes",
+						 "pregnant":"yes",
+						 "pregnant_due_date": "2014-10-29",
+						 "pregnant_num_babies": 1,
+						 "citizen":"Yes"
 					 },
 					 "4": {
-						 "applying": false,
+						 "applying": true,
 						 "income": 0,
 						 "show": false,
-						 "relation": "Roommate",
+						 "relation": "child",
 						 "name": "James Doyle",
 						 "ssn": 898989887,
 						 "dob": "1989-07-06",
 						 "hours_wk": 30,
-						 "wk_month": 2
+						 "wk_month": 2,
+						 "gender": "male",
+						 "state_id": 6666666,
+						 "marital_status": "Single",
+						 "lives_with": "yes",
+						 "in_schoool": "yes",
+						 "student":'yes',
+						 "school_grade": "Senior",
+						 "schoolName": "Lehigh",
+						 "studentFT": "yes",
+						 "pregnant":"yes",
+						 "pregnant_due_date": "2014-10-29",
+						 "pregnant_num_babies": 1,
+						 "citizen":"Yes"
 					 },
 					 "5": {
-						 "applying": false,
+						 "applying": true,
 						 "income": 0,
 						 "show": false,
-						 "relation": "Roommate",
+						 "relation": "child",
 						 "name": "James Doyle",
 						 "ssn": 898989887,
 						 "dob": "1989-07-06",
 						 "hours_wk": 30,
-						 "wk_month": 2
+						 "wk_month": 2,
+						 "gender": "male",
+						 "state_id": 6666666,
+						 "marital_status": "Single",
+						 "lives_with": "yes",
+						 "in_schoool": "yes",
+						 "student":'yes',
+						 "school_grade": "Senior",
+						 "schoolName": "Lehigh",
+						 "studentFT": "yes",
+						 "pregnant":"yes",
+						 "pregnant_due_date": "2014-10-29",
+						 "pregnant_num_babies": 1,
+						 "citizen":"Yes"
 					 },
 					 "6": {
 						 "applying": false,
@@ -192,8 +246,24 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				 "pregnant_num_babies": 1,
 				 "lived_at_duration":"0-3 Months",
 				 "receiving_snap": "yes",
+				 "other_state_benefits_input":"Kevin",
+				 "snap_disqualification":"no",
+				 "snap_disqualification_input":"James",
+				 "different_name":'yes',
+				 "different_name_input":"Mark",
 				 "pay_for_telephone": "yes",
 				 "pay_for_heating": "yes",
+				 "in_military":"yes",
+				 "in_military_family":"yes",
+				 "foster_care":"yes",
+				 "foster_care_input":"jimmy",
+				 "foster_care_end":"no",
+				 "foster_care_end_input_age":18,
+				 "foster_care_end_input_state" : "NJ",
+				 "medical_need":"yes",
+				 "medical_need_input":"Ned",
+				 "medical_need_input_disability":"bipolar",
+
 				 "pay_for_other_utilities": "yes",
 				 "utilities_paid": [
 					 "sewer",
@@ -203,7 +273,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				 "migrant_worker": "yes",
 				 "shelter_abused": "yes"
 			 }
-			 }*/
+			 }
 
 		};
 

@@ -24,16 +24,18 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 		};
 
 		$scope.localDocs = {
-			'IDENTITY':0,
+				'IDENTITY':0,
 				'RESIDENCE':0,
 				'HOUSEHOLD_COMPOSITION':0,
+				'HOUSEHOLD_EXPENSES':0,
 				'AGE':0,
 				'SSN':0,
 				'CITIZENSHIP':0,
 				'ALIEN_STATUS':0,
 				'EARNED_INCOME':0,
 				'ALT_INCOME':0,
-				'RESOURCES':0
+				'RESOURCES':0,
+				'OTHER':0
 		};
 
 		$scope.current_type = $state.params.type;
@@ -380,7 +382,7 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 				]
 			},
 			'OTHER' : {
-				header:"Take a picture of 1 of these documents to confirm alternate sources of income.",
+				header:"Take a picture of a document that is not already listed on the other sections.",
 				sample_image:"sample_utilities.png",
 				valid_docs : []
 			}
