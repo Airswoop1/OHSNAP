@@ -489,8 +489,84 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				 "medical_need":"yes",
 				 "medical_need_input":"Ned",
 				 "medical_need_input_disability":"bipolar",
-
+				 "medical_lt_care":"yes",
+				 "medical_unpaid":"yes",
+				 "domestic_abuse":"no",
+				 "medical_medication":"yes",
+				 "medical_medication_input":"ME",
+				 "drug_abuse":"yes",
+				 "drug_abuse_input":"Jim",
+				 "criminal_defendant":"yes",
+				 "criminal_defendant_input":"Joe",
 				 "pay_for_other_utilities": "yes",
+				"criminal_fine_payment":"no",
+				 "criminal_fine_payment_input":"Shawn",
+				 "criminal_payment_plan":"no",
+				 "criminal_probation":"yes",
+				 "criminal_probation_input":"Fran",
+				 "welfare_fraud":"yes",
+				 "welfare_fraud_input":"Eric",
+				 "law_enforcement":"no",
+				 "resources" : [
+					 {
+						 "person_name": "Kevin",
+						 "type": "Wages",
+						 "amount": 1200,
+						 "location": "Wells Fargo"
+					 },
+					 {
+						 "person_name": "Andrew",
+						 "type": "Savings",
+						 "amount": 500,
+						 "location": "BoA"
+					 }
+				 ],
+				 "resources_expecting_money":"yes",
+				 "resources_expecting_money_who":"Kevin",
+				"resources_expecting_money_kind":"child support",
+				 "resources_expecting_money_when":"tomorrow",
+				 "resources_expecting_money_amount":1300,
+				 "resources_sold_stuff":"yes",
+
+				 "resources_sold_stuff_who":"Kevin",
+				 "resources_sold_stuff_kind":"child support",
+				 "resources_sold_stuff_when":"tomorrow",
+				 "resources_sold_stuff_amount":1300,
+
+				 "resources_own_property":"no",
+				 "resources_own_property_input":"Kevin",
+
+				 "resources_burial_agreement" : "yes",
+				 "resources_burial_agreement_input":"Kevin :-(",
+					"resources_num_vehicles_owned":0,
+
+				 "resources_life_insurance":"yes",
+				 "resources_life_insurance_input":"Kevin :-D",
+
+				 "incomes": [
+					 {
+						 "person_name": "Kevin",
+						 "type": "Wages",
+						 "amount": 1200,
+						 "frequency": "Daily",
+						 "recent_date": "2014-02-03"
+					 },
+					 {
+						 "person_name": "Mark",
+						 "type": "Winnings",
+						 "amount": 500,
+						 "frequency": "Biweekly",
+						 "recent_date": "2015-04-04"
+					 }
+				 ],
+
+				 "child_support_expense":"yes",
+				 "child_support_expense_court_ordered":"yes",
+
+				 "housing_assistance":"yes",
+				 "housing_assistance_input":"Mark",
+				 "housing_assistance_allowance":"yes",
+
 				 "utilities_paid": [
 					 "sewer",
 					 "installation",

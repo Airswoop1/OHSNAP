@@ -975,7 +975,7 @@ DEPRECATED
 
 .general_household {
     width: 1063px;
-    height: 1000px;
+    height: 1216px;
     top: 220px;
     left: 42px;
     border: 1px solid red;
@@ -1086,19 +1086,19 @@ DEPRECATED
     left: 807px;
 }
 
-#needs_medical_yes {
+#medical_need_yes {
     top: 311px;
     left: 354px;
 }
 
-#needs_medical_no {
+#medical_need_no {
     top: 311px;
     left: 407px;
 }
 
-#mecial_need_who {
-    top: 311px;
-    left: 707px;
+#medical_need_who {
+    top: 320px;
+    left: 499px;
 }
 
 #medical_need_disability{
@@ -1106,6 +1106,498 @@ DEPRECATED
     left: 907px;
 }
 
+#medical_lt_yes {
+    top: 357px;
+    left: 942px
+}
+
+#medical_lt_no {
+    top: 357px;
+    left: 1002px
+}
+
+
+#medical_unpaid_yes {
+    top: 400px;
+    left: 476px;
+}
+
+#medical_unpaid_no {
+    top: 400px;
+    left: 535px;
+}
+
+
+#domestic_abuse_yes {
+    top: 400px;
+    left: 943px;
+
+}
+
+#domestic_abuse_no {
+    top: 400px;
+    left: 1002px;
+
+}
+
+#medical_medication_yes {
+    top: 446px;
+    left: 354px;
+}
+
+#medical_medication_no {
+    top: 446px;
+    left: 407px;
+}
+
+#medical_medication_who {
+    top: 452px;
+    left: 489px;
+}
+
+
+#drug_abuse_yes {
+    top: 497px;
+    left: 354px;
+}
+
+#drug_abuse_no {
+    top: 497px;
+    left: 407px;
+}
+
+#drug_abuse_who {
+    top: 505px;
+    left: 489px;
+}
+
+
+
+/*** Criminal history inquiry *****/
+
+#criminal_history_container {
+    top: 920px;
+    left: 560px;
+    width: 500px;
+    height: 500px;
+}
+
+#criminal_history_container div {
+    position:relative;
+}
+
+.criminal_row {
+    width: 354px;
+    height: 25px;
+    margin-left:3px;
+}
+
+.crim_app_y {
+    margin-left:25px;
+}
+
+.crim_app_n {
+    margin-left:84px;
+}
+
+.crim_app_input {
+    float:right;
+    line-height: 0;
+}
+
+.next_crim_row {
+    margin-top:25px;
+}
+
+
+/**** RESOURCES ***/
+
+
+.resources_container {
+    position: absolute;
+    top: 395px;
+    left: 45px;
+    width: 1058px;
+    height: 501px;
+}
+
+.resources_container div {
+    position:relative;
+}
+
+.resources_row {
+    width: 100%;
+    height: 47px;
+    margin-top: 38px;
+
+}
+
+.resources_row div {
+    float:left
+}
+
+.resources_name {
+    width: 322px;
+    height: 100%;
+    line-height: 3;
+}
+
+.resources_kind {
+    width: 231px;
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+}
+
+.resources_amount {
+    width: 107px;
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+}
+
+.resources_location {
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+    width: 344px;
+}
+
+.other_resources_container {
+    position: absolute;
+    top: 988px;
+    left: 42px;
+    width: 1060px;
+    height: 308px;
+    border: 1px solid orange;
+}
+.other_resources_container div {
+    position:absolute;
+}
+
+#resources_expecting_money_yes {
+    top: 39px;
+    left: 195px;
+}
+
+#resources_expecting_money_no {
+    top:30px;
+    left:75px;
+}
+
+#resources_expecting_money_who {
+    top:30px;
+    left: 332px;
+
+}
+
+#resources_expecting_money_kind {
+    top:30px;
+    left:550px;
+}
+
+#resources_expecting_money_when {
+    top:30px;
+    left:750px;
+}
+
+#resources_expecting_money_amount {
+    top:30px;
+    left:898px;
+}
+
+
+#resources_sold_stuff_yes {
+    top: 120px;
+    left: 11px;
+}
+
+#resources_sold_stuff_no {
+    top: 120px;
+    left: 68px;
+}
+
+#resources_sold_stuff_who {
+    top:108px;
+    left: 332px;
+
+}
+
+#resources_sold_stuff_kind {
+    top:108px;
+    left:550px;
+}
+
+#resources_sold_stuff_when {
+    top:108px;
+    left:750px;
+}
+
+#resources_sold_stuff_amount {
+    top:108px;
+    left:898px;
+}
+
+#resources_own_property_yes {
+    top: 152px;
+    left: 321px;
+}
+
+#resources_own_property_no {
+    top: 175px;
+    left: 321px;
+}
+
+#resources_own_property_who {
+    top: 174px;
+    left: 389px;
+}
+
+#resources_burial_agreement_yes {
+    top: 210px;
+    left: 321px;
+}
+#resources_burial_agreement_no {
+    top: 231px;
+    left: 321px;
+}
+
+#resources_burial_agreement_who {
+    top: 230px;
+    left: 389px;
+}
+
+
+#resources_life_insurance_yes {
+    top: 264px;
+    left: 321px;
+}
+#resources_life_insurance_no {
+    top: 286px;
+    left: 321px;
+}
+
+#resources_life_insurance_who {
+    top: 285px;
+    left: 389px;
+}
+
+
+/***** INCOME *****/
+
+.income_container {
+    position: absolute;
+    top: 438px;
+    left: 44px;
+    width: 1058px;
+    height: 501px;
+}
+
+.income_container div {
+    position:relative;
+}
+
+.income_row {
+    width: 100%;
+    height: 46px;
+    margin-top: 30px;
+    border: 1px solid darkgreen;
+
+}
+
+.income_row div {
+    float:left
+}
+
+.income_name {
+    width: 322px;
+    height: 100%;
+    line-height: 3;
+}
+
+.income_kind {
+    width: 231px;
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+}
+
+.income_amount {
+    width: 107px;
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+}
+
+.income_frequency {
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+    width: 113px;
+}
+
+.income_recent {
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+    width: 132px;
+}
+
+
+
+/***** EXPENSES ****/
+
+
+
+.top_expenses_container {
+    position: absolute;
+    top: 350px;
+    left: 41px;
+    width: 1200px;
+    height: 73px;
+
+}
+
+.top_expenses_container div {
+    position:absolute;
+}
+
+#expenses_child_support_yes {
+    top: 25px;
+    left: 113px;
+}
+
+#expenses_child_support_no {
+    top: 25px;
+    left: 165px;
+}
+
+#child_support_expense_court_ordered_yes {
+    top: 53px;
+    left: 192px;
+}
+
+#child_support_expense_court_ordered_no {
+    top: 53px;
+    left: 243px;
+}
+
+#housing_assistance_yes {
+    top: 10px;
+    left: 857px;
+}
+
+#housing_assistance_no {
+    top: 10px;
+    left: 887px;
+}
+
+#housing_assistance_who {
+    top: 25px;
+    left: 651px;
+}
+
+#housing_assistance_allowance_yes {
+    top: 54px;
+    left: 733px;
+}
+
+#housing_assistance_allowance_no {
+    top: 54px;
+    left: 763px;
+}
+
+
+.monthly_expenses_container {
+    position: absolute;
+    top: 462px;
+    left: 41px;
+    width: 1200px;
+    height: 280px;
+    border:1px solid orange;
+}
+
+
+.monthly_expenses_row {
+    position: relative;
+    width:100%;
+    height:69px;
+    border:1px solid green;
+}
+
+.monthly_expenses_row div {
+    float:left;
+}
+
+.me_amount {
+    width: 317px;
+    height: 69px;
+    line-height: 5;
+    border: 1px solid purple;
+    margin-left: 17px;
+}
+
+.me_ppm {
+    width: 140px;
+    height: 42px;
+    line-height: 4;
+    border: 1px solid purple;
+    margin-left: 239px;
+}
+
+.ppm_amt {
+    position:absolute;
+    top: 10px;
+    left: 580px;
+}
+
+.ppm_in_rent_y {
+    position:absolute;
+    top: 40px;
+    left: 557px;
+}
+.ppm_in_rent_n {
+    position:absolute;
+    top: 40px;
+    left: 608px;
+
+}
+
+.me_others {
+    width: 84px;
+    height: 25px;
+    line-height: 2;
+    border: 1px solid purple;
+    margin-left: 220px;
+}
+
+.me_others_lw_y {
+
+}
+
+
+.me_others_lw_n {
+    margin-left:45px;
+}
+
+
+#expenses_others_rent {
+    position: absolute;
+    left: 938px;
+    top: 10px;
+}
+
+#lives_in_home_yes {
+    position: absolute;
+    left: 938px;
+    top: 30px;
+}
+
+#lives_in_home_no {
+    position: absolute;
+    left: 938px;
+    top: 30px;
+}
 
 
 

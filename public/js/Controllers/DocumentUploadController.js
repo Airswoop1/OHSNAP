@@ -338,7 +338,7 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 					{
 						"name":"Statement from employer",
 						"image":"sample_incomestatement.jpg",
-						"link":"hhttp://www.wikihow.com/Write-a-Letter-for-Proof-of-Income"
+						"link":"http://www.wikihow.com/Write-a-Letter-for-Proof-of-Income"
 					},
 					{
 						"name":"Invoice, if you are self-employed",

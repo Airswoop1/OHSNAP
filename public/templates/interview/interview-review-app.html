@@ -405,6 +405,71 @@
         <div id="medical_need_who">{{ user.medical_need_input }}</div>
         <div id="medical_need_disability">{{ user.medical_need_input_disability }}</div>
 
+
+        <div ng-show="user.medical_lt_care=='yes'" id="medical_lt_yes">X</div>
+        <div ng-show="user.medical_lt_care=='no'" id="medical_lt_no">X</div>
+
+
+        <div ng-show="user.medical_unpaid=='yes'" id="medical_unpaid_yes">X</div>
+        <div ng-show="user.medical_unpaid=='no'" id="medical_unpaid_no">X</div>
+
+
+        <div ng-show="user.domestic_abuse=='yes'" id="domestic_abuse_yes">X</div>
+        <div ng-show="user.domestic_abuse=='no'" id="domestic_abuse_no">X</div>
+
+        <div ng-show="user.medical_medication=='yes'" id="medical_medication_yes">X</div>
+        <div ng-show="user.medical_medication=='no'" id="medical_medication_no">X</div>
+        <div id="medical_medication_who">{{ user.medical_medication_input }}</div>
+
+
+        <div ng-show="user.drug_abuse=='yes'" id="drug_abuse_yes">X</div>
+        <div ng-show="user.drug_abuse=='no'" id="drug_abuse_no">X</div>
+        <div id="drug_abuse_who">{{ user.drug_abuse_input }}</div>
+
+        <div id="criminal_history_container">
+            <div class="criminal_row" style="margin-top:13px;">
+                <div ng-show="user.criminal_defendant=='yes'" class="crim_app_y" id="criminal_defendant_yes">X</div>
+                <div ng-show="user.criminal_defendant=='no'" class="crim_app_n" id="criminal_defendant_no">X</div>
+                <div class="crim_app_input" id="criminal_defendant_who">{{ user.criminal_defendant_input }}</div>
+            </div>
+            <div class="criminal_row next_crim_row">
+                <div ng-show="user.criminal_fine_payment=='yes'" class="crim_app_y" id="criminal_fine_payment_yes">X</div>
+                <div ng-show="user.criminal_fine_payment=='no'" class="crim_app_n" id="criminal_fine_payment_no">X</div>
+                <div class="crim_app_input" id="criminal_fine_payment_who">{{ user.criminal_fine_payment_input }}</div>
+            </div>
+
+            <div class="criminal_row next_crim_row">
+                <div ng-show="user.criminal_payment_plan=='yes'" class="crim_app_y">X</div>
+                <div ng-show="user.criminal_payment_plan=='no'" class="crim_app_n">X</div>
+                <div class="crim_app_input">{{ user.criminal_payment_plan_input }}</div>
+            </div>
+
+
+
+            <div class="criminal_row next_crim_row">
+                <div ng-show="user.criminal_probation=='yes'" class="crim_app_y">X</div>
+                <div ng-show="user.criminal_probation=='no'" class="crim_app_n">X</div>
+                <div class="crim_app_input" >{{ user.criminal_probation_input }}</div>
+            </div>
+
+            <div class="criminal_row next_crim_row">
+                <div ng-show="user.welfare_fraud=='yes'" class="crim_app_y">X</div>
+                <div ng-show="user.welfare_fraud=='no'" class="crim_app_n">X</div>
+                <div class="crim_app_input" >{{ user.welfare_fraud_input }}</div>
+            </div>
+
+
+            <div class="criminal_row next_crim_row">
+                <div ng-show="user.law_enforcement=='yes'" class="crim_app_y">X</div>
+                <div ng-show="user.law_enforcement=='no'" class="crim_app_n">X</div>
+                <div class="crim_app_input" >{{ user.law_enforcement_input }}</div>
+            </div>
+
+
+        </div>
+
+
+
     </div>
 
 
@@ -414,6 +479,48 @@
 <div class="app_alt_page_header" id="page_alt_header7" >Resources</div>
 <div class="img_container" id="image_wrapper7">
     <img src="images/pa_app/app10.png" alt=""/>
+    <div class="resources_container">
+        <div ng-repeat="u in user.resources track by $index | limitTo: 6" class="resources_row" >
+            <div class="resources_name">{{ u.person_name }}</div>
+            <div class="resources_kind">{{ u.type }}</div>
+            <div class="resources_amount">${{ u.amount }}</div>
+            <div class="resources_location">{{ u.location }}</div>
+        </div>
+    </div>
+
+    <div class="other_resources_container">
+
+        <div ng-show="user.resources_expecting_money=='yes'" id="resources_expecting_money_yes">X</div>
+        <div ng-show="user.resources_expecting_money=='no'" id="resources_expecting_money_no">X</div>
+        <div id="resources_expecting_money_who">{{ user.resources_expecting_money_who }}</div>
+        <div id="resources_expecting_money_kind">{{ user.resources_expecting_money_kind }}</div>
+        <div id="resources_expecting_money_when">{{ user.resources_expecting_money_when }}</div>
+        <div id="resources_expecting_money_amount">${{ user.resources_expecting_money_amount }}</div>
+
+        <div ng-show="user.resources_sold_stuff=='yes'" id="resources_sold_stuff_yes">X</div>
+        <div ng-show="user.resources_sold_stuff=='no'" id="resources_sold_stuff_no">X</div>
+        <div id="resources_sold_stuff_who">{{ user.resources_sold_stuff_who }}</div>
+        <div id="resources_sold_stuff_kind">{{ user.resources_sold_stuff_kind }}</div>
+        <div id="resources_sold_stuff_when">{{ user.resources_sold_stuff_when }}</div>
+        <div id="resources_sold_stuff_amount">${{ user.resources_sold_stuff_amount }}</div>
+
+        <div ng-show="user.resources_own_property=='yes" id="resources_own_property_yes">X</div>
+        <div ng-show="user.resources_own_property=='no'" id="resources_own_property_no">X</div>
+        <div id="resources_own_property_who">{{ user.resources_own_property_input }}</div>
+
+        <div ng-show="user.resources_burial_agreement=='yes" id="resources_burial_agreement_yes">X</div>
+        <div ng-show="user.resources_burial_agreement=='no'" id="resources_burial_agreement_no">X</div>
+        <div id="resources_burial_agreement_who">{{ user.resources_burial_agreement_input }}</div>
+
+
+        <div ng-show="user.resources_life_insurance=='yes" id="resources_life_insurance_yes">X</div>
+        <div ng-show="user.resources_life_insurance=='no'" id="resources_life_insurance_no">X</div>
+        <div id="resources_life_insurance_who">{{ user.resources_life_insurance_input }}</div>
+
+    </div>
+
+
+
 </div>
 
 
@@ -421,6 +528,19 @@
 <div class="app_alt_page_header" id="page_alt_header8" >Income</div>
 <div class="img_container" id="image_wrapper8">
     <img src="images/pa_app/app11.png" alt=""/>
+
+    <div class="income_container">
+        <div ng-repeat="u in user.incomes track by $index | limitTo: 6" class="income_row">
+            <div class="income_name">{{ u.person_name }}</div>
+            <div class="income_kind">{{ u.type }}</div>
+            <div class="income_amount">${{ u.amount }}</div>
+            <div class="income_frequency">{{ u.frequency}}</div>
+            <div class="income_recent">{{ u.recent_date }}</div>
+        </div>
+
+
+    </div>
+
 </div>
 
 
@@ -428,6 +548,49 @@
 <div class="app_alt_page_header" id="page_alt_header9" >Expenses</div>
 <div class="img_container" id="image_wrapper9">
     <img src="images/pa_app/app13.png" alt=""/>
+    <div class="top_expenses_container">
+        <div ng-show="user.child_support_expense=='yes'" id="expenses_child_support_yes">X</div>
+        <div ng-show="user.child_support_expense=='no'" id="expenses_child_support_no">X</div>
+
+        <div ng-show="user.child_support_expense_court_ordered=='yes'" id="child_support_expense_court_ordered_yes">X</div>
+        <div ng-show="user.child_support_expense_court_ordered=='no'" id="child_support_expense_court_ordered_no">X</div>
+
+        <div ng-show="user.housing_assistance=='yes'" id="housing_assistance_yes">X</div>
+        <div ng-show="user.housing_assistance=='no'" id="housing_assistance_no">X</div>
+        <div id="housing_assistance_who">{{ user.housing_assistance_input }}</div>
+
+        <div ng-show="user.housing_assistance_allowance=='yes'" id="housing_assistance_allowance_yes">X</div>
+        <div ng-show="user.housing_assistance_allowance=='no'" id="housing_assistance_allowance_no">X</div>
+
+    </div>
+
+    <div class="monthly_expenses_container">
+        <div class="monthly_expenses_row">
+            <div class="me_amount">$1400</div>
+
+            <div class="ppm_amt">$1400</div>
+            <div class="ppm_in_rent_y">X</div>
+            <div class="ppm_in_rent_n">X</div>
+
+            <div id="expenses_others_rent">others_rent</div>
+            <div id="lives_in_home_yes">X</div>
+            <div id="lives_in_home_no">X</div>
+        </div>
+
+        <div class="monthly_expenses_row">
+
+            <div class="me_amount">1400</div>
+            <div class="me_ppm">1200</div>
+            <div class="me_others">800
+                <div class="me_others_lw_y">X</div>
+                <div class="me_others_lw_n">X</div>
+            </div>
+
+
+        </div>
+
+    </div>
+
 </div>
 
 <div class="app_page_header" id="page_header10" ng-click="backToMainSign(10)">Rights & Responsibilities 1</div>
