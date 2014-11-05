@@ -271,7 +271,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				"expenses":false
 			},
 
-			/*'user':{
+			'user':{
 				formData: {
 					"name": {
 						'first_name':undefined,
@@ -283,7 +283,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 					},
 					"phone":undefined
 				}
-			}*/
+			}/*
 			'user' :  {
 			 formData : {
 				 "name": {
@@ -602,7 +602,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				 "migrant_worker": "yes",
 				 "shelter_abused": "yes"
 			 }
-			 }
+			 }*/
 
 		};
 
