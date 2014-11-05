@@ -567,6 +567,33 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				 "housing_assistance_input":"Mark",
 				 "housing_assistance_allowance":"yes",
 
+				 "monthly_expenses_condo_lives_with":"yes",
+				 "monthly_expenses_condo_other":0,
+				 "monthly_expenses_condo_amount":900,
+
+				 "monthly_expenses_prop_insurance_amount":1000,
+				"monthly_expenses_prop_insurance_other":500,
+				 "monthly_expenses_prop_insurance_lives_with":"yes",
+
+
+				 "utilities": {
+					 "electric": true,
+					 "water": true,
+					 "phone": true,
+					 "oil": true,
+					 "other": true,
+					 "other_name": "Hydrogen, Solar"
+				 },
+
+				 medical_expenses:{
+					 "hospital": true,
+					 "prescription_medicines": true,
+					 "dental": true,
+					 "general_costs": true,
+					 "other": true,
+					 "other_name": "hurry cane"
+				 },
+
 				 "utilities_paid": [
 					 "sewer",
 					 "installation",

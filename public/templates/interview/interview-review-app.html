@@ -565,29 +565,68 @@
     </div>
 
     <div class="monthly_expenses_container">
-        <div class="monthly_expenses_row">
-            <div class="me_amount">$1400</div>
 
+        <div class="monthly_expenses_row">
             <div class="ppm_amt">$1400</div>
             <div class="ppm_in_rent_y">X</div>
             <div class="ppm_in_rent_n">X</div>
-
             <div id="expenses_others_rent">others_rent</div>
             <div id="lives_in_home_yes">X</div>
             <div id="lives_in_home_no">X</div>
         </div>
 
         <div class="monthly_expenses_row">
-
-            <div class="me_amount">1400</div>
-            <div class="me_ppm">1200</div>
-            <div class="me_others">800
-                <div class="me_others_lw_y">X</div>
-                <div class="me_others_lw_n">X</div>
-            </div>
-
-
+            <div class="me_ppm">{{ user.monthly_expenses_condo_amount }}</div>
+            <div class="me_others">{{ user.monthly_expenses_condo_other }}</div>
+            <div ng-show="user.monthly_expenses_condo_lives_with=='yes'" class="me_others_lw_y">X</div>
+            <div ng-show="user.monthly_expenses_condo_lives_with=='no'" class="me_others_lw_n">X</div>
         </div>
+
+        <div class="monthly_expenses_row">
+            <div class="me_ppm">{{ user.monthly_expenses_prop_insurance_amount }}</div>
+            <div class="me_others">{{ user.monthly_expenses_prop_insurance_other }}</div>
+            <div ng-show="user.monthly_expenses_prop_insurance_lives_with=='yes'" class="me_others_lw_y">X</div>
+            <div ng-show="user.monthly_expenses_prop_insurance_lives_with=='no'" class="me_others_lw_n">X</div>
+        </div>
+
+        <div class="monthly_expenses_row">
+            <div class="me_ppm">{{ user.monthly_expenses_prop_taxes_amount }}</div>
+            <div class="me_others">{{ user.monthly_expenses_prop_taxes_other }}</div>
+            <div ng-show="user.monthly_expenses_prop_taxes_lives_with=='yes'" class="me_others_lw_y">X</div>
+            <div ng-show="user.monthly_expenses_prop_taxes_lives_with=='no'" class="me_others_lw_n">X</div>
+        </div>
+
+
+    </div>
+
+    <div id="utilities_container">
+        <div ng-show="user.utilities.hasOwnProperty('phone')">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('garbage')" id="util_garbage">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('sewer')" id="util_sewer">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('water')" id="util_water">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('utility_installation')" id="util_install">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('gas')" id="util_gas">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('electric')" id="util_elec">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('oil')" id="util_oil">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('other')" id="util_other">X</div>
+        <div id="util_other_names">{{ user.utilities.other_name }}</div>
+
+    </div>
+
+
+    <div id="medical_expenses_container">
+
+        <div ng-show="user.medical_expenses.hasOwnProperty('dental')">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('doctor')" id="med_doctor">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('hospital)" id="med_hospital">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('health_insurance')" id="med_health_insurance">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('medical_equipment')" id="med_medical_equipment">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('health_aides')" id="med_health_aides">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('health_related_supplies')" id="med_health_related_supplies">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('prescription_medicines')" id="med_prescription_medicines">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('general_costs')" id="med_general_costs">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('other')" id="med_other">X</div>
+        <div id="med_other_names">{{ user.medical_expenses.other_name }}</div>
 
     </div>
 

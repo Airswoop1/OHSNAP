@@ -860,7 +860,9 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 					$scope.title = "condominium fees";
 					$scope.route_name = 'monthly-expenses-condo';
 					$scope.data_name = 'monthly_expenses_condo';
+					$scope.route_name_other_amount = "monthly_expenses_condo_other";
 					$scope.to_route_name = 'monthly-expenses-property-insurance';
+					$scope.route_name_other_lives_with = "monthly_expenses_condo_lives_with";
 					$scope.model_for_route = $scope.current_user;
 					$scope.show_input = false;
 				}]
@@ -875,6 +877,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 					$scope.title = "property insurance";
 					$scope.route_name = 'monthly-expenses-property-insurance';
 					$scope.data_name = 'monthly_expenses_prop_insurance';
+					$scope.route_name_other_amount = "monthly_expenses_prop_insurance_other";
+					$scope.route_name_other_lives_with = "monthly_expenses_prop_insurance_lives_with";
 					$scope.to_route_name = 'monthly-expenses-property-taxes';
 					$scope.model_for_route = $scope.current_user;
 					$scope.show_input = false;
@@ -890,6 +894,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 					$scope.title = "property taxes";
 					$scope.route_name = 'monthly-expenses-property-taxes';
 					$scope.data_name = 'monthly_expenses_prop_taxes';
+					$scope.route_name_other_amount = "monthly_expenses_prop_taxes_other";
+					$scope.route_name_other_lives_with = "monthly_expenses_prop_taxes_lives_with";
 					$scope.to_route_name = 'expenses-utilities';
 					$scope.model_for_route = $scope.current_user;
 					$scope.show_input = false;

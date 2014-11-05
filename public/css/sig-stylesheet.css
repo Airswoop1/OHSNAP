@@ -1401,7 +1401,6 @@ DEPRECATED
     width: 100%;
     height: 46px;
     margin-top: 30px;
-    border: 1px solid darkgreen;
 
 }
 
@@ -1512,9 +1511,8 @@ DEPRECATED
     position: absolute;
     top: 462px;
     left: 41px;
-    width: 1200px;
+    width: 1062px;
     height: 280px;
-    border:1px solid orange;
 }
 
 
@@ -1522,28 +1520,12 @@ DEPRECATED
     position: relative;
     width:100%;
     height:69px;
-    border:1px solid green;
 }
 
 .monthly_expenses_row div {
     float:left;
 }
 
-.me_amount {
-    width: 317px;
-    height: 69px;
-    line-height: 5;
-    border: 1px solid purple;
-    margin-left: 17px;
-}
-
-.me_ppm {
-    width: 140px;
-    height: 42px;
-    line-height: 4;
-    border: 1px solid purple;
-    margin-left: 239px;
-}
 
 .ppm_amt {
     position:absolute;
@@ -1563,22 +1545,6 @@ DEPRECATED
 
 }
 
-.me_others {
-    width: 84px;
-    height: 25px;
-    line-height: 2;
-    border: 1px solid purple;
-    margin-left: 220px;
-}
-
-.me_others_lw_y {
-
-}
-
-
-.me_others_lw_n {
-    margin-left:45px;
-}
 
 
 #expenses_others_rent {
@@ -1589,15 +1555,139 @@ DEPRECATED
 
 #lives_in_home_yes {
     position: absolute;
-    left: 938px;
-    top: 30px;
+    left: 944px;
+    top: 42px;
 }
 
 #lives_in_home_no {
     position: absolute;
-    left: 938px;
-    top: 30px;
+    left: 993px;
+    top: 41px;
 }
+
+
+
+.me_ppm {
+    left: 577px;
+    position: absolute;
+    top: 22px;
+}
+
+.me_others {
+    left: 940px;
+    position: absolute;
+    top: 10px;
+}
+
+.me_others_lw_y {
+    position: absolute;
+    left: 943px;
+    top: 42px;
+}
+.me_others_lw_n {
+    position: absolute;
+    left: 995px;
+    top: 42px;
+
+}
+
+
+#utilities_container {
+    position: absolute;
+    top: 774px;
+    width: 873px;
+    left: 54px;
+    height: 100px;
+}
+#utilities_container div {
+    position:absolute;
+}
+
+#util_garbage {
+    top: 26px;
+}
+#util_sewer {
+    top: 53px;
+}
+#util_water {
+left:202px;
+}
+#util_install {
+    top:26px;
+    left:202px;
+}
+#util_gas {
+    top:53px;
+    left:202px;
+}
+#util_elec {
+    left:473px;
+}
+#util_oil {
+    top:26px;
+    left:473px;
+}
+#util_other {
+    top:53px;
+    left:473px;
+}
+#util_other_names {
+    left: 544px;
+    top: 51px;
+}
+
+#medical_expenses_container {
+    position: absolute;
+    top: 1004px;
+    width: 873px;
+    left: 54px;
+    height: 100px;
+}
+#medical_expenses_container div {
+    position:absolute;
+}
+
+
+#med_doctor{
+    top:26px;
+}
+#med_hospital{
+    top:67px;
+}
+#med_health_insurance{
+    top:101px;
+}
+#med_medical_equipment{
+top:135px
+}
+#med_health_aides{
+    left: 391px;
+    top:68px;
+}
+#med_health_related_supplies{
+    left: 391px;
+top:101px;
+}
+#med_prescription_medicines{
+    left: 391px;
+    top: 135px;
+}
+#med_general_costs{
+    left: 391px;
+}
+#med_other{
+    top: 175px;
+}
+#med_other_names{
+    top: 177px;
+    left: 70px;
+}
+
+
+
+
+
+
 
 
 
