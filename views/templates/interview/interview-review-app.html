@@ -1,15 +1,14 @@
 <!--<script src="js/sig/jSignature.min.js"></script>-->
 <div style="padding:25px;" id="sign_header">
-    <h1>Sign your official application</h1>
-    <p> Below is the official NYC SNAP application form, filled in with your information. We'll fax it to the NYC
-        HRA on your behalf, after you preview and sign it.</p>
+    <h1><%= ("Sign your official application") %></h1>
+    <p><%= ("Below is the official NYC SNAP application form, filled in with your information. We'll fax it to the NYC HRA on your behalf, after you preview and sign it.") %></p>
 
-    <div class="yellow-button" id="goToFirstSigButton" ui-sref="int.info-esig-confirm" style="text-align: left;">I'm done reviewing</div>
-    <div class="thumbnail" style="background-image:url('images/app1.png');" ng-click="expandThumbnail(1);"> <div class="thumbnail_label">Page 1: Basics</div></div>
-    <div class="thumbnail" style="background-image:url('images/app2.png');" ng-click="expandThumbnail(2);"> <div class="thumbnail_label">Page 2: Income</div></div>
-    <div class="thumbnail" style="background-image:url('images/app3.png');" ng-click="expandThumbnail(3);"> <div class="thumbnail_label">Page 3: Expenses</div></div>
-    <div class="thumbnail" style="background-image:url('images/app4.png');" ng-click="expandThumbnail(4);"> <div class="thumbnail_label">Page 4: Legal</div></div>
-    <div class="thumbnail" style="background-image:url('images/app5.png');" ng-click="expandThumbnail(5);"> <div class="thumbnail_label">Page 5: Final Signature</div></div>
+    <div class="yellow-button" id="goToFirstSigButton" ui-sref="int.info-esig-confirm" style="text-align: left;"><%= ("I'm done reviewing") %></div>
+    <div class="thumbnail" style="background-image:url('images/app1.png');" ng-click="expandThumbnail(1);"> <div class="thumbnail_label"><%= ("Page 1: Basics") %></div></div>
+    <div class="thumbnail" style="background-image:url('images/app2.png');" ng-click="expandThumbnail(2);"> <div class="thumbnail_label"><%= ("Page 2: Income") %></div></div>
+    <div class="thumbnail" style="background-image:url('images/app3.png');" ng-click="expandThumbnail(3);"> <div class="thumbnail_label"><%= ("Page 3: Expenses") %></div></div>
+    <div class="thumbnail" style="background-image:url('images/app4.png');" ng-click="expandThumbnail(4);"> <div class="thumbnail_label"><%= ("Page 4: Legal") %></div></div>
+    <div class="thumbnail" style="background-image:url('images/app5.png');" ng-click="expandThumbnail(5);"> <div class="thumbnail_label"><%= ("Page 5: Final Signature") %></div></div>
 </div>
 
 <style>
@@ -570,8 +569,8 @@ p {
 </style>
 
 
-<div class="app_page_header" id="page_header1" ng-click="backToMainSign(1)">Page 1: Basics</div>
-<div class="app_alt_page_header" id="page_alt_header1" >Page 1: Basics</div>
+<div class="app_page_header" id="page_header1" ng-click="backToMainSign(1)"><%= ("Page 1: Basics") %></div>
+<div class="app_alt_page_header" id="page_alt_header1" ><%= ("Page 1: Basics") %></div>
 <div class="img_container" id="image_wrapper1">
     <img src="images/app1.png" alt=""/>
     <div class="data_overlay" id="app_name">{{ user.name.first_name + " " + user.name.last_name }}</div>
@@ -606,55 +605,54 @@ p {
         <div class="hh_relation">{{ person.relation }}</div>
 
     </div>
-    <div id="app_signature_label1">APPLICANT/REPRESENTATIVE SIGNATURE</div>
+    <div id="app_signature_label1"><%= ("APPLICANT/REPRESENTATIVE SIGNATURE") %></div>
     <div id="sig_container1" ng-class="{hide_sig: !show_sig1, show_sig: show_sig1}">
         <div id="sig_prompt1">
-            Sign in the box with your finger.
+            <%= ("Sign in the box with your finger.") %>
             <div id="sig_continue" class="sig_button" ng-click="goToSig2();">
-                Continue
+                <%= ("Continue") %>
             </div>
         </div>
     </div>
 </div>
-<div class="app_page_header" id="page_header2" ng-click="backToMainSign(2)">Page 2: Income</div>
-<div class="app_alt_page_header" id="page_alt_header2" >Page 2: Income</div>
+<div class="app_page_header" id="page_header2" ng-click="backToMainSign(2)"><%= ("Page 2: Income") %></div>
+<div class="app_alt_page_header" id="page_alt_header2" ><%= ("Page 2: Income") %></div>
 <div class="img_container" id="image_wrapper2" >
     <img src="images/app2.png" alt=""/>
     <div ng-repeat="person in personsWithIncome track by $index">
         <div class="data_overlay" id="app_{{ $index }}_income_name">{{ person.name }}</div>
         <div class="data_overlay" id="app_{{ $index }}_income_hours">{{ person.hours_per_month }}</div>
         <div class="data_overlay" id="app_{{ $index }}_income_amount">${{ person.amount }}</div>
-
     </div>
 
     <div class="data_overlay" id="app_total_resources">{{ user.total_resources || " " }}</div>
     <div class="data_overlay" id="app_rent">{{ user.rent || " " }}</div>
 
 </div>
-<div class="app_page_header" id="page_header3" ng-click="backToMainSign(3)">Page 3: Expenses</div>
-<div class="app_alt_page_header" id="page_alt_header3" >Page 3: Expenses</div>
+<div class="app_page_header" id="page_header3" ng-click="backToMainSign(3)"><%= ("Page 3: Expenses") %></div>
+<div class="app_alt_page_header" id="page_alt_header3" ><%= ("Page 3: Expenses") %></div>
 <div class="img_container" id="image_wrapper3">
     <img src="images/app3.png"  alt=""/>
 </div>
-<div class="app_page_header" id="page_header4" ng-click="backToMainSign(4)">Page 4: Legal</div>
-<div class="app_alt_page_header" id="page_alt_header4" >Page 4: Legal</div>
+<div class="app_page_header" id="page_header4" ng-click="backToMainSign(4)"><%= ("Page 4: Legal") %></div>
+<div class="app_alt_page_header" id="page_alt_header4" ><%= ("Page 4: Legal") %></div>
 <div class="img_container" id="image_wrapper4">
     <img src="images/app4.png" alt=""/>
 </div>
-<div class="app_page_header" id="page_header5" ng-click="backToMainSign(5)">Page 5: Final Signature</div>
-<div class="app_alt_page_header" id="page_alt_header5" >Page 5: Final Signature</div>
+<div class="app_page_header" id="page_header5" ng-click="backToMainSign(5)"><%= ("Page 5: Final Signature") %></div>
+<div class="app_alt_page_header" id="page_alt_header5" ><%= ("Page 5: Final Signature") %></div>
 <div class="img_container" id="image_wrapper5">
     <img src="images/app5.png" alt=""/>
     <div id="app_signature_label2"></div>
     <div id="sig_container2" ng-class="{hide_sig: !show_sig1, show_sig: show_sig1}">
 
         <div class="sig_prompt">
-            Sign in the box with your finger.
+            <%= ("Sign in the box with your finger.") %>
             <div ng-hide="appSubmissionInProcess" class="sig_button" id="submit_application" ng-click="submitSignedApplication();">
-                Submit application
+                <%= ("Submit application") %>
             </div>
             <div ng-show="appSubmissionInProcess" style="background-color:gray" class="sig_button">
-                Submitting application...
+                <%= ("Submitting application...") %>
             </div>
         </div>
     </div>
