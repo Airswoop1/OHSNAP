@@ -88,7 +88,7 @@
         <div class="estimate">
             <div class="time-estimate">
                 <h1 ng-class="{'finish':interviewCompleted.eligibility && interviewCompleted.household &&interviewCompleted.income && interviewCompleted.expenses}">
-                    <%= ("{{ 45 - minutes_saved }}<span>min</span>") %>
+                    {{ 45 - minutes_saved }}<span><%= ("min") %></span>
                 </h1>
                 <h2><%= ("Estimated interview") %></h2>
             </div>
