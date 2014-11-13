@@ -166,5 +166,5 @@ angular.module('formApp.formStates',['ui.router', 'formApp.userDataFactory'])
 	// catch all route
 	// send users to the form page
 
-	$urlRouterProvider.otherwise('/form/intro');
+	$urlRouterProvider.otherwise('/form/');
 })

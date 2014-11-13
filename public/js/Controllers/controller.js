@@ -10,7 +10,14 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 		$scope.docs = userDataFactory.userData.docs;
 		$scope.docProgress = userDataFactory.userData.docProgress;
 
-		$scope.user = (typeof userDataFactory.userData.user.formData !== "undefined") ? userDataFactory.userData.user.formData : {};
+		if($location.search()['withMockData']==true){
+			$scope.user = userDataFactory.userData.userMockData.formData;
+		}
+		else {
+			$scope.user = (typeof userDataFactory.userData.user.formData !== "undefined") ? userDataFactory.userData.user.formData : {};
+		}
+
+
 
 
 		$scope.date = new Date();

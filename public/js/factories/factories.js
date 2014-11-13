@@ -283,8 +283,8 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 					},
 					"phone":undefined
 				}
-			}/*
-			'user' :  {
+			},
+			'userMockData' :  {
 			 formData : {
 				 "name": {
 					 "first_name": "Kevin",
@@ -602,7 +602,7 @@ angular.module('formApp.userDataFactory',[]).factory('userDataFactory',
 				 "migrant_worker": "yes",
 				 "shelter_abused": "yes"
 			 }
-			 }*/
+			 }
 
 		};
 

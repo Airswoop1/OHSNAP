@@ -61,4 +61,4 @@ server.listen(app.get('port'), function () {
 https_server.listen(config.web.https_port, function(){
     console.log("HTTPS now listening on port " + config.web.https_port)
     console.log("Completed Node initialization: " + new Date());
-})
+});
