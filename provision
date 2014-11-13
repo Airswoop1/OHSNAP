@@ -21,6 +21,6 @@ pip install -r requirements.txt
 
 rm -rf node_modules
 su vagrant -c "npm install"
-su vagrant -c  "echo 'export NODE_ENV=vagrant' >> /home/vagrant/.bashrc"
+su vagrant -c  "echo 'export NODE_ENV=sandbox' >> /home/vagrant/.bashrc"
 # su vagrant -c "ln -s /vagrant/.nodemonignore ~/.nodemonignore"
 cd -
