@@ -1,11 +1,4 @@
 {
-	"Hello": "Hello",
-	"easyfoodstamps.com is designed specifically for mobile. Learn more at": "easyfoodstamps.com is designed specifically for mobile. Learn more at",
-	"easyfoodstamps.com is designed specifically for mobile. Learn more at {}": "easyfoodstamps.com is designed specifically for mobile. Learn more at {}",
-	"easyfoodstamps.com is designed specifically for mobile. Learn more at {link}": "easyfoodstamps.com is designed specifically for mobile. Learn more at {link}",
-	"easyfoodstamps.com is designed specifically for mobile. Learn more at {\\{link}": "easyfoodstamps.com is designed specifically for mobile. Learn more at {\\{link}",
-	"easyfoodstamps.com is designed specifically for mobile. Learn more at {\\{link\\}\\}": "easyfoodstamps.com is designed specifically for mobile. Learn more at {\\{link\\}\\}",
-	"easyfoodstamps.com is designed specifically for mobile. Learn more at {{link}}": "easyfoodstamps.com is designed specifically for mobile. Learn more at {{link}}",
 	"easyfoodstamps.com is designed specifically for mobile. Learn more at %s": "easyfoodstamps.com is designed specifically for mobile. Learn more at %s",
 	"APPLY IN 3 EASY STEPS!": "APPLY IN 3 EASY STEPS!",
 	"Step 1": "Step 1",
@@ -31,5 +24,9 @@
 	"First name": "First name",
 	"First Name Required": "First Name Required",
 	"Last name": "Last name",
-	"Last Name Required": "Last Name Required"
+	"Last Name Required": "Last Name Required",
+	"What’s your phone number?": "What’s your phone number?",
+	"Ten Digit Telephone Number Required": "Ten Digit Telephone Number Required",
+	"A phone number is required for submitting your application through easyfoodstamps.com.": "A phone number is required for submitting your application through easyfoodstamps.com.",
+	"Submitting Application": "Submitting Application"
 }

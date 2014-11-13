@@ -26,12 +26,10 @@ var https_server = https.createServer(config.ssl, app);
 app.use(compression())
 
 i18n.expressBind(app, {
-    // setup some locales - other locales default to vi silently
     locales: ['en', 'es'],
-    // set the default locale
     defaultLocale: 'en',
-    // set the cookie name
-    cookieName: 'locale'
+    cookieName: 'locale',
+    query: true
 });
 
 
@@ -44,7 +42,7 @@ app.set('port', config.web.http_port);
 
 app.use(function(req, res, next) {
     req.i18n.setLocaleFromCookie();
-    req.i18n.setLocaleFromQuery(req);
+    req.i18n.setLocaleFromQuery();
     next();
 });
 
@@ -82,12 +80,10 @@ app.get('/es', function(req, res) {
 });
 
 app.get('/', function(req, res) {
-    req.i18n.setLocale('es');
     res.render('index', {});
 });
 
 app.get(/(.*)\.html/, function(req, res) {
-    req.i18n.setLocale('es');
     res.render(req.route.params[0].slice(1), {});
 });
 
