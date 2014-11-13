@@ -1,22 +1,22 @@
-<h1>How much are your monthly expenses?</h1>
-<p>This includes:</p>
+<h1><%= __("How much are your monthly expenses?") %></h1>
+<p><%= __("This includes:") %></p>
 <style>
     li,ul {list-style-type: disc; list-style-position: outside; margin-left:10px; }
 </style>
 <ul style="margin-bottom:10px;margin-top:-14px;">
-    <li>Rent</li>
-    <li>Utility Bills</li>
-    <li>Child Support Payments</li>
-    <li>Medical expenses for elderly or disabled household members which are not covered by insurance</li>
+    <li><%= __("Rent") %></li>
+    <li><%= __("Utility Bills") %></li>
+    <li><%= __("Child Support Payments") %></li>
+    <li><%= __("Medical expenses for elderly or disabled household members which are not covered by insurance") %></li>
 </ul>
 
 <div class="input-group dollar-input" ng-class="{'has-success':snapForm.expenses.$pristine ,'has-error': snapForm.expenses.$invalid }">
     <input class="form-control" type="number" name="expenses"  id="expenses"
            ng-model="formData.eligibility_expenses" autofocus="true" min="0" required ng-enter/>
     <span class="help-block"  ng-show="submitted_expenses && snapForm.expenses.$error.min">
-            Minimum expenses is 0.</span>
+            <%= __("Minimum expenses is 0.") %></span>
     <span class="help-block"  ng-show="submitted_expenses && snapForm.expenses.$invalid && !snapForm.expenses.$error.min">
-            You must enter a number.</span>
+            <%= __("You must enter a number.") %></span>
 </div>
 
-<div class="yellow-button" ng-class="{'disabled': snapForm.expenses.$invalid}" ng-click="completeEligibilityCalc()">Continue</div>
+<div class="yellow-button" ng-class="{'disabled': snapForm.expenses.$invalid}" ng-click="completeEligibilityCalc()"><%= __("Continue") %></div>

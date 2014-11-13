@@ -9,6 +9,7 @@ var cons = require('consolidate')
 var compression = require('compression')
 var ip = require('ip')
 var i18n = require('i18n-2');
+var swig = require('swig');
 
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
@@ -25,15 +26,16 @@ var https_server = https.createServer(config.ssl, app);
 app.use(compression())
 
 i18n.expressBind(app, {
-  // setup some locales - other locales default to vi silently
-  locales: ['en', 'es'],
-  // set the default locale
-  defaultLocale: 'en',
-  // set the cookie name
-  cookieName: 'locale'
+    // setup some locales - other locales default to vi silently
+    locales: ['en', 'es'],
+    // set the default locale
+    defaultLocale: 'en',
+    // set the cookie name
+    cookieName: 'locale'
 });
 
 
+swig.setDefaults({varControls: ['<%=', '%>']});
 app.engine('html', cons.swig);
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, 'views'));
@@ -80,10 +82,12 @@ app.get('/es', function(req, res) {
 });
 
 app.get('/', function(req, res) {
+    req.i18n.setLocale('es');
     res.render('index', {});
 });
 
 app.get(/(.*)\.html/, function(req, res) {
+    req.i18n.setLocale('es');
     res.render(req.route.params[0].slice(1), {});
 });
 

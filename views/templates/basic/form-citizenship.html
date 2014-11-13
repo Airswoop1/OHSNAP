@@ -1,14 +1,14 @@
-<h1>Are you a US Citizen?</h1>
-<p>Your status affects your eligibility for SNAP benefits. Applying for SNAP or receiving benefits will not affect your immigration case.</p>
+<h1><%= __("Are you a US Citizen?") %></h1>
+<p><%= __("Your status affects your eligibility for SNAP benefits. Applying for SNAP or receiving benefits will not affect your immigration case.") %></p>
 <br/>
 <input ng-model="formData.citizenship" id="us_citizen_yes" type="radio" class="name-input marital-input" value="yes" name="citizenship" required><label
-        for="us_citizen_yes">Yes</label>
+        for="us_citizen_yes"><%= __("Yes") %></label>
 <br/>
 <input ng-model="formData.citizenship" id="us_citizen_no" type="radio" class="name-input marital-input" value="no" name="citizenship"><label
-        for="us_citizen_no" >No</label>
+        for="us_citizen_no" ><%= __("No") %></label>
 <br/>
-<span class="help-block" style="color:red;" ng-show="submitted_citizenship && !formData.citizenship">Citizenship selection required.</span>
+<span class="help-block" style="color:red;" ng-show="submitted_citizenship && !formData.citizenship"><%= __("Citizenship selection required.") %></span>
 
-<div class="yellow-button disabled" ng-hide="formData.citizenship == 'yes' || formData.citizenship == 'no'">Continue</div>
-<div ng-show="formData.citizenship == 'no'" class="yellow-button" ui-sref="form.non-citizen">Continue</div>
-<div ng-show="formData.citizenship == 'yes'" class="yellow-button" ng-click="completedCitizenship()">Continue</div>
+<div class="yellow-button disabled" ng-hide="formData.citizenship == 'yes' || formData.citizenship == 'no'"><%= __("Continue") %></div>
+<div ng-show="formData.citizenship == 'no'" class="yellow-button" ui-sref="form.non-citizen"><%= __("Continue") %></div>
+<div ng-show="formData.citizenship == 'yes'" class="yellow-button" ng-click="completedCitizenship()"><%= __("Continue") %></div>
