@@ -5,14 +5,15 @@
 # Prevent dpkg-reconfigure interactive sessions
 export DEBIAN_FRONTEND=noninteractive
 
-
 apt-get update
-apt-get install -y nodejs npm 
+apt-get install -y git
+apt-get install -y nodejs npm
 apt-get install -y python-dev python-pip
-apt-get install -y mongodb-org
+apt-get install -y mongodb
 apt-get install -y pdftk libmagickwand-dev
 
 ln -s /usr/bin/nodejs /usr/bin/node
+npm install -g bower
 npm install -g nodemon
 npm install -g grunt-cli
 
