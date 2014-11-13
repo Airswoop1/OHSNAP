@@ -1,3 +1,4 @@
+{% autoescape false %}
 <style>
     ul, li {
         list-style:hiragana;
@@ -24,7 +25,7 @@
             <%= ("Any information you provide in connection with your application for SNAP will be subject to verification by Federal, State and local officials. If any information is incorrect, you may be denied SNAP. You may be subject to criminal prosecution for knowingly providing incorrect information.") %>
         </li>
         <li>
-            <%= ("You will <b style="text-decoration:underline;">never</b> be able to get SNAP again if you are found guilty in a court of law for the second time of buying or selling controlled substances (illegal drugs or certain drugs for which a doctor’s prescription is required) in exchange for SNAP; or found guilty in a court of law of selling or getting firearms, ammunition or explosives in exchange for SNAP; or found guilty in a court of trafficking in SNAP worth $500 or more. Trafficking includes the illegal use, transfer, acquisition, alteration or possession of SNAP, authorization cards or access devices; or found guilty of committing a third Intentional Program Violation (IPV).") %>
+            <%= ("You will <b style='text-decoration:underline;'>never</b> be able to get SNAP again if you are found guilty in a court of law for the second time of buying or selling controlled substances (illegal drugs or certain drugs for which a doctor’s prescription is required) in exchange for SNAP; or found guilty in a court of law of selling or getting firearms, ammunition or explosives in exchange for SNAP; or found guilty in a court of trafficking in SNAP worth $500 or more. Trafficking includes the illegal use, transfer, acquisition, alteration or possession of SNAP, authorization cards or access devices; or found guilty of committing a third Intentional Program Violation (IPV).") %>
         </li>
         <li>
             <%= ("You will not be able to get SNAP for two years if you are found guilty in a court of law for the first time of buying or selling controlled substances (illegal drugs or certain drugs for which a doctor’s prescription is required) in exchange for SNAP.") %>
@@ -80,7 +81,7 @@
             <%= ("<b>AUTHORIZED REPRESENTATIVE</b> - You can authorize someone who knows your household circumstances to apply for SNAP for you. You can also authorize someone outside your household to get SNAP benefits for you and to use them to buy food for you. If you would like to authorize someone, you must do so in writing. You may do so by printing the person’s name, address and phone number below. When an Authorized Representative is applying on behalf of a SNAP Household that does not reside in an institution, both the Authorized Representative and the SNAP Head of Household or other responsible adult member of the household must sign and date the signature sections on this form.") %>
         </li>
         <li>
-            <%= ("<b>CERTIFICATION: I swear and/or affirm under the penalties of perjury that the information I have given or will give to the local Social Services district is correct.</b> <b style="text-decoration:underline;">Your signature is required below to complete the application process.</b>") %>
+            <%= ("<b>CERTIFICATION: I swear and/or affirm under the penalties of perjury that the information I have given or will give to the local Social Services district is correct.</b> <b style='text-decoration:underline;'>Your signature is required below to complete the application process.</b>") %>
         </li>
     </ul>
 </div>
@@ -93,3 +94,4 @@
 
 <div class="yellow-button disabled" ng-show="!esignature_agree"><%= ("Go To Signature") %></div>
 <div class="yellow-button" ng-show="esignature_agree" ng-click="goToSignPage();"><%= ("Go To Signature") %></div>
+{% autoescape true %}
