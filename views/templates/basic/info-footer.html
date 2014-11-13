@@ -4,7 +4,7 @@
         <%= __("ABOUT US") %>
     </h5>
     <p class="accordion" ng-class="{'open':isActive.about, 'close':!isActive.about}">
-        <%= __("We’re <a target=\"_blank\" href=\"http://joinpropel.com/\">Propel</a>, and we're trying to make it easier to apply for SNAP. We're based in Brooklyn at Significance Labs, and we aren’t affiliated with the US government.") %></p>
+        <%= __("We’re %s, and we're trying to make it easier to apply for SNAP. We're based in Brooklyn at Significance Labs, and we aren’t affiliated with the US government.", '<a target="_blank" href="http://joinpropel.com/>Propel"</a>') %></p>
     <h5 ng-class="{'open':isActive.faqs, 'close':!isActive.faqs}" ng-click="click('faqs')">
         <%= __("FAQs") %>
     </h5>
@@ -21,13 +21,13 @@
         <p>
             <strong ng-click="clickFAQ('info')"><%= __("What will you do with my personal information?") %></strong>
             <span ng-class="{'open':faqActive.info, 'close':!faqActive.info}">
-                <%= __("By using this app, you are agreeing to our <a ng-click=\"external('tos')\" href=\"/terms-of-service.html\">Terms of Service</a> and <a ng-click=\"external('privacy')\" href=\"/privacy-policy.html\">Privacy Policy</a>") %>.
+                By using this app, you are agreeing to our <a ng-click="external('tos')" href="/terms-of-service.html">Terms of Service</a> and <a ng-click="external('privacy')" href="/privacy-policy.html">Privacy Policy</a>.
             </span>
         </p>
         <p >
             <strong ng-click="clickFAQ('more')"><%= __("Where can I read more about SNAP?") %></strong>
             <span ng-class="{'open':faqActive.more, 'close':!faqActive.more}">
-                <%= __("Learn more <a ng-click=\"external('usda.gov')\" href=\"http://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program-snap\">here</a>.") %>
+                Learn more <a ng-click="external('usda.gov')" href="http://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program-snap">here</a>.
             </span>
         </p>
     </div>

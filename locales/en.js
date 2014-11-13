@@ -28,5 +28,16 @@
 	"What’s your phone number?": "What’s your phone number?",
 	"Ten Digit Telephone Number Required": "Ten Digit Telephone Number Required",
 	"A phone number is required for submitting your application through easyfoodstamps.com.": "A phone number is required for submitting your application through easyfoodstamps.com.",
-	"Submitting Application": "Submitting Application"
+	"Submitting Application": "Submitting Application",
+	"ABOUT US": "ABOUT US",
+	"FAQs": "FAQs",
+	"We’re <a target=_blank href=http://joinpropel.com/>Propel</a>, and we're trying to make it easier to apply for SNAP. We're based in Brooklyn at Significance Labs, and we aren’t affiliated with the US government.": "We’re <a target=_blank href=http://joinpropel.com/>Propel</a>, and we're trying to make it easier to apply for SNAP. We're based in Brooklyn at Significance Labs, and we aren’t affiliated with the US government.",
+	"We’re %s, and we're trying to make it easier to apply for SNAP. We're based in Brooklyn at Significance Labs, and we aren’t affiliated with the US government.": "We’re %s, and we're trying to make it easier to apply for SNAP. We're based in Brooklyn at Significance Labs, and we aren’t affiliated with the US government.",
+	"What’s the difference between applying here versus applying elsewhere?": "What’s the difference between applying here versus applying elsewhere?",
+	"The application that gets submitted is the same. We think you’ll be able to save time and headaches by applying with us, though. You’ll be eligible for the exact same SNAP benefits no matter where you apply.": "The application that gets submitted is the same. We think you’ll be able to save time and headaches by applying with us, though. You’ll be eligible for the exact same SNAP benefits no matter where you apply.",
+	"How much does this cost?": "How much does this cost?",
+	"It's free.": "It's free.",
+	"What will you do with my personal information?": "What will you do with my personal information?",
+	"Where can I read more about SNAP?": "Where can I read more about SNAP?",
+	"CONTACT US": "CONTACT US"
 }

@@ -40,12 +40,6 @@ app.set('views', path.join(__dirname, 'views'));
 
 app.set('port', config.web.http_port);
 
-app.use(function(req, res, next) {
-    req.i18n.setLocaleFromCookie();
-    req.i18n.setLocaleFromQuery();
-    next();
-});
-
 app.use(express.favicon());
 app.use(express.compress());
 app.use(express.urlencoded());
@@ -54,6 +48,13 @@ app.use(cookieParser());
 app.use(cookieSession({secret: 'asdfa9asdfxxc0'}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
+
+app.use(function(req, res, next) {
+    req.i18n.setLocaleFromCookie();
+    req.i18n.setLocaleFromQuery();
+    res.cookie('locale', req.i18n.getLocale());
+    next();
+});
 
 var env = app.get('env');
 console.log('Environment:', env);
@@ -73,18 +74,16 @@ else if (env == 'prod' || env == 'production') {
     });
 }
 
-app.get('/es', function(req, res) {
-    req.i18n.setLocale('es');
-    var greeting = req.i18n.__('Hello');
-    res.send(200, greeting);
-});
-
 app.get('/', function(req, res) {
-    res.render('index', {});
+    res.render('index', {
+        locale: req.i18n.getLocale()
+    });
 });
 
 app.get(/(.*)\.html/, function(req, res) {
-    res.render(req.route.params[0].slice(1), {});
+    res.render(req.route.params[0].slice(1), {
+        locale: req.i18n.getLocale()
+    });
 });
 
 app.use(express.static('public'));

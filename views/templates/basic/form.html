@@ -5,6 +5,12 @@
     <div>
         <div ng-click="$emit('show-progress-bar')" ui-sref="form.name" class="intro-button"><%= __("Apply now") %></div>
         <div ng-click="$emit('show-elig-progress-bar', 'dont-show-progress-bar')" ui-sref="form.citizenship" class="intro-button dull"><%= __("Am I eligible?") %></div>
+
+        {% if locale == "en" %}
+        <div class="language-link"><a href="/?lang=es">En español, por favor</a></div>
+        {% else %}
+        <div class="language-link"><a href="/?lang=en">English?</a></div>
+        {% endif %}
     </div>
 </div>
 
