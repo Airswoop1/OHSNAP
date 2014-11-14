@@ -1292,7 +1292,10 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 			if($state.current.name == 'int.interview-preview-sign') {
 				$scope.goToSig1();
-				document.getElementById('topOfSignPage').style.display = 'none';
+				var elm;
+				if (elm = document.getElementById('topOfSignPage')) {
+					elm.style.display = 'none';
+				}
 			}
 		});
 

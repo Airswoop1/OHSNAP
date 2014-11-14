@@ -6,5 +6,4 @@
 </div>
 
 <p><%= __("A phone number is required for submitting your application through easyfoodstamps.com.") %></p>
-<button class="yellow-button" ng-hide="submitting_app" ng-class="{'disabled': !snapForm.phone.$valid }" ng-click="completedTelephone()"><%= __("Continue") %></button>
-<div class="yellow-button" style="background-color: #00bd54" ng-show="submitting_app" ><%= __("Submitting Application") %></div>
+<button class="yellow-button" ng-class="{'disabled': !snapForm.phone.$valid }" ng-click="completedTelephone()"><%= __("Continue") %></button>
