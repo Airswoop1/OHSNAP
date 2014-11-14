@@ -4,4 +4,4 @@
     <input ng-model="user.total_resources" id="total_resources" type="number" class="name-input resources-input" name="total_resources">
 </div>
 
-<div class="yellow-button" ui-sref="int.expenses-mortgage"><%= ("Continue") %></div>
+<div class="yellow-button" ng-click="$emit('int-main', 'income')" ui-sref="int.main"><%= ("Continue") %></div>

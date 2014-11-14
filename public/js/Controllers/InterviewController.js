@@ -309,9 +309,9 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 			    case "int.income-hours":
 			    case "int.income-household-amount":
 			    case "int.income-household-frequency":
-			        $scope.interview_steps = 2;
+				case "int.resources":
+					$scope.interview_steps = 2;
 			        break;
-			    case "int.resources":
 			    case "int.expenses-mortgage":
 			        $scope.interview_steps = 3;
 			        break;
