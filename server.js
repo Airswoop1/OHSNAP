@@ -33,7 +33,7 @@ i18n.expressBind(app, {
 });
 
 
-swig.setDefaults({varControls: ['<%=', '%>']});
+swig.setDefaults({varControls: ['<%=', '%>'], autoescape: false});
 app.engine('html', cons.swig);
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, 'views'));

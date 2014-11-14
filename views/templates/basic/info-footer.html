@@ -1,11 +1,10 @@
-{% autoescape false %}
 <!-- info-footer.html -->
 <div class="footer">
     <h5 ng-class="{'open':isActive.about, 'close':!isActive.about}" ng-click="click('about')">
         <%= __("ABOUT US") %>
     </h5>
     <p class="accordion" ng-class="{'open':isActive.about, 'close':!isActive.about}">
-        <%= __("We’re %s, and we're trying to make it easier to apply for SNAP. We're based in Brooklyn at Significance Labs, and we aren’t affiliated with the US government.", '<a target="_blank" href="http://joinpropel.com/Propel"></a>') %></p>
+        <%= __("We’re %s, and we're trying to make it easier to apply for SNAP. We're based in Brooklyn at Significance Labs, and we aren’t affiliated with the US government.", '<a target="_blank" href="http://joinpropel.com/Propel">Propel</a>') %></p>
     <h5 ng-class="{'open':isActive.faqs, 'close':!isActive.faqs}" ng-click="click('faqs')">
         <%= __("FAQs") %>
     </h5>
@@ -41,4 +40,3 @@
         <a href="tel://1-917-727-6855">+1 (917) 727-6855</a>
     </p>
 </div>
-{% autoescape true %}
