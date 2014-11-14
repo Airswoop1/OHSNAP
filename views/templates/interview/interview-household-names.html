@@ -1,4 +1,4 @@
-<h1><%= ("What are the names of the people living with you?") %></h1>
+<h1><%= ("Who lives with you?") %></h1>
 <p><%= ("Please enter at least one name") %></p>
 <div ng-repeat="num in getNumber(user.household) track by $index" class="household-names">
     <h6 for="name_{{ $index }}">Person {{ $index + 1 }}</h6>

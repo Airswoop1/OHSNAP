@@ -5,5 +5,5 @@
     <span class="help-block" ng-show="submitted_phone && !snapForm.phone.$valid"><%= __("Ten Digit Telephone Number Required") %></span>
 </div>
 
-<p><%= __("A phone number is required for submitting your application through easyfoodstamps.com.") %></p>
+<p><%= __("A case worker will give you a call at this number within five business days.") %></p>
 <button class="yellow-button" ng-class="{'disabled': !snapForm.phone.$valid }" ng-click="completedTelephone()"><%= __("Continue") %></button>

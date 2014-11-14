@@ -1809,3 +1809,8 @@ input[type=file] {
   font-size: 18px;
   font-weight: 600;
 }
+
+#sig_continue {
+  position: relative;
+  top: 25px;  
+}
