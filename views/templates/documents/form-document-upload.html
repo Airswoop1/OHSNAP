@@ -4,20 +4,20 @@
             <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('IDENTITY'), 'in-progress-button': isInProgress('IDENTITY'), 'uploaded': isUploaded('IDENTITY')}">
                 <img ng-src="../images/sample/{{ docContent['IDENTITY'].sample_image  }}" alt=""/>
             </div>
-            <h4><%= __("IDENTITY") %></h4>
+            <h4><%= __("Identity") %></h4>
         </li>
         <li ng-click="goToDocUpload('RESIDENCE')">
             <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('RESIDENCE'), 'in-progress-button': isInProgress('RESIDENCE'), 'uploaded': isUploaded('RESIDENCE')}">
                 <img ng-src="../images/sample/{{ docContent['RESIDENCE'].sample_image  }}" alt=""/>
             </div>
-            <h4><%= __("RESIDENCE") %></h4>
+            <h4><%= __("Residence") %></h4>
         </li>
 
         <li ng-click="goToDocUpload('HOUSING_EXPENSE')">
             <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('HOUSING_EXPENSE'), 'in-progress-button': isInProgress('HOUSING_EXPENSE'), 'uploaded': isUploaded('HOUSING_EXPENSE')}">
                 <img ng-src="../images/sample/{{ docContent['HOUSING_EXPENSE'].sample_image  }}" alt=""/>
             </div>
-            <h4><%= __("EXPENSES") %></h4>
+            <h4><%= __("Expenses") %></h4>
         </li>
 
         <li ng-click="goToDocUpload('SSN')">
@@ -31,32 +31,32 @@
             <div class="image-wrapper" ng-class="{'not-uploaded':isNotUploaded('CITIZENSHIP'), 'in-progress-button': isInProgress('CITIZENSHIP'), 'uploaded': isUploaded('CITIZENSHIP')}">
                 <img ng-src="../images/sample/{{ docContent['CITIZENSHIP'].sample_image  }}" alt=""/>
             </div>
-            <h4><%= __("CITIZENSHIP") %></h4>
+            <h4><%= __("Citizenship") %></h4>
         </li>
 
         <li ng-click="goToDocUpload('EARNED_INCOME')">
             <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('EARNED_INCOME'), 'in-progress-button': isInProgress('EARNED_INCOME'), 'uploaded': isUploaded('EARNED_INCOME')}">
                 <img ng-src="../images/sample/{{ docContent['EARNED_INCOME'].sample_image  }}" alt=""/>
             </div>
-            <h4><%= __("INCOME") %></h4>
+            <h4><%= __("Income") %></h4>
         </li>
 
         <li ng-click="goToDocUpload('ALT_INCOME')">
             <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('ALT_INCOME'), 'in-progress-button': isInProgress('ALT_INCOME'), 'uploaded': isUploaded('ALT_INCOME')}">
                 <img ng-src="../images/sample/{{ docContent['ALT_INCOME'].sample_image }}" alt=""/>
             </div>
-            <h4><%= __("OTHER INCOME") %></h4>
+            <h4><%= __("Other income") %></h4>
         </li>
 
         <li ng-click="goToDocUpload('OTHER')">
             <div class="image-wrapper not-uploaded">
                 <img ng-src="../images/sample/{{ docContent['OTHER'].sample_image }}" alt=""/>
             </div>
-            <h4><%= __("OTHER DOCS") %></h4>
+            <h4><%= __("Other docs") %></h4>
         </li>
 
         <div class="clear"></div>
     </ul>
-    <div class="yellow-button" ng-click="goToCompletion();"><%= __("I'm Done!") %></div>
+    <div class="yellow-button" ng-click="goToCompletion();"><%= __("Done!") %></div>
 
 </div>

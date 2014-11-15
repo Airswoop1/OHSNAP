@@ -2,7 +2,7 @@
     <div  ng-switch-when="0"  class="page-header step-two">
         <div class="back-button" ng-click="goBack()"></div>
         <div class="header">
-            <h4 class="sub-h4"><%= ("More about you") %></h4>
+            <h4 class="sub-h4"><%= __("More about you") %></h4>
         </div>
         <div class="progress" ng-show="show_interview_progress">
             <div class="progress-bar"  ng-style="{ width: int_progress +'%'}">
@@ -13,7 +13,7 @@
     <div  ng-switch-when="1"  class="page-header step-two">
         <div class="back-button" ng-click="goBack()"></div>
         <div class="header" ng-switch="interview_steps">
-            <h4 class="sub-h4"><%= ("Household") %></h4>
+            <h4 class="sub-h4"><%= __("Household") %></h4>
         </div>
         <div class="progress" ng-show="show_interview_progress">
             <div class="progress-bar"  ng-style="{ width: int_progress +'%'}">
@@ -24,7 +24,7 @@
     <div  ng-switch-when="2"  class="page-header step-two">
         <div class="back-button" ng-click="goBack()"></div>
         <div class="header" ng-switch="interview_steps">
-            <h4 class="sub-h4"><%= ("Income") %></h4>
+            <h4 class="sub-h4"><%= __("Income") %></h4>
         </div>
         <div class="progress" ng-show="show_interview_progress">
             <div class="progress-bar"  ng-style="{ width: int_progress +'%'}">
@@ -35,7 +35,7 @@
     <div  ng-switch-when="3"  class="page-header step-two">
         <div class="back-button" ng-click="goBack()"></div>
         <div class="header" ng-switch="interview_steps">
-            <h4 class="sub-h4"><%= ("Expenses") %></h4>
+            <h4 class="sub-h4"><%= __("Expenses") %></h4>
         </div>
         <div class="progress" ng-show="show_interview_progress">
             <div class="progress-bar"  ng-style="{ width: int_progress +'%'}">
@@ -46,22 +46,22 @@
     <div  ng-switch-when="4" id="topOfInfoPage" class="page-header step-two">
         <div class="back-button" ng-click="goBack()"></div>
         <div class="header">
-            <h4><%= ("Review answers") %></h4>
+            <h4><%= __("Sign application") %></h4>
         </div>
     </div>
 
     <div  ng-switch-when="5" id="topOfSignPage" class="page-header step-two">
         <div class="back-button" ng-click="goBack()"></div>
         <div class="header">
-            <h4><%= ("Sign application") %></h4>
+            <h4><%= __("Sign application") %></h4>
         </div>
     </div>
 
     <div  ng-switch-when="6" class="page-header step-two">
         <div class="back-button" ng-click="goBack()"></div>
         <div class="header">
-            <h3><%= ("Step 2 of 3") %></h3>
-            <h4><%= ("Confirmation") %></h4>
+            <h3><%= __("Step 2 of 3") %></h3>
+            <h4><%= __("Confirmation") %></h4>
         </div>
     </div>
 
@@ -70,8 +70,8 @@
 
         <div class="back-button" ng-click="goBack()"></div>
         <div class="header">
-            <h3><%= ("Step 2 of 3") %></h3>
-            <h4><%= ("Interview") %></h4>
+            <h3><%= __("Step 2 of 3") %></h3>
+            <h4><%= __("Interview") %></h4>
         </div>
         <div class="progress" ng-show="show_interview_progress">
             <div class="progress-bar"  ng-style="{ width: int_progress +'%'}">
@@ -79,22 +79,22 @@
         </div>
 
         <div ng-switch="interview_progress_status">
-            <h1 ng-switch-when="0"><%= ("Ace your interview!") %></h1 >
-            <p ng-switch-when="0"><%= ("Answering your interview questions in advance will make your phone interview shorter.") %></p>
-            <h1 ng-switch-when="1"><%= ("Good job so far!") %></h1>
-            <h1 ng-switch-when="2"><%= ("Great! You're done!") %></h1>
+            <h1 ng-switch-when="0"><%= __("Ace your interview!") %></h1 >
+            <p ng-switch-when="0"><%= __("Answering your interview questions in advance will make your phone interview shorter.") %></p>
+            <h1 ng-switch-when="1"><%= __("Good job so far!") %></h1>
+            <h1 ng-switch-when="2"><%= __("Great! You're done!") %></h1>
         </div>
 
         <div class="estimate">
             <div class="time-estimate">
                 <h1 ng-class="{'finish':interviewCompleted.eligibility && interviewCompleted.household &&interviewCompleted.income && interviewCompleted.expenses}">
-                    {{ 45 - minutes_saved }}<span><%= ("min") %></span>
+                    {{ 45 - minutes_saved }}<span><%= __("min") %></span>
                 </h1>
-                <h2><%= ("Estimated interview") %></h2>
+                <h2><%= __("Estimated interview") %></h2>
             </div>
             <div class="benefit-estimate">  
                 <h1>${{ estimated_benefit || 0 }}</h1>
-                <h2><%= ("Estimated benefit") %></h2>
+                <h2><%= __("Estimated benefit") %></h2>
             </div>
             <div class="clear"></div>
         </div>

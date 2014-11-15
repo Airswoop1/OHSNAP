@@ -1,8 +1,8 @@
-<h1><%= ("Are you blind, disabled or pregnant?") %></h1>
+<h1><%= __("Are you blind, disabled or pregnant?") %></h1>
 <input ng-model="user.personal_disabled" id="disabled_yes" type="radio" class="name-input disabled-input" value="yes" name="disabled"><label
-        for="disabled_yes"><%= ("YES") %></label>
+        for="disabled_yes"><%= __("YES") %></label>
 <br/>
 <input ng-model="user.personal_disabled" id="disabled_no" type="radio" class="name-input disabled-input" value="no" name="disabled"><label
-        for="disabled_no"><%= ("NO") %></label>
+        for="disabled_no"><%= __("NO") %></label>
 
-<div class="yellow-button" ng-click="$emit('int-main', 'eligibility')" ui-sref="int.main"><%= ("Continue") %></div>
+<div class="yellow-button" ng-click="$emit('int-main', 'eligibility')" ui-sref="int.main"><%= __("Continue") %></div>

@@ -1,32 +1,32 @@
-<div class="yellow-button" ng-click="$emit('start-last-step')" ui-sref="int.info-esig-confirm"><%= ("Finish this step") %></div>
+<div class="yellow-button" ng-click="$emit('start-last-step')" ui-sref="int.info-esig-confirm"><%= __("Finish this step") %></div>
 
 <div class="question-sections">
     <div class="question-section odd" ng-class="{'finished': interviewCompleted.eligibility}"
          ui-sref="int.dob">
-        <span><%= ("1") %></span>
-        <h2><%= ("MORE ABOUT YOU") %></h2>
-        <p ng-hide="interviewCompleted.eligibility"><%= ("Save 5 mins") %></p>
-        <p ng-show="interviewCompleted.eligibility"><%= ("Saved 5 mins") %></p>
+        <span><%= __("1") %></span>
+        <h2><%= __("MORE ABOUT YOU") %></h2>
+        <p ng-hide="interviewCompleted.eligibility"><%= __("Save 5 mins") %></p>
+        <p ng-show="interviewCompleted.eligibility"><%= __("Saved 5 mins") %></p>
     </div>
     <div class="question-section" ng-class="{'finished': interviewCompleted.household}"
             ui-sref="int.household">
-        <span><%= ("2") %></span>
-        <h2><%= ("HOUSEHOLD") %></h2>
-        <p ng-hide="interviewCompleted.household"><%= ("Save 10 mins") %></p>
-        <p ng-show="interviewCompleted.household"><%= ("Saved 10 mins") %></p>
+        <span><%= __("2") %></span>
+        <h2><%= __("HOUSEHOLD") %></h2>
+        <p ng-hide="interviewCompleted.household"><%= __("Save 10 mins") %></p>
+        <p ng-show="interviewCompleted.household"><%= __("Saved 10 mins") %></p>
     </div>
     <div class="question-section odd" ng-class="{'finished': interviewCompleted.income}"
          ui-sref="int.income-frequency">
-        <span><%= ("3") %></span>
-        <h2><%= ("INCOME") %></h2>
-        <p ng-hide="interviewCompleted.income"><%= ("Save 5 mins") %></p>
-        <p ng-show="interviewCompleted.income"><%= ("Saved 5 mins") %></p>
+        <span><%= __("3") %></span>
+        <h2><%= __("INCOME") %></h2>
+        <p ng-hide="interviewCompleted.income"><%= __("Save 5 mins") %></p>
+        <p ng-show="interviewCompleted.income"><%= __("Saved 5 mins") %></p>
     </div>
     <div class="question-section" ng-class="{'finished': interviewCompleted.expenses}"
             ui-sref="int.expenses-mortgage">
-        <span><%= ("4") %></span>
-        <h2><%= ("EXPENSES") %></h2>
-        <p ng-hide="interviewCompleted.expenses"><%= ("Save 5 mins") %></p>
-        <p ng-show="interviewCompleted.expenses"><%= ("Saved 5 mins") %></p>
+        <span><%= __("4") %></span>
+        <h2><%= __("EXPENSES") %></h2>
+        <p ng-hide="interviewCompleted.expenses"><%= __("Save 5 mins") %></p>
+        <p ng-show="interviewCompleted.expenses"><%= __("Saved 5 mins") %></p>
     </div>
 </div>
