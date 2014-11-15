@@ -2,8 +2,8 @@
     <div class="back-button" ng-click="goBack()"></div>
     <div class="header">
         <h3 ng-show="getCurrentType() == 'Documents' || getCurrentType() == 'Completion' "><%= __("Step 3 of 3") %></h3>
-        <h4 ng-show="getCurrentType() == 'Documents' || getCurrentType() == 'Completion' "><%= __("DOCUMENTS") %></h4>
-        <h4 ng-hide="getCurrentType() == 'Documents' || getCurrentType() == 'Completion' " class="sub-h4">{{ getCurrentType() }}</h4>
+        <h4 ng-show="getCurrentType() == 'Documents' || getCurrentType() == 'Completion' "><%= __("Documents") %></h4>
+        <h4 ng-hide="getCurrentType() == 'Documents' || getCurrentType() == 'Completion' " class="sub-h4">{{ getCurrentType()[0] }}{{ getCurrentType().slice(1).toLowerCase() }}</h4>
         <div ng-show="getCurrentType() == 'Completion'" class="page-third-header completed-documents">
             <h1 class="icon-check-docs"><%= __("Congrats! You're done!") %></h1>
         </div>
