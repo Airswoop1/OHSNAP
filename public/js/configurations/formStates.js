@@ -12,7 +12,8 @@ angular.module('formApp.formStates',['ui.router', 'formApp.userDataFactory'])
 		.state('form', {
 			url: '/form',
 			templateUrl: 'templates/basic/form.html',
-			controller: 'formController'
+			controller: 'formController',
+			abstract: true
 		})
 
 		.state('form.intro', {
@@ -166,5 +167,5 @@ angular.module('formApp.formStates',['ui.router', 'formApp.userDataFactory'])
 	// catch all route
 	// send users to the form page
 
-	$urlRouterProvider.otherwise('/form/');
+	$urlRouterProvider.otherwise('/form/intro');
 })

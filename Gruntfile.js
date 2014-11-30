@@ -28,6 +28,15 @@ module.exports = function(grunt) {
           'public/gen/filters.js' : [
             'public/js/filters/telephoneFilter.js',
             'public/js/filters/ssnFilter.js'
+          ],
+          'public/gen/services.js' : [
+            'public/js/services/NoContactModalService.js',
+            'public/js/services/CalcBenefitService.js'
+          ],
+          'public/gen/states.js' : [
+            'public/js/configurations/documentStates.js',
+            'public/js/configurations/formStates.js',
+            'public/js/configurations/interviewStates.js'
           ]
         }
       }
@@ -35,14 +44,18 @@ module.exports = function(grunt) {
     uglify: {
       options: {
         mangle: false,
-        compress: true
+        compress: false
       },
       controller: {
         files: {
-          'public/gen/controllers.min.js': ['public/gen/controllers.js'],
-          'public/gen/directives.min.js': ['public/gen/directives.js'],
-          'public/gen/factories.min.js': ['public/gen/factories.js'],
-          'public/gen/filters.min.js': ['public/gen/filters.js']
+          'public/gen/easyfoodstamps.min.js': [
+            'public/gen/services.js',
+            'public/gen/factories.js',
+            'public/gen/filters.js',
+            'public/gen/controllers.js',
+            'public/gen/directives.js',
+            'public/gen/states.js'
+          ]
         }
       }
     },

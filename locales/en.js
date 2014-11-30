@@ -205,5 +205,7 @@
 	"Great! Your picture is uploading. In the meantime can keep uploading more documents.": "Great! Your picture is uploading. In the meantime can keep uploading more documents.",
 	"Uploading ...": "Uploading ...",
 	"Picture successfully uploaded": "Picture successfully uploaded",
-	"Retake": "Retake"
+	"Retake": "Retake",
+	"How much is your monthly rent or mortgage?": "How much is your monthly rent or mortgage?",
+	"For you and anyone else that is applying with you.": "For you and anyone else that is applying with you."
 }

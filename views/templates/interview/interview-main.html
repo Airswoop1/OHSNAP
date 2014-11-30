@@ -16,14 +16,14 @@
         <p ng-show="interviewCompleted.household"><%= __("Saved 10 mins") %></p>
     </div>
     <div class="question-section odd" ng-class="{'finished': interviewCompleted.income}"
-         ui-sref="int.income-frequency">
+         ui-sref="int.income">
         <span><%= __("3") %></span>
         <h2><%= __("INCOME") %></h2>
         <p ng-hide="interviewCompleted.income"><%= __("Save 5 mins") %></p>
         <p ng-show="interviewCompleted.income"><%= __("Saved 5 mins") %></p>
     </div>
     <div class="question-section" ng-class="{'finished': interviewCompleted.expenses}"
-            ui-sref="int.expenses-mortgage">
+            ui-sref="int.expenses-child-support">
         <span><%= __("4") %></span>
         <h2><%= __("EXPENSES") %></h2>
         <p ng-hide="interviewCompleted.expenses"><%= __("Save 5 mins") %></p>

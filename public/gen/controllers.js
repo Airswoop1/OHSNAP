@@ -403,11 +403,27 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 /**
  * Created by airswoop1 on 7/31/14.
  */
-angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch',
-		'NoContactModal', 'formApp.CalcBenefitService' ,'formApp.infoFooterDirective', 'formApp.ngEnterDirective',
-		'formApp.telephoneFilter', 'formApp.ssnFilter','formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective',
-		'formApp.modalDirective', 'formApp.documentUploadCtrl', 'formApp.userDataFactory']).controller('formController',
-	["$scope", "$state", "$http", "$rootScope", "$upload", "$location", "$window", "API", "userDataFactory", "calcBenefitService", function($scope, $state, $http, $rootScope, $upload, $location, $window, API, userDataFactory, calcBenefitService) {
+angular.module('formApp.formController', [
+	'angularFileUpload',
+	'ui.router',
+	'ui.bootstrap',
+	'ngTouch',
+	'NoContactModal',
+	'formApp.CalcBenefitService',
+	'formApp.infoFooterDirective',
+	'formApp.ngEnterDirective',
+	'formApp.telephoneFilter',
+	'formApp.ssnFilter',
+	'formApp.apiFactory',
+	'formApp.appSubmittedDropdownDirective',
+	'formApp.feedbackFooterDirective',
+	'formApp.modalDirective',
+	'formApp.documentUploadCtrl',
+	'formApp.userDataFactory'
+]).
+controller('formController', ["$scope", "$state", "$http", "$rootScope", "$upload", "$location", "$cookies", "$window", "API", "userDataFactory", "calcBenefitService", function(
+		$scope, $state, $http, $rootScope, $upload, $location,
+		$cookies, $window, API, userDataFactory, calcBenefitService) {
 
 		// we will store all of our form data in this object
 		$scope.formData = userDataFactory.userData.user.formData;
