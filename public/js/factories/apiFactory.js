@@ -21,26 +21,6 @@ angular.module('formApp.apiFactory',[]).factory('API', function($http) {
                 });
         },
 
-        uploadBasicInfo : function(formData, callback) {
-
-            $http.post('/upload_user_info', JSON.stringify(formData))
-                .success(function(data, status) {
-
-                    if(status === 201){
-                        callback(true, data.user_id);
-                    }
-                    else {
-                        callback(null);
-                    }
-                })
-                .error(function(data) {
-                    console.log(data);
-
-                    callback(null)
-
-                });
-        },
-
         getDocumentStatus : function(user_id, callback) {
           $http.post('/get_doc_status',JSON.stringify({"user_id":user_id}))
               .success(function(data, status){
@@ -73,13 +53,18 @@ angular.module('formApp.apiFactory',[]).factory('API', function($http) {
 	    },
 
 	    getCityFromZip : function(zip, callback) {
-		    $http.get('http://maps.googleapis.com/maps/api/geocode/json?address='+zip+'&sensor=true')
-			    .success(function(data, status){
-				    callback(null, data);
-			    })
-			    .error(function(data){
-				    callback(data,null);
-			    })
+		    $http.get('http://maps.googleapis.com/maps/api/geocode/json', {
+                params: {
+                    sensor: 'true',
+                    address: zip
+                }
+            })
+		    .success(function(data, status){
+			    callback(null, data);
+		    })
+		    .error(function(data){
+			    callback(data,null);
+		    })
 
 	    }
 

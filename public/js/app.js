@@ -4,40 +4,38 @@
 // app.js
 // create our angular app and inject ngAnimate and ui-router
 // =============================================================================
-var app = angular.module('formApp',['ui.router', 'formApp.formController',
-		'formApp.interviewStates', 'formApp.formStates', 'formApp.documentStates', 'formApp.interviewCtrl',
-		'formApp.documentUploadCtrl', 'formApp.jSignature', 'formApp.userDataFactory'])
+var app = angular.module('formApp', [
+  'ui.router',
+  'ngAnimate',
+  'ngCookies',
+  'formApp.formController',
+  'formApp.interviewStates',
+  'formApp.formStates',
+  'formApp.documentStates',
+  'formApp.interviewCtrl',
+  'formApp.documentUploadCtrl',
+  'formApp.jSignature',
+  'formApp.userDataFactory'
+]).
 
-// configuring our routes
-// =============================================================================
+run(['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
+    $rootScope.$on('$stateChangeSuccess', function(event) {
+      if (!$window.ga)
+        return;
 
+      $window.ga('send', 'pageview', { page: $location.path() });
+    });
+}]).
 
-/**************** Google Analytics Send event on page tarnsition ****************/
-	.run(['$rootScope', '$location', '$window', function($rootScope, $location, $window){
-		$rootScope
-			.$on('$stateChangeSuccess',
-			function(event){
+config(['$provide', function ($provide) {
+  $provide.decorator('$rootScope', function ($delegate) {
+    var _emit = $delegate.$emit;
 
-				if (!$window.ga)
-					return;
+    $delegate.$emit = function () {
+      console.log.apply(console, arguments);
+      _emit.apply(this, arguments);
+    };
 
-				$window.ga('send', 'pageview', { page: $location.path() });
-			});
-
-	}])
-
-
-
-
-.config(['$provide', function ($provide) {
-	$provide.decorator('$rootScope', function ($delegate) {
-		var _emit = $delegate.$emit;
-
-		$delegate.$emit = function () {
-			console.log.apply(console, arguments);
-			_emit.apply(this, arguments);
-		};
-
-		return $delegate;
-	});
+    return $delegate;
+  });
 }]);

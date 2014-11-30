@@ -1,0 +1,4 @@
+fdfgen==0.11.0
+pillow==2.6.1
+pypdf==1.13  # Why not PyPdf2?
+wand==0.3.8  # Is this needed?

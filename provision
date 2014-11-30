@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+
+# This file is meant to be executed inside the Vagrant development VM
+
+# Prevent dpkg-reconfigure interactive sessions
+export DEBIAN_FRONTEND=noninteractive
+
+apt-get update
+apt-get install -y git
+apt-get install -y nodejs npm
+apt-get install -y python-dev python-pip
+apt-get install -y mongodb
+apt-get install -y pdftk libmagickwand-dev
+
+ln -s /usr/bin/nodejs /usr/bin/node
+npm install -g bower
+npm install -g nodemon
+npm install -g grunt-cli
+
+cd /vagrant
+pip install -r requirements.txt
+
+rm -rf node_modules
+su vagrant -c "npm install"
+su vagrant -c  "echo 'export NODE_ENV=sandbox' >> /home/vagrant/.bashrc"
+# su vagrant -c "ln -s /vagrant/.nodemonignore ~/.nodemonignore"
+cd -

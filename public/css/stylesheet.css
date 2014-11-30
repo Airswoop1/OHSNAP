@@ -623,7 +623,7 @@ input[type=password],
 input[type=date],
 input[type=tel],
 select {
-  line-height: 60px;
+  /*line-height: 60px;*/
   height: 60px;
   border: solid 1px #000000;
   font-weight: 700;
@@ -835,7 +835,7 @@ textarea {
   width: 100%;
   padding: 0 25px 50px 25px;
   position: relative;
-  top: -70px;
+  top: -45px;
   left: -25px;
 }
 
@@ -984,6 +984,24 @@ textarea {
 
 .yellow-button.spinner-button i::before {
   content: '\e61c';
+}
+
+.language-link {
+  font-weight: 600;
+  text-align: center;
+  font-size: 1.3em;
+  margin-top: 18px;
+}
+
+.language-link a {
+  color: #fdf01b;
+  border-bottom: solid 2px #fdf01b;
+  padding-bottom: 3px;
+}
+
+.language-link a:hover {
+  text-decoration: none;
+  color: #fdf01b;
 }
 
 .page-second-header {
@@ -1819,4 +1837,9 @@ input[type=file] {
 .estimate > div h2 {
   font-size: 18px;
   font-weight: 600;
+}
+
+#sig_continue {
+  position: relative;
+  top: 25px;  
 }

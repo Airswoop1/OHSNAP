@@ -1,0 +1,15 @@
+<h1><%= __("What’s your marital status?") %></h1>
+<input ng-click="updateCurrentAndGoToNext('int.marital_status', 'int.state_id')" ng-model="user.marital" id="single"
+       type="radio" class="name-input marital-input" value="Single"  name="marital"><label for="single"><%= __("Single") %></label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.marital_status', 'int.state_id')" ng-model="user.marital" id="married"
+       type="radio" class="name-input marital-input" value="Married" name="marital"><label for="married"><%= __("Married") %></label>
+    <br/>
+<input ng-click="updateCurrentAndGoToNext('int.marital_status', 'int.state_id')" ng-model="user.marital" id="divorced"
+       type="radio" class="name-input marital-input" value="Divorced" name="marital"><label for="divorced"><%= __("Divorced") %></label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.marital_status', 'int.state_id')" ng-model="user.marital" id="separated"
+       type="radio" class="name-input marital-input" value="Separated" name="marital"><label for="separated"><%= __("Separated") %></label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.marital_status', 'int.state_id')" ng-model="user.marital" id="widowed"
+       type="radio" class="name-input marital-input" value="Widowed" name="marital"><label for="widowed"><%= __("Widowed") %></label>

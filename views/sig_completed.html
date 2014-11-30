@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="css/sig_style.css"/>
+    <title><%= __("Signature Completed") %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, user-scalable=3">
+
+</head>
+<body>
+
+        <div id="header">
+            <h4 style="font-weight: 500"><%= __("Confirmation") %></h4>
+            <h4><%= __("Thanks!") %></h4>
+        </div>
+
+        <div class="top-container">
+            <p style="text-align: center;text-justify:kashida"><%= __("You've signed and submitted your SNAP application form. If you haven't received one already you should expect a call from a SNAP worker in the next few days.") %>
+                <br/>
+                <br/>
+                <%= __("In the meantime click the button below if you'd like to checkout a free cookbook for those on a tight budget.") %></p>
+
+            <div class="yellow-button" id="goToCookbook" onclick="goToCookbook()"><%= __("Cookbook!") %></div>
+                <br/>
+            <a style="font-size:14px" href="tel://1-917-727-6855"><%= __("Questions? Click here to give us a call.") %></a>
+
+        </div>
+            <script>
+                function goToCookbook() {
+                    var win = window.open("http://www.leannebrown.ca/good-and-cheap-pdf", '_blank');
+                    win.focus();
+                }
+            </script>
+</body>
+</html>

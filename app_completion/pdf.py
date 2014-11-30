@@ -259,6 +259,7 @@ output.addPage(input.getPage(2))
 output.addPage(input.getPage(3))
 output.addPage(input.getPage(5))
 
+print "Do you care about my stdout at all?"
 outputStream = file(os.getcwd() + "/output/Signed_"+filename_prefix+".pdf", "wb")
 output.write(outputStream)
 outputStream.close()

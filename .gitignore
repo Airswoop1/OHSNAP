@@ -1,4 +1,53 @@
+*.py[cod]
+
+# Emacs backups
+*~
+
+# Ipython notebooks
+*.ipynb
+
+# Really irritating Mas OS X crap:
+*.DS_Store
+
+# C extensions
+*.o
+*.so
+
+# Packages
+*.egg
+*.egg-info
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+node_modules
+.installed.cfg
+
+# Installer logs
+pip-log.txt
+
+# Translations
+*.mo
+
+# Unit test / coverage reports
+.coverage
+.tox
+nosetests.xml
+
+# Mr Developer
+.mr.developer.cfg
+.project
+.pydevproject
+
+# IDEA
 .idea/
-node_modules/
-nohup.out
+
+# Vagrant VM files
+.vagrant
+
+# Sass cache
 public/css/.sass-cache/
+
+nohup.out

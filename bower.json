@@ -1,0 +1,33 @@
+{
+  "name": "OHSNAP",
+  "version": "0.0.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "*",
+    "angular-cookies": "*",
+    "angular-ui-router": "*",
+    "angular-animate": "*",
+    "angular-touch": "*",
+    "angular-bootstrap": "*",
+    "angular-mocks": "*",
+    "angular-route": "*",
+    "angular-resource": "*",
+    "angular-scenario": "*",
+    "angular-truncate": "*",
+    "angular-ui": "*",
+    "angular-ui-date": "*",
+    "bootstrap-sass-official": "*",
+    "font-awesome": "*",
+    "jquery": "1.11.1",
+    "jquery-placeholder": "*",
+    "jquery-ui": "1.10.3",
+    "jSignature": "*",
+    "ng-file-upload": "*"
+  }
+}

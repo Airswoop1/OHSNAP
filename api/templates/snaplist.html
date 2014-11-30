@@ -1,0 +1,6 @@
+{% extends 'admin/model/list.html' %}
+
+{% block list_row_actions %}
+  {{ super() }}
+  <a href="/ny/snap/app/{{ get_pk_value(row) }}">Generate PDF</a>
+{% endblock %}

@@ -1,0 +1,41 @@
+<h1>
+        <%= __("Select any expenses paid each month by you or anyone in your home.") %>
+        <em><%= __("Please select even if you only pay part of the bill.") %></em>
+</h1>
+
+
+<input ng-model="user.utilities.gas" id="gas" type="checkbox" class="name-input utilities-input" name="utilities"><label
+        for="gas"><%= __("Gas") %></label>
+<br/>
+<input ng-model="user.utilities.electric" id="electric" type="checkbox" class="name-input utilities-input" name="utilities"><label
+        for="electric"><%= __("Electric") %></label>
+<br/>
+<input ng-model="user.utilities.water" id="water" type="checkbox" class="name-input utilities-input" name="utilities"><label
+        for="water"><%= __("Water") %></label>
+<br/>
+<input ng-model="user.utilities.phone" id="phone" type="checkbox" class="name-input utilities-input"  name="utilities"><label
+        for="phone"><%= __("Telephone") %></label>
+<br/>
+<input ng-model="user.utilities.garbage" id="garbage" type="checkbox" class="name-input utilities-input"  name="utilities"><label
+        for="garbage"><%= __("Garbage") %></label>
+<br/>
+
+<input ng-model="user.utilities.sewer" id="sewer" type="checkbox" class="name-input utilities-input"  name="utilities"><label
+        for="sewer"><%= __("Sewer") %></label>
+<br/>
+
+<input ng-model="user.utilities.oil" id="oil" type="checkbox" class="name-input utilities-input"  name="utilities"><label
+        for="oil"><%= __("Oil, coal, wood, kerosene") %></label>
+<br/>
+
+<input ng-model="user.utilities.utility_installation" id="utility_installation" type="checkbox" class="name-input utilities-input"  name="utilities"><label
+        for="utility_installation"><%= __("Utility Installation") %></label>
+<br/>
+
+
+<input ng-model="user.utilities.other" id="other" type="checkbox" class="name-input utilities-input" name="utilities"><label
+        for="other"><%= __("Other") %></label>
+<br/>
+<input type="text" placeholder="Please Specify Other" ng-show="user.utilities.other" ng-model="user.utilities.other_name"/>
+        
+<div class="yellow-button" ui-sref="int.expenses-medical"><%= __("Continue") %></div>
