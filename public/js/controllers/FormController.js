@@ -1,31 +1,15 @@
 /**
  * Created by airswoop1 on 7/31/14.
  */
-angular.module('formApp.formController', [
-		'angularFileUpload',
-		'ui.router',
-		'ui.bootstrap',
-		'ngCookies',
-		'ngTouch',
-		'NoContactModal',
-		'formApp.CalcBenefitService',
-		'formApp.infoFooterDirective',
-		'formApp.ngEnterDirective',
-		'formApp.telephoneFilter',
-		'formApp.ssnFilter',
-		'formApp.apiFactory',
-		'formApp.appSubmittedDropdownDirective',
-		'formApp.feedbackFooterDirective',
-		'formApp.modalDirective',
-		'formApp.documentUploadCtrl',
-		'formApp.userDataFactory'
-	]).controller('formController',
-	function($scope, $state, $http, $rootScope, $upload, $location, $cookies, $window, API, userDataFactory, calcBenefitService) {
-		$scope.formData = userDataFactory.userData.user.formData;
+angular.module('formApp.formController',['angularFileUpload', 'ui.router', 'ui.bootstrap', 'ngTouch',
+		'NoContactModal', 'formApp.CalcBenefitService' ,'formApp.infoFooterDirective', 'formApp.ngEnterDirective',
+		'formApp.telephoneFilter', 'formApp.ssnFilter','formApp.apiFactory', 'formApp.appSubmittedDropdownDirective', 'formApp.feedbackFooterDirective',
+		'formApp.modalDirective', 'formApp.documentUploadCtrl', 'formApp.userDataFactory']).controller('formController',
+	function($scope, $state, $http, $rootScope, $upload, $location, $window, API, userDataFactory, calcBenefitService) {
+
 		// we will store all of our form data in this object
-		// $scope.formData = $cookies.userData ?
-		// 	JSON.parse($cookies.userData) :
-		// 	userDataFactory.userData.user.formData;
+		$scope.formData = userDataFactory.userData.user.formData;
+
 
 		//data objects for holding input temporarily
 		$scope.progress = 0;
@@ -34,6 +18,7 @@ angular.module('formApp.formController', [
 		$scope.date_of_interview.setDate($scope.date.getDate() + 10);
 		$scope.date_of_phone_call = new Date();
 		$scope.date_of_phone_call.setDate($scope.date.getDate() + 7);
+
 
 		//data flags for optional fields
 		$scope.basic_confirmation_agree = false;
@@ -340,7 +325,6 @@ angular.module('formApp.formController', [
 					$state.go('form.ineligible');
 				}
 				else if($scope.goingThroughEligibility){
-					alert(1);
 					updateEligibilityProgress('citizenship');
 					$state.go('form.household');
 				}
@@ -401,14 +385,27 @@ angular.module('formApp.formController', [
 
 		}
 
-		$scope.$on('start.application', function() {
+		$scope.$on('show-progress-bar', function() {
 			console.log("show progress bar being called!!");
-			$scope.show_progress = true;
-			$scope.goingThroughEligibility = false;
+			$scope.show_progress_bar = true;
 		});
 
-		$scope.$on('start.eligibility', function() {
-			$scope.show_progress = true;
+		$scope.$on('dont-show-progress-bar', function() {
+
+			$scope.show_progress_bar = false;
+		});
+
+		$scope.$on('remove_progress_bar', function() {
+			$scope.remove_progress_bar = true;
+		});
+
+		$scope.$on('add-progress-bar', function() {
+			$scope.remove_progress_bar = false;
+		});
+
+		$scope.$on('show-elig-progress-bar', function() {
+			$scope.show_elig_progress_bar = true;
+			$scope.show_progress_bar = false;
 			$scope.goingThroughEligibility = true;
 		});
 
@@ -467,20 +464,19 @@ angular.module('formApp.formController', [
 			calcBenefitService.calculate($scope.formData);
 			updateProgress('confirmation');
 
-            $http.post('/upload_user_info', JSON.stringify($scope.formData)).
-            	success(function(data, status) {
-            		console.log(data);
-                    if(status === 201) {
-                    	$scope.formData.user_id = data.user_id;
-						userDataFactory.userData.user.formData = $scope.formData;
-						$scope.remove_progress_bar = true;
-						$state.go('form.basic-app-submitted');
-                    }
-                }).
-                error(function(data) {
-                	$scope.submitting_app = false;
+			API.uploadBasicInfo($scope.formData, function(result, user_id){
+				if(result && user_id) {
+					$scope.formData.user_id = user_id;
+					userDataFactory.userData.user.formData = $scope.formData;
+					$scope.remove_progress_bar = true;
+					$state.go('form.basic-app-submitted');
+
+				}
+				else {
+					$scope.submitting_app = false;
 					alert("Oops! Looks like something went wrong. Your form was NOT submitted. Please wait and try again.");
-                });
+				}
+			});
 		};
 
 		/**
@@ -496,21 +492,19 @@ angular.module('formApp.formController', [
 		$scope.submitFeedback = function(rating) {
 			$scope.formData['rating'] = rating;
 
-			if(rating.value == '-1' ) {
-				alert("You must select a rating first!");
-				return;
+			if(rating.value != "-1" ) {
+				API.uploadFeedback($scope.formData, function(result){
+					if(result) {
+						$state.go('form.feedback-submitted');
+					}
+					else {
+						alert("Oops Looks like something went wrong. Your feedback was NOT submitted. Please wait and try again.")
+					}
+				})
 			}
-
-			API.uploadFeedback($scope.formData, function(result) {
-				if(!result) {
-
-					$state.go('form.feedback-submitted');
-
-				}
-				else {
-					alert("Oops Looks like something went wrong. Your feedback was NOT submitted. Please wait and try again.")
-				}
-			});
+			else {
+				alert("You must select a rating first!")
+			}
 		};
 
 
@@ -519,15 +513,43 @@ angular.module('formApp.formController', [
 		 * Event handler for back button on top left of page
 		 */
 		$scope.goBack = function() {
-			$window.history.back();
-		};
+			/*
+			 hack so that user cannot go back after submitting an app
+			 Not really effective since they can just use their back button on their browser
+			 */
 
-		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState){
-			if(fromState.name === 'form.intro') {
-				$window.scrollTo(0,0);
+			if($state.current.name !== 'form.basic-app-submitted'){
+				window.history.back();
 			}
 
-			$scope.show_progress = toState.name != 'form.intro';
-			$cookies.userData = JSON.stringify($scope.formData);
+
+		};
+
+		/**
+		 * TODO Fix this for v2 release
+		 * rootScope watcher
+		 * show progress bar if state is anything but intro
+		 * Scroll to top if going from form.intro
+		 */
+		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState){
+
+			if(toState.name == 'form.intro') {
+				$window.scrollTo(0,0);
+				$scope.show_progress_bar = true;
+				$scope.goingThroughEligibility = false;
+				$scope.show_progress = false;
+
+			}
+			else {
+				if($scope.goingThroughEligibility && toState.name == 'form.name'){
+					$scope.show_progress_bar = true;
+				}
+
+				$scope.show_progress = true;
+			}
 		});
+
+
+
+
 	});

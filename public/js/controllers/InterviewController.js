@@ -365,7 +365,6 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 
 			        $scope.interview_steps = 1;
 			        break;
-// <<<<<<< HEAD:public/js/Controllers/InterviewController.js
 				case "int.income":
 				case "int.other-income-worked-90-days":
 				case "int.other-income-worked-reduced-hours":
@@ -392,16 +391,6 @@ angular.module('formApp.interviewCtrl',['formApp.userDataFactory', 'formApp.apiF
 				case "int.monthly-expenses-property-taxes":
 				case "int.expenses-utilities":
 			    case "int.expenses-medical":
-// =======
-// 			    case "int.income-frequency":
-// 			    case "int.income-hours":
-// 			    case "int.income-household-amount":
-// 			    case "int.income-household-frequency":
-// 				case "int.resources":
-// 					$scope.interview_steps = 2;
-// 			        break;
-// 			    case "int.expenses-mortgage":
-// >>>>>>> overdrive:public/js/controllers/InterviewController.js
 			        $scope.interview_steps = 3;
 			        break;
 

@@ -193,6 +193,8 @@ angular.module('formApp.documentUploadCtrl', ['formApp.ngDocumentFullscreen', 'f
 
 		};
 
+		//API.getDocumentStatus($scope.user_id, $scope.updateUploadedFilesStatus);
+
 		$scope.docContent = {
 			'IDENTITY':{
 				header:"Take a picture of 1 of these documents to confirm your identity.",
