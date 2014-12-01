@@ -25,6 +25,9 @@ controller('formController', function(
 
 		// we will store all of our form data in this object
 		$scope.formData = userDataFactory.userData.user.formData;
+		// $scope.formData = $cookies.userData ?
+		// 	JSON.parse($cookies.userData) :
+		// 	userDataFactory.userData.user.formData;
 
 
 		//data objects for holding input temporarily
@@ -401,30 +404,16 @@ controller('formController', function(
 
 		}
 
-		$scope.$on('show-progress-bar', function() {
+		$scope.$on('start.application', function() {
 			console.log("show progress bar being called!!");
-			$scope.show_progress_bar = true;
+			$scope.show_progress = true;
+			$scope.goingThroughEligibility = false;
 		});
 
-		$scope.$on('dont-show-progress-bar', function() {
-
-			$scope.show_progress_bar = false;
-		});
-
-		$scope.$on('remove_progress_bar', function() {
-			$scope.remove_progress_bar = true;
-		});
-
-		$scope.$on('add-progress-bar', function() {
-			$scope.remove_progress_bar = false;
-		});
-
-		$scope.$on('show-elig-progress-bar', function() {
-			$scope.show_elig_progress_bar = true;
-			$scope.show_progress_bar = false;
+		$scope.$on('start.eligibility', function() {
+			$scope.show_progress = true;
 			$scope.goingThroughEligibility = true;
 		});
-
 
 		$scope.updateCurrentAndGoToNext = function(current, next) {
 			if($scope.goingThroughEligibility){
@@ -541,31 +530,12 @@ controller('formController', function(
 
 		};
 
-		/**
-		 * TODO Fix this for v2 release
-		 * rootScope watcher
-		 * show progress bar if state is anything but intro
-		 * Scroll to top if going from form.intro
-		 */
 		$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState){
-
-			if(toState.name == 'form.intro') {
+			if(fromState.name === 'form.intro') {
 				$window.scrollTo(0,0);
-				$scope.show_progress_bar = true;
-				$scope.goingThroughEligibility = false;
-				$scope.show_progress = false;
-
 			}
-			else {
-				if($scope.goingThroughEligibility && toState.name == 'form.name'){
-					$scope.show_progress_bar = true;
-				}
 
-				$scope.show_progress = true;
-			}
+			$scope.show_progress = toState.name != 'form.intro';
+			$cookies.userData = JSON.stringify($scope.formData);
 		});
-
-
-
-
 	});

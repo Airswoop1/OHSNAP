@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 from flask.ext.script import Server, Manager
 
-from api import app
+from easyfoodstamps import app
 
 
 manager = Manager(app)
