@@ -1,9 +1,0 @@
-<h1>Household members' marital status?</h1>
-
-<div ng-repeat="person in user.household_members track by $index" class="household-relation" ng-show="person.applying">
-    <h6 for="marital_{{ $index }}">{{ person.name }}</h6>
-    <select name="marital_status_{{ $index }}" id="marital_{{ $index }}" ng-model="person.marital_status" ng-options="opt.value as opt.name for opt in MaritalOpts"></select>
-</div>
-
-<div class="yellow-button" ng-click="updateCurrentAndGoToNext('int.household-marital', 'int.household-lives-with')">Continue</div>
-

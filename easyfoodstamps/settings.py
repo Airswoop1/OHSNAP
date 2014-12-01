@@ -1,0 +1,5 @@
+DEBUG = True
+ASSETS_DEBUG = True
+
+SECRET = "ykFhoRTYBZlij522XT5TmB5zJ0kGST"
+

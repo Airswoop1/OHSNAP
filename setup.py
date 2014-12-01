@@ -11,9 +11,11 @@ setup(
     install_requires=[
         "Flask>=0.10.1",
         "Flask-Admin>=1.0.8",
-        "Flask-Babel",
+        "Flask-Assets",
+        "Flask-Babel>=0.9",
         "Wtforms==1.0.5",
         "Flask-Script>=2.0.5",
+        "Flask-Triangle>=0.5.4",
         "PyMongo>=2.6.1",
         "fdfgen==0.11.0",
         "pillow==2.6.1",

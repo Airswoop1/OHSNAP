@@ -1,0 +1,1508 @@
+# Spanish translations for PROJECT.
+# Copyright (C) 2014 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2014-12-01 07:55+0000\n"
+"PO-Revision-Date: 2014-12-01 06:38+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 1.3\n"
+
+#: easyfoodstamps/templates/index.html:48
+#, python-format
+msgid ""
+"easyfoodstamps.com is designed specifically for mobile. Learn more at "
+"%(link)s"
+msgstr ""
+
+#: easyfoodstamps/templates/sig.html:4
+msgid "Capture Signature for PDF"
+msgstr ""
+
+#: easyfoodstamps/templates/sig.html:21
+msgid ""
+"Thank you for your recent application for SNAP! We did not ask you for a "
+"written signature, and as a result are having trouble processing your "
+"application. We apologize for the inconvenience."
+msgstr ""
+
+#: easyfoodstamps/templates/sig.html:24
+msgid ""
+"In order to re-submit your application, please sign it in 2 places after "
+"you preview it below."
+msgstr ""
+
+#: easyfoodstamps/templates/sig.html:26
+msgid "I'm ready to sign"
+msgstr ""
+
+#: easyfoodstamps/templates/sig.html:31
+#: easyfoodstamps/templates/interview/interview-application-signature.html:610
+msgid "APPLICANT/REPRESENTATIVE SIGNATURE"
+msgstr ""
+
+#: easyfoodstamps/templates/sig.html:36 easyfoodstamps/templates/sig.html:59
+#: easyfoodstamps/templates/interview/interview-application-signature.html:615
+#: easyfoodstamps/templates/interview/interview-application-signature.html:657
+msgid "Sign in the box with your finger."
+msgstr ""
+
+#: easyfoodstamps/templates/sig.html:38
+#: easyfoodstamps/templates/basic/form-address.html:20
+#: easyfoodstamps/templates/basic/form-eligible-expenses.html:22
+#: easyfoodstamps/templates/basic/form-expenses.html:13
+#: easyfoodstamps/templates/basic/form-household.html:19
+#: easyfoodstamps/templates/basic/form-household.html:22
+#: easyfoodstamps/templates/basic/form-income.html:28
+#: easyfoodstamps/templates/basic/form-income.html:31
+#: easyfoodstamps/templates/basic/form-name.html:15
+#: easyfoodstamps/templates/basic/form-non-citizen.html:20
+#: easyfoodstamps/templates/basic/form-non-citizen.html:21
+#: easyfoodstamps/templates/basic/form-non-citizen.html:22
+#: easyfoodstamps/templates/basic/form-ssn.html:10
+#: easyfoodstamps/templates/basic/form-telephone.html:9
+#: easyfoodstamps/templates/basic/modal.html:15
+#: easyfoodstamps/templates/documents/form-document-detail.html:18
+#: easyfoodstamps/templates/documents/form-document-detail.html:33
+#: easyfoodstamps/templates/interview/interview-application-signature.html:617
+#: easyfoodstamps/templates/interview/interview-citizen.html:9
+#: easyfoodstamps/templates/interview/interview-disabled.html:8
+#: easyfoodstamps/templates/interview/interview-dob.html:5
+#: easyfoodstamps/templates/interview/interview-expenses-mortgage.html:7
+#: easyfoodstamps/templates/interview/interview-expenses-utilities.html:41
+#: easyfoodstamps/templates/interview/interview-household-applying.html:19
+#: easyfoodstamps/templates/interview/interview-household-applying.html:20
+#: easyfoodstamps/templates/interview/interview-household-dob.html:9
+#: easyfoodstamps/templates/interview/interview-household-names.html:8
+#: easyfoodstamps/templates/interview/interview-household-names.html:9
+#: easyfoodstamps/templates/interview/interview-household-relation.html:8
+#: easyfoodstamps/templates/interview/interview-household-ssn.html:8
+#: easyfoodstamps/templates/interview/interview-income-frequency.html:9
+#: easyfoodstamps/templates/interview/interview-income-hours.html:10
+#: easyfoodstamps/templates/interview/interview-income-hours.html:11
+#: easyfoodstamps/templates/interview/interview-income-household-amount.html:10
+#: easyfoodstamps/templates/interview/interview-income-household-frequency.html:14
+#: easyfoodstamps/templates/interview/interview-resources.html:28
+#: easyfoodstamps/templates/interview/interview-ssn.html:3
+msgid "Continue"
+msgstr ""
+
+#: easyfoodstamps/templates/sig.html:61
+#: easyfoodstamps/templates/interview/interview-application-signature.html:659
+msgid "Submit application"
+msgstr ""
+
+#: easyfoodstamps/templates/sig.html:80
+msgid "Something went wrong, please go back and tap on the link again."
+msgstr ""
+
+#: easyfoodstamps/templates/sig.html:156
+msgid "Signatures are required to submit your application."
+msgstr ""
+
+#: easyfoodstamps/templates/sig.html:179
+msgid "Submitting application"
+msgstr ""
+
+#: easyfoodstamps/templates/sig_completed.html:5
+msgid "Signature Completed"
+msgstr ""
+
+#: easyfoodstamps/templates/sig_completed.html:12
+#: easyfoodstamps/templates/interview/interview.html:64
+msgid "Confirmation"
+msgstr ""
+
+#: easyfoodstamps/templates/sig_completed.html:13
+msgid "Thanks!"
+msgstr ""
+
+#: easyfoodstamps/templates/sig_completed.html:17
+msgid ""
+"You've signed and submitted your SNAP application form. If you haven't "
+"received one already you should expect a call from a SNAP worker in the "
+"next few days."
+msgstr ""
+
+#: easyfoodstamps/templates/sig_completed.html:20
+msgid ""
+"In the meantime click the button below if you'd like to checkout a free "
+"cookbook for those on a tight budget."
+msgstr ""
+
+#: easyfoodstamps/templates/sig_completed.html:22
+msgid "Cookbook!"
+msgstr ""
+
+#: easyfoodstamps/templates/sig_completed.html:24
+msgid "Questions? Click here to give us a call."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/app-submitted-dropdowns.html:3
+msgid "When is my interview?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/app-submitted-dropdowns.html:6
+msgid ""
+"A SNAP worker is legally obligated to call you in 5 days. Expect a phone "
+"call before (( date_of_phone_call | date:'EEEE, MMMM d' )) to schedule "
+"the exact interview time."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/app-submitted-dropdowns.html:8
+msgid ""
+"You will receive a letter in the mail confirming your SNAP application "
+"submission within 5 days."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/app-submitted-dropdowns.html:12
+msgid "What is the interview for?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/app-submitted-dropdowns.html:15
+msgid ""
+"The interview is a required step in the application process. A SNAP "
+"worker must speak with you over the phone or in person to confirm the "
+"answers you provided in the application form and to get additional "
+"information about your situation."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/basic-app-submitted.html:2
+msgid "You're eligible for"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/basic-app-submitted.html:4
+msgid "EACH MONTH"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/basic-app-submitted.html:5
+msgid "in SNAP benefits."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/basic-app-submitted.html:7
+msgid "You finished the basics!"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/basic-app-submitted.html:8
+msgid ""
+"You're ready for the next step, which is answering your SNAP interview "
+"questions in advance."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/basic-app-submitted.html:10
+msgid "Continue to step 2"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/feedback-footer.html:3
+msgid "How likely are you to recommend Easy Food Stamps to a friend?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/feedback-footer.html:11
+msgid "What did you like and dislike?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/feedback-footer.html:13
+msgid ""
+"We’re constantly trying to improve. Would you like to receive a text "
+"message when we have new features ready?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/feedback-footer.html:16
+msgid "Yes, please text me when the next steps are ready!"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/feedback-footer.html:18
+msgid "Submit feedback"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-address.html:2
+msgid "Thanks (( formData.name.first_name )). Next, what’s your home address?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-address.html:5
+msgid "Street address"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-address.html:6
+msgid "Please enter your street address."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-address.html:9
+msgid "Apt number"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-address.html:13
+msgid "Zip code"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-address.html:14
+msgid "5 Digit Zip Code Required"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-address.html:15
+msgid "Easy Food Stamps is currently only available for New York"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-address.html:17
+msgid "If you don’t have a home address, leave this blank."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:2
+msgid "Great! You're almost done!"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:3
+msgid "Review your information to make sure everything is right."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:7
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:7
+msgid "First Name"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:8
+#: easyfoodstamps/templates/basic/form-name.html:4
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:8
+msgid "First name"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:9
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:9
+msgid "First name required"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:13
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:13
+msgid "Last Name"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:14
+#: easyfoodstamps/templates/basic/form-name.html:11
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:14
+msgid "Last name"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:15
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:15
+msgid "Last name required"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:19
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:20
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:51
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:52
+msgid "Phone Number"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:22
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:54
+msgid "10 digit number required."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:26
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:27
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:19
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:20
+msgid "Street Address"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:29
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:22
+msgid "Address required"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:33
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:26
+msgid "Apt #"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:34
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:27
+msgid "APT #"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:38
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:39
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:31
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:32
+msgid "Zip Code"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:43
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:44
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:36
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:37
+msgid "Household Size"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:46
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:39
+msgid "Household size required"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:50
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:43
+msgid "Household Income"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:52
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:47
+msgid "Household income required"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:58
+msgid ""
+"I certify that the information I am submitting is true and authorize Easy"
+" Food Stamps to sign my application on my behalf."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:60
+#: easyfoodstamps/templates/basic/form-basic-confirmation.html:61
+msgid "Confirm answers"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-citizenship.html:1
+msgid "Are you a US Citizen?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-citizenship.html:2
+msgid ""
+"Even if you aren’t a citizen, you might be eligible for benefits. "
+"Answering these questions won’t affect your immigration case, even if "
+"you're an undocumented immigrant."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-citizenship.html:4
+#: easyfoodstamps/templates/basic/form-non-citizen.html:12
+msgid "Yes"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-citizenship.html:6
+#: easyfoodstamps/templates/basic/form-non-citizen.html:15
+msgid "No"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligibility.html:3
+msgid ""
+"Based on the information you provided, you are likely not eligible for "
+"SNAP."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligibility.html:13
+msgid "You may be eligible!"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligibility.html:19
+msgid "Based on your answers, we estimate that you could receive:"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligibility.html:26
+msgid "PER <br/>MONTH"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligibility.html:33
+msgid "Start my application"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligible-expenses.html:1
+msgid "How much are your monthly expenses?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligible-expenses.html:2
+#: easyfoodstamps/templates/basic/form-income.html:3
+msgid "This includes:"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligible-expenses.html:7
+msgid "Rent"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligible-expenses.html:8
+msgid "Utility bills"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligible-expenses.html:9
+msgid "Child support payments"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligible-expenses.html:10
+msgid ""
+"Medical expenses for elderly or disabled household members which are not "
+"covered by insurance"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligible-expenses.html:17
+#: easyfoodstamps/templates/basic/form-expenses.html:8
+msgid "Minimum expenses is 0."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-eligible-expenses.html:19
+#: easyfoodstamps/templates/basic/form-expenses.html:10
+msgid "You must enter a number."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-expenses.html:1
+msgid "How much is your monthly rent or mortgage?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-expenses.html:2
+msgid "For you and anyone else that is applying with you."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-feedback-submitted.html:2
+msgid "Your feedback is in!"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-feedback-submitted.html:5
+msgid "Thanks for submiting your feedback! We really appreciate it."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-household.html:2
+msgid "How many people live in your house?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-household.html:3
+msgid ""
+"Only count people who are living at the same address and prepare meals "
+"together, including yourself."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-household.html:8
+msgid "Number of people living with you is required. Must be greater than 0."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-household.html:14
+msgid "I live with someone elderly or disabled."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-illegal-citizen.html:1
+msgid ""
+"Unfortunately, due to your citizenship status, you're not eligible for "
+"SNAP at this time."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-illegal-citizen.html:3
+msgid "Back to Home"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-income.html:2
+msgid "What was your household income last month?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-income.html:8
+msgid "Wages"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-income.html:9
+msgid "Child support"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-income.html:10
+msgid "Social security"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-income.html:11
+msgid "Money from relatives"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-income.html:12
+msgid "Other sources of income"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-income.html:21
+#: easyfoodstamps/templates/interview/interview-income-frequency.html:6
+msgid "Input 0 if no income in the last 30 days."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-income.html:23
+msgid "Minimum income is 0."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-intro.html:4
+msgid "APPLY IN 3 EASY STEPS!"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-intro.html:8
+msgid "Step 1"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-intro.html:9
+#: easyfoodstamps/templates/basic/form.html:20
+msgid "Basics"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-intro.html:10
+msgid "Answer 5 basic questions about yourself to get started."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-intro.html:14
+msgid "Step 2"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-intro.html:15
+#: easyfoodstamps/templates/interview/interview.html:74
+msgid "Interview"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-intro.html:16
+msgid ""
+"Prepare for your interview with a government worker with our interview "
+"guide."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-intro.html:20
+msgid "Step 3"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-intro.html:21
+#: easyfoodstamps/templates/documents/upload-main.html:5
+msgid "Documents"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-intro.html:22
+msgid ""
+"Text us your documents or upload them online, and we’ll fax them in for "
+"you.  Boom! You’re done."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-intro.html:27
+msgid "Get started"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-name.html:1
+msgid "What's your name?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-name.html:5
+msgid "What's your first name?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-name.html:12
+msgid "What's your last name?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-non-citizen.html:1
+msgid "Does your immigration status fall into one of the following categories?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-non-citizen.html:6
+msgid "Legal immigrant since 2009 or earlier"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-non-citizen.html:7
+msgid "Refugee"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-non-citizen.html:8
+msgid "Non-citizen under 18"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-non-citizen.html:17
+msgid "Citizenship selection required."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-recert.html:1
+#, python-format
+msgid ""
+"Currently we only support those that are going through the initial "
+"application process. You can find more information about the "
+"recertification process here: <a href='%(link)s'>SNAP Recertification</a>"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-recert.html:4
+msgid "Back to main"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-redirect.html:2
+#, python-format
+msgid ""
+"Hey, we can't help you apply right now, but you can still apply through "
+"the official NYC site: <a href='%(link)s'>Apply via the Access NYC "
+"Site</a>"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-ssn.html:2
+#: easyfoodstamps/templates/interview/interview-ssn.html:1
+msgid "What’s your Social Security Number?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-ssn.html:3
+msgid "A Social Security Number is required to apply for SNAP."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-ssn.html:6
+msgid "9 digit SSN Required"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-telephone.html:2
+msgid "What’s your phone number?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-telephone.html:5
+msgid "Ten Digit Telephone Number Required"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form-telephone.html:8
+msgid ""
+"A case worker will give you a call at this number within five business "
+"days."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form.html:4
+msgid "Get food stamps, <br/>without the <br/>hassle."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form.html:6
+msgid "Apply now"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form.html:7
+msgid "Am I eligible?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form.html:19
+msgid "Step 1 of 3"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/form.html:30
+msgid "Eligibility"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/info-footer.html:4
+msgid "ABOUT US"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/info-footer.html:7
+#, python-format
+msgid ""
+"We’re %(propellink)s, and we're trying to make it easier to apply for "
+"SNAP. We're based in Brooklyn at Significance Labs, and we aren’t "
+"affiliated with the US government."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/info-footer.html:9
+msgid "FAQs"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/info-footer.html:12
+msgid "What’s the difference between applying here versus applying elsewhere?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/info-footer.html:14
+msgid ""
+"The application that gets submitted is the same. We think you’ll be able "
+"to save time and headaches by applying with us, though. You’ll be "
+"eligible for the exact same SNAP benefits no matter where you apply."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/info-footer.html:18
+msgid "How much does this cost?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/info-footer.html:19
+msgid "It's free."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/info-footer.html:22
+msgid "What will you do with my personal information?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/info-footer.html:28
+msgid "Where can I read more about SNAP?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/info-footer.html:35
+msgid "CONTACT US"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/modal.html:6
+msgid "Are you sure you don't want to input your SSN?"
+msgstr ""
+
+#: easyfoodstamps/templates/basic/modal.html:10
+msgid ""
+"It will be easier for us to track the status of your application if you "
+"provide us your Social Security Number. Don't worry, we keep it safe with"
+" encryption and do not share it with anyone."
+msgstr ""
+
+#: easyfoodstamps/templates/basic/modal.html:14
+msgid "Enter SSN"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-completion.html:1
+msgid "What's next?"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-completion.html:2
+#, python-format
+msgid ""
+"You should expect your phone interview with a SNAP worker around <b>(( "
+"date_of_interview | date:'EEEE, MMMM d' ))</b>. If you have any questions"
+" about your application, call or text us at <a href='%(tel)s'>(917) "
+"727-6855</a>."
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-detail.html:4
+msgid "Take a picture"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-detail.html:11
+msgid ""
+"Great! Your picture is uploading. In the meantime can keep uploading more"
+" documents."
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-detail.html:14
+msgid "Uploading ..."
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-detail.html:23
+msgid "Picture successfully uploaded"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-detail.html:25
+msgid "Retake"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-upload.html:7
+msgid "Identity"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-upload.html:13
+msgid "Residence"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-upload.html:20
+#: easyfoodstamps/templates/interview/interview.html:38
+msgid "Expenses"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-upload.html:27
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:58
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:103
+msgid "SSN"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-upload.html:34
+msgid "Citizenship"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-upload.html:41
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:109
+#: easyfoodstamps/templates/interview/interview.html:27
+msgid "Income"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-upload.html:48
+msgid "Other income"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-upload.html:55
+msgid "Other docs"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/form-document-upload.html:60
+msgid "Done!"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/upload-main.html:4
+msgid "Step 3 of 3"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/upload-main.html:8
+msgid "Congrats! You're done!"
+msgstr ""
+
+#: easyfoodstamps/templates/documents/upload-main.html:11
+msgid "Last step! Send in your documents."
+msgstr ""
+
+#: easyfoodstamps/templates/documents/upload-main.html:12
+msgid ""
+"Take a photo of your required documents and upload them here. We’ll fax "
+"them in for you."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-application-signature.html:573
+msgid "Page 1: Basics"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-application-signature.html:623
+msgid "Page 2: Income"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-application-signature.html:638
+msgid "Page 3: Expenses"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-application-signature.html:643
+msgid "Page 4: Legal"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-application-signature.html:649
+msgid "Page 5: Final Signature"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-application-signature.html:662
+msgid "Submitting application..."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-application-submission.html:2
+msgid "Signed and sent!"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-application-submission.html:5
+msgid "We're sending in your application now!"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-application-submission.html:9
+msgid ""
+"Text me updates about my application status! (Recommended) - make this "
+"box checked by default."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-application-submission.html:12
+msgid "Start the last step"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-application-submission.html:14
+msgid ""
+"To complete the application process, you'll need to submit copies of "
+"documents that prove things like your income and your address. You can do"
+" this by taking photos of those documents on the next page."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-citizen.html:1
+msgid "Are you a US citizen?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-citizen.html:3
+msgid ""
+"Legal immigrants are eligible to receive SNAP. Either way, your SNAP "
+"application does not have any impact on your immigration status."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-citizen.html:5
+#: easyfoodstamps/templates/interview/interview-disabled.html:3
+msgid "YES"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-citizen.html:8
+#: easyfoodstamps/templates/interview/interview-disabled.html:6
+msgid "NO"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-disabled.html:1
+msgid "Are you blind, disabled or pregnant?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-dob.html:2
+msgid "When were you born?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:11
+msgid "Thanks for answering all those questions! Next, sign your application."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:14
+msgid "Electronic Signature Agreement"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:17
+msgid ""
+"I agree, and it is my intent, to sign this record/document and "
+"affirmation by signing on the next page with my mouse, finger or other "
+"digital implement in the boxes provided and by electronically submitting "
+"this record/document to easyfoodstamps.com and subsequently the New York "
+"City HRA. I understand that my signing and submitting this "
+"record/document in this fashion is the legal equivalent of having placed "
+"my handwritten signature on the submitted record/document and this "
+"affirmation. I understand and agree that by electronically signing and "
+"submitting this record/document in this fashion I am affirming to the "
+"truth of the information contained therein."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:20
+msgid ""
+"Any information you provide in connection with your application for SNAP "
+"will be subject to verification by Federal, State and local officials. If"
+" any information is incorrect, you may be denied SNAP. You may be subject"
+" to criminal prosecution for knowingly providing incorrect information."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:23
+msgid ""
+"You will <b style='text-decoration:underline;'>never</b> be able to get "
+"SNAP again if you are found guilty in a court of law for the second time "
+"of buying or selling controlled substances (illegal drugs or certain "
+"drugs for which a doctor’s prescription is required) in exchange for "
+"SNAP; or found guilty in a court of law of selling or getting firearms, "
+"ammunition or explosives in exchange for SNAP; or found guilty in a court"
+" of trafficking in SNAP worth $500 or more. Trafficking includes the "
+"illegal use, transfer, acquisition, alteration or possession of SNAP, "
+"authorization cards or access devices; or found guilty of committing a "
+"third Intentional Program Violation (IPV)."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:26
+msgid ""
+"You will not be able to get SNAP for two years if you are found guilty in"
+" a court of law for the first time of buying or selling controlled "
+"substances (illegal drugs or certain drugs for which a doctor’s "
+"prescription is required) in exchange for SNAP."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:29
+msgid ""
+"If you have committed your: First IPV, you will not be able to get SNAP "
+"for one year. Second IPV, you will not be able to get SNAP for two years."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:32
+msgid ""
+"A court could also bar you from receiving SNAP for an additional 18 "
+"months. If you make a false statement about who you are or where you live"
+" in order to get multiple SNAP benefits, you will not be able to get SNAP"
+" for ten years (or <b>permanently</b> if this is the third IPV)."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:35
+msgid ""
+"You may be found guilty of an IPV if you make a false or misleading "
+"statement, or misrepresent, conceal, or withhold facts; or commit any act"
+" that constitutes a violation of Federal or State law for the purpose of "
+"using, presenting, transferring, acquiring, receiving, possessing or "
+"trafficking of SNAP benefits, authorization cards or reusable documents "
+"used as part of the Electronic Benefit Transfer (EBT) system. You could "
+"also be fined up to $250,000, sent to jail for up to 20 years, or both."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:38
+msgid ""
+"Anyone who is fleeing to avoid prosecution, custody or confinement for a "
+"felony, or who is violating a condition of probation or parole, is not "
+"eligible to receive SNAP."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:41
+msgid ""
+"If you get more SNAP benefits that you should have (overpayment), you "
+"must pay them back. If your case is active, we will take back the amount "
+"of the overpayment from future SNAP benefits that you get. If your case "
+"is closed, you may pay back the overpayment through any unused SNAP "
+"benefits remaining in your account, or you may pay cash. If you have an "
+"overpayment that is not paid back, it will be referred for collection in "
+"a number of ways, including automated collection by the federal "
+"government. Federal benefits (such as Social Security) and tax refunds "
+"that you are entitled to receive may be taken to pay back the "
+"overpayment. The debt will also be subject to processing charges."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:44
+msgid ""
+"Any expunged SNAP benefits will be put towards your overpayment. If you "
+"apply for SNAP again, and have not repaid the amount you owe, your SNAP "
+"benefits will be reduced if you get them again. You will be notified, at "
+"that time, of the amount of reduced benefits you will get."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:47
+msgid ""
+"<b>CONSENT</b> - I understand that by signing this application form I "
+"agree to any investigation made by the New York State Office of Temporary"
+" Disability Assistance or my local social services district to verify or "
+"confirm the information I have given or any other investigation made by "
+"them in connection with my request for SNAP. If additional information is"
+" requested, I will provide it. I will also cooperate with State and "
+"Federal personnel in a SNAP Quality Control Review."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:50
+msgid ""
+"<b>CONSENT FOR RELEASE OF CONFIDENTIAL UNEMPLOYMENT INSURANCE (UI) "
+"INFORMATION</b> - I authorize the New York State Department of Labor "
+"(DOL) to release any confidential information, maintained by DOL for "
+"Unemployment Insurance (UI) purposes, to the New York State Office of "
+"Temporary Disability Assistance (OTDA). This information includes UI "
+"benefit claims and wage records. I understand that OTDA, along with State"
+" and local agency employees working in local social services district "
+"offices, will use the UI information for establishing or verifying "
+"eligibility for, and the amount of, TA, MA or FS benefits applied for in "
+"this application and for investigations to determine whether I received "
+"benefits to which I was not entitled."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:53
+msgid ""
+"<b>SUA (STANDARD UTILITY ALLOWANCE) INFORMATION</b> - I understand that "
+"SNAP recipients are categorically income eligible for the Home Energy "
+"Assistance Program (HEAP). If I am not included in the annual automatic "
+"HEAP payment process for certain SNAP recipients, my household intends to"
+" apply for a HEAP benefit within the next 12 months. If I decide not to "
+"apply for HEAP within the next 12 months, I will let my worker know."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:56
+msgid ""
+"<b>TELEPHONE ALLOWANCE INFORMATION</b> - I understand that SNAP "
+"recipients are eligible for a telephone allowance if they pay to use a "
+"home phone, cell phone, phone, phone calling card or coin operated pay "
+"phone. If I do not have any cost to make phone calls, I will let my "
+"worker know."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:59
+msgid ""
+"<b>CHANGES</b> - I agree to inform the agency <b>promptly</b> of any "
+"change in my needs, income, property, living arrangement, pregnancy "
+"status or address to the best of my knowledge or belief in accordance "
+"with my reporting requirements."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:62
+msgid ""
+"<b>REQUIREMENT TO REPORT/VERIFY HOUSEHOLD EXPENSES</b> - I understand "
+"that my household must report child care and utility expenses in order to"
+" get a SNAP deduction for these expenses. I further understand that my "
+"household must report and verify rent/mortgage payments, property taxes, "
+"insurance, medical expenses and child support paid to a non-household "
+"member in order to get a SNAP deduction for these expenses. I understand "
+"that failure to report/verify the above expenses will be seen as a "
+"statement by my household that I/we do not want to receive a deduction "
+"for those unreported/unverified expenses. A deducation for tehse expenses"
+" may make me eligible for SNAP or may increase my SNAP benefits. I "
+"understand that I may report/verify these expenses at any time in the "
+"future. This deduction would then be applied to the calculation of SNAP "
+"in future months in accordance with the rules for change reporting and "
+"processing changes."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:65
+msgid ""
+"<b>PRIVACY ACT STATEMENT - COLLECTION AND USE OF SOCIAL SECURITY NUMBER "
+"(SSN)</b> - The collection of SSN’s is authorized for each household "
+"member with respect to SNAP pursuant to the Food Stamp Act of 1977 (as "
+"amended, 7 US Code 2011-2036). The information we collect will be used to"
+" determine whether your household is eligible or continues to be eligible"
+" for benefits. We will verify this information through computer matching "
+"programs. This information will also be used to monitor compliance with "
+"program regulations and for program management. The information will be "
+"used to check identity, to verify earned and unearned income, and to "
+"determine if applicants or recipients can receive money or other help. "
+"The information may be disclosed to State and Federal agencies for "
+"official examination and to law enforcement officials for the purpose of "
+"apprehending persons fleeing to avoid the law. If you or anyone "
+"applying/recertifying does not have a SSN, a SSN must be applied for at "
+"the Social Security Agency."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:68
+msgid ""
+"<b>CITIZENSHIP/IMMIGRATION STATUS</b> - I swear and/or affirm under "
+"penalty of perjury that the information I have provided about the "
+"citizenship and immigration status of myself and everyone living with me "
+"is true and correct. I understand that any information I provide to "
+"verify the immigration status of anyone applying for SNAP may be checked "
+"for authenticity with the United States Citizenship and Immigration "
+"Services. For SNAP, citizenship must be documented only if questionable."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:71
+msgid ""
+"<b>NON-DISCRIMINATION NOTICE</b> - In accordance with Federal Law and US "
+"Department of Agriculture (USDA) policy, this institution is prohibited "
+"from discriminating on the basis of race, color, national origin, sex, "
+"age, religion, political belief, or disability. To file a complaint of "
+"discrimination write USDA, Director, Office of Civil Rights, Room 326-W, "
+"Whitten Building, 1400 Independence Avenue, SW, Washington, DC. "
+"20250-9410 or call (202) 720-5964 (voice and TDD). USDA is an equal "
+"opportunity provider and employer."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:74
+msgid ""
+"<b>LIFELINE: For applicants/recipients of SNAP:</b> The Office of "
+"Temporary and Disability Assistance may or may not release your name and "
+"address to your telephone service provider. Your telephone service "
+"provider may or may not use this information to enroll you in their "
+"Lifeline Service for a discounted telephone rate. <b>If you <i>do not</i>"
+" want this information released, click here.</b> You may contact your "
+"telephone service provider directly for enrollment in the discounted rate"
+" Lifeline Service. Medicaid-only applicants/recipients must contact their"
+" telephone service provider directly for enrollment in the discounted "
+"rate Lifeline Service."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:77
+msgid ""
+"<b>AUTHORIZED REPRESENTATIVE</b> - You can authorize someone who knows "
+"your household circumstances to apply for SNAP for you. You can also "
+"authorize someone outside your household to get SNAP benefits for you and"
+" to use them to buy food for you. If you would like to authorize someone,"
+" you must do so in writing. You may do so by printing the person’s name, "
+"address and phone number below. When an Authorized Representative is "
+"applying on behalf of a SNAP Household that does not reside in an "
+"institution, both the Authorized Representative and the SNAP Head of "
+"Household or other responsible adult member of the household must sign "
+"and date the signature sections on this form."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:80
+msgid ""
+"<b>CERTIFICATION: I swear and/or affirm under the penalties of perjury "
+"that the information I have given or will give to the local Social "
+"Services district is correct.</b> <b style='text-"
+"decoration:underline;'>Your signature is required below to complete the "
+"application process.</b>"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:88
+msgid "I certify that I have read the above statements."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:91
+#: easyfoodstamps/templates/interview/interview-esignature-legal.html:92
+msgid "Continue to sign"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-mortgage.html:1
+msgid "What's your monthly rent or mortgage payment?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities-total.html:1
+msgid "How much do you pay for utilities each month?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities-total.html:7
+msgid "Complete"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities.html:2
+msgid "Select any expenses paid each month by you or anyone in your home."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities.html:3
+msgid "Please select even if you only pay part of the bill."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities.html:8
+msgid "Gas"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities.html:11
+msgid "Electric"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities.html:14
+msgid "Water"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities.html:17
+msgid "Telephone"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities.html:20
+msgid "Garbage"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities.html:24
+msgid "Sewer"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities.html:28
+msgid "Oil, coal, wood, kerosene"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities.html:32
+msgid "Utility Installation"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-expenses-utilities.html:37
+msgid "Other"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-applying.html:1
+msgid "Which ones are you applying for?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-applying.html:5
+msgid "You can apply with other people if:"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-applying.html:7
+msgid "You live together, and you buy and cook food together, or"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-applying.html:8
+msgid "You live with and are applying for your child, or"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-applying.html:9
+msgid "You live with and are applying for your husband or wife"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-dob.html:1
+msgid "Household members date of birth?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-dob.html:4
+msgid "What is (( person.name ))'s date of birth?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-names.html:1
+msgid "Who lives with you?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-names.html:2
+msgid "Please enter at least one name"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-names.html:5
+msgid "First and Last Name"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-relation.html:1
+msgid "Household members relationship to YOU?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-relation.html:4
+msgid "What is (( person.name ))'s relationship to you?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-ssn.html:1
+msgid "What are the Social Security numbers of the people you’re applying for?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-household-ssn.html:4
+msgid "What is (( person.name ))'s SSN?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-income-frequency.html:1
+msgid "What is your monthly income?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-income-hours.html:1
+msgid "How many hours do you work per month?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-income-hours.html:3
+#: easyfoodstamps/templates/interview/interview-income-household-frequency.html:6
+msgid "Hours per Week"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-income-hours.html:6
+#: easyfoodstamps/templates/interview/interview-income-household-frequency.html:9
+msgid "Weeks per Month"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-income-household-amount.html:1
+msgid "Household members monthly income?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-income-household-amount.html:4
+msgid "Monthly income for (( person.name ))"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-income-household-frequency.html:1
+msgid "Household members monthly hours worked?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-income-household-frequency.html:4
+msgid "Hours worked per month for (( person.name ))"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:2
+msgid "Almost done!"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:3
+msgid ""
+"Review your answers below. Edit them now if you need to change them. "
+"We'll transpose your answers onto an official NYC SNAP application, which"
+" you can preview and sign on the next page."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:4
+msgid "Scroll to bottom"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:63
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:105
+msgid "DOB"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:68
+msgid "Marital Status"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:73
+msgid "Pregnant, Blind or Disabled?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:78
+msgid "US Citizen?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:83
+msgid "Total Resources"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:90
+msgid "Mortgage/Rent"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:97
+msgid "Applicants in your household"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:101
+msgid "Name"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:107
+msgid "Relation"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-info-confirmation.html:117
+msgid "Confirm my answers"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:1
+msgid "Finish this step"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:6
+msgid "1"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:7
+msgid "MORE ABOUT YOU"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:8
+#: easyfoodstamps/templates/interview/interview-main.html:22
+#: easyfoodstamps/templates/interview/interview-main.html:29
+msgid "Save 5 mins"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:9
+#: easyfoodstamps/templates/interview/interview-main.html:23
+#: easyfoodstamps/templates/interview/interview-main.html:30
+msgid "Saved 5 mins"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:13
+msgid "2"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:14
+msgid "HOUSEHOLD"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:15
+msgid "Save 10 mins"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:16
+msgid "Saved 10 mins"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:20
+msgid "3"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:21
+msgid "INCOME"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:27
+msgid "4"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-main.html:28
+msgid "EXPENSES"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-marital-status.html:1
+msgid "What’s your marital status?"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-marital-status.html:3
+msgid "Single"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-marital-status.html:6
+msgid "Married"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-marital-status.html:9
+msgid "Divorced"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-marital-status.html:12
+msgid "Separated"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview-marital-status.html:15
+msgid "Widowed"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview.html:5
+msgid "More about you"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview.html:16
+msgid "Household"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview.html:49
+#: easyfoodstamps/templates/interview/interview.html:56
+msgid "Sign application"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview.html:63
+#: easyfoodstamps/templates/interview/interview.html:73
+msgid "Step 2 of 3"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview.html:82
+msgid "Ace your interview!"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview.html:83
+msgid ""
+"Answering your interview questions in advance will make your phone "
+"interview shorter."
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview.html:84
+msgid "Good job so far!"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview.html:85
+msgid "Great! You're done!"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview.html:91
+msgid "min"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview.html:93
+msgid "Estimated interview"
+msgstr ""
+
+#: easyfoodstamps/templates/interview/interview.html:97
+msgid "Estimated benefit"
+msgstr ""
+

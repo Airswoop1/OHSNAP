@@ -1,0 +1,9 @@
+<h1>What are the due dates for the following?</h1>
+
+<div ng-repeat="person in user.household_members track by $index" class="household-ssn" ng-show="person.applying && person.pregnant=='yes'">
+    <h6>(( person.name ))</h6>
+    <input ng-model="person.pregnant_due_date" type="date" name="preg_due_date_(( $index ))" placeholder="MM/DD/YYYY" class="name-input dob-input" ng-required="true">
+
+</div>
+
+<div ng-click="updateCurrentAndGoToNext('int.household-pregnant-due-date', 'int.household-pregnant-num-babies')" class="yellow-button">Continue</div>

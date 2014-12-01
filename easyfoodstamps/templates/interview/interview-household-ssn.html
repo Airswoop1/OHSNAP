@@ -1,0 +1,8 @@
+<h1>{{ _("What are the Social Security numbers of the people you’re applying for?") }}</h1>
+
+<div ng-repeat="person in user.household_members track by $index" class="household-ssn" ng-show="person.applying">
+    <h6 for="ssn_(( $index ))">{{ _("What is (( person.name ))'s SSN?") }}</h6>
+    <input id="ssn_(( $index ))" type="number"  name="ssn" placeholder="XXXXXXXXX" ng-model="person.ssn"/>
+</div>
+
+<div class="yellow-button" ng-click="updateCurrentAndGoToNext('int.household-ssn', 'int.household-dob')">{{ _("Continue") }}</div>

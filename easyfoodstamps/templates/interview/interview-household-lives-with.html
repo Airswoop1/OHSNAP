@@ -1,0 +1,12 @@
+<h1>Are the following people living with you?</h1>
+
+<div ng-repeat="person in user.household_members track by $index" class="household-ssn" ng-show="person.applying">
+    <h6>(( person.name ))</h6>
+    <input  ng-model="person.lives_with" id="lives_with_yes_(($index))" type="radio"
+            class="name-input marital-input" value="yes" name="lives_with_(($index))"><label for="lives_with_yes_(($index))">Yes</label>
+    <br/>
+    <input ng-model="person.lives_with" id="lives_with_no_(($index))" type="radio"
+           class="name-input marital-input" value="no" name="lives_with_(($index))"><label for="lives_with_no_(($index))">No</label>
+</div>
+
+<div ng-click="updateCurrentAndGoToNext('int.lives-with', 'int.household-in-school')" class="yellow-button">Continue</div>
