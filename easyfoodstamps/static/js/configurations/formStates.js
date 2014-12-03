@@ -1,28 +1,66 @@
 /**
  * Created by airswoop1 on 10/21/14.
  */
-angular.module('formApp.formStates',['ui.router', 'formApp.userDataFactory'])
-.config(function($interpolateProvider) {
-  $interpolateProvider.startSymbol('((');
-  $interpolateProvider.endSymbol('))');
-})
-.config(function($stateProvider, $urlRouterProvider) {
-
+angular.module('formApp.formStates', ['formApp.formController'])
+.config(function($interpolateProvider, $stateProvider, $urlRouterProvider) {
+	$interpolateProvider.startSymbol('((');
+  	$interpolateProvider.endSymbol('))');
+  	$urlRouterProvider.otherwise('/home');
 	$stateProvider
+		.state('home', {
+			url: '/home',
+			templateUrl: 'templates/home.html',
+			controller: //'homeController'
+			function() {}
+		})
 
-	/************Step 1 - Initial Questions ****************/
+		.state('eligibility', {
+			url: '/eligibility',
+			templateUrl: 'templates/basic/eligibility.html',
+			controller: 'EligibilityController',
+			abstract: true
+		})
 
-		// route to show our basic form (/form)
+		.state('eligibility.citizenship', {
+			url:'/citizenship',
+			templateUrl:'templates/basic/form-citizenship.html'
+		})
+
+		.state('eligibility.household', {
+			url:'/household',
+			templateUrl:'templates/basic/form-household.html'
+		})
+
+		.state('eligibility.income', {
+			url: '/income',
+			templateUrl:'templates/basic/form-income.html'
+		})
+
+		.state('eligibility.resources', {
+			url:'/resources',
+			templateUrl:'templates/basic/form-resources.html'
+		})
+
+		.state('eligibility.expenses', {
+			url:'/expenses',
+			templateUrl:'templates/basic/form-eligible-expenses.html'
+		})
+
+		.state('eligibility.ineligible', {
+			url:'/ineligible',
+			templateUrl:'templates/basic/form-ineligible.html'
+		})
+
+		.state('eligibility.eligibility', {
+			url:'/eligible',
+			templateUrl:'templates/basic/form-eligibility.html'
+		})
+
 		.state('form', {
 			url: '/form',
 			templateUrl: 'templates/basic/form.html',
 			controller: 'formController',
 			abstract: true
-		})
-
-		.state('form.intro', {
-			url: '/intro',
-			templateUrl: 'templates/basic/form-intro.html'
 		})
 
 		.state('form.recert', {
@@ -165,11 +203,4 @@ angular.module('formApp.formStates',['ui.router', 'formApp.userDataFactory'])
 			templateUrl:'templates/basic/form-transition.html'
 
 		})
-
-
-
-	// catch all route
-	// send users to the form page
-
-	$urlRouterProvider.otherwise('/form/intro');
 })

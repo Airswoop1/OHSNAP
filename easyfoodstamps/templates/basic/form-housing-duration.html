@@ -1,19 +1,11 @@
 <h1>How long have you lived there?</h1>
 
-<input ng-model="formData.lived_at_duration" value="0-3 Months" id="lived_at_duration_1" type="radio" class="name-input marital-input" name="lived_at_duration"><label
-        for="lived_at_duration_1">0-3 Months</label>
+<input ng-model="formData.lived_at_duration" value="0-3 Months" id="lived_at_duration_1" type="radio" class="name-input marital-input" name="lived_at_duration" ng-click="completedLivedAt()"><label for="lived_at_duration_1">0-3 Months</label>
 <br/>
-<input ng-model="formData.lived_at_duration" value="4-6 Months"  id="lived_at_duration_2" type="radio" class="name-input marital-input" name="lived_at_duration"><label
-        for="lived_at_duration_2">4-6 Months</label>
+<input ng-model="formData.lived_at_duration" value="4-6 Months"  id="lived_at_duration_2" type="radio" class="name-input marital-input" name="lived_at_duration" ng-click="completedLivedAt()"><label for="lived_at_duration_2">4-6 Months</label>
 <br/>
-<input ng-model="formData.lived_at_duration" value="7-12 Months"  id="lived_at_duration_3" type="radio" class="name-input marital-input" name="lived_at_duration"><label
-        for="lived_at_duration_3">7-12 Months</label>
+<input ng-model="formData.lived_at_duration" value="7-12 Months"  id="lived_at_duration_3" type="radio" class="name-input marital-input" name="lived_at_duration" ng-click="completedLivedAt()"><label for="lived_at_duration_3">7-12 Months</label>
 <br/>
-<input ng-model="formData.lived_at_duration" value="1-3 Years"  id="lived_at_duration_4" type="radio" class="name-input marital-input" name="lived_at_duration"><label
-        for="lived_at_duration_4">1-3 Years</label>
+<input ng-model="formData.lived_at_duration" value="1-3 Years"  id="lived_at_duration_4" type="radio" class="name-input marital-input" name="lived_at_duration" ng-click="completedLivedAt()"><label for="lived_at_duration_4">1-3 Years</label>
 <br/>
-<input ng-model="formData.lived_at_duration" value="3+ Years"  id="lived_at_duration_5" type="radio" class="name-input marital-input" name="lived_at_duration"><label
-        for="lived_at_duration_5">3+ Years</label>
-
-<div ng-hide="formData.lived_at_duration" class="yellow-button disabled">Continue</div>
-<div ng-show="formData.lived_at_duration" class="yellow-button" ng-click="completedLivedAt();" >Continue</div>
+<input ng-model="formData.lived_at_duration" value="3+ Years"  id="lived_at_duration_5" type="radio" class="name-input marital-input" name="lived_at_duration" ng-click="completedLivedAt()"><label for="lived_at_duration_5">3+ Years</label>

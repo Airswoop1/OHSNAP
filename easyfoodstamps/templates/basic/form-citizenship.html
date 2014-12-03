@@ -1,6 +1,6 @@
 <h1>{{ _("Are you a US Citizen?") }}</h1>
-<p>{{ _("Even if you aren’t a citizen, you might be eligible for benefits. Answering these questions won’t affect your immigration case, even if you're an undocumented immigrant.") }}</p>
+<p>{{ _("Even if you aren’t a citizen, you might be eligible for benefits. Applying for SNAP won’t affect your immigration case either way.") }}</p>
 <br/>
-<input ng-model="formData.citizenship" ng-click="updateCurrentAndGoToNext('form.citizenship','form.household');" id="us_citizen_yes" type="radio" class="name-input marital-input" value="yes" name="citizenship" required><label for="us_citizen_yes">{{ _("Yes") }}</label>
+<input ng-model="formData.citizenship" ng-click="updateCurrentAndGoToNext('form.citizenship', '^.household');" id="us_citizen_yes" type="radio" class="name-input marital-input" value="yes" name="citizenship" required><label for="us_citizen_yes">{{ _("Yes") }}</label>
 <br/>
-<input ng-model="formData.citizenship" ng-click="updateCurrentAndGoToNext('form.citizenship','form.ineligible');" id="us_citizen_no" type="radio" class="name-input marital-input" value="no" name="citizenship"><label for="us_citizen_no" >{{ _("No") }}</label>
+<input ng-model="formData.citizenship" ui-sref="^.ineligible" id="us_citizen_no" type="radio" class="name-input marital-input" value="no" name="citizenship"><label for="us_citizen_no" >{{ _("No") }}</label>

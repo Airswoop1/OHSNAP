@@ -23,6 +23,7 @@ npm install -g nodemon
 npm install -g grunt-cli
 
 cd /vagrant
-pip install -r requirements.txt
+python setup.py develop
+su vagrant -c  "chmod 755 /home/vagrant/.python-eggs"
 # su vagrant -c  "echo 'export NODE_ENV=sandbox' >> /home/vagrant/.bashrc"
 cd -

@@ -8,7 +8,7 @@
     <div style="margin-left: auto; margin-right: auto; width: 250px">
         <br/>
         <div class="pull-left" style="padding: 10px; background-color: #0060B7; width: 50px; float: left; margin-right: 20px;">
-            <img src="/images/checkmark_yellow.png" style="width: 100%"/>
+            <img src="/static/images/checkmark_yellow.png" style="width: 100%"/>
         </div>
         <div style="height: 120px; position: relative; top: -10px; font-size: 2em;">{{ _("You may be eligible!") }}</div>
     </div>
@@ -29,6 +29,6 @@
 </div>
 
 <div class="yellow-button"
-    ng-click="$emit('show-progress-bar') && $emit('add-progress-bar')" ui-sref="form.name">
+    ng-click="$emit('start-application')" ui-sref="form.name">
     {{ _("Start my application") }}
 </div>

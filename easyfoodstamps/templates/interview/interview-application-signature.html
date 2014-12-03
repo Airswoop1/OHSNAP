@@ -65,8 +65,8 @@ p {
 
 #sig_container1 {
     position: absolute;
-    top: 196px;
-    left: 472px;
+    top: 1248px;
+    left: 160px;
     width: 300px;
     border: 5px solid #00bd54;
     z-index: 1000;
@@ -80,7 +80,7 @@ p {
     width:320px;
     height:39px;
     top:207px;
-    left:483px;
+    left:138px;
     font-size:13px;
 }
 
@@ -92,10 +92,8 @@ p {
 }
 
 #sig_capture1 {
-
     width:100%;
     height: 45px;
-
 }
 
 #sig_prompt1 {
@@ -112,8 +110,8 @@ p {
 
 #sig_container2 {
     position: absolute;
-    top: 564px;
-    left: 168px;
+    top: 1082px;
+    left: 138px;
     width: 300px;
     border: 5px solid #00bd54;
     z-index:1000;
@@ -570,9 +568,16 @@ p {
 
 </style>
 
-<div class="app_alt_page_header" id="page_alt_header1" ng-click="goBack();">{{ _("Page 1: Basics") }}</div>
+<span ng-repeat="p in [1, 2, 3]">
+    <div class="app_alt_page_header" id="page_alt_header4" >{{ _("Page ((p))") }}</div>
+    <div class="img_container" id="image_wrapper_((p))">
+        <img ng-src="static/images/pa_app/app((p)).png" alt=""/>
+    </div>
+</span>
+
+<div class="app_alt_page_header" id="page_alt_header1" ng-click="goBack();">{{ _("Page 4") }}</div>
 <div class="img_container" id="image_wrapper_1" style="display:block;">
-    <img src="images/app1.png" alt=""/>
+    <img src="static/images/pa_app/app4.png" alt=""/>
     <div class="data_overlay" id="app_name">(( user.name.first_name + " " + user.name.last_name ))</div>
     <div class="data_overlay" id="app_telephone">(( user.phone_main | tel ))</div>
     <div class="data_overlay" id="app_street">(( user.address.street_address ))</div>
@@ -609,7 +614,7 @@ p {
 
     <div id="app_signature_label1">{{ _("APPLICANT/REPRESENTATIVE SIGNATURE") }}</div>
     <div id="sig_container1" ng-class="{hide_sig: !show_sig1, show_sig: show_sig1}">
-        <j-signature id="sig_capture1"></j-signature>
+        <j-signature model="sig1"></j-signature>
 
         <div id="sig_prompt1">
             {{ _("Sign in the box with your finger.") }}
@@ -620,38 +625,19 @@ p {
     </div>
 </div>
 
-<div class="app_alt_page_header" id="page_alt_header2" >{{ _("Page 2: Income") }}</div>
-<div class="img_container" id="image_wrapper_2" >
-    <img src="images/app2.png" alt=""/>
-    <div ng-repeat="person in personsWithIncome track by $index">
-        <div class="data_overlay" id="app_(( $index ))_income_name">(( person.name ))</div>
-        <div class="data_overlay" id="app_(( $index ))_income_hours">(( person.hours_per_month ))</div>
-        <div class="data_overlay" id="app_(( $index ))_income_amount">$(( person.amount ))</div>
-
+<span ng-repeat="p in [5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16]">
+    <div class="app_alt_page_header" id="page_alt_header4" >{{ _("Page ((p))") }}</div>
+    <div class="img_container" id="image_wrapper_((p))">
+        <img ng-src="static/images/pa_app/app((p)).png" alt=""/>
     </div>
+</span>
 
-    <div class="data_overlay" id="app_total_resources">(( user.total_resources || 0 ))</div>
-    <div class="data_overlay" id="app_rent">(( user.rent || 0 ))</div>
-
-</div>
-
-<div class="app_alt_page_header" id="page_alt_header3" >{{ _("Page 3: Expenses") }}</div>
-<div class="img_container" id="image_wrapper_3">
-    <img src="images/app3.png"  alt=""/>
-</div>
-
-<div class="app_alt_page_header" id="page_alt_header4" >{{ _("Page 4: Legal") }}</div>
-<div class="img_container" id="image_wrapper_4">
-    <img src="images/app4.png" alt=""/>
-</div>
-
-
-<div class="app_alt_page_header" id="page_alt_header5" >{{ _("Page 5: Final Signature") }}</div>
+<div class="app_alt_page_header" id="page_alt_header5" >{{ _("Page 17") }}</div>
 <div class="img_container" id="image_wrapper_5" style="display:block;">
-    <img src="images/app5.png" alt=""/>
+    <img src="static/images/pa_app/app17.png" alt=""/>
     <div id="app_signature_label2"></div>
     <div id="sig_container2" ng-class="{hide_sig: !show_sig1, show_sig: show_sig1}">
-        <j-signature id="sig_capture2"></j-signature>
+        <j-signature model="sig2"></j-signature>
 
         <div class="sig_prompt">
             {{ _("Sign in the box with your finger.") }}
@@ -664,4 +650,12 @@ p {
         </div>
     </div>
 </div>
+
+<span ng-repeat="p in [18, 19, 20, 21, 22, 23, 24, 25]">
+    <div class="app_alt_page_header" id="page_alt_header4" >{{ _("Page ((p))") }}</div>
+    <div class="img_container" id="image_wrapper_((p))">
+        <img ng-src="static/images/pa_app/app((p)).png" alt=""/>
+    </div>
+</span>
+
 <div style="clear:both;height:500px"></div>

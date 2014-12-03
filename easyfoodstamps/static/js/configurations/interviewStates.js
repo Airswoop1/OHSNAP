@@ -1,12 +1,10 @@
 /**
  * Created by airswoop1 on 10/21/14.
  */
-angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory'])
-.config(function($interpolateProvider) {
-  $interpolateProvider.startSymbol('((');
-  $interpolateProvider.endSymbol('))');
-})
-	.config(function($stateProvider, $urlRouterProvider) {
+angular.module('formApp.interviewStates', ['formApp.interviewCtrl'])
+	.config(function($interpolateProvider, $stateProvider, $urlRouterProvider) {
+		$interpolateProvider.startSymbol('((');
+  		$interpolateProvider.endSymbol('))');
 
 		/************************ Step 2 - INTERVIEW ****************/
 		$stateProvider
@@ -254,8 +252,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.criminal-defendant', {
 				url:'/criminal-defendant',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Does anyone have a summons or warrant to appear as a defendant at a criminal court proceeding?";
 					$scope.route_name = "criminal-defendant";
 					$scope.data_name = "criminal_defendant";
@@ -280,9 +278,9 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.criminal-probation', {
 				url:'/criminal-probation',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
+				controller: function($scope, User){
 
-					$scope.current_user = userDataFactory.userData.user.formData;
+					$scope.current_user = User;
 					$scope.title = "Is anyone on probation or parole?";
 					$scope.route_name = "criminal-probation";
 					$scope.data_name = "criminal_probation";
@@ -298,9 +296,9 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.welfare-fraud', {
 				url:'/welfare-fraud',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
+				controller: function($scope, User){
 
-					$scope.current_user = userDataFactory.userData.user.formData;
+					$scope.current_user = User;
 					$scope.title = "Has anyone been convicted of welfare fraud?";
 					$scope.route_name = "welfare-fraud";
 					$scope.data_name = "welfare_fraud";
@@ -315,8 +313,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.law-enforcement', {
 				url:'/law-enforcement',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Is anyone fleeing from law enforcement?";
 					$scope.route_name = "law-enforcement";
 					$scope.data_name = "law_enforcement";
@@ -345,8 +343,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.other-income-worked-90-days', {
 				url:'/worked-90-days',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Has anyone worked in the last 90 days?";
 					$scope.route_name = "worked-90-days";
 					$scope.data_name = "worked_90_days";
@@ -361,8 +359,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.other-income-worked-reduced-hours', {
 				url:'/worked-reduced-hours',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Has anyone had work hours reduced in the last 60 days?";
 					$scope.route_name = "worked-reduced-hours";
 					$scope.data_name = "worked_reduced_hours";
@@ -377,8 +375,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.stopped-working', {
 				url:'/stopped-working',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Has anyone stopped working at one or more jobs in the past 30 days?";
 					$scope.route_name = "stopped-working";
 					$scope.data_name = "stopped_working";
@@ -393,8 +391,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.on-strike', {
 				url:'/on-strike',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Is anyone on strike?";
 					$scope.route_name = "on-strike";
 					$scope.data_name = "on_strike";
@@ -409,8 +407,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.on-social-security', {
 				url:'/on-social-security',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Has anyone received Social Security in the past?";
 					$scope.route_name = "on-social-security";
 					$scope.data_name = "on_social_security";
@@ -425,8 +423,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.on-ssi', {
 				url:'/on-ssi',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Has anyone received Supplemental Security Income in the past?";
 					$scope.route_name = "on-ssi";
 					$scope.data_name = "on_ssi";
@@ -441,8 +439,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.applied-for-workers-comp', {
 				url:'/applied-for-workers-comp',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Has anyone applied for workers' compensation?";
 					$scope.route_name = "applied-for-workers-comp";
 					$scope.data_name = "applied_for_workers_comp";
@@ -457,8 +455,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.applied-for-social-security', {
 				url:'/applied-for-social-security',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Has anyone applied for social security?";
 					$scope.route_name = "applied-for-social-security";
 					$scope.data_name = "applied_for_social_security";
@@ -473,8 +471,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.applied-for-unemployment-compensation', {
 				url:'/applied-for-unemployment-compensation',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Has anyone applied for unemployment compensation?";
 					$scope.route_name = "applied-for-unemployment-compensation";
 					$scope.data_name = "applied_for_unemployment_comp";
@@ -489,8 +487,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.applied-for-veterans-benefits', {
 				url:'/applied-for-veterans-benefits',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Has anyone applied for veterans benefits?";
 					$scope.route_name = "applied-for-veterans-benefits";
 					$scope.data_name = "applied_for_veterans_benefits";
@@ -506,8 +504,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.applied-for-ssi', {
 				url:'/applied-for-ssi',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Has anyone applied for Supplemental Security Income (SSI)?";
 					$scope.route_name = "applied-for-ssi";
 					$scope.data_name = "applied_for_ssi";
@@ -529,8 +527,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.cost-for-income', {
 				url:'/cost-for-income',
 				templateUrl:'templates/interview/interview-yesno-template.html',
-				controller: function($scope, userDataFactory){
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User){
+					$scope.current_user = User;
 					$scope.title = "Does it cost anyone anything to get the income listed above? (Such as transportation costs, court fees, bank or guardian fees, etc.)?";
 					$scope.route_name = "cost-for-income";
 					$scope.data_name = "cost_for_income";
@@ -562,8 +560,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.resources-own-property', {
 				url:'/resources-own-property',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory) {
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User) {
+					$scope.current_user = User;
 					$scope.title = "Does anyone own any homes or property that they don’t live in?";
 					$scope.route_name = "resources-own-property";
 					$scope.data_name = "resources_own_property";
@@ -584,8 +582,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.resources-burial-agreement', {
 				url:'/resources-burial-agreement',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory) {
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User) {
+					$scope.current_user = User;
 					$scope.title = "Does anyone have a burial agreement with a bank or funeral home?";
 					$scope.route_name = "resources-burial-agreement";
 					$scope.data_name = "resources_burial_agreement";
@@ -599,8 +597,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.resources-life-insurance', {
 				url:'/resources-life-insurance',
 				templateUrl:'templates/interview/interview-household-yesnowho-template.html',
-				controller: function($scope, userDataFactory) {
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User) {
+					$scope.current_user = User;
 					$scope.title = "Does anyone have a life insurance policy?";
 					$scope.route_name = "resources-life-insurance";
 					$scope.data_name = "resources_life_insurance";
@@ -638,8 +636,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.monthly-expenses-rent', {
 				url:'/monthly-expenses-rent',
 				templateUrl:'templates/interview/interview-monthly-expenses-template.html',
-				controller: function($scope, userDataFactory) {
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User) {
+					$scope.current_user = User;
 
 					$scope.title = "rent, mortgage or lot rent";
 					$scope.alt_question = "Are meals included in your rent?";
@@ -657,8 +655,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.monthly-expenses-condo', {
 				url:'/monthly-expenses-condo',
 				templateUrl:'templates/interview/interview-monthly-expenses-template.html',
-				controller: function($scope, userDataFactory) {
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User) {
+					$scope.current_user = User;
 
 					$scope.title = "condominium fees";
 					$scope.route_name = 'monthly-expenses-condo';
@@ -674,8 +672,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.monthly-expenses-property-insurance', {
 				url:'/monthly-expenses-property-insurance',
 				templateUrl:'templates/interview/interview-monthly-expenses-template.html',
-				controller: function($scope, userDataFactory) {
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User) {
+					$scope.current_user = User;
 
 					$scope.title = "property insurance";
 					$scope.route_name = 'monthly-expenses-property-insurance';
@@ -691,8 +689,8 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 			.state('int.monthly-expenses-property-taxes', {
 				url:'/monthly-expenses-property-taxes',
 				templateUrl:'templates/interview/interview-monthly-expenses-template.html',
-				controller: function($scope, userDataFactory) {
-					$scope.current_user = userDataFactory.userData.user.formData;
+				controller: function($scope, User) {
+					$scope.current_user = User;
 
 					$scope.title = "property taxes";
 					$scope.route_name = 'monthly-expenses-property-taxes';
@@ -747,6 +745,4 @@ angular.module('formApp.interviewStates', ['ui.router', 'formApp.userDataFactory
 				url:'/submission',
 				templateUrl:'templates/interview/interview-application-submission.html'
 			});
-
-
 	});

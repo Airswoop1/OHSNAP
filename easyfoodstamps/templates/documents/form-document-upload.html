@@ -1,62 +1,31 @@
-<div class="doc-list">
+<div class="page-header step-three" >
+  <div class="back-button" ng-click="goBack()"></div>
+  <div class="header">
+    <h3>{{ _("Step 3 of 3") }}</h3>
+    <h4>{{ _("Documents") }}</h4>
+    <div>
+      <h1>{{ _("Last step! Send in your documents.") }}</h1>
+      <p >{{ _("Take a photo of your required documents and upload them here. We’ll fax them in for you.") }}</p>
+    </div>
+  </div>
+</div>
+
+<div class="form-wrapper">
+  <div class="doc-list">
     <ul>
-        <li ng-click="goToDocUpload('IDENTITY')">
-            <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('IDENTITY'), 'in-progress-button': isInProgress('IDENTITY'), 'uploaded': isUploaded('IDENTITY')}">
-                <img ng-src="../images/sample/(( docContent['IDENTITY'].sample_image  ))" alt=""/>
-            </div>
-            <h4>{{ _("Identity") }}</h4>
-        </li>
-        <li ng-click="goToDocUpload('RESIDENCE')">
-            <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('RESIDENCE'), 'in-progress-button': isInProgress('RESIDENCE'), 'uploaded': isUploaded('RESIDENCE')}">
-                <img ng-src="../images/sample/(( docContent['RESIDENCE'].sample_image  ))" alt=""/>
-            </div>
-            <h4>{{ _("Residence") }}</h4>
-        </li>
-
-        <li ng-click="goToDocUpload('HOUSING_EXPENSE')">
-            <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('HOUSING_EXPENSE'), 'in-progress-button': isInProgress('HOUSING_EXPENSE'), 'uploaded': isUploaded('HOUSING_EXPENSE')}">
-                <img ng-src="../images/sample/(( docContent['HOUSING_EXPENSE'].sample_image  ))" alt=""/>
-            </div>
-            <h4>{{ _("Expenses") }}</h4>
-        </li>
-
-        <li ng-click="goToDocUpload('SSN')">
-            <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('SSN'), 'in-progress-button': isInProgress('SSN'), 'uploaded': isUploaded('SSN')}">
-                <img ng-src="../images/sample/(( docContent['SSN'].sample_image  ))" alt=""/>
-            </div>
-            <h4>{{ _("SSN") }}</h4>
-        </li>
-
-        <li ng-click="goToDocUpload('CITIZENSHIP')">
-            <div class="image-wrapper" ng-class="{'not-uploaded':isNotUploaded('CITIZENSHIP'), 'in-progress-button': isInProgress('CITIZENSHIP'), 'uploaded': isUploaded('CITIZENSHIP')}">
-                <img ng-src="../images/sample/(( docContent['CITIZENSHIP'].sample_image  ))" alt=""/>
-            </div>
-            <h4>{{ _("Citizenship") }}</h4>
-        </li>
-
-        <li ng-click="goToDocUpload('EARNED_INCOME')">
-            <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('EARNED_INCOME'), 'in-progress-button': isInProgress('EARNED_INCOME'), 'uploaded': isUploaded('EARNED_INCOME')}">
-                <img ng-src="../images/sample/(( docContent['EARNED_INCOME'].sample_image  ))" alt=""/>
-            </div>
-            <h4>{{ _("Income") }}</h4>
-        </li>
-
-        <li ng-click="goToDocUpload('ALT_INCOME')">
-            <div class="image-wrapper" ng-class="{'not-uploaded': isNotUploaded('ALT_INCOME'), 'in-progress-button': isInProgress('ALT_INCOME'), 'uploaded': isUploaded('ALT_INCOME')}">
-                <img ng-src="../images/sample/(( docContent['ALT_INCOME'].sample_image ))" alt=""/>
-            </div>
-            <h4>{{ _("Other income") }}</h4>
-        </li>
-
-        <li ng-click="goToDocUpload('OTHER')">
-            <div class="image-wrapper not-uploaded">
-                <img ng-src="../images/sample/(( docContent['OTHER'].sample_image ))" alt=""/>
-            </div>
-            <h4>{{ _("Other docs") }}</h4>
-        </li>
-
-        <div class="clear"></div>
+      <li ng-repeat="doctype in doctypes" ng-click="goToDocUpload(doctype)">
+        <div class="image-wrapper"
+          ng-class="{
+            'uploaded': documents.docs[doctype] === documents.DOC_STATUS.UPLOADED,
+            'not-uploaded': documents.docs[doctype] === documents.DOC_STATUS.NOT_UPLOADED,
+            'in-progress-button': documents.docs[doctype] === documents.DOC_STATUS.IN_PROGRESS
+          }">
+          <img ng-src="static/images/sample/(( docContent[doctype].sample_image ))"/>
+        </div>
+        <h4>(( doctype | doctype ))</h4>
+      </li>
+      <div class="clear"></div>
     </ul>
     <div class="yellow-button" ng-click="goToCompletion();">{{ _("Done!") }}</div>
-
+  </div>
 </div>

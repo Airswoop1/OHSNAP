@@ -5,18 +5,18 @@
     <p> Below is the official PA SNAP application form, filled in with your information. We'll fax it to the PA HRA on your behalf, after you preview and sign it.</p>
 
     <div class="yellow-button" id="goToFirstSigButton" ui-sref="int.info-esig-confirm" style="text-align: left;">I'm done reviewing</div>
-    <div class="thumbnail" style="background-image:url('images/pa_app/app2.png');" ng-click="expandThumbnail(1);"> <div class="thumbnail_label">Applying For</div></div>
-    <div class="thumbnail" style="background-image:url('images/pa_app/app4.png');" ng-click="expandThumbnail(2);"> <div class="thumbnail_label">Basic Info</div></div>
-    <div class="thumbnail" style="background-image:url('images/pa_app/app5.png');" ng-click="expandThumbnail(3);"> <div class="thumbnail_label">Household Info 1</div></div>
-    <div class="thumbnail" style="background-image:url('images/pa_app/app6.png');" ng-click="expandThumbnail(4);"> <div class="thumbnail_label">Household Info 2</div></div>
-    <div class="thumbnail" style="background-image:url('images/pa_app/app7.png');" ng-click="expandThumbnail(5);"> <div class="thumbnail_label">Household Info 3</div></div>
-    <div class="thumbnail" style="background-image:url('images/pa_app/app8.png');" ng-click="expandThumbnail(6);"> <div class="thumbnail_label">General Household Info</div></div>
-    <div class="thumbnail" style="background-image:url('images/pa_app/app10.png');" ng-click="expandThumbnail(7);"> <div class="thumbnail_label">Resources</div></div>
-    <div class="thumbnail" style="background-image:url('images/pa_app/app11.png');" ng-click="expandThumbnail(8);"> <div class="thumbnail_label">Income</div></div>
-    <div class="thumbnail" style="background-image:url('images/pa_app/app13.png');" ng-click="expandThumbnail(9);"> <div class="thumbnail_label">Expenses</div></div>
-    <div class="thumbnail" style="background-image:url('images/pa_app/app15.png');" ng-click="expandThumbnail(10);"> <div class="thumbnail_label">Rights & Responsibilities 1</div></div>
-    <div class="thumbnail" style="background-image:url('images/pa_app/app16.png');" ng-click="expandThumbnail(11);"> <div class="thumbnail_label">Rights & Responsibilities 2</div></div>
-    <div class="thumbnail" style="background-image:url('images/pa_app/app17.png');" ng-click="expandThumbnail(12);"> <div class="thumbnail_label">Rights & Responsibilities 3 + Signature</div></div>
+    <div class="thumbnail" style="background-image:url('static/images/pa_app/app2.png');" ng-click="expandThumbnail(1);"> <div class="thumbnail_label">Applying For</div></div>
+    <div class="thumbnail" style="background-image:url('static/images/pa_app/app4.png');" ng-click="expandThumbnail(2);"> <div class="thumbnail_label">Basic Info</div></div>
+    <div class="thumbnail" style="background-image:url('static/images/pa_app/app5.png');" ng-click="expandThumbnail(3);"> <div class="thumbnail_label">Household Info 1</div></div>
+    <div class="thumbnail" style="background-image:url('static/images/pa_app/app6.png');" ng-click="expandThumbnail(4);"> <div class="thumbnail_label">Household Info 2</div></div>
+    <div class="thumbnail" style="background-image:url('static/images/pa_app/app7.png');" ng-click="expandThumbnail(5);"> <div class="thumbnail_label">Household Info 3</div></div>
+    <div class="thumbnail" style="background-image:url('static/images/pa_app/app8.png');" ng-click="expandThumbnail(6);"> <div class="thumbnail_label">General Household Info</div></div>
+    <div class="thumbnail" style="background-image:url('static/images/pa_app/app10.png');" ng-click="expandThumbnail(7);"> <div class="thumbnail_label">Resources</div></div>
+    <div class="thumbnail" style="background-image:url('static/images/pa_app/app11.png');" ng-click="expandThumbnail(8);"> <div class="thumbnail_label">Income</div></div>
+    <div class="thumbnail" style="background-image:url('static/images/pa_app/app13.png');" ng-click="expandThumbnail(9);"> <div class="thumbnail_label">Expenses</div></div>
+    <div class="thumbnail" style="background-image:url('static/images/pa_app/app15.png');" ng-click="expandThumbnail(10);"> <div class="thumbnail_label">Rights & Responsibilities 1</div></div>
+    <div class="thumbnail" style="background-image:url('static/images/pa_app/app16.png');" ng-click="expandThumbnail(11);"> <div class="thumbnail_label">Rights & Responsibilities 2</div></div>
+    <div class="thumbnail" style="background-image:url('static/images/pa_app/app17.png');" ng-click="expandThumbnail(12);"> <div class="thumbnail_label">Rights & Responsibilities 3 + Signature</div></div>
 </div>
 
 
@@ -24,13 +24,13 @@
 <div class="app_alt_page_header" id="page_alt_header1" >Applying For</div>
 
 <div class="img_container" id="image_wrapper1">
-    <img src="images/pa_app/app2.png" alt=""/>
+    <img src="static/images/pa_app/app2.png" alt=""/>
 </div>
 
 <div class="app_page_header" id="page_header2" ng-click="backToMainSign(2)">Basic Info</div>
 <div class="app_alt_page_header" id="page_alt_header2" >Basic Info</div>
 <div class="img_container" id="image_wrapper2" >
-    <img src="images/pa_app/app4.png" alt=""/>
+    <img src="static/images/pa_app/app4.png" alt=""/>
     <div class="data_overlay" id="app_name">(( user.name.first_name + " " + user.name.last_name ))</div>
     <div class="data_overlay" id="app_telephone">(( user.phone_main | tel ))</div>
     <div class="data_overlay" id="app_address">(( user.address.street_address )), (( user.address.apt_number )) (( user.address.city )), PA (( user.address.zip )) </div>
@@ -64,7 +64,7 @@
 <div class="app_page_header" id="page_header3" ng-click="backToMainSign(3)">Household Info 1</div>
 <div class="app_alt_page_header" id="page_alt_header3" >Household Info 1</div>
 <div class="img_container" id="image_wrapper3">
-    <img src="images/pa_app/app5.png"  alt=""/>
+    <img src="static/images/pa_app/app5.png"  alt=""/>
     <div class="data_overlay" id="app_hh_name0">(( user.name.first_name + " " + user.name.last_name ))</div>
     <div class="data_overlay" id="app_hh_applying0">X</div>
 
@@ -160,7 +160,7 @@
 <div class="app_page_header" id="page_header4" ng-click="backToMainSign(4)">Household Info 2</div>
 <div class="app_alt_page_header" id="page_alt_header4" >Household Info 2</div>
 <div class="img_container" id="image_wrapper4">
-    <img src="images/pa_app/app6.png"  alt=""/>
+    <img src="static/images/pa_app/app6.png"  alt=""/>
 
     <div id="person3" class="data_overlay">
         <div class="hh_name data_overlay">(( user.household_members['2'].name ))</div>
@@ -265,7 +265,7 @@
 <div class="app_page_header" id="page_header5" ng-click="backToMainSign(5)">Household Info 3</div>
 <div class="app_alt_page_header" id="page_alt_header5" >Household Info 3</div>
 <div class="img_container" id="image_wrapper5">
-    <img src="images/pa_app/app7.png"  alt=""/>
+    <img src="static/images/pa_app/app7.png"  alt=""/>
     <div id="person5" class="data_overlay">
         <div class="hh_name data_overlay">(( user.household_members['4'].name ))</div>
         <div ng-show="user.household_members['4'].applying==true" class="hh_applying_yes data_overlay">X</div>
@@ -369,7 +369,7 @@
 <div class="app_page_header" id="page_header6" ng-click="backToMainSign(6)">General Household Info</div>
 <div class="app_alt_page_header" id="page_alt_header6" >General Household Info</div>
 <div class="img_container" id="image_wrapper6">
-    <img src="images/pa_app/app8.png" alt=""/>
+    <img src="static/images/pa_app/app8.png" alt=""/>
     <div class="general_household data_overlay">
         <div ng-show="user.receiving_snap=='yes'" id="rec_snap_yes">X</div>
         <div ng-show="user.receiving_snap=='no'" id="rec_snap_no">X</div>
@@ -469,7 +469,7 @@
 <div class="app_page_header" id="page_header7" ng-click="backToMainSign(7)">Resources</div>
 <div class="app_alt_page_header" id="page_alt_header7" >Resources</div>
 <div class="img_container" id="image_wrapper7">
-    <img src="images/pa_app/app10.png" alt=""/>
+    <img src="static/images/pa_app/app10.png" alt=""/>
     <div class="resources_container">
         <div ng-repeat="u in user.resources track by $index | limitTo: 6" class="resources_row" >
             <div class="resources_name">(( u.person_name ))</div>
@@ -513,7 +513,7 @@
 <div class="app_page_header" id="page_header8" ng-click="backToMainSign(8)">Income</div>
 <div class="app_alt_page_header" id="page_alt_header8" >Income</div>
 <div class="img_container" id="image_wrapper8">
-    <img src="images/pa_app/app11.png" alt=""/>
+    <img src="static/images/pa_app/app11.png" alt=""/>
 
     <div class="income_container">
         <div ng-repeat="u in user.incomes track by $index | limitTo: 6" class="income_row">
@@ -530,7 +530,7 @@
 <div class="app_page_header" id="page_header9" ng-click="backToMainSign(9)">Expenses</div>
 <div class="app_alt_page_header" id="page_alt_header9" >Expenses</div>
 <div class="img_container" id="image_wrapper9">
-    <img src="images/pa_app/app13.png" alt=""/>
+    <img src="static/images/pa_app/app13.png" alt=""/>
     <div class="top_expenses_container">
         <div ng-show="user.child_support_expense=='yes'" id="expenses_child_support_yes">X</div>
         <div ng-show="user.child_support_expense=='no'" id="expenses_child_support_no">X</div>
@@ -615,17 +615,17 @@
 <div class="app_page_header" id="page_header10" ng-click="backToMainSign(10)">Rights & Responsibilities 1</div>
 <div class="app_alt_page_header" id="page_alt_header10" >Rights & Responsibilities 1</div>
 <div class="img_container" id="image_wrapper10">
-    <img src="images/pa_app/app15.png" alt=""/>
+    <img src="static/images/pa_app/app15.png" alt=""/>
 </div>
 
 <div class="app_page_header" id="page_header11" ng-click="backToMainSign(11)">Rights & Responsibilities 2</div>
 <div class="app_alt_page_header" id="page_alt_header11" >Rights & Responsibilities 2</div>
 <div class="img_container" id="image_wrapper11">
-    <img src="images/pa_app/app16.png" alt=""/>
+    <img src="static/images/pa_app/app16.png" alt=""/>
 </div>
 
 <div class="app_page_header" id="page_header12" ng-click="backToMainSign(12)">Rights & Responsibilities 3 + Signature</div>
 <div class="app_alt_page_header" id="page_alt_header12" >Rights & Responsibilities 3 + Signature</div>
 <div class="img_container" id="image_wrapper12">
-    <img src="images/pa_app/app17.png" alt=""/>
+    <img src="static/images/pa_app/app17.png" alt=""/>
 </div>

@@ -1,0 +1,50 @@
+<!-- form.html -->
+<div class="intro-header">
+    <div class="logo">EASY <i class="bolt-logo"></i> FOODSTAMPS NYC</div>
+    <h1>{{ _("Get food stamps, <br/>without the <br/>hassle.") }}</h1>
+    <div>
+        <div ng-click="$emit('start.application')" ui-sref="form.name" class="intro-button">{{ _("Apply now") }}</div>
+        <div ng-click="$emit('start.eligibility')" ui-sref="eligibility.citizenship" class="intro-button dull">{{ _("Am I eligible?") }}</div>
+
+        {% if locale == "en" %}
+        <div class="language-link"><a href="/?lang=es">En español, por favor</a></div>
+        {% else %}
+        <div class="language-link"><a href="/?lang=en">English?</a></div>
+        {% endif %}
+    </div>
+</div>
+
+<!-- our nested state views will be injected here -->
+<div class="form-wrapper" ui-view>
+    <!-- form-intro.html -->
+    <div class="steps-wrapper">
+        <div class="steps">
+            {{ _("APPLY IN 3 EASY STEPS!") }}
+            <i class="steps-triangle"></i>
+        </div>
+        <div class="step-1 steps">
+            <h1>{{ _("Step 1") }}</h1>
+            <h2>{{ _("Basics") }}</h2>
+            <p>{{ _("Answer 5 basic questions about yourself to get started.") }}</p>
+            <i class="steps-triangle step-triangle-1"></i>
+        </div>
+        <div class="step-2 steps">
+            <h1>{{ _("Step 2") }}</h1>
+        <h2>{{ _("Interview") }}</h2>
+            <p>{{ _("Prepare for your interview with a government worker with our interview guide.") }}</p>
+            <i class="steps-triangle step-triangle-2"></i>
+        </div>
+        <div class="step-3 steps">
+            <h1>{{ _("Step 3") }}</h1>
+            <h2>{{ _("Documents") }}</h2>
+            <p>{{ _("Text us your documents or upload them online, and we’ll fax them in for you.  Boom! You’re done.") }}</p>
+            <i class="steps-triangle step-triangle-3"></i>
+        </div>
+    </div>
+
+    <button class="yellow-button" ng-click="$emit('start.application')" ui-sref="form.name">{{ _("Get started") }}</button>
+
+    <info-footer></info-footer>
+</div>
+
+<modal-dialog show='modalShown' width='90%' height='100%'></modal-dialog>

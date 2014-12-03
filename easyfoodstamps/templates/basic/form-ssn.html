@@ -2,9 +2,10 @@
 <h1>{{ _("What’s your Social Security Number?") }}</h1>
 <p>{{ _("A Social Security Number is required to apply for SNAP.") }}</p>
 <div class="form-group" ng-class="{'has-success':snapForm.ssn.$pristine ,'has-error': snapForm.ssn.$invalid}">
-    <input class="form-control" type="text" name="ssn" id="ssn" ng-model="formData.ssn" ng-minlength="9" ng-maxlength="11" ng-pattern="/^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/" autofocus="true"/>
+    <input class="form-control" type="text" name="ssn" id="ssn" ng-model="formData.ssn" ng-minlength="9" ng-maxlength="11" ng-pattern="/^(\d{3}-?\d{2}-?\d{4}|XXX-XX-XXXX)$/" required autofocus="true"/>
     <span class="help-block" ng-show="submitted_ssn && !snapForm.ssn.$valid">{{ _("9 digit SSN Required") }}</span>
 </div>
 
-<div class="yellow-button" ng-class="{'disabled':!snapForm.ssn.$valid || snapForm.ssn.$error.minlength || snapForm.ssn.$error.minlength }"
+<div class="yellow-button"
+	ng-class="{'disabled': !snapForm.ssn.$valid || snapForm.ssn.$error.minlength || snapForm.ssn.$error.minlength}"
     ng-click="completedSSN()">{{ _("Continue") }}</div>

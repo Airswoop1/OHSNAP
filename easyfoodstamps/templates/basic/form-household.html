@@ -11,12 +11,9 @@
 <div class="form-group">
     <div class="checkbox-group">
         <input type="checkbox" class="big-checkbox" id="disabled_or_elderly" ng-model="formData.disabled"/>
-        <span>{{ _("I live with someone elderly or disabled.") }}</span>
+        <label for="disabled_or_elderly">{{ _("I live with someone elderly or disabled.") }}</label>
     </div>
 </div>
 
-<div ng-show="!goingThroughEligibility" class="yellow-button" ng-class="{'disabled': snapForm.household.$invalid}"
-     ng-click="completedHousehold()">{{ _("Continue") }}</div>
-
-<div ng-show="goingThroughEligibility" class="yellow-button" ng-class="{'disabled': snapForm.household.$invalid}"
-     ng-click="completedEligibilityHousehold()">{{ _("Continue") }}</div>
+<div class="yellow-button" ng-class="{'disabled': snapForm.household.$invalid}"
+	ng-click="completedHousehold()">{{ _("Continue") }}</div>

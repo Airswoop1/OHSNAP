@@ -24,9 +24,9 @@
 
     <div>
         <h6>{{ _("Street Address") }}</h6>
-        <input type="text" name="street_address" id="street_address" placeholder="{{ _("Street Address") }}"
-           ng-model="formData.address.street_address" ng-minlength="3">
-        <span class="help-block" ng-show="has_address && snapForm.street_address.$error.required">{{ _("Address required") }}</span>
+        <input type="text" name="address" id="address" placeholder="{{ _("Street Address") }}"
+           ng-model="formData.address.address" ng-minlength="3">
+        <span class="help-block" ng-show="has_address && snapForm.address.$error.required">{{ _("Address required") }}</span>
     </div>
 
     <div>
@@ -36,7 +36,7 @@
 
     <div>
         <h6>{{ _("Zip Code") }}</h6>
-        <input type="number" name="zip" id="zip" placeholder="{{ _("Zip Code") }}" ng-model="formData.address.zip" min="10000" max="120000" ng-minlength="5">
+        <input type="number" name="zipcode" id="zipcode" placeholder="{{ _("Zip Code") }}" ng-model="formData.address.zipcode" min="10000" max="120000" ng-minlength="5">
     </div>
 
     <div>

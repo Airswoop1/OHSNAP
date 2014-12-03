@@ -1,46 +1,16 @@
-<!-- form.html -->
-<div class="intro-header"  ng-hide="show_progress">
-    <div class="logo">EASY <i class="bolt-logo"></i> FOODSTAMPS NYC</div>
-    <h1>{{ _("Get food stamps, <br/>without the <br/>hassle.") }}</h1>
-    <div>
-        <div ng-click="$emit('start.application')" ui-sref="form.name" class="intro-button">{{ _("Apply now") }}</div>
-        <div ng-click="$emit('start.eligibility')" ui-sref="form.citizenship" class="intro-button dull">{{ _("Am I eligible?") }}</div>
-
-        {% if locale == "en" %}
-        <div class="language-link"><a href="/?lang=es">En español, por favor</a></div>
-        {% else %}
-        <div class="language-link"><a href="/?lang=en">English?</a></div>
-        {% endif %}
+<div class="page-header">
+  <div class="header" ng-click="goBack()">
+    <h3>{{ _("Step 1 of 3") }}</h3>
+    <h4>{{ _("Basics") }}</h4>
+  </div>
+  <div class="progress" ng-show="show_progress" ng-class="{'remove-progress': remove_progress_bar }">
+    <div class="progress-bar" role="progressbar" aria-valuenow="((progress))" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: progress +'%'}">
     </div>
+  </div>
 </div>
 
-<div class="page-header"  ng-show="show_progress && !goingThroughEligibility">
-    <div class="header" ng-click="goBack()">
-        <h3>{{ _("Step 1 of 3") }}</h3>
-        <h4>{{ _("Basics") }}</h4>
-    </div>
-    <div class="progress" ng-show="show_progress" ng-class="{'remove-progress': remove_progress_bar }">
-        <div class="progress-bar" role="progressbar" aria-valuenow="((progress))" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: progress +'%'}">
-        </div>
-    </div>
-</div>
-
-<div class="page-header eligibility"  ng-show="show_progress && goingThroughEligibility">
-    <div class="header" ng-click="goBack()">
-        <h4>{{ _("Eligibility") }}</h4>
-    </div>
-    <div class="progress" ng-show="show_progress" ng-class="{'remove-progress': remove_progress_bar }">
-        <div class="progress-bar" role="progressbar" aria-valuenow="((eligibility_progress))" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: eligibility_progress +'%'}">
-        </div>
-    </div>
-
-</div>
-
-
-<!-- use ng-submit to catch the form submission and use our Angular function -->
 <form name="snapForm" id="signup-form" novalidate>
-    <!-- our nested state views will be injected here -->
-    <div class="form-wrapper" ui-view></div>
-    <modal-dialog show='modalShown' width='90%' height='100%'>
-    </modal-dialog>
+  <div class="form-wrapper" ui-view></div>
 </form>
+
+<modal-dialog show='modalShown' width='90%' height='100%'></modal-dialog>

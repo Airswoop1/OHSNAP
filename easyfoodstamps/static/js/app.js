@@ -6,28 +6,20 @@
 // =============================================================================
 var app = angular.module('formApp', [
   'ui.router',
-  'ngAnimate',
-  'ngCookies',
-  'formApp.formController',
-  'formApp.interviewStates',
   'formApp.formStates',
+  'formApp.interviewStates',
   'formApp.documentStates',
-  'formApp.interviewCtrl',
-  'formApp.documentUploadCtrl',
-  'formApp.jSignature',
-  'formApp.userDataFactory'
-]).
+  'efs.userService'
+])
+.run(function($rootScope, $location, $state, $window) {
+  $rootScope.$on('$stateChangeSuccess', function(event) {
+    if (!$window.ga)
+      return;
 
-run(['$rootScope', '$location', '$window', function($rootScope, $location, $window) {
-    $rootScope.$on('$stateChangeSuccess', function(event) {
-      if (!$window.ga)
-        return;
-
-      $window.ga('send', 'pageview', { page: $location.path() });
-    });
-}]).
-
-config(['$provide', function ($provide) {
+    $window.ga('send', 'pageview', { page: $location.path() });
+  });
+})
+.config(function ($provide) {
   $provide.decorator('$rootScope', function ($delegate) {
     var _emit = $delegate.$emit;
 
@@ -38,4 +30,11 @@ config(['$provide', function ($provide) {
 
     return $delegate;
   });
-}]);
+})
+.controller('AppCtrl', function($state, $rootScope, $timeout, $window, User) {
+  $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {
+    if(fromState.name === 'home') {
+      $window.scrollTo(0,0);
+    }
+  });
+});

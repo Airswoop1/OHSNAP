@@ -28,6 +28,7 @@
     "jquery-placeholder": "*",
     "jquery-ui": "1.10.3",
     "jSignature": "*",
-    "ng-file-upload": "*"
+    "ng-file-upload": "*",
+    "blob-util": "~1.1.0"
   }
 }
