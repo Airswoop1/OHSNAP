@@ -20,7 +20,7 @@ setup(
         "Flask-Wtf",
         "PyMongo>=2.6.1",
         "fdfgen==0.11.0",
-        "httplib",
+        "httplib2",
         "pdfminer",
         "pillow==2.6.1",
         "pypdf==1.13", # Why not PyPdf2?
