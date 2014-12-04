@@ -8,8 +8,8 @@ angular.module('formApp.interviewCtrl', [
 	'formApp.CalcBenefitService',
 	'efs.userService'
 ]).controller('interviewCtrl', function(
-		$http, $scope, $state, $rootScope, $location, $anchorScroll,
-		$window, calcBenefitService, User) {
+		$http, $scope, $state, $rootScope, $location,
+		$anchorScroll, $window, calcBenefitService, User) {
 
 	console.log("loading interview controller!");
 	$scope.sig1 = {};
@@ -391,6 +391,7 @@ angular.module('formApp.interviewCtrl', [
 		        $scope.interview_steps = 3;
 		        break;
 
+		    case "int.info-esig-confirm":
 			case "int.info-confirmation":
 				$scope.goToTop();
 				$scope.interview_steps = 4;
