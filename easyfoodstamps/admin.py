@@ -18,7 +18,7 @@ class ModelView(ModelView):
 
 class UserForm(form.Form):
     first_name = fields.TextField('First Name')
-    last_name = fields.TextField('First Name')
+    last_name = fields.TextField('Last Name')
     password = fields.PasswordField('Password')
     email = fields.TextField('Email')
     admin = fields.BooleanField('Admin')
@@ -26,7 +26,7 @@ class UserForm(form.Form):
 
 
 class UserView(ModelView):
-    column_list = ('first_name', 'last_name', 'email', 'SSN')
+    column_list = ('first_name', 'last_name', 'email', 'ssn')
     column_sortable_list = ('first_name', 'last_name', 'email', 'password')
     form = UserForm
 
@@ -100,7 +100,7 @@ class NameForm(form.Form):
 
 class AddressForm(form.Form):
     address = fields.TextField('Street')
-    apt = fields.TextField('Apt #')
+    apt_number = fields.TextField('Apt #')
     zipcode = fields.TextField('Zip code')
     city = fields.TextField('City')
 
@@ -127,19 +127,6 @@ class HouseholdMemberForm(form.Form):
     income = fields.IntegerField('Income')
 
 
-class SnapNYForm(form.Form):
-    name = InlineFormField(NameForm)
-    address = InlineFormField(AddressForm)
-    phone_main = fields.TextField('Phone #')
-    ssn = fields.TextField('SSN')
-    dob = fields.TextField('Date of birth')
-    citizenship = fields.BooleanField('Citizen')
-    disabled = fields.BooleanField('Living with Disabled')
-    household_members = InlineFieldList(InlineFormField(HouseholdMemberForm))
-    app_submitted = fields.BooleanField('Application submitted')
-    doc_submitted = fields.BooleanField('Documents submitted')
-
-
 class S3Document(form.Form):
     key = fields.TextField('Key')
     url = fields.TextField('Url')
@@ -154,7 +141,7 @@ class SnapPAForm(form.Form):
     name = InlineFormField(NameForm)
     address = InlineFormField(AddressForm)
     citizenship = fields.BooleanField('Citizen')
-    tel = fields.TextField('Phone #')
+    phone_main = fields.TextField('Phone #')
     ssn = fields.TextField('SSN')
     state_id = fields.TextField('State ID')
     dob = fields.TextField('Date of birth')
@@ -167,10 +154,10 @@ class SnapPAForm(form.Form):
     pregnant_due_date = fields.TextField('Pregnant due date')
     pregnant_num_babies = fields.IntegerField('Pregnant num babies')
 
-    student = fields.TextField('Student')
-    schoolName = fields.TextField('School Name')
+    student = fields.BooleanField('Student')
+    student_fulltime = fields.BooleanField('Full Time')
+    school_name = fields.TextField('School Name')
     school_grade = fields.TextField('School Grade')
-    studentFT = fields.TextField('Student FT')
 
     expenses = fields.IntegerField('Expenses')
     income = fields.IntegerField('Income')
@@ -197,18 +184,31 @@ class SnapPAForm(form.Form):
     doc_submitted = fields.BooleanField('Documents Submitted')
 
 
-class SnapNYView(ModelView):
-    list_template = 'snaplist.html'
-    column_list = ('name', 'address', 'phone_main', 'household_members')
-    column_sortable_list = ('name', 'address', 'phone_main')
-    form = SnapNYForm
-
-
 class SnapPAView(ModelView):
     list_template = 'snaplist.html'
     column_list = ('app_submitted', 'doc_submitted', 'name', 'address', 'phone_main', 'household_members')
     column_sortable_list = ('app_submitted', 'doc_submitted', 'name', 'address', 'phone_main')
     form = SnapPAForm
+
+
+class SnapNYForm(form.Form):
+    name = InlineFormField(NameForm)
+    address = InlineFormField(AddressForm)
+    phone_main = fields.TextField('Phone #')
+    ssn = fields.TextField('SSN')
+    dob = fields.TextField('Date of birth')
+    citizenship = fields.BooleanField('Citizen')
+    disabled = fields.BooleanField('Living with Disabled')
+    household_members = InlineFieldList(InlineFormField(HouseholdMemberForm))
+    app_submitted = fields.BooleanField('Application submitted')
+    doc_submitted = fields.BooleanField('Documents submitted')
+
+
+class SnapNYView(ModelView):
+    list_template = 'snaplist.html'
+    column_list = ('name', 'address', 'phone_main', 'household_members')
+    column_sortable_list = ('name', 'address', 'phone_main')
+    form = SnapNYForm
 
 
 admin = admin.Admin(app, name='Easy Food Stamps')

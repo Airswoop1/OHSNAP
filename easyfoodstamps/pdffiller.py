@@ -29,11 +29,6 @@ class AttrDict(dict):
                 self[k] = AttrDict(v)
 
 
-def debug_info(name, user):
-    percent_completed = len(user.keys())
-    print user["_id"], name, user["phone_main"], user["ssn"], percent_completed
-
-
 def flatten(d, idx=None):
     items = []
     for k, v in d.items():
@@ -49,8 +44,9 @@ def flatten(d, idx=None):
 
 def set_radio_fields(obj, fields):
     for f in fields:
-        v = obj.pop(f)
-        obj[("%s_yes" if v else "%s_no") % f] = "X"
+        v = obj.pop(f, None)
+        if v is not None and (v == True or v == False):
+            obj[("%s_yes" if v else "%s_no") % f] = "X"
 
 
 def generate_doc_pdf(document):
@@ -75,7 +71,6 @@ def get_signature_from_s3(key, rect):
         raise ValueError('%s not found in S3.' % key)
 
     sigstr = sig.get_contents_as_string()
-    print sigstr
     sigimage = Image.open(StringIO.StringIO(sigstr))
     sigimage.load()
 
@@ -101,22 +96,31 @@ def sign_field(page, rect, key):
 
 
 def generate_snap_pa_pdf(pdf_file, user):
+    from time import time
+    st = time()
     user = AttrDict(user)
     name = " ".join((user.name.first_name, user.name.last_name))
-    debug_info(name, user)
+    user["fullname"] = name
 
     today = datetime.date.today()
     user.sig_date_1 = today.strftime("%m/%d/%Y")
     user.sig_date_2 = today.strftime("%m/%d/%Y")
     user.applying = "X"
-    user.applying_snap = "X"
-    set_radio_fields(user, ["citizenship", "disabled"])
+    user.applying_snap = True
+    set_radio_fields(user, [
+        "citizenship",
+        "disabled"
+        "pay_for_heating",
+        "pay_for_telephone",
+        "pay_for_other_utilities",
+        "receiving_snap"
+    ])
+
+    if user.get("utilities_paid", None) and len(user["utilities_paid"]):
+        user["utilities_paid"] = ", ".join(user["utilities_paid"])
 
     for member in user.get("household_members", []):
         set_radio_fields(member, ["applying"])
-        name =  member.pop("name", ". .")
-        member["first_name"], member["last_name"] = name.split(" ")
-
         hours_per_week =  member.pop("hours_per_week", None)
         weeks_per_month =  member.pop("weeks_per_month", None)
         if hours_per_week and weeks_per_month:
@@ -127,19 +131,20 @@ def generate_snap_pa_pdf(pdf_file, user):
         address.city = zcdb[int(address.zipcode)].city
     else:
         address.address = "N/A"
-        address.zipcode = address.city = address.apt = " "
+        address.zipcode = address.city = address.apt_number = " "
 
     data = flatten(user)
-    data["name"] = name
-    print data
+    nt = time(); print "data ready:", nt - st; st = nt
 
     fdf = forge_fdf("", data.items(), [], [], [])
+    nt = time(); print "forged:", nt - st; st = nt
     args = ["pdftk", "%s" % pdf_file, "fill_form", "-", "output", "-", "dont_ask", "flatten"]
     filled_pdf = StringIO.StringIO()
     p = Popen(args, stdin=PIPE, stdout=PIPE, stderr=PIPE)
     stdout, stderr = p.communicate(fdf)
     print stderr
     filled_pdf.write(stdout)
+    nt = time(); print "filled:", nt - st; st = nt
 
     input = PdfFileReader(filled_pdf)
 
@@ -162,4 +167,5 @@ def generate_snap_pa_pdf(pdf_file, user):
     outputStream = StringIO.StringIO()
     output.write(outputStream)
     outputStream.seek(0)
+    nt = time(); print "signed:", nt - st; st = nt
     return outputStream.read()

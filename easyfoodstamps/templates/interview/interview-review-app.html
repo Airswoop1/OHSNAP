@@ -87,13 +87,13 @@
     <div ng-show="user.student=='no'" class="data_overlay" id="app_hh_student_no0">X</div>
 
     <div class="data_overlay" id="app_hh_student_grade0">(( user.school_grade ))</div>
-    <div class="data_overlay" id="app_hh_student_school0">(( user.schoolName ))</div>
+    <div class="data_overlay" id="app_hh_student_school0">(( user.school_name ))</div>
 
-    <div ng-show="user.studentFT=='yes'" class="data_overlay" id="app_hh_student_FT_yes0">X</div>
-    <div ng-show="user.studentFT=='no'" class="data_overlay" id="app_hh_student_FT_no0">X</div>
+    <div ng-show="user.student_fulltime=='yes'" class="data_overlay" id="app_hh_student_FT_yes0">X</div>
+    <div ng-show="user.student_fulltime=='no'" class="data_overlay" id="app_hh_student_FT_no0">X</div>
 
-    <div ng-show="user.self_pregnant=='yes'" class="data_overlay" id="app_hh_pregnant_yes0">X</div>
-    <div ng-show="user.self_pregnant=='no'" class="data_overlay" id="app_hh_pregnant_no0">X</div>
+    <div ng-show="user.pregnant=='yes'" class="data_overlay" id="app_hh_pregnant_yes0">X</div>
+    <div ng-show="user.pregnant=='no'" class="data_overlay" id="app_hh_pregnant_no0">X</div>
 
     <div class="data_overlay" id="app_hh_pregnant_due0">(( user.pregnant_due_date ))</div>
     <div class="data_overlay" id="app_hh_pregnant_num0">(( user.pregnant_num_babies ))</div>
@@ -139,10 +139,10 @@
     <div ng-show="user.household_members['1'].student=='no'" class="data_overlay" id="app_hh_student_no1">X</div>
 
     <div class="data_overlay" id="app_hh_student_grade1">(( user.household_members['1'].school_grade ))</div>
-    <div class="data_overlay" id="app_hh_student_school1">(( user.household_members['1'].schoolName ))</div>
+    <div class="data_overlay" id="app_hh_student_school1">(( user.household_members['1'].school_name ))</div>
 
-    <div ng-show="user.household_members['1'].studentFT=='yes'" class="data_overlay" id="app_hh_student_FT_yes1">X</div>
-    <div ng-show="user.household_members['1'].studentFT=='no'" class="data_overlay" id="app_hh_student_FT_no1">X</div>
+    <div ng-show="user.household_members['1'].student_fulltime=='yes'" class="data_overlay" id="app_hh_student_FT_yes1">X</div>
+    <div ng-show="user.household_members['1'].student_fulltime=='no'" class="data_overlay" id="app_hh_student_FT_no1">X</div>
 
     <div ng-show="user.household_members['1'].pregnant=='yes'" class="data_overlay" id="app_hh_pregnant_yes1">X</div>
     <div ng-show="user.household_members['1'].pregnant=='no'" class="data_overlay" id="app_hh_pregnant_no1">X</div>
@@ -196,10 +196,10 @@
         <div ng-show="user.household_members['2'].student=='no'" class="data_overlay hh_student_no x">X</div>
 
         <div class="data_overlay hh_student_grade" >(( user.household_members['2'].school_grade ))</div>
-        <div class="data_overlay hh_student_school">(( user.household_members['2'].schoolName ))</div>
+        <div class="data_overlay hh_student_school">(( user.household_members['2'].school_name ))</div>
 
-        <div ng-show="user.household_members['2'].studentFT=='yes'" class="data_overlay hh_student_FT_yes x">X</div>
-        <div ng-show="user.household_members['2'].studentFT=='no'" class="data_overlay hh_student_FT_no x">X</div>
+        <div ng-show="user.household_members['2'].student_fulltime=='yes'" class="data_overlay hh_student_FT_yes x">X</div>
+        <div ng-show="user.household_members['2'].student_fulltime=='no'" class="data_overlay hh_student_FT_no x">X</div>
 
         <div ng-show="user.household_members['2'].pregnant=='yes'" class="data_overlay hh_pregnant_yes x">X</div>
         <div ng-show="user.household_members['2'].pregnant=='no'" class="data_overlay hh_pregnant_no x">X</div>
@@ -246,10 +246,10 @@
         <div ng-show="user.household_members['3'].student=='no'" class="data_overlay hh_student_no x">X</div>
 
         <div class="data_overlay hh_student_grade" >(( user.household_members['3'].school_grade ))</div>
-        <div class="data_overlay hh_student_school">(( user.household_members['3'].schoolName ))</div>
+        <div class="data_overlay hh_student_school">(( user.household_members['3'].school_name ))</div>
 
-        <div ng-show="user.household_members['3'].studentFT=='yes'" class="data_overlay hh_student_FT_yes x">X</div>
-        <div ng-show="user.household_members['3'].studentFT=='no'" class="data_overlay hh_student_FT_no x">X</div>
+        <div ng-show="user.household_members['3'].student_fulltime=='yes'" class="data_overlay hh_student_FT_yes x">X</div>
+        <div ng-show="user.household_members['3'].student_fulltime=='no'" class="data_overlay hh_student_FT_no x">X</div>
 
         <div ng-show="user.household_members['3'].pregnant=='yes'" class="data_overlay hh_pregnant_yes x">X</div>
         <div ng-show="user.household_members['3'].pregnant=='no'" class="data_overlay hh_pregnant_no x">X</div>
@@ -299,10 +299,10 @@
         <div ng-show="user.household_members['4'].student=='no'" class="data_overlay hh_student_no x">X</div>
 
         <div class="data_overlay hh_student_grade" >(( user.household_members['4'].school_grade ))</div>
-        <div class="data_overlay hh_student_school">(( user.household_members['4'].schoolName ))</div>
+        <div class="data_overlay hh_student_school">(( user.household_members['4'].school_name ))</div>
 
-        <div ng-show="user.household_members['4'].studentFT=='yes'" class="data_overlay hh_student_FT_yes x">X</div>
-        <div ng-show="user.household_members['4'].studentFT=='no'" class="data_overlay hh_student_FT_no x">X</div>
+        <div ng-show="user.household_members['4'].student_fulltime=='yes'" class="data_overlay hh_student_FT_yes x">X</div>
+        <div ng-show="user.household_members['4'].student_fulltime=='no'" class="data_overlay hh_student_FT_no x">X</div>
 
         <div ng-show="user.household_members['4'].pregnant=='yes'" class="data_overlay hh_pregnant_yes x">X</div>
         <div ng-show="user.household_members['4'].pregnant=='no'" class="data_overlay hh_pregnant_no x">X</div>
@@ -349,10 +349,10 @@
         <div ng-show="user.household_members['5'].student=='no'" class="data_overlay hh_student_no x">X</div>
 
         <div class="data_overlay hh_student_grade" >(( user.household_members['5'].school_grade ))</div>
-        <div class="data_overlay hh_student_school">(( user.household_members['5'].schoolName ))</div>
+        <div class="data_overlay hh_student_school">(( user.household_members['5'].school_name ))</div>
 
-        <div ng-show="user.household_members['5'].studentFT=='yes'" class="data_overlay hh_student_FT_yes x">X</div>
-        <div ng-show="user.household_members['5'].studentFT=='no'" class="data_overlay hh_student_FT_no x">X</div>
+        <div ng-show="user.household_members['5'].student_fulltime=='yes'" class="data_overlay hh_student_FT_yes x">X</div>
+        <div ng-show="user.household_members['5'].student_fulltime=='no'" class="data_overlay hh_student_FT_no x">X</div>
 
         <div ng-show="user.household_members['5'].pregnant=='yes'" class="data_overlay hh_pregnant_yes x">X</div>
         <div ng-show="user.household_members['5'].pregnant=='no'" class="data_overlay hh_pregnant_no x">X</div>
