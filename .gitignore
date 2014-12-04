@@ -51,3 +51,6 @@ nosetests.xml
 public/css/.sass-cache/
 
 nohup.out
+
+# local settings
+settings.cfg

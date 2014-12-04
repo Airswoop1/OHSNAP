@@ -183,15 +183,14 @@ class RestResource(object):
             raise BadRequestException('Malformed JSON')
 
     def sanitize_request(self, data):
-        for k, v in data.iteritems():
-            if isinstance(v, dict):
-                data[k] = self.sanitize_request(v)
-            elif isinstance(v, list):
-                data[k] = [self.sanitize_request(o) for o in v]
-            elif v == "yes":
-                data[k] = True
-            elif v == "no":
-                data[k] = False
+        if isinstance(data, dict):
+            return {k: self.sanitize_request(v) for k, v in data.iteritems()}
+        elif isinstance(data, list):
+            return [self.sanitize_request(v) for v in data]
+        elif data == "yes":
+            return True
+        elif data == "no":
+            return False
         return data
 
     def sanitize_response(self, data):

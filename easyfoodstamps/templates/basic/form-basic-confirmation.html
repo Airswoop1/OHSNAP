@@ -57,6 +57,6 @@
     <input type="checkbox" class="agree-checkbox big-checkbox" id="agree_to_legal"  ng-model="basic_confirmation_agree"/>
     <span style="padding-left:10px">{{ _("I certify that the information I am submitting is true and authorize Easy Food Stamps to sign my application on my behalf.") }}</span>
 </div>
-<div ng-show="!basic_confirmation_agree || snapForm.validation.$error" class="yellow-button disabled" ng-click="checkboxAlert()">{{ _("Confirm answers") }}</div>
+<div ng-show="!basic_confirmation_agree || snapForm.validation.$error" class="yellow-button disabled">{{ _("Confirm answers") }}</div>
 <div ng-show="basic_confirmation_agree && !snapForm.validation.$error && !disable_submit" class="yellow-button" ng-click="submitBasicApp()">{{ _("Confirm answers") }}</div>
 <div ng-show="basic_confirmation_agree && disable_submit" class="yellow-button spinner-button"><i></i></div>

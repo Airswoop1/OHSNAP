@@ -1,7 +1,7 @@
 <h1 ng-show="formData.pay_for_heating=='no'">Do you pay for utilities other than telephone?</h1>
 <h1 ng-show="formData.pay_for_heating=='yes'">Do you pay for utilities other than telephone, heating or cooling?</h1>
 
-<input ng-click="inputOtherUtilities();" ng-model="formData.pay_for_other_utilities" id="pay_for_other_utilities_yes" type="radio" class="name-input marital-input" value="yes" name="pay_for_other_utilities"><label
+<input ng-click="inputOtherUtils = true" ng-model="formData.pay_for_other_utilities" id="pay_for_other_utilities_yes" type="radio" class="name-input marital-input" value="yes" name="pay_for_other_utilities"><label
         for="pay_for_other_utilities_yes">Yes</label>
 <br/>
 <input ng-hide="inputOtherUtils" ng-click="goToNextQuickSnap(5);" ng-model="formData.pay_for_other_utilities" id="pay_for_other_utilities_no" type="radio" class="name-input marital-input" value="no" name="pay_for_other_utilities"><label

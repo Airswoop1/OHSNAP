@@ -3,8 +3,17 @@
  */
 
 
-angular.module('formApp.CalcBenefitService',[]).service('calcBenefitService', function() {
-	this.calculate = function(formData){
+angular.module('formApp.CalcBenefitService', [])
+.service('calcBenefitService', function() {
+
+	this.calcPotentialImmeditateBenefit = function(formData) {
+		return (
+			formData.total_resources <= 100 || formData.income <= 150 ||
+			(formData.income + formData.total_resources) <= formData.expenses
+		);
+	}
+
+	this.calculate = function(formData) {
 
 		var house = (formData.household !== "undefined") ? formData.household : 1;
 		var income = (formData.income !== "undefined") ? parseInt(formData.income,10) : 0;

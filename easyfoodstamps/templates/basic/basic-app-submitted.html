@@ -14,7 +14,7 @@
 	    {{ _("When is my interview?") }}
 	</h5>
 	<div class="accordion" ng-class="{'open':isActive.when, 'close':!isActive.when}">
-	    <p ng-show="formData.phone_main">{{ _("A SNAP worker is legally obligated to call you in 5 days. Expect a phone call before (( date_of_phone_call | date:'EEEE, MMMM d' )) to schedule the exact interview time.") }}
+	    <p ng-show="formData.phone_main">{{ _("A SNAP worker is legally obligated to call you in 5 days. Expect a phone call before (( phoneInterViewDate | date:'EEEE, MMMM d' )) to schedule the exact interview time.") }}
 	    </p>
 	    <p ng-hide="formData.phone_main">{{ _("You will receive a letter in the mail confirming your SNAP application submission within 5 days.") }}</p>
 

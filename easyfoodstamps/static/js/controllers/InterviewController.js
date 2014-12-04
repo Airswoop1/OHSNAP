@@ -53,7 +53,7 @@ angular.module('formApp.interviewCtrl', [
 		}
 	}
 
-	$scope.interviewCompleted = {household: $scope.user.household_members.length <= 1};
+	$scope.interviewCompleted = {household: !$scope.user.household_members.length};
 	$scope.stepsCompleted = {
 		"int.dob":false,
 		"int.self-gender":false,
