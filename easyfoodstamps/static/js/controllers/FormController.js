@@ -13,11 +13,12 @@ angular.module('formApp.formController', [
 .factory('TransitionFactory', function($state, User) {
 	return {
 		sections: {},
-		next: function(stateTransitions, data) {
+		next: function(stateTransitions) {
 			var state = $state.current.name.split('.')[1];
 			var transition = stateTransitions[state];
+
 			var value = User[transition.field];
-			if (!value) {
+			if (transition.field && !value) {
 				return;
 			}
 
@@ -111,7 +112,6 @@ angular.module('formApp.formController', [
 			}
 		},
 		'address': {
-			field: 'address',
 			next: function() {
 				if (($scope.snapForm.address.$pristine || $scope.snapForm.zipcode.$pristine) ||
 					(!$scope.formData.address.address && !$scope.formData.address.zipcode)) {
