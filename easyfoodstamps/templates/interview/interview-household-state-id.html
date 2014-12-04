@@ -1,0 +1,9 @@
+<h1>What are the driver's license or state ID numbers for the people living with you?</h1>
+
+<div ng-repeat="person in user.household_members track by $index" class="household-ssn" ng-show="person.applying">
+    <h6 for="state_id_(( $index ))">(( person.name ))</h6>
+    <input id="state_id_(( $index ))" type="number"  name="state_id" ng-model="person.state_id"/>
+</div>
+
+<div class="yellow-button" ng-click="updateCurrentAndGoToNext('int.household-state-id', 'int.household-marital-status')" >Continue</div>
+

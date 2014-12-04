@@ -1,0 +1,2024 @@
+.thumbnail_label {
+    margin-left: 110px;
+    width: 150px;
+    margin-top: 28px;
+}
+
+.thumbnail {
+    height: 77px;
+    width: 100px;
+    border:1px #000000 solid;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 10px;
+
+}
+
+ul,li {
+    list-style-type:circle;
+    list-style:circle;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased !important;
+    background-color: #ffffff;
+}
+
+h4 {
+    font-size: 22px;
+    font-weight: 900;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    line-height: 35px;
+}
+
+p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+    margin: 0;
+    padding: 0;
+}
+
+
+.yellow-button {
+    background-color: #fcee21;
+    color: #000000;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    width: 200px;
+    margin: 10px auto 20px auto;
+    border: none;
+
+}
+
+#sig_container1 {
+    position: absolute;
+    top: 196px;
+    left: 472px;
+    width: 300px;
+    border: 5px solid #00bd54;
+    z-index: 1000;
+    /*opacity:0.1;*/
+}
+
+#app_signature_label1 {
+    position:absolute;
+    z-index:500;
+    background-color:white;
+    width:320px;
+    height:39px;
+    top:207px;
+    left:483px;
+    font-size:13px;
+}
+
+.data_overlay {
+    position:absolute;
+    z-index:500;
+    background-color:transparent;
+    font-size:13px;
+}
+
+#sig_capture1 {
+
+    width:100%;
+    height: 45px;
+
+}
+
+#sig_prompt1 {
+    margin-top:22px;
+    height:50px;
+    width:100%;
+    background-color:#00bd54;
+    color:white;
+    text-align:center;
+    font-size:21px;
+    line-height:1.2;
+    white-space: normal;
+}
+
+#sig_container2 {
+    position: absolute;
+    top: 564px;
+    left: 168px;
+    width: 300px;
+    border: 5px solid #00bd54;
+    z-index:1000;
+}
+
+
+#app_signature_label2 {
+    position:absolute;
+    z-index:100;
+    background-color:white;
+    width:320px;
+
+    height: 57px;
+    top: 569px;
+    left: 167px;
+    font-size: 13px;
+}
+
+#sig_capture2 {
+
+    width:100%;
+    height: 45px;
+    z-index: 500;
+}
+
+.sig_prompt {
+    margin-top:22px;
+    height:50px;
+    width:100%;
+    background-color:#00bd54;
+    color:white;
+    text-align:center;
+    font-size:22px;
+    line-height:1.2;
+    white-space: normal;
+}
+
+.sig_button {
+    background-color:#fcee21;
+    color:#000000;
+    height:60px;
+    line-height:60px;
+    text-align:center;
+    font-size:18px;
+    font-weight:700;
+    width:100%;
+    margin-top:15px;
+    white-space: normal;
+}
+
+.img_container {
+    position:relative;
+    width:100%;
+    height:400px;
+    overflow:scroll;
+    display:none;
+
+}
+
+.img_container img {
+    zoom:0.45;
+}
+
+#app_name {
+    width: 200px;
+    height: 20px;
+    top: 638px;
+    left: 72px;
+}
+
+#app_telephone {
+    width: 139px;
+    height: 20px;
+    top: 815px;
+    left: 88px;
+}
+
+#app_address {
+    width: 700px;
+    height: 20px;
+    top: 699px;
+    left: 67px;
+}
+/*
+DEPRECATED
+#app_apt {
+    width: 35px;
+    height: 20px;
+    top: 699px;
+    left: 89px;
+}
+
+#app_city {
+    width: 157px;
+    height: 20px;
+    top: 699px;
+    left: 110px;
+}
+
+#app_zip {
+    width: 100px;
+    height: 20px;
+    top: 699px;
+    left: 150px;
+}*/
+
+#app_lived_at {
+    width: 200px;
+    height: 20px;
+    top: 750px;
+    left: 777px;
+}
+
+#app_qs_income {
+    width: 150px;
+    height: 20px;
+    top: 1022px;
+    left: 73px;
+}
+
+
+
+#app_qs_rent {
+    width: 200px;
+    height: 20px;
+    top: 1100px;
+    left: 73px;
+}
+
+#app_qs_resources {
+    width: 200px;
+    height: 20px;
+    top: 1171px;
+    left: 73px;
+}
+
+#app_qs_applying_yes {
+    width: 10px;
+    height: 10px;
+    top: 1024px;
+    left: 381px;
+
+}
+#app_qs_applying_no {
+    width: 10px;
+    height: 10px;
+    top: 1024px;
+    left: 437px;
+}
+#app_qs_telephone_yes {
+    width: 10px;
+    height: 10px;
+    top: 1083px;
+    left: 381px;
+}
+#app_qs_telephone_no {
+    width: 10px;
+    height: 10px;
+    top: 1084px;
+    left: 437px;
+
+}
+#app_qs_heating_yes {
+    width: 10px;
+    height: 10px;
+    top: 1172px;
+    left: 382px;
+
+}
+#app_qs_heating_no {
+    width: 10px;
+    height: 10px;
+    top: 1172px;
+    left: 437px;
+
+}
+#app_qs_utilities_yes {
+    width: 10px;
+    height: 10px;
+    top: 984px;
+    left: 954px;
+
+}
+#app_qs_utilities_no {
+    width: 10px;
+    height: 10px;
+    top: 984px;
+    left: 1009px;
+}
+#app_qs_migrant_yes {
+    width: 10px;
+    height: 10px;
+    top: 1102px;
+    left: 641px;
+}
+#app_qs_migrant_no {
+    width: 10px;
+    height: 10px;
+    top: 1102px;
+    left: 696px;
+
+}
+#app_qs_abused_yes {
+    width: 10px;
+    height: 10px;
+    top: 1173px;
+    left: 641px;
+}
+#app_qs_abused_no {
+    width: 10px;
+    height: 10px;
+    top: 1173px;
+    left: 696px;
+}
+
+#app_qs_utilties {
+    width: 394px;
+    height: 20px;
+    top: 1023px;
+    left: 645px;
+}
+
+/**** PAGE 2  ****/
+
+#app_hh_name0 {
+    width: 400px;
+    height: 20px;
+    top: 382px;
+    left: 59px;
+}
+
+#app_hh_applying0 {
+    width: 10px;
+    height: 10px;
+    top: 381px;
+    left: 586px;
+}
+
+#app_hh_ssn0 {
+    width: 300px;
+    height: 20px;
+    top: 382px;
+    left: 821px;
+}
+
+
+#app_hh_dob0 {
+    width: 200px;
+    height: 20px;
+    top: 441px;
+    left: 59px;
+}
+
+#app_hh_gender_male0 {
+    width: 10px;
+    height: 10px;
+    top: 438px;
+    left: 238px;
+}
+
+#app_hh_gender_female0 {
+    width: 10px;
+    height: 10px;
+    top: 438px;
+    left: 282px;
+}
+
+
+#app_hh_state_id0 {
+    width: 200px;
+    height: 10px;
+    top: 438px;
+    left: 342px;
+}
+
+
+#app_hh_marital_single0 {
+    width:10px;
+    height:10px;
+    top: 419px;
+    left: 692px;
+}
+
+#app_hh_marital_divorced0 {
+    width: 10px;
+    height: 10px;
+    top: 445px;
+    left: 692px;
+}
+
+#app_hh_marital_separated0 {
+    width: 10px;
+    height: 10px;
+    top: 419px;
+    left: 827px;
+}
+
+#app_hh_marital_widowed0 {
+    width: 10px;
+    height: 10px;
+    top: 445px;
+    left: 826px;
+}
+
+#app_hh_marital_married0 {
+    width: 10px;
+    height: 10px;
+    top: 419px;
+    left: 962px;
+}
+
+#app_hh_student_yes0 {
+    width: 10px;
+    height: 10px;
+    top: 497px;
+    left: 55px;
+}
+
+#app_hh_student_no0 {
+    width: 10px;
+    height: 10px;
+    top: 497px;
+    left: 109px;
+}
+
+#app_hh_student_grade0 {
+    width: 200px;
+    height: 20px;
+    top: 497px;
+    left: 233px;
+}
+
+#app_hh_student_school0 {
+    width: 294px;
+    height: 20px;
+    top: 497px;
+    left: 393px;
+}
+
+#app_hh_student_FT_yes0 {
+    width: 10px;
+    height: 10px;
+    top: 490px;
+    left: 950px;
+}
+
+#app_hh_student_FT_no0 {
+    width: 10px;
+    height: 10px;
+    top: 490px;
+    left: 1009px;
+}
+
+
+#app_hh_pregnant_yes0 {
+    width: 10px;
+    height: 10px;
+    top: 557px;
+    left: 55px;
+}
+
+#app_hh_pregnant_no0 {
+    width: 10px;
+    height: 10px;
+    top: 557px;
+    left: 109px;
+}
+
+#app_hh_pregnant_due0 {
+    width: 200px;
+    height: 20px;
+    top: 557px;
+    left: 233px;
+}
+
+#app_hh_pregnant_num0 {
+    width: 294px;
+    height: 20px;
+    top: 557px;
+    left: 616px;
+}
+
+#app_hh_citizen_yes0 {
+    width: 10px;
+    height: 10px;
+    top: 596px;
+    left: 305px;
+}
+
+#app_hh_citizen_no0 {
+    width: 10px;
+    height: 10px;
+    top: 596px;
+    left: 361px;
+}
+
+
+#app_hh_name1 {
+    width: 400px;
+    height: 20px;
+    top: 911px;
+    left: 59px;
+}
+
+/****** *** *** *** *** ***  PERSON 2 ****** *** *** *** *** *** /
+
+
+/**** *** *** + 530 for top row*** *** *** *** *** *** *** *** *** ****** *** ***/
+
+#app_hh_name1 {
+    width: 400px;
+    height: 20px;
+    top:912px;
+    left: 59px;
+}
+
+#app_hh_applying_yes1 {
+    width: 10px;
+    height: 10px;
+    top: 912px;
+    left: 577px;
+}
+
+#app_hh_applying_no1 {
+    width: 10px;
+    height: 10px;
+    top: 912px;
+    left: 633px;
+}
+
+#app_hh_ssn1 {
+    width: 300px;
+    height: 20px;
+    top: 912px;
+    left: 821px;
+}
+
+
+#app_hh_dob1 {
+    width: 200px;
+    height: 20px;
+    top: 971px;
+    left: 59px;
+}
+
+#app_hh_gender_male1 {
+    width: 10px;
+    height: 10px;
+    top: 971px;
+    left: 238px;
+}
+
+#app_hh_gender_female1 {
+    width: 10px;
+    height: 10px;
+    top: 971px;
+    left: 282px;
+}
+
+
+#app_hh_state_id1 {
+    width: 200px;
+    height: 10px;
+    top: 968px;
+    left: 342px;
+}
+
+
+#app_hh_marital_single1 {
+    width:10px;
+    height:10px;
+    top: 951px;
+    left: 692px;
+}
+
+#app_hh_marital_divorced1 {
+    width: 10px;
+    height: 10px;
+    top: 977px;
+    left: 692px;
+}
+
+#app_hh_marital_separated1 {
+    width: 10px;
+    height: 10px;
+    top: 451px;
+    left: 827px;
+}
+
+#app_hh_marital_widowed1 {
+    width: 10px;
+    height: 10px;
+    top: 977px;
+    left: 826px;
+}
+
+#app_hh_marital_married1 {
+    width: 10px;
+    height: 10px;
+    top: 451px;
+    left: 962px;
+}
+
+#app_hh_marital_spouse1{
+    width:10px;
+    height:10px;
+    top: 1018px;
+    left: 304px;
+}
+
+#app_hh_marital_child1{
+    width:10px;
+    height:10px;
+    top: 1018px;
+    left: 402px;
+}
+
+#app_hh_marital_stepchild1{
+    width:10px;
+    height:10px;
+    top: 1018px;
+    left: 484px;
+}
+
+#app_hh_not_related1{
+    width:10px;
+    height:10px;
+    top: 1018px;
+    left: 601px;
+}
+
+#app_hh_marital_other1{
+    width:10px;
+    height:10px;
+    top: 1018px;
+    left: 728px;
+}
+
+#app_hh_lives_with_yes1 {
+    width:10px;
+    height:10px;
+    top: 1024px;
+    left: 821px;
+}
+
+#app_hh_lives_with_no1 {
+    width:10px;
+    height:10px;
+    top: 1024px;
+    left: 877px;
+}
+
+
+
+#app_hh_student_yes1 {
+    width: 10px;
+    height: 10px;
+    top: 1078px;
+    left: 55px;
+}
+
+#app_hh_student_no1 {
+    width: 10px;
+    height: 10px;
+    top: 1078px;
+    left: 112px;
+}
+
+#app_hh_student_grade1 {
+    width: 200px;
+    height: 20px;
+    top: 1078px;
+    left: 233px;
+}
+
+#app_hh_student_school1 {
+    width: 294px;
+    height: 20px;
+    top: 1078px;
+    left: 409px;
+}
+
+#app_hh_student_FT_yes1 {
+    width: 10px;
+    height: 10px;
+    top: 1137px;
+    left: 55px;
+}
+
+#app_hh_student_FT_no1 {
+    width: 10px;
+    height: 10px;
+    top: 1137px;
+    left: 111px;
+}
+
+
+#app_hh_pregnant_yes1 {
+    width: 10px;
+    height: 10px;
+    top: 1136px;
+    left: 55px;
+}
+
+#app_hh_pregnant_no1 {
+    width: 10px;
+    height: 10px;
+    top: 1136px;
+    left: 112px;
+}
+
+#app_hh_pregnant_due1 {
+    width: 200px;
+    height: 20px;
+    top: 1136px;
+    left: 248px;
+}
+
+#app_hh_pregnant_num1 {
+    width: 294px;
+    height: 20px;
+    top: 1136px;
+    left: 603px;
+}
+
+#app_hh_citizen_yes1 {
+    width: 10px;
+    height: 10px;
+    top: 1176px;
+    left: 343px;
+}
+
+#app_hh_citizen_no1 {
+    width: 10px;
+    height: 10px;
+    top: 1176px;
+    left: 401px;
+}
+
+
+.x {
+    height:10px;
+    width:10px;
+}
+
+
+/*** PAGE 3 ***/
+
+
+#person3 {
+    width: 1063px;
+    height: 535px;
+    left: 41px;
+    top: 201px;
+    border: 1px solid red;
+}
+
+#person4 {
+    width: 1063px;
+    height: 535px;
+    left: 41px;
+    top: 781px;
+    border: 1px solid red;
+}
+
+#person5 {
+    width: 1063px;
+    height: 535px;
+    left: 41px;
+    top: 196px;
+    border: 1px solid red;
+}
+
+#person6 {
+    width: 1063px;
+    height: 535px;
+    left: 41px;
+    top: 776px;
+    border: 1px solid red;
+}
+
+
+.hh_name {
+    height: 20px;
+    width: 250px;
+    top: 34px;
+    left: 20px;
+}
+
+.hh_applying_yes {
+    height: 10px;
+    width:10px;
+    top:30px;
+    left:535px;
+}
+
+.hh_applying_no {
+    height: 10px;
+    width:10px;
+    top: 30px;
+    left: 591px;
+}
+
+
+.hh_ssn {
+    height:20px;
+    width:150px;
+    top:30px;
+    left:800px;
+}
+
+.hh_dob {
+    height: 20px;
+    width: 100px;
+    top: 91px;
+    left: 24px;
+}
+
+.hh_male {
+    top:91px;
+    left: 196px;
+}
+
+.hh_female {
+    top:91px;
+    left: 242px;
+}
+
+.hh_state_id {
+    top:91px;
+    left:297px;
+}
+
+.hh_marital_single {
+    top: 69px;
+    left: 649px;
+}
+
+.hh_marital_separated {
+    top: 69px;
+    left: 784px;
+}
+
+.hh_marital_married {
+    top: 69px;
+    left: 920px;
+}
+
+.hh_marital_divorced {
+    top: 96px;
+    left: 649px;
+}
+
+.hh_marital_widowed {
+    top: 96px;
+    left: 786px;
+}
+
+.hh_relation_spouse {
+    top: 135px;
+    left: 261px;
+}
+.hh_relation_child {
+    top: 135px;
+    left: 362px;
+}
+.hh_relation_stepchild {
+    top: 135px;
+    left: 442px;
+}
+.hh_relation_not_related {
+    top: 135px;
+    left: 559px;
+}
+.hh_relation_other {
+    top: 135px;
+    left: 687px;
+}
+
+.hh_lives_with_yes {
+    top: 142px;
+    left: 777px;
+}
+
+.hh_lives_with_no {
+    top: 142px;
+    left: 833px;
+}
+
+.hh_student_yes {
+    top: 197px;
+    left: 13px;
+}
+
+.hh_student_no {
+    top: 197px;
+    left: 69px;
+}
+
+
+.hh_student_grade {
+    width: 200px;
+    height: 20px;
+    top: 200px;
+    left: 199px;
+}
+
+.hh_student_school {
+    width: 294px;
+    height: 20px;
+    top: 197px;
+    left: 363px;
+}
+
+.hh_student_FT_yes {
+    top: 189px;
+    left: 918px;
+}
+
+.hh_student_FT_no {
+    top: 189px;
+    left: 978px;
+}
+
+
+.hh_pregnant_yes {
+    top: 255px;
+    left: 13px;
+}
+
+.hh_pregnant_no {
+    top: 255px;
+    left: 69px;
+}
+
+.hh_pregnant_due {
+    width: 200px;
+    height: 20px;
+    top: 250px;
+    left: 199px;
+}
+
+.hh_pregnant_num {
+    width: 200px;
+    height: 20px;
+    top: 250px;
+    left: 543px;
+}
+
+.hh_citizen_yes {
+    top: 294px;
+    left: 303px;
+}
+
+.hh_citizen_no {
+    top: 294px;
+    left: 359px;
+}
+
+
+
+/**** Page 5 ****/
+
+.general_household {
+    width: 1063px;
+    height: 1216px;
+    top: 220px;
+    left: 42px;
+    border: 1px solid red;
+}
+
+.general_household div {
+    position:absolute;
+}
+
+#rec_snap_yes {
+    top: 21px;
+    left: 354px;
+}
+
+#rec_snap_no {
+    top: 21px;
+    left: 407px;
+}
+
+#rec_snap_who {
+    top: 27px;
+    left: 485px;
+}
+
+
+#disqualified_yes {
+    top: 73px;
+    left: 354px;
+}
+
+#disqualified_no {
+    top: 73px;
+    left: 407px;
+}
+
+#snap_disqualification_who {
+    top: 76px;
+    left:485px;
+}
+
+#different_name_yes {
+    top: 126px;
+    left: 354px;
+}
+
+#different_name_no {
+    top: 126px;
+    left: 407px;
+}
+
+#different_name_who {
+    top: 134px;
+    left:485px;
+}
+
+#military_yes {
+    top: 172px;
+    left: 354px;
+}
+
+#military_no {
+    top: 172px;
+    left: 407px;
+}
+
+#military_family_yes {
+    top: 172px;
+    left: 942px;
+}
+
+#military_family_no {
+    top: 172px;
+    left: 1002px;
+}
+
+#foster_yes {
+    top: 218px;
+    left: 354px;
+}
+
+#foster_no {
+    top: 218px;
+    left: 407px;
+}
+
+#foster_who {
+    top: 226px;
+    left: 485px;
+}
+
+#foster_end_yes {
+    top: 264px;
+    left: 354px;
+}
+
+#foster_end_no {
+    top: 264px;
+    left: 407px;
+}
+
+#foster_end_age {
+    top: 263px;
+    left: 707px;
+}
+
+#foster_end_state {
+    top: 263px;
+    left: 807px;
+}
+
+#medical_need_yes {
+    top: 311px;
+    left: 354px;
+}
+
+#medical_need_no {
+    top: 311px;
+    left: 407px;
+}
+
+#medical_need_who {
+    top: 320px;
+    left: 499px;
+}
+
+#medical_need_disability{
+    top: 311px;
+    left: 907px;
+}
+
+#medical_lt_yes {
+    top: 357px;
+    left: 942px
+}
+
+#medical_lt_no {
+    top: 357px;
+    left: 1002px
+}
+
+
+#medical_unpaid_yes {
+    top: 400px;
+    left: 476px;
+}
+
+#medical_unpaid_no {
+    top: 400px;
+    left: 535px;
+}
+
+
+#domestic_abuse_yes {
+    top: 400px;
+    left: 943px;
+
+}
+
+#domestic_abuse_no {
+    top: 400px;
+    left: 1002px;
+
+}
+
+#medical_medication_yes {
+    top: 446px;
+    left: 354px;
+}
+
+#medical_medication_no {
+    top: 446px;
+    left: 407px;
+}
+
+#medical_medication_who {
+    top: 452px;
+    left: 489px;
+}
+
+
+#drug_abuse_yes {
+    top: 497px;
+    left: 354px;
+}
+
+#drug_abuse_no {
+    top: 497px;
+    left: 407px;
+}
+
+#drug_abuse_who {
+    top: 505px;
+    left: 489px;
+}
+
+
+
+/*** Criminal history inquiry *****/
+
+#criminal_history_container {
+    top: 920px;
+    left: 560px;
+    width: 500px;
+    height: 500px;
+}
+
+#criminal_history_container div {
+    position:relative;
+}
+
+.criminal_row {
+    width: 354px;
+    height: 25px;
+    margin-left:3px;
+}
+
+.crim_app_y {
+    margin-left:25px;
+}
+
+.crim_app_n {
+    margin-left:84px;
+}
+
+.crim_app_input {
+    float:right;
+    line-height: 0;
+}
+
+.next_crim_row {
+    margin-top:25px;
+}
+
+
+/**** RESOURCES ***/
+
+
+.resources_container {
+    position: absolute;
+    top: 395px;
+    left: 45px;
+    width: 1058px;
+    height: 501px;
+}
+
+.resources_container div {
+    position:relative;
+}
+
+.resources_row {
+    width: 100%;
+    height: 47px;
+    margin-top: 38px;
+
+}
+
+.resources_row div {
+    float:left
+}
+
+.resources_name {
+    width: 322px;
+    height: 100%;
+    line-height: 3;
+}
+
+.resources_kind {
+    width: 231px;
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+}
+
+.resources_amount {
+    width: 107px;
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+}
+
+.resources_location {
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+    width: 344px;
+}
+
+.other_resources_container {
+    position: absolute;
+    top: 988px;
+    left: 42px;
+    width: 1060px;
+    height: 308px;
+    border: 1px solid orange;
+}
+.other_resources_container div {
+    position:absolute;
+}
+
+#resources_expecting_money_yes {
+    top: 39px;
+    left: 195px;
+}
+
+#resources_expecting_money_no {
+    top:30px;
+    left:75px;
+}
+
+#resources_expecting_money_who {
+    top:30px;
+    left: 332px;
+
+}
+
+#resources_expecting_money_kind {
+    top:30px;
+    left:550px;
+}
+
+#resources_expecting_money_when {
+    top:30px;
+    left:750px;
+}
+
+#resources_expecting_money_amount {
+    top:30px;
+    left:898px;
+}
+
+
+#resources_sold_stuff_yes {
+    top: 120px;
+    left: 11px;
+}
+
+#resources_sold_stuff_no {
+    top: 120px;
+    left: 68px;
+}
+
+#resources_sold_stuff_who {
+    top:108px;
+    left: 332px;
+
+}
+
+#resources_sold_stuff_kind {
+    top:108px;
+    left:550px;
+}
+
+#resources_sold_stuff_when {
+    top:108px;
+    left:750px;
+}
+
+#resources_sold_stuff_amount {
+    top:108px;
+    left:898px;
+}
+
+#resources_own_property_yes {
+    top: 152px;
+    left: 321px;
+}
+
+#resources_own_property_no {
+    top: 175px;
+    left: 321px;
+}
+
+#resources_own_property_who {
+    top: 174px;
+    left: 389px;
+}
+
+#resources_burial_agreement_yes {
+    top: 210px;
+    left: 321px;
+}
+#resources_burial_agreement_no {
+    top: 231px;
+    left: 321px;
+}
+
+#resources_burial_agreement_who {
+    top: 230px;
+    left: 389px;
+}
+
+
+#resources_life_insurance_yes {
+    top: 264px;
+    left: 321px;
+}
+#resources_life_insurance_no {
+    top: 286px;
+    left: 321px;
+}
+
+#resources_life_insurance_who {
+    top: 285px;
+    left: 389px;
+}
+
+
+/***** INCOME *****/
+
+.income_container {
+    position: absolute;
+    top: 438px;
+    left: 44px;
+    width: 1058px;
+    height: 501px;
+}
+
+.income_container div {
+    position:relative;
+}
+
+.income_row {
+    width: 100%;
+    height: 46px;
+    margin-top: 30px;
+
+}
+
+.income_row div {
+    float:left
+}
+
+.income_name {
+    width: 322px;
+    height: 100%;
+    line-height: 3;
+}
+
+.income_kind {
+    width: 231px;
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+}
+
+.income_amount {
+    width: 107px;
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+}
+
+.income_frequency {
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+    width: 113px;
+}
+
+.income_recent {
+    height: 100%;
+    line-height: 3;
+    margin-left: 7px;
+    width: 132px;
+}
+
+
+
+/***** EXPENSES ****/
+
+
+
+.top_expenses_container {
+    position: absolute;
+    top: 350px;
+    left: 41px;
+    width: 1200px;
+    height: 73px;
+
+}
+
+.top_expenses_container div {
+    position:absolute;
+}
+
+#expenses_child_support_yes {
+    top: 25px;
+    left: 113px;
+}
+
+#expenses_child_support_no {
+    top: 25px;
+    left: 165px;
+}
+
+#child_support_expense_court_ordered_yes {
+    top: 53px;
+    left: 192px;
+}
+
+#child_support_expense_court_ordered_no {
+    top: 53px;
+    left: 243px;
+}
+
+#housing_assistance_yes {
+    top: 10px;
+    left: 857px;
+}
+
+#housing_assistance_no {
+    top: 10px;
+    left: 887px;
+}
+
+#housing_assistance_who {
+    top: 25px;
+    left: 651px;
+}
+
+#housing_assistance_allowance_yes {
+    top: 54px;
+    left: 733px;
+}
+
+#housing_assistance_allowance_no {
+    top: 54px;
+    left: 763px;
+}
+
+
+.monthly_expenses_container {
+    position: absolute;
+    top: 462px;
+    left: 41px;
+    width: 1062px;
+    height: 280px;
+}
+
+
+.monthly_expenses_row {
+    position: relative;
+    width:100%;
+    height:69px;
+}
+
+.monthly_expenses_row div {
+    float:left;
+}
+
+
+.ppm_amt {
+    position:absolute;
+    top: 10px;
+    left: 580px;
+}
+
+.ppm_in_rent_y {
+    position:absolute;
+    top: 40px;
+    left: 557px;
+}
+.ppm_in_rent_n {
+    position:absolute;
+    top: 40px;
+    left: 608px;
+
+}
+
+
+
+#expenses_others_rent {
+    position: absolute;
+    left: 938px;
+    top: 10px;
+}
+
+#lives_in_home_yes {
+    position: absolute;
+    left: 944px;
+    top: 42px;
+}
+
+#lives_in_home_no {
+    position: absolute;
+    left: 993px;
+    top: 41px;
+}
+
+
+
+.me_ppm {
+    left: 577px;
+    position: absolute;
+    top: 22px;
+}
+
+.me_others {
+    left: 940px;
+    position: absolute;
+    top: 10px;
+}
+
+.me_others_lw_y {
+    position: absolute;
+    left: 943px;
+    top: 42px;
+}
+.me_others_lw_n {
+    position: absolute;
+    left: 995px;
+    top: 42px;
+
+}
+
+
+#utilities_container {
+    position: absolute;
+    top: 774px;
+    width: 873px;
+    left: 54px;
+    height: 100px;
+}
+#utilities_container div {
+    position:absolute;
+}
+
+#util_garbage {
+    top: 26px;
+}
+#util_sewer {
+    top: 53px;
+}
+#util_water {
+left:202px;
+}
+#util_install {
+    top:26px;
+    left:202px;
+}
+#util_gas {
+    top:53px;
+    left:202px;
+}
+#util_elec {
+    left:473px;
+}
+#util_oil {
+    top:26px;
+    left:473px;
+}
+#util_other {
+    top:53px;
+    left:473px;
+}
+#util_other_names {
+    left: 544px;
+    top: 51px;
+}
+
+#medical_expenses_container {
+    position: absolute;
+    top: 1004px;
+    width: 873px;
+    left: 54px;
+    height: 100px;
+}
+#medical_expenses_container div {
+    position:absolute;
+}
+
+
+#med_doctor{
+    top:26px;
+}
+#med_hospital{
+    top:67px;
+}
+#med_health_insurance{
+    top:101px;
+}
+#med_medical_equipment{
+top:135px
+}
+#med_health_aides{
+    left: 391px;
+    top:68px;
+}
+#med_health_related_supplies{
+    left: 391px;
+top:101px;
+}
+#med_prescription_medicines{
+    left: 391px;
+    top: 135px;
+}
+#med_general_costs{
+    left: 391px;
+}
+#med_other{
+    top: 175px;
+}
+#med_other_names{
+    top: 177px;
+    left: 70px;
+}
+
+
+
+
+
+
+
+
+
+
+
+#app_applying {
+    width: 10px;
+    height: 10px;
+    top: 172px;
+    left: 332px;
+}
+
+#app_date {
+    width: 150px;
+    height: 40px;
+    top: 220px;
+    left: 850px;
+}
+
+#app_citizen_yes {
+    width: 10px;
+    height: 10px;
+    top: 573px;
+    left: 275px;
+}
+
+#app_citizen_no {
+    width: 10px;
+    height: 10px;
+    top: 573px;
+    left: 313px;
+}
+
+#app_disabled_yes {
+    width: 10px;
+    height: 10px;
+    top: 659px;
+    left: 328px;
+}
+
+#app_disabled_no {
+    width: 10px;
+    height: 10px;
+    top: 659px;
+    left: 370px;
+}
+
+#app_0_income_name {
+    width: 225px;
+    height: 16px;
+    top: 152px;
+    left: 44px;
+}
+#app_0_income_hours {
+    width: 150px;
+    height: 16px;
+    top: 152px;
+    left: 451px;
+}
+#app_0_income_amount {
+    width: 150px;
+    height: 16px;
+    top: 152px;
+    left: 810px;
+}
+
+#app_1_income_name {
+    width: 225px;
+    height: 16px;
+    top: 172px;
+    left: 44px;
+}
+#app_1_income_hours {
+    width: 150px;
+    height: 16px;
+    top: 172px;
+    left: 451px;
+}
+#app_1_income_amount {
+    width: 150px;
+    height: 16px;
+    top: 172px;
+    left: 810px;
+}
+
+#app_2_income_name {
+    width: 225px;
+    height: 16px;
+    top: 192px;
+    left: 44px;
+}
+#app_2_income_hours {
+    width: 150px;
+    height: 16px;
+    top: 192px;
+    left: 451px;
+}
+#app_2_income_amount {
+    width: 150px;
+    height: 16px;
+    top: 192px;
+    left: 810px;
+}
+
+#app_total_resources {
+    width: 80px;
+    height: 16px;
+    top: 422px;
+    left: 178px;
+}
+
+#app_rent {
+    width: 80px;
+    height: 16px;
+    top: 654px;
+    left: 232px;
+}
+
+#app_household_0_first_name {
+    width: 90px;
+    height: 16px;
+    top: 353px;
+    left: 50px;
+    overflow:hidden;
+}
+
+#app_household_0_last_name {
+    width: 115px;
+    height: 16px;
+    top: 353px;
+    left: 167px;
+    overflow: hidden;
+}
+
+#app_household_0_ssn {
+    width: 115px;
+    height: 16px;
+    top: 353px;
+    left: 290px;
+    overflow: hidden;
+}
+
+#app_household_0_dob {
+    width: 68px;
+    height: 16px;
+    top: 353px;
+    left: 409px;
+    overflow: hidden;
+}
+
+.household_container div {
+    position:absolute;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.household_container {
+    width: 100%;
+    height: 16px;
+    left: 50px;
+}
+
+#household_user_1 {
+    top: 379px;
+}
+
+#household_user_2 {
+    top: 405px;
+}
+
+#household_user_3 {
+    top: 431px;
+}
+
+#household_user_4 {
+    top: 457px;
+}
+
+#household_user_5 {
+    top: 484px;
+}
+
+#household_user_6 {
+    top: 511px;
+}
+
+#household_user_7 {
+    top: 538px;
+}
+
+
+/*.hh_first_name {
+    left:0px;
+    width:90px
+}
+
+.hh_last_name {
+    left:117px;
+    width:115px;
+}
+
+
+.hh_dob {
+    left: 356px;
+    width:72px;
+}
+
+.hh_applying {
+    left:544px;
+    width:10px
+}
+
+.hh_not_applying {
+    left:575px;
+    width:10px
+}
+
+.hh_relation {
+    left:596px;
+    width:128px;
+    font-size:11px;
+
+}
+*/
+.hide_sig {
+    opacity: 0;
+}
+
+.show_sig {
+    opacity: 1;
+}
+
+.app_alt_page_header {
+    background-color: #00bd54;
+    color: white;
+    z-index:1500;
+    font-weight: 800;
+    width: 100%;
+    height: 80px;
+    line-height: 3.4;
+    text-indent: 20px;
+    text-align:center;
+    font-size: 22px;
+    display:none;
+
+}
+
+.app_page_header {
+    background-color: #00bd54;
+    color: white;
+    z-index:1500;
+    font-weight: 800;
+    width: 100%;
+    height: 80px;
+    line-height: 3.4;
+    text-indent: 20px;
+    text-align:center;
+    font-size: 22px;
+    display:none;
+}
+
+.app_page_header::before {
+    content: "\e610";
+    font-family: 'icomoon';
+    font-size: 26px;
+    line-height: 3.2;
+    float:left;
+    vertical-align: sub;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.form-wrapper {
+    padding:0px!important;
+}
+
+.top_button {
+    background-color: #fff819;
+    width: 60px;
+    font-weight: 800;
+    margin-left: 45%;
+    padding: 6px;
+}
+
+.top_button::before {
+    content: "\e616";
+    font-family: 'icomoon';
+    font-size: 26px;
+    line-height: 0px;
+    vertical-align: sub;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.page_button {
+    background-color: #e4e4e4;
+    text-align:left!important;
+    margin-bottom:10px;
+    margin-top:0px;
+}
+
+.display-none {
+    display:none;
+}
+.display {
+    display:block;
+}
+
+
+.header-to-top {
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.image-to-top {
+    display:block;
+    position:absolute;
+    top:50px;
+    left:0;
+}

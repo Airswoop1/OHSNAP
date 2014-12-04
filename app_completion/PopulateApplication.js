@@ -24,42 +24,40 @@ var PopulateApplication = (function(){
         else {
 
             var collection = db.collection('users'),
-	            //query = {"user_id":"7005dcc2-8037-4596-af0e-548c8be23cff"};
-                //query = {$or:[{'completed':{$exists:false}},{'completed':false}], "documents":{'$exists':false} ,'created_on':{'$lt':1407798000000}};
-	            query = {"documents":{'$exists':true} ,'created_on':{'$gt':1407798000000}};
+	            query = {"user_id": "c032f394-6972-4667-90ac-c341f864a123"};
+                // query = {$or:[{'completed':{$exists:false}},{'completed':false}], "documents":{'$exists':false} ,'created_on':{'$lt':1407798000000}};
+	            // query = {"documents":{'$exists':true} ,'created_on':{'$gt':1407798000000}};
 
             collection.find(query, //opts,
                 function(err, cursor){
-                    if(err){
-                        console.log("error with query in populate application!");
-                        console.log(err);
+                    if(err) {
+                        console.log("error with query in populate application!", err);
+                        return;
                     }
-                    else{
-                        cursor.toArray(function(e, docs){
-                            total = docs.length;
-	                        //used to provide breakdown of users apps submitted
-							docs.forEach(function(i){
-								var percent_completed=0;
 
-								for(var x in i){
-									if(i.hasOwnProperty(x)){
-										percent_completed++;
-									}
+                    cursor.toArray(function(e, docs) {
+                        var total = docs.length;
+                        //used to provide breakdown of users apps submitted
+						docs.forEach(function(i) {
+							var percent_completed = 0;
+							for(var x in i){
+								if(i.hasOwnProperty(x)) {
+									percent_completed++;
 								}
+							}
 
-								console.log(i.user_id + ", " + i.name.first_name + " " + i.name.last_name + ", " + i.phone_main + ", " + i.ssn + ", " + percent_completed);
-							});
-	                        console.log(total);
-	                        //docs.forEach(processApp);
-
-                        })
-                    }
+							console.log(i.user_id, i.name, i.phone_main, i.ssn, percent_completed);
+							processApp(i);
+						});
+                        console.log(total);
+                        //docs.forEach(processApp);
+                    })
                 });
         }
     })
 
 
-    function processApp(data){
+    function processApp(data) {
         format_request(data, function(err, formatted_data) {
 	        if(!err){
 	            populate_pdf(formatted_data, function(err, result, tmp_file) {
@@ -72,6 +70,7 @@ var PopulateApplication = (function(){
         })
 
     }
+
 
     function format_request(r, cb) {
         var formatted_data = {};
@@ -254,8 +253,9 @@ var PopulateApplication = (function(){
 		    }
 	    }
 
-        exec(input, function(error, stdout, stderr){
-            if(error || stderr) {
+        exec(input, function(error, stdout, stderr) {
+        	console.log(stderr);
+            if (error || stderr) {
                 console.log('error parsing users form:');
                 console.log(data.name);
                 console.log(data.tmp_id);

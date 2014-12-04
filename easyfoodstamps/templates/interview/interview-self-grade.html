@@ -1,0 +1,6 @@
+<h1>What grade are you in?</h1>
+
+<select name="self_grade" id="self_grade" ng-model="user.school_grade" ng-options="obj.value as obj.name for obj in Grade" ng-required="true"></select>
+
+<div ng-hide="interviewForm.self_grade.$valid" class="yellow-button disabled">Continue</div>
+<div ng-show="interviewForm.self_grade.$valid" class="yellow-button" ui-sref="int.school-name">Continue</div>

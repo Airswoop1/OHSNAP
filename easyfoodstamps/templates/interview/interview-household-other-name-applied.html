@@ -1,0 +1,16 @@
+<h1>Has anyone ever applied for any benefits using a different name or Social Security number?</h1>
+
+<input ng-click="inputDifferentName();" ng-model="user.different_name" id="different_name_yes" type="radio" class="name-input marital-input" value="yes" name="different_name"><label
+        for="different_name_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.other-name-applied', 'int.in-military')" ng-model="user.different_name" id="different_name_no" type="radio" class="name-input marital-input" value="no" name="different_name"><label
+        for="different_name_no" >No</label>
+<br/>
+<div ng-show="inputDiffName">
+    <p>Who?</p>
+
+    <input type="text" ng-model="user.different_name_input" ng-required="true" id="different_name_input" name="different_name_input"/>
+
+    <div ng-hide="interviewForm.different_name_input.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.different_name_input.$valid" class="yellow-button" ng-click="updateCurrentAndGoToNext('int.other-name-applied', 'int.in-military')">Continue</div>
+</div>

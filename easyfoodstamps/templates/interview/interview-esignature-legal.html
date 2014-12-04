@@ -1,0 +1,92 @@
+<style>
+    ul, li {
+        list-style:hiragana;
+        padding:2px;
+    }
+    h5 {
+        background-color: white;
+    }
+</style>
+
+<h1>{{ _("Thanks for answering all those questions! Next, sign your application.") }}</h1>
+
+<div style="width: 100%;height:160px;margin:5px auto;border:1px black solid; overflow-y :scroll; background-color:#EFEFEF">
+    <h5 style="background-color:#EFEFEF">{{ _("Electronic Signature Agreement") }}</h5>
+    <ul style="list-style:circle;padding:1px;">
+        <li>
+            {{ _("I understand that Pennsylvania receives information from other state and federal agencies to verify the information I give them. If I misrepresent, hide or withhold facts which may affect my eligibility for benefits, I may be required to repay my benefits and I may be prosecuted and disqualified from receiving certain future benefits.") }}
+        </li>
+        <li>
+            {{ _("I understand that I can designate an authorized representative by completing the Authorized Representative section and submitting it with this application.") }}
+        </li>
+        <li>
+            {{ _("I understand and agree that I am responsible for any fraudulent statements made on this application, even if the application is being submitted by someone acting on my behalf.") }}
+        </li>
+        <li>
+            {{ _("I received a copy of my rights and responsibilities, have read them or someone has read them to me, and I understand them.") }}
+        </li>
+        <li>
+            {{ _("I understand that the information entered in this application will be kept confidential and only to administer benefits. I authorize the release of personal, financial and medical information for the purpose of determining eligibility.") }}
+        </li>
+        <li>
+            {{ _("I understand that any changes I am required to report must be reported within the first 10 days of the month following the month of change.") }}
+        </li>
+        <li>
+            {{ _("I understand that I will receive a written notice explaining the benefits. If benefits are denied, changed, suspended or stopped, the written notice will explain why.") }}
+        </li>
+        <li>
+            {{ _("I understand that I will have 30 days (90 days for SNAP (food stamp) benefits) from the date of the notice to request a hearing if I do not agree with the decision made on this application.") }}
+        </li>
+        <li>
+            {{ _("I understand that my situation is subject to verification from employers, financial sources and other third parties.") }}
+        </li>
+        <li>
+            {{ _("I understand that applicants must provide their Social Security number or apply for one if they do not have one. This number may be used to check the information on this application.") }}
+        </li>
+        <li>
+            {{ _("I understand that I must use the Electronic Benefit Transfer (EBT) or the PA ACCESS Card only during the period I am eligible. I must use the EBT or the PA ACCESS Card only for the person who is eligible and may get only the benefits that are needed and reasonable.") }}
+        </li>
+        <li>
+            {{ _("I understand that I may not use TANF funds issued through my PA ACCESS card to make EBT transactions in liquor stores, casinos (gambling casinos, gaming establishments), or places for adult entertainment.") }}
+        </li>
+        <li>
+            {{ _("I understand that I do not have to provide a Social Security number for anyone who is not applying for assistance. If I do provide their Social Security number, it may be used to check the information on this application.") }}
+        </li>
+        <li>
+            {{ _("I certify that all information that has been entered is true under penalty of perjury.") }}
+        </li>
+        <li>
+            {{ _("I understand that I have the right to a certificate of creditable coverage to verify my medical coverage. Federal law limits when health care coverage may be denied or limited for a pre-existing condition. If I enroll in a group health plan that has a pre-existing condition clause, I can get credit for the time I received Medical Assistance.") }}
+        </li>
+        <li>
+            {{ _("If I receive cash benefits, I will cooperate with the requirements of the child support enforcement program as directed by the department. I give the department and the Domestic Relations Section the right to pursue and collect cash and/or medical support for me and others for whom I am applying.") }}
+        </li>
+        <li>
+            {{ _("I understand that if I report and provide proof of the household expenses, I will get the maximum amount of SNAP (food stamp) benefits allowed. Failure to report or provide proof of the household expenses will be regarded as my statement that I do not want to receive a deduction for the unreported or unproved expense. (Authority: United States Department of Agriculture, Food and Nutrition Service, MidAtlantic Region, Administrative Notice 6-99, issued January 4, 1999).") }}
+        </li>
+        <li>
+            {{ _("I understand that I have the right to receive credit for the household expenses at the time I report and provide proof of them at any time during my SNAP (food stamps) certification period.") }}
+        </li>
+        <li>
+            {{ _("I understand that I have the right to ask the county assistance office (CAO) for assistance in getting proof of expenses and that the CAO can contact other people for confirmation if I am having trouble getting proof of anything.") }}
+        </li>
+        <li>
+            {{ _("I understand that if some or all of the individuals applying do not qualify for Medical Assistance, that they may be eligible for CHIP. If this is the case, I authorize the Department of Public Welfare to give my name and information on this application to the insurance department or the CHIP contractor.") }}
+        </li>
+        <li>
+            {{ _("I understand that if some or all of the individuals applying do not qualify for Medical Assistance, that they may be eligible for federal benefits and/or explore private health care options through the HealthInsurance Marketplace. If this is the case, I authorize the department to give my name and information on this application to the Marketplace.") }}
+        </li>
+        <li>
+            {{ _("Renewal of coverage in future years: To make it easier to determine my eligibility for help paying for health coverage in future years, I agree to allow the Health Insurance Marketplace to use my income data, including information from tax returns. The Marketplace will send me a notice, let me make any changes, and I can opt out at any time.") }}
+        </li>
+    </ul>
+</div>
+
+<br/>
+<div class="checkbox-group">
+    <input type="checkbox" class="agree-checkbox big-checkbox" id="agree_to_legal"  ng-model="esignature_agree"/>
+    <span style="padding-left:10px">{{ _("I certify that I have read the above statements.") }}</span>
+</div>
+
+<div class="yellow-button disabled" ng-show="!esignature_agree">{{ _("Continue to sign") }}</div>
+<div class="yellow-button" ng-show="esignature_agree" ng-click="goToSignPage();">{{ _("Continue to sign") }}</div>

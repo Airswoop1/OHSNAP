@@ -1,0 +1,43 @@
+<h1>Select any medical expense that you or someone in your home pays:</h1>
+
+
+<input ng-model="user.medical_expenses.dental" id="dental" type="checkbox" class="name-input utilities-input" name="utilities"><label
+        for="dental">Dental Bills</label>
+<br/>
+<input ng-model="user.medical_expenses.doctor" id="doctor" type="checkbox" class="name-input utilities-input" name="utilities"><label
+        for="doctor">Doctor Bills</label>
+<br/>
+<input ng-model="user.medical_expenses.hospital" id="hospital" type="checkbox" class="name-input utilities-input" name="utilities"><label
+        for="hospital">Hospital Bills</label>
+<br/>
+<input ng-model="user.medical_expenses.health_insurance" id="health_insurance" type="checkbox" class="name-input utilities-input"  name="utilities"><label
+        for="health_insurance">Health Insurance or Medicare Premiums</label>
+<br/>
+<input ng-model="user.medical_expenses.medical_equipment" id="medical_equipment" type="checkbox" class="name-input utilities-input"  name="utilities"><label
+        for="medical_equipment">Medical Equipment</label>
+<br/>
+
+<input ng-model="user.medical_expenses.health_aides" id="health_aides" type="checkbox" class="name-input utilities-input"  name="utilities"><label
+        for="health_aides">Health Aides</label>
+<br/>
+
+<input ng-model="user.medical_expenses.health_related_supplies" id="health_related_supplies" type="checkbox" class="name-input utilities-input"  name="utilities"><label
+        for="health_related_supplies">Health Related Supplies</label>
+<br/>
+
+<input ng-model="user.medical_expenses.prescription_medicines" id="prescription_medicines" type="checkbox" class="name-input utilities-input"  name="utilities"><label
+        for="prescription_medicines">Prescription Medicines</label>
+<br/>
+
+
+<input ng-model="user.medical_expenses.general_costs" id="general_costs" type="checkbox" class="name-input utilities-input"  name="utilities"><label
+        for="general_costs" style="word-wrap: normal;line-height: 1;padding-top: 15px;">Any costs to get to medical appointments, medical treatment, or to pick up prescriptions.</label>
+<br/>
+        
+
+<input ng-model="user.medical_expenses.other" id="other" type="checkbox" class="name-input utilities-input" name="utilities"><label
+        for="other">Other</label>
+<br/>
+<input type="text" placeholder="Please Specify Other" ng-show="user.medical_expenses.other" ng-model="user.medical_expenses.other_name"/>
+
+<div class="yellow-button" ng-click="updateCurrentAndGoToNext('int.expenses-medical','int.main')">Continue</div>

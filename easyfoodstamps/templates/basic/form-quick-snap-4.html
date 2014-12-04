@@ -1,0 +1,28 @@
+<h1 ng-show="formData.pay_for_heating=='no'">Do you pay for utilities other than telephone?</h1>
+<h1 ng-show="formData.pay_for_heating=='yes'">Do you pay for utilities other than telephone, heating or cooling?</h1>
+
+<input ng-click="inputOtherUtilities();" ng-model="formData.pay_for_other_utilities" id="pay_for_other_utilities_yes" type="radio" class="name-input marital-input" value="yes" name="pay_for_other_utilities"><label
+        for="pay_for_other_utilities_yes">Yes</label>
+<br/>
+<input ng-hide="inputOtherUtils" ng-click="goToNextQuickSnap(5);" ng-model="formData.pay_for_other_utilities" id="pay_for_other_utilities_no" type="radio" class="name-input marital-input" value="no" name="pay_for_other_utilities"><label
+        for="pay_for_other_utilities_no" ng-hide="inputOtherUtils">No</label>
+
+<div ng-show="inputOtherUtils">
+    <p>Which utilities? (select all that apply)</p>
+    <input ng-click="addToPaidUtilities('water')" id="pay_water_utility" type="checkbox" class="name-input utilities-input" name="pay_utilities"><label
+        for="pay_water_utility">Water</label>
+    <input ng-click="addToPaidUtilities('electric')" id="pay_electricity_utility" type="checkbox" class="name-input utilities-input" name="pay_utilities"><label
+        for="pay_electricity_utility">Electric</label>
+    <input ng-click="addToPaidUtilities('garbage')" id="pay_garbage_utility" type="checkbox" class="name-input utilities-input" name="pay_utilities"><label
+        for="pay_garbage_utility">Garbage</label>
+    <input ng-click="addToPaidUtilities('installation')" id="pay_installation_utility" type="checkbox" class="name-input utilities-input" name="pay_utilities"><label
+        for="pay_installation_utility">Utility Installation</label>
+    <input ng-click="addToPaidUtilities('oil')" id="pay_oil_utility" type="checkbox" class="name-input utilities-input" name="pay_utilities"><label
+        for="pay_oil_utility">Oil, coal, wood, kerosene</label>
+    <input ng-click="addToPaidUtilities('sewer')" id="pay_sewer_utility" type="checkbox" class="name-input utilities-input" name="pay_utilities"><label
+        for="pay_sewer_utility">Sewer</label>
+    <input ng-click="addToPaidUtilities('Gas')" id="pay_gas_utility" type="checkbox" class="name-input utilities-input" name="pay_utilities"><label
+        for="pay_gas_utility">Gas</label>
+
+    <div class="yellow-button" ng-click="goToNextQuickSnap(5);">Continue</div>
+</div>

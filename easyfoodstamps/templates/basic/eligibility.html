@@ -1,0 +1,14 @@
+<div class="page-header eligibility">
+  <div class="header" ng-click="goBack()">
+    <h4>{{ _("Eligibility") }}</h4>
+  </div>
+  <div class="progress" ng-class="{'remove-progress': remove_progress_bar }">
+    <div class="progress-bar" role="progressbar" aria-valuenow="((progress))"
+      aria-valuemin="0" aria-valuemax="100" ng-style="{ width: progress +'%'}">
+    </div>
+  </div>
+</div>
+
+<form name="snapForm" id="signup-form" novalidate>
+  <div ui-view class="form-wrapper"></div>
+</form>

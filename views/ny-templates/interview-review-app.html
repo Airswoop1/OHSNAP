@@ -1,0 +1,1276 @@
+<link rel="stylesheet" href="css/sig-stylesheet.css"/>
+
+<div style="padding:25px;" id="sign_header">
+<<<<<<< HEAD:public/templates/interview/interview-review-app.html
+    <h1>Sign your official application</h1>
+    <p> Below is the official NYC SNAP application form, filled in with your information. We'll fax it to the NYC
+        HRA on your behalf, after you preview and sign it.</p>
+
+    <div class="yellow-button" id="goToFirstSigButton" ui-sref="int.info-esig-confirm" style="text-align: left;">I'm done reviewing</div>
+    <div class="thumbnail" style="background-image:url('images/pa_app/app2.png');" ng-click="expandThumbnail(1);"> <div class="thumbnail_label">Applying For</div></div>
+    <div class="thumbnail" style="background-image:url('images/pa_app/app4.png');" ng-click="expandThumbnail(2);"> <div class="thumbnail_label">Basic Info</div></div>
+    <div class="thumbnail" style="background-image:url('images/pa_app/app5.png');" ng-click="expandThumbnail(3);"> <div class="thumbnail_label">Household Info 1</div></div>
+    <div class="thumbnail" style="background-image:url('images/pa_app/app6.png');" ng-click="expandThumbnail(4);"> <div class="thumbnail_label">Household Info 2</div></div>
+    <div class="thumbnail" style="background-image:url('images/pa_app/app7.png');" ng-click="expandThumbnail(5);"> <div class="thumbnail_label">Household Info 3</div></div>
+    <div class="thumbnail" style="background-image:url('images/pa_app/app8.png');" ng-click="expandThumbnail(6);"> <div class="thumbnail_label">General Household Info</div></div>
+    <div class="thumbnail" style="background-image:url('images/pa_app/app10.png');" ng-click="expandThumbnail(7);"> <div class="thumbnail_label">Resources</div></div>
+    <div class="thumbnail" style="background-image:url('images/pa_app/app11.png');" ng-click="expandThumbnail(8);"> <div class="thumbnail_label">Income</div></div>
+    <div class="thumbnail" style="background-image:url('images/pa_app/app13.png');" ng-click="expandThumbnail(9);"> <div class="thumbnail_label">Expenses</div></div>
+    <div class="thumbnail" style="background-image:url('images/pa_app/app15.png');" ng-click="expandThumbnail(10);"> <div class="thumbnail_label">Rights & Responsibilities 1</div></div>
+    <div class="thumbnail" style="background-image:url('images/pa_app/app16.png');" ng-click="expandThumbnail(11);"> <div class="thumbnail_label">Rights & Responsibilities 2</div></div>
+    <div class="thumbnail" style="background-image:url('images/pa_app/app17.png');" ng-click="expandThumbnail(12);"> <div class="thumbnail_label">Rights & Responsibilities 3 + Signature</div></div>
+</div>
+
+
+
+
+<div class="app_page_header" id="page_header1" ng-click="backToMainSign(1)">Applying For</div>
+<div class="app_alt_page_header" id="page_alt_header1" >Applying For</div>
+=======
+    <h1><%= __("Sign your official application") %></h1>
+    <p><%= __("Below is the official NYC SNAP application form, filled in with your information. We'll fax it to the NYC HRA on your behalf, after you preview and sign it.") %></p>
+
+    <div class="yellow-button" id="goToFirstSigButton" ui-sref="int.info-esig-confirm" style="text-align: left;"><%= __("I'm done reviewing") %></div>
+    <div class="thumbnail" style="background-image:url('images/app1.png');" ng-click="expandThumbnail(1);"> <div class="thumbnail_label"><%= __("Page 1: Basics") %></div></div>
+    <div class="thumbnail" style="background-image:url('images/app2.png');" ng-click="expandThumbnail(2);"> <div class="thumbnail_label"><%= __("Page 2: Income") %></div></div>
+    <div class="thumbnail" style="background-image:url('images/app3.png');" ng-click="expandThumbnail(3);"> <div class="thumbnail_label"><%= __("Page 3: Expenses") %></div></div>
+    <div class="thumbnail" style="background-image:url('images/app4.png');" ng-click="expandThumbnail(4);"> <div class="thumbnail_label"><%= __("Page 4: Legal") %></div></div>
+    <div class="thumbnail" style="background-image:url('images/app5.png');" ng-click="expandThumbnail(5);"> <div class="thumbnail_label"><%= __("Page 5: Final Signature") %></div></div>
+</div>
+
+<style>
+
+.thumbnail_label {
+    margin-left: 110px;
+    width: 150px;
+    margin-top: 28px;
+}
+
+.thumbnail {
+    height: 77px;
+    width: 100px;
+    border:1px #000000 solid;
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-bottom: 10px;
+
+}
+
+ul,li {
+    list-style-type:circle;
+    list-style:circle;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased !important;
+    background-color: #ffffff;
+}
+
+h4 {
+    font-size: 22px;
+    font-weight: 900;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    line-height: 35px;
+}
+
+p {
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+    margin: 0;
+    padding: 0;
+}
+
+
+.yellow-button {
+    background-color: #fcee21;
+    color: #000000;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    width: 200px;
+    margin: 10px auto 20px auto;
+    border: none;
+
+}
+
+#sig_container1 {
+    position: absolute;
+    top: 196px;
+    left: 472px;
+    width: 300px;
+    border: 5px solid #00bd54;
+    z-index: 1000;
+    /*opacity:0.1;*/
+}
+
+#app_signature_label1 {
+    position:absolute;
+    z-index:500;
+    background-color:white;
+    width:320px;
+    height:39px;
+    top:207px;
+    left:483px;
+    font-size:13px;
+}
+
+.data_overlay {
+    position:absolute;
+    z-index:500;
+    background-color:transparent;
+    font-size:13px;
+}
+
+#sig_capture1 {
+
+    width:100%;
+    height: 45px;
+
+}
+
+#sig_prompt1 {
+    margin-top:22px;
+    height:50px;
+    width:100%;
+    background-color:#00bd54;
+    color:white;
+    text-align:center;
+    font-size:21px;
+    line-height:1.2;
+    white-space: normal;
+}
+
+#sig_container2 {
+    position: absolute;
+    top: 564px;
+    left: 168px;
+    width: 300px;
+    border: 5px solid #00bd54;
+    z-index:1000;
+}
+
+
+#app_signature_label2 {
+    position:absolute;
+    z-index:100;
+    background-color:white;
+    width:320px;
+
+    height: 57px;
+    top: 569px;
+    left: 167px;
+    font-size: 13px;
+}
+
+#sig_capture2 {
+
+    width:100%;
+    height: 45px;
+    z-index: 500;
+}
+
+.sig_prompt {
+    margin-top:22px;
+    height:50px;
+    width:100%;
+    background-color:#00bd54;
+    color:white;
+    text-align:center;
+    font-size:22px;
+    line-height:1.2;
+    white-space: normal;
+}
+
+.sig_button {
+    background-color:#fcee21;
+    color:#000000;
+    height:60px;
+    line-height:60px;
+    text-align:center;
+    font-size:18px;
+    font-weight:700;
+    width:100%;
+    margin-top:15px;
+    white-space: normal;
+}
+
+.img_container {
+    position:relative;
+    width:100%;
+    height:400px;
+    overflow:scroll;
+    display:none;
+
+}
+
+.img_container img {
+    zoom:0.45;
+}
+
+#app_name {
+    width: 200px;
+    height: 20px;
+    top: 107px;
+    left: 86px;
+}
+
+#app_telephone {
+    width: 139px;
+    height: 20px;
+    top: 107px;
+    left: 436px;
+}
+
+#app_street {
+    width: 200px;
+    height: 20px;
+    top: 127px;
+    left: 171px;
+}
+
+#app_apt {
+    width: 35px;
+    height: 20px;
+    top: 129px;
+    left: 458px;
+}
+
+#app_city {
+    width: 157px;
+    height: 20px;
+    top: 129px;
+    left: 526px;
+}
+
+#app_zip {
+    width: 100px;
+    height: 20px;
+    top: 129px;
+    left: 787px;
+}
+
+
+#app_applying {
+    width: 10px;
+    height: 10px;
+    top: 172px;
+    left: 332px;
+}
+
+#app_date {
+    width: 150px;
+    height: 40px;
+    top: 220px;
+    left: 850px;
+}
+
+#app_citizen_yes {
+    width: 10px;
+    height: 10px;
+    top: 573px;
+    left: 275px;
+}
+
+#app_citizen_no {
+    width: 10px;
+    height: 10px;
+    top: 573px;
+    left: 313px;
+}
+
+#app_disabled_yes {
+    width: 10px;
+    height: 10px;
+    top: 659px;
+    left: 328px;
+}
+
+#app_disabled_no {
+    width: 10px;
+    height: 10px;
+    top: 659px;
+    left: 370px;
+}
+
+#app_0_income_name {
+    width: 225px;
+    height: 16px;
+    top: 152px;
+    left: 44px;
+}
+#app_0_income_hours {
+    width: 150px;
+    height: 16px;
+    top: 152px;
+    left: 451px;
+}
+#app_0_income_amount {
+    width: 150px;
+    height: 16px;
+    top: 152px;
+    left: 810px;
+}
+
+#app_1_income_name {
+    width: 225px;
+    height: 16px;
+    top: 172px;
+    left: 44px;
+}
+#app_1_income_hours {
+    width: 150px;
+    height: 16px;
+    top: 172px;
+    left: 451px;
+}
+#app_1_income_amount {
+    width: 150px;
+    height: 16px;
+    top: 172px;
+    left: 810px;
+}
+
+#app_2_income_name {
+    width: 225px;
+    height: 16px;
+    top: 192px;
+    left: 44px;
+}
+#app_2_income_hours {
+    width: 150px;
+    height: 16px;
+    top: 192px;
+    left: 451px;
+}
+#app_2_income_amount {
+    width: 150px;
+    height: 16px;
+    top: 192px;
+    left: 810px;
+}
+
+#app_total_resources {
+    width: 80px;
+    height: 16px;
+    top: 422px;
+    left: 178px;
+}
+
+#app_rent {
+    width: 80px;
+    height: 16px;
+    top: 654px;
+    left: 232px;
+}
+
+#app_household_0_first_name {
+    width: 90px;
+    height: 16px;
+    top: 353px;
+    left: 50px;
+    overflow:hidden;
+}
+
+#app_household_0_last_name {
+    width: 115px;
+    height: 16px;
+    top: 353px;
+    left: 167px;
+    overflow: hidden;
+}
+
+#app_household_0_ssn {
+    width: 115px;
+    height: 16px;
+    top: 353px;
+    left: 290px;
+    overflow: hidden;
+}
+
+#app_household_0_dob {
+    width: 68px;
+    height: 16px;
+    top: 353px;
+    left: 409px;
+    overflow: hidden;
+}
+
+.household_container div {
+    position:absolute;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.household_container {
+    width: 100%;
+    height: 16px;
+    left: 50px;
+}
+
+#household_user_1 {
+    top: 379px;
+}
+
+#household_user_2 {
+    top: 405px;
+}
+
+#household_user_3 {
+    top: 431px;
+}
+
+#household_user_4 {
+    top: 457px;
+}
+
+#household_user_5 {
+    top: 484px;
+}
+
+#household_user_6 {
+    top: 511px;
+}
+
+#household_user_7 {
+    top: 538px;
+}
+
+
+.hh_first_name {
+    left:0px;
+    width:90px
+}
+
+.hh_last_name {
+    left:117px;
+    width:115px;
+}
+
+.hh_ssn {
+    left:240px;
+    width:115px;
+}
+
+.hh_dob {
+    left: 356px;
+    width:72px;
+}
+
+.hh_applying {
+    left:544px;
+    width:10px
+}
+
+.hh_not_applying {
+    left:575px;
+    width:10px
+}
+
+.hh_relation {
+    left:596px;
+    width:128px;
+    font-size:11px;
+
+}
+
+.hide_sig {
+    opacity: 0;
+}
+
+.show_sig {
+    opacity: 1;
+}
+
+.app_alt_page_header {
+    background-color: #00bd54;
+    color: white;
+    z-index:1500;
+    font-weight: 800;
+    width: 100%;
+    height: 80px;
+    line-height: 3.4;
+    text-indent: 20px;
+    text-align:center;
+    font-size: 22px;
+    display:none;
+
+}
+
+.app_page_header {
+    background-color: #00bd54;
+    color: white;
+    z-index:1500;
+    font-weight: 800;
+    width: 100%;
+    height: 80px;
+    line-height: 3.4;
+    text-indent: 20px;
+    text-align:center;
+    font-size: 22px;
+    display:none;
+}
+
+.app_page_header::before {
+    content: "\e610";
+    font-family: 'icomoon';
+    font-size: 26px;
+    line-height: 3.2;
+    float:left;
+    vertical-align: sub;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.form-wrapper {
+    padding:0px!important;
+}
+
+.top_button {
+    background-color: #fff819;
+    width: 60px;
+    font-weight: 800;
+    margin-left: 45%;
+    padding: 6px;
+}
+
+.top_button::before {
+    content: "\e616";
+    font-family: 'icomoon';
+    font-size: 26px;
+    line-height: 0px;
+    vertical-align: sub;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.page_button {
+    background-color: #e4e4e4;
+    text-align:left!important;
+    margin-bottom:10px;
+    margin-top:0px;
+}
+
+.display-none {
+    display:none;
+}
+.display {
+    display:block;
+}
+
+
+.header-to-top {
+    display:block;
+    position:absolute;
+    top:0;
+    left:0;
+}
+
+.image-to-top {
+    display:block;
+    position:absolute;
+    top:50px;
+    left:0;
+}
+
+
+</style>
+
+
+<div class="app_page_header" id="page_header1" ng-click="backToMainSign(1)"><%= __("Page 1: Basics") %></div>
+<div class="app_alt_page_header" id="page_alt_header1" ><%= __("Page 1: Basics") %></div>
+>>>>>>> overdrive:views/templates/interview/interview-review-app.html
+<div class="img_container" id="image_wrapper1">
+    <img src="images/pa_app/app2.png" alt=""/>
+</div>
+
+<div class="app_page_header" id="page_header2" ng-click="backToMainSign(2)">Basic Info</div>
+<div class="app_alt_page_header" id="page_alt_header2" >Basic Info</div>
+<div class="img_container" id="image_wrapper2" >
+    <img src="images/pa_app/app4.png" alt=""/>
+    <div class="data_overlay" id="app_name">{{ user.name.first_name + " " + user.name.last_name }}</div>
+    <div class="data_overlay" id="app_telephone">{{ user.phone_main | tel }}</div>
+    <div class="data_overlay" id="app_address">{{ user.address.street_address }}, {{ user.address.apt_number }} {{ user.address.city }}, PA {{ user.address.zip }} </div>
+    <div class="data_overlay" id="app_lived_at">{{ user.lived_at_duration }}</div>
+    <div class="data_overlay" id="app_qs_income">{{ user.income }}</div>
+    <div class="data_overlay" id="app_qs_resources">{{ user.total_resources }}</div>
+    <div class="data_overlay" id="app_qs_rent">{{ user.rent }}</div>
+
+    <div ng-show="user.receiving_snap=='yes'" class="data_overlay" id="app_qs_applying_yes">X</div>
+    <div ng-show="user.receiving_snap=='no'" class="data_overlay" id="app_qs_applying_no">X</div>
+
+    <div ng-show="user.pay_for_telephone=='yes'" class="data_overlay" id="app_qs_telephone_yes">X</div>
+    <div ng-show="user.pay_for_telephone=='no'" class="data_overlay" id="app_qs_telephone_no">X</div>
+
+    <div ng-show="user.pay_for_heating=='yes'" class="data_overlay" id="app_qs_heating_yes">X</div>
+    <div ng-show="user.pay_for_heating=='no'" class="data_overlay" id="app_qs_heating_no">X</div>
+
+    <div ng-show="user.pay_for_other_utilities=='yes'" class="data_overlay" id="app_qs_utilities_yes">X</div>
+    <div ng-show="user.pay_for_other_utilities=='no'" class="data_overlay" id="app_qs_utilities_no">X</div>
+    <div class="data_overlay" id="app_qa_utilities">{{ user.utilities_paid.join(', ') }}</div>
+
+
+    <div ng-show="user.migrant_worker=='yes'" class="data_overlay" id="app_qs_migrant_yes">X</div>
+    <div ng-show="user.migrant_worker=='no'" class="data_overlay" id="app_qs_migrant_no">X</div>
+
+    <div ng-show="user.shelter_abused=='yes'" class="data_overlay" id="app_qs_abused_yes">X</div>
+    <div ng-show="user.shelter_abused=='no'" class="data_overlay" id="app_qs_abused_no">X</div>
+
+</div>
+
+<div class="app_page_header" id="page_header3" ng-click="backToMainSign(3)">Household Info 1</div>
+<div class="app_alt_page_header" id="page_alt_header3" >Household Info 1</div>
+<div class="img_container" id="image_wrapper3">
+    <img src="images/pa_app/app5.png"  alt=""/>
+    <div class="data_overlay" id="app_hh_name0">{{ user.name.first_name + " " + user.name.last_name }}</div>
+    <div class="data_overlay" id="app_hh_applying0">X</div>
+
+    <div class="data_overlay" id="app_hh_ssn0">{{ user.ssn | ssn}}</div>
+
+    <div class="data_overlay" id="app_hh_dob0">{{ user.dob }}</div>
+
+    <div ng-show="user.gender=='male'" class="data_overlay" id="app_hh_gender_male0">X</div>
+    <div ng-show="user.gender=='female'" class="data_overlay" id="app_hh_gender_female0">X</div>
+
+    <div class="data_overlay" id="app_hh_state_id0">{{ user.state_id }}</div>
+
+    <div ng-show="user.marital=='Single'" class="data_overlay" id="app_hh_marital_single0">X</div>
+    <div ng-show="user.marital=='Divorced'" class="data_overlay" id="app_hh_marital_divorced0">X</div>
+    <div ng-show="user.marital=='Separated'" class="data_overlay" id="app_hh_marital_separated0">X</div>
+    <div ng-show="user.marital=='Widowed'" class="data_overlay" id="app_hh_marital_widowed0">X</div>
+    <div ng-show="user.marital=='Married'" class="data_overlay" id="app_hh_marital_married0">X</div>
+
+    <div ng-show="user.student=='yes'" class="data_overlay" id="app_hh_student_yes0">X</div>
+    <div ng-show="user.student=='no'" class="data_overlay" id="app_hh_student_no0">X</div>
+
+    <div class="data_overlay" id="app_hh_student_grade0">{{ user.school_grade }}</div>
+    <div class="data_overlay" id="app_hh_student_school0">{{ user.schoolName }}</div>
+
+    <div ng-show="user.studentFT=='yes'" class="data_overlay" id="app_hh_student_FT_yes0">X</div>
+    <div ng-show="user.studentFT=='no'" class="data_overlay" id="app_hh_student_FT_no0">X</div>
+
+    <div ng-show="user.self_pregnant=='yes'" class="data_overlay" id="app_hh_pregnant_yes0">X</div>
+    <div ng-show="user.self_pregnant=='no'" class="data_overlay" id="app_hh_pregnant_no0">X</div>
+
+    <div class="data_overlay" id="app_hh_pregnant_due0">{{ user.pregnant_due_date }}</div>
+    <div class="data_overlay" id="app_hh_pregnant_num0">{{ user.pregnant_num_babies }}</div>
+
+    <div ng-show="user.citizen=='Yes'" class="data_overlay" id="app_hh_citizen_yes0">X</div>
+    <div ng-show="user.citizen=='No'" class="data_overlay" id="app_hh_citizen_no0">X</div>
+
+
+<!-------- PERSON 2 -------->
+
+    <div class="data_overlay" id="app_hh_name1">{{ user.household_members['1'].name }}</div>
+    <div ng-show="user.household_members['1'].applying==true" class="data_overlay" id="app_hh_applying_yes1">X</div>
+    <div ng-show="user.household_members['1'].applying==false" class="data_overlay" id="app_hh_applying_no1">X</div>
+
+    <div class="data_overlay" id="app_hh_ssn1">{{ user.household_members['1'].ssn | ssn}}</div>
+
+    <div class="data_overlay" id="app_hh_dob1">{{ user.household_members['1'].dob }}</div>
+
+    <div ng-show="user.household_members['1'].gender=='male'" class="data_overlay" id="app_hh_gender_male1">X</div>
+    <div ng-show="user.household_members['1'].gender=='female'" class="data_overlay" id="app_hh_gender_female1">X</div>
+
+    <div class="data_overlay" id="app_hh_state_id1">{{ user.household_members['1'].state_id }}</div>
+
+    <div ng-show="user.household_members['1'].marital_status=='Single'" class="data_overlay" id="app_hh_marital_single1">X</div>
+    <div ng-show="user.household_members['1'].marital_status=='Divorced'" class="data_overlay" id="app_hh_marital_divorced1">X</div>
+    <div ng-show="user.household_members['1'].marital_status=='Separated'" class="data_overlay" id="app_hh_marital_separated1">X</div>
+    <div ng-show="user.household_members['1'].marital_status=='Widowed'" class="data_overlay" id="app_hh_marital_widowed1">X</div>
+    <div ng-show="user.household_members['1'].marital_status=='Married'" class="data_overlay" id="app_hh_marital_married1">X</div>
+
+
+    <div ng-show="user.household_members['1'].relation=='spouse'" class="data_overlay" id="app_hh_marital_spouse1">X</div>
+    <div ng-show="user.household_members['1'].relation=='child'" class="data_overlay" id="app_hh_marital_child1">X</div>
+    <div ng-show="user.household_members['1'].relation=='stepchild'" class="data_overlay" id="app_hh_marital_stepchild1">X</div>
+    <div ng-show="user.household_members['1'].relation=='not related'" class="data_overlay" id="app_hh_not_related1">X</div>
+    <div ng-show="user.household_members['1'].relation=='other'" class="data_overlay" id="app_hh_marital_other1">X</div>
+
+
+    <div ng-show="user.household_members['1'].lives_with=='yes'" class="data_overlay" id="app_hh_lives_with_yes1">X</div>
+    <div ng-show="user.household_members['1'].lives_with=='no'" class="data_overlay" id="app_hh_lives_with_no1">X</div>
+
+
+    <div ng-show="user.household_members['1'].student=='yes'" class="data_overlay" id="app_hh_student_yes1">X</div>
+    <div ng-show="user.household_members['1'].student=='no'" class="data_overlay" id="app_hh_student_no1">X</div>
+
+    <div class="data_overlay" id="app_hh_student_grade1">{{ user.household_members['1'].school_grade }}</div>
+    <div class="data_overlay" id="app_hh_student_school1">{{ user.household_members['1'].schoolName }}</div>
+
+    <div ng-show="user.household_members['1'].studentFT=='yes'" class="data_overlay" id="app_hh_student_FT_yes1">X</div>
+    <div ng-show="user.household_members['1'].studentFT=='no'" class="data_overlay" id="app_hh_student_FT_no1">X</div>
+
+    <div ng-show="user.household_members['1'].pregnant=='yes'" class="data_overlay" id="app_hh_pregnant_yes1">X</div>
+    <div ng-show="user.household_members['1'].pregnant=='no'" class="data_overlay" id="app_hh_pregnant_no1">X</div>
+
+    <div class="data_overlay" id="app_hh_pregnant_due1">{{ user.household_members['1'].pregnant_due_date }}</div>
+    <div class="data_overlay" id="app_hh_pregnant_num1">{{ user.household_members['1'].pregnant_num_babies }}</div>
+
+    <div ng-show="user.household_members['1'].citizen=='Yes'" class="data_overlay" id="app_hh_citizen_yes1">X</div>
+    <div ng-show="user.household_members['1'].citizen=='No'" class="data_overlay" id="app_hh_citizen_no1">X</div>
+
+
+
+</div>
+
+<div class="app_page_header" id="page_header4" ng-click="backToMainSign(4)">Household Info 2</div>
+<div class="app_alt_page_header" id="page_alt_header4" >Household Info 2</div>
+<div class="img_container" id="image_wrapper4">
+    <img src="images/pa_app/app6.png"  alt=""/>
+
+    <div id="person3" class="data_overlay">
+        <div class="hh_name data_overlay">{{ user.household_members['2'].name }}</div>
+        <div ng-show="user.household_members['2'].applying==true" class="hh_applying_yes data_overlay">X</div>
+        <div ng-show="user.household_members['2'].applying==false" class="hh_applying_no data_overlay">X</div>
+
+        <div class="data_overlay hh_ssn">{{ user.household_members['2'].ssn | ssn}}</div>
+
+        <div class="data_overlay hh_dob">{{ user.household_members['2'].dob }}</div>
+
+        <div ng-show="user.household_members['2'].gender=='male'" class="x hh_male data_overlay">X</div>
+        <div ng-show="user.household_members['2'].gender=='female'" class="x hh_female data_overlay">X</div>
+
+        <div class="hh_state_id data_overlay">{{ user.household_members['2'].state_id }}</div>
+
+        <div ng-show="user.household_members['2'].marital_status=='Single'" class="data_overlay hh_marital_single x">X</div>
+        <div ng-show="user.household_members['2'].marital_status=='Divorced'" class="data_overlay hh_marital_divorced x">X</div>
+        <div ng-show="user.household_members['2'].marital_status=='Separated'" class="data_overlay hh_marital_separated x">X</div>
+        <div ng-show="user.household_members['2'].marital_status=='Widowed'" class="data_overlay hh_marital_widowed x">X</div>
+        <div ng-show="user.household_members['2'].marital_status=='Married'" class="data_overlay hh_marital_married x">X</div>
+
+        <div ng-show="user.household_members['2'].relation=='spouse'" class="hh_relation_spouse data_overlay x">X</div>
+        <div ng-show="user.household_members['2'].relation=='child'" class="hh_relation_child data_overlay x">X</div>
+        <div ng-show="user.household_members['2'].relation=='stepchild'" class="hh_relation_stepchild data_overlay x">X</div>
+        <div ng-show="user.household_members['2'].relation=='not related'" class="hh_relation_not_related data_overlay x">X</div>
+        <div ng-show="user.household_members['2'].relation=='other'" class="hh_relation_other data_overlay x">X</div>
+
+        <div ng-show="user.household_members['2'].lives_with=='yes'" class="data_overlay hh_lives_with_yes x">X</div>
+        <div ng-show="user.household_members['2'].lives_with=='no'" class="data_overlay hh_lives_with_no x">X</div>
+
+        <!--------->
+        <div ng-show="user.household_members['2'].student=='yes'" class="data_overlay hh_student_yes x">X</div>
+        <div ng-show="user.household_members['2'].student=='no'" class="data_overlay hh_student_no x">X</div>
+
+        <div class="data_overlay hh_student_grade" >{{ user.household_members['2'].school_grade }}</div>
+        <div class="data_overlay hh_student_school">{{ user.household_members['2'].schoolName }}</div>
+
+        <div ng-show="user.household_members['2'].studentFT=='yes'" class="data_overlay hh_student_FT_yes x">X</div>
+        <div ng-show="user.household_members['2'].studentFT=='no'" class="data_overlay hh_student_FT_no x">X</div>
+
+        <div ng-show="user.household_members['2'].pregnant=='yes'" class="data_overlay hh_pregnant_yes x">X</div>
+        <div ng-show="user.household_members['2'].pregnant=='no'" class="data_overlay hh_pregnant_no x">X</div>
+
+        <div class="data_overlay hh_pregnant_due">{{ user.household_members['2'].pregnant_due_date }}</div>
+        <div class="data_overlay hh_pregnant_num" >{{ user.household_members['2'].pregnant_num_babies }}</div>
+
+        <div ng-show="user.household_members['2'].citizen=='Yes'" class="data_overlay hh_citizen_yes x">X</div>
+        <div ng-show="user.household_members['2'].citizen=='No'" class="data_overlay hh_citizen_no x">X</div>
+
+    </div>
+
+    <div id="person4" class="data_overlay">
+        <div class="hh_name data_overlay">{{ user.household_members['3'].name }}</div>
+        <div ng-show="user.household_members['3'].applying==true" class="hh_applying_yes data_overlay">X</div>
+        <div ng-show="user.household_members['3'].applying==false" class="hh_applying_no data_overlay">X</div>
+
+        <div class="data_overlay hh_ssn">{{ user.household_members['3'].ssn | ssn}}</div>
+
+        <div class="data_overlay hh_dob">{{ user.household_members['3'].dob }}</div>
+
+        <div ng-show="user.household_members['3'].gender=='male'" class="x hh_male data_overlay">X</div>
+        <div ng-show="user.household_members['3'].gender=='female'" class="x hh_female data_overlay">X</div>
+
+        <div class="hh_state_id data_overlay">{{ user.household_members['3'].state_id }}</div>
+
+        <div ng-show="user.household_members['3'].marital_status=='Single'" class="data_overlay hh_marital_single x">X</div>
+        <div ng-show="user.household_members['3'].marital_status=='Divorced'" class="data_overlay hh_marital_divorced x">X</div>
+        <div ng-show="user.household_members['3'].marital_status=='Separated'" class="data_overlay hh_marital_separated x">X</div>
+        <div ng-show="user.household_members['3'].marital_status=='Widowed'" class="data_overlay hh_marital_widowed x">X</div>
+        <div ng-show="user.household_members['3'].marital_status=='Married'" class="data_overlay hh_marital_married x">X</div>
+
+        <div ng-show="user.household_members['3'].relation=='spouse'" class="hh_relation_spouse data_overlay x">X</div>
+        <div ng-show="user.household_members['3'].relation=='child'" class="hh_relation_child data_overlay x">X</div>
+        <div ng-show="user.household_members['3'].relation=='stepchild'" class="hh_relation_stepchild data_overlay x">X</div>
+        <div ng-show="user.household_members['3'].relation=='not related'" class="hh_relation_not_related data_overlay x">X</div>
+        <div ng-show="user.household_members['3'].relation=='other'" class="hh_relation_other data_overlay x">X</div>
+
+        <div ng-show="user.household_members['3'].lives_with=='yes'" class="data_overlay hh_lives_with_yes x">X</div>
+        <div ng-show="user.household_members['3'].lives_with=='no'" class="data_overlay hh_lives_with_no x">X</div>
+
+
+        <div ng-show="user.household_members['3'].student=='yes'" class="data_overlay hh_student_yes x">X</div>
+        <div ng-show="user.household_members['3'].student=='no'" class="data_overlay hh_student_no x">X</div>
+
+        <div class="data_overlay hh_student_grade" >{{ user.household_members['3'].school_grade }}</div>
+        <div class="data_overlay hh_student_school">{{ user.household_members['3'].schoolName }}</div>
+
+        <div ng-show="user.household_members['3'].studentFT=='yes'" class="data_overlay hh_student_FT_yes x">X</div>
+        <div ng-show="user.household_members['3'].studentFT=='no'" class="data_overlay hh_student_FT_no x">X</div>
+
+        <div ng-show="user.household_members['3'].pregnant=='yes'" class="data_overlay hh_pregnant_yes x">X</div>
+        <div ng-show="user.household_members['3'].pregnant=='no'" class="data_overlay hh_pregnant_no x">X</div>
+
+        <div class="data_overlay hh_pregnant_due">{{ user.household_members['3'].pregnant_due_date }}</div>
+        <div class="data_overlay hh_pregnant_num" >{{ user.household_members['3'].pregnant_num_babies }}</div>
+
+        <div ng-show="user.household_members['3'].citizen=='Yes'" class="data_overlay hh_citizen_yes x">X</div>
+        <div ng-show="user.household_members['3'].citizen=='No'" class="data_overlay hh_citizen_no x">X</div>
+    </div>
+</div>
+
+<div class="app_page_header" id="page_header5" ng-click="backToMainSign(5)">Household Info 3</div>
+<div class="app_alt_page_header" id="page_alt_header5" >Household Info 3</div>
+<div class="img_container" id="image_wrapper5">
+    <img src="images/pa_app/app7.png"  alt=""/>
+    <div id="person5" class="data_overlay">
+        <div class="hh_name data_overlay">{{ user.household_members['4'].name }}</div>
+        <div ng-show="user.household_members['4'].applying==true" class="hh_applying_yes data_overlay">X</div>
+        <div ng-show="user.household_members['4'].applying==false" class="hh_applying_no data_overlay">X</div>
+
+        <div class="data_overlay hh_ssn">{{ user.household_members['4'].ssn | ssn}}</div>
+
+        <div class="data_overlay hh_dob">{{ user.household_members['4'].dob }}</div>
+
+        <div ng-show="user.household_members['4'].gender=='male'" class="x hh_male data_overlay">X</div>
+        <div ng-show="user.household_members['4'].gender=='female'" class="x hh_female data_overlay">X</div>
+
+        <div class="hh_state_id data_overlay">{{ user.household_members['4'].state_id }}</div>
+
+        <div ng-show="user.household_members['4'].marital_status=='Single'" class="data_overlay hh_marital_single x">X</div>
+        <div ng-show="user.household_members['4'].marital_status=='Divorced'" class="data_overlay hh_marital_divorced x">X</div>
+        <div ng-show="user.household_members['4'].marital_status=='Separated'" class="data_overlay hh_marital_separated x">X</div>
+        <div ng-show="user.household_members['4'].marital_status=='Widowed'" class="data_overlay hh_marital_widowed x">X</div>
+        <div ng-show="user.household_members['4'].marital_status=='Married'" class="data_overlay hh_marital_married x">X</div>
+
+        <div ng-show="user.household_members['4'].relation=='spouse'" class="hh_relation_spouse data_overlay x">X</div>
+        <div ng-show="user.household_members['4'].relation=='child'" class="hh_relation_child data_overlay x">X</div>
+        <div ng-show="user.household_members['4'].relation=='stepchild'" class="hh_relation_stepchild data_overlay x">X</div>
+        <div ng-show="user.household_members['4'].relation=='not related'" class="hh_relation_not_related data_overlay x">X</div>
+        <div ng-show="user.household_members['4'].relation=='other'" class="hh_relation_other data_overlay x">X</div>
+
+        <div ng-show="user.household_members['4'].lives_with=='yes'" class="data_overlay hh_lives_with_yes x">X</div>
+        <div ng-show="user.household_members['4'].lives_with=='no'" class="data_overlay hh_lives_with_no x">X</div>
+
+        <div ng-show="user.household_members['4'].student=='yes'" class="data_overlay hh_student_yes x">X</div>
+        <div ng-show="user.household_members['4'].student=='no'" class="data_overlay hh_student_no x">X</div>
+
+        <div class="data_overlay hh_student_grade" >{{ user.household_members['4'].school_grade }}</div>
+        <div class="data_overlay hh_student_school">{{ user.household_members['4'].schoolName }}</div>
+
+        <div ng-show="user.household_members['4'].studentFT=='yes'" class="data_overlay hh_student_FT_yes x">X</div>
+        <div ng-show="user.household_members['4'].studentFT=='no'" class="data_overlay hh_student_FT_no x">X</div>
+
+        <div ng-show="user.household_members['4'].pregnant=='yes'" class="data_overlay hh_pregnant_yes x">X</div>
+        <div ng-show="user.household_members['4'].pregnant=='no'" class="data_overlay hh_pregnant_no x">X</div>
+
+        <div class="data_overlay hh_pregnant_due">{{ user.household_members['4'].pregnant_due_date }}</div>
+        <div class="data_overlay hh_pregnant_num" >{{ user.household_members['4'].pregnant_num_babies }}</div>
+
+        <div ng-show="user.household_members['4'].citizen=='Yes'" class="data_overlay hh_citizen_yes x">X</div>
+        <div ng-show="user.household_members['4'].citizen=='No'" class="data_overlay hh_citizen_no x">X</div>
+
+    </div>
+<<<<<<< HEAD:public/templates/interview/interview-review-app.html
+
+    <div id="person6" class="data_overlay">
+        <div class="hh_name data_overlay">{{ user.household_members['5'].name }}</div>
+        <div ng-show="user.household_members['5'].applying==true" class="hh_applying_yes data_overlay">X</div>
+        <div ng-show="user.household_members['5'].applying==false" class="hh_applying_no data_overlay">X</div>
+
+        <div class="data_overlay hh_ssn">{{ user.household_members['5'].ssn | ssn}}</div>
+
+        <div class="data_overlay hh_dob">{{ user.household_members['5'].dob }}</div>
+
+        <div ng-show="user.household_members['5'].gender=='male'" class="x hh_male data_overlay">X</div>
+        <div ng-show="user.household_members['5'].gender=='female'" class="x hh_female data_overlay">X</div>
+
+        <div class="hh_state_id data_overlay">{{ user.household_members['5'].state_id }}</div>
+
+        <div ng-show="user.household_members['5'].marital_status=='Single'" class="data_overlay hh_marital_single x">X</div>
+        <div ng-show="user.household_members['5'].marital_status=='Divorced'" class="data_overlay hh_marital_divorced x">X</div>
+        <div ng-show="user.household_members['5'].marital_status=='Separated'" class="data_overlay hh_marital_separated x">X</div>
+        <div ng-show="user.household_members['5'].marital_status=='Widowed'" class="data_overlay hh_marital_widowed x">X</div>
+        <div ng-show="user.household_members['5'].marital_status=='Married'" class="data_overlay hh_marital_married x">X</div>
+
+        <div ng-show="user.household_members['5'].relation=='spouse'" class="hh_relation_spouse data_overlay x">X</div>
+        <div ng-show="user.household_members['5'].relation=='child'" class="hh_relation_child data_overlay x">X</div>
+        <div ng-show="user.household_members['5'].relation=='stepchild'" class="hh_relation_stepchild data_overlay x">X</div>
+        <div ng-show="user.household_members['5'].relation=='not related'" class="hh_relation_not_related data_overlay x">X</div>
+        <div ng-show="user.household_members['5'].relation=='other'" class="hh_relation_other data_overlay x">X</div>
+
+        <div ng-show="user.household_members['5'].lives_with=='yes'" class="data_overlay hh_lives_with_yes x">X</div>
+        <div ng-show="user.household_members['5'].lives_with=='no'" class="data_overlay hh_lives_with_no x">X</div>
+
+
+        <div ng-show="user.household_members['5'].student=='yes'" class="data_overlay hh_student_yes x">X</div>
+        <div ng-show="user.household_members['5'].student=='no'" class="data_overlay hh_student_no x">X</div>
+
+        <div class="data_overlay hh_student_grade" >{{ user.household_members['5'].school_grade }}</div>
+        <div class="data_overlay hh_student_school">{{ user.household_members['5'].schoolName }}</div>
+
+        <div ng-show="user.household_members['5'].studentFT=='yes'" class="data_overlay hh_student_FT_yes x">X</div>
+        <div ng-show="user.household_members['5'].studentFT=='no'" class="data_overlay hh_student_FT_no x">X</div>
+
+        <div ng-show="user.household_members['5'].pregnant=='yes'" class="data_overlay hh_pregnant_yes x">X</div>
+        <div ng-show="user.household_members['5'].pregnant=='no'" class="data_overlay hh_pregnant_no x">X</div>
+
+        <div class="data_overlay hh_pregnant_due">{{ user.household_members['5'].pregnant_due_date }}</div>
+        <div class="data_overlay hh_pregnant_num" >{{ user.household_members['5'].pregnant_num_babies }}</div>
+
+        <div ng-show="user.household_members['5'].citizen=='Yes'" class="data_overlay hh_citizen_yes x">X</div>
+        <div ng-show="user.household_members['5'].citizen=='No'" class="data_overlay hh_citizen_no x">X</div>
+    </div>
+
+</div>
+
+<div class="app_page_header" id="page_header6" ng-click="backToMainSign(6)">General Household Info</div>
+<div class="app_alt_page_header" id="page_alt_header6" >General Household Info</div>
+<div class="img_container" id="image_wrapper6">
+    <img src="images/pa_app/app8.png" alt=""/>
+    <div class="general_household data_overlay">
+        <div ng-show="user.receiving_snap=='yes'" id="rec_snap_yes">X</div>
+        <div ng-show="user.receiving_snap=='no'" id="rec_snap_no">X</div>
+        <div id="rec_snap_who">{{ user.other_state_benefits_input }}</div>
+
+        <div ng-show="user.snap_disqualification=='yes'" id="disqualified_yes">X</div>
+        <div ng-show="user.snap_disqualification=='no'" id="disqualified_no">X</div>
+        <div id="snap_disqualification_who">{{ user.snap_disqualification_input}}</div>
+
+        <div ng-show="user.different_name=='yes'" id="different_name_yes">X</div>
+        <div ng-show="user.different_name=='no'" id="different_name_no">X</div>
+        <div id="different_name_who">{{ user.different_name_input }}</div>
+
+        <div ng-show="user.in_military=='yes'" id="military_yes">X</div>
+        <div ng-show="user.in_military=='no'" id="military_no">X</div>
+
+        <div ng-show="user.in_military_family=='yes'" id="military_family_yes">X</div>
+        <div ng-show="user.in_military_family=='no'" id="military_family_no">X</div>
+
+        <div ng-show="user.foster_care=='yes'" id="foster_yes">X</div>
+        <div ng-show="user.foster_care=='no'" id="foster_no">X</div>
+        <div id="foster_who">{{ user.foster_care_input }}</div>
+
+        <div ng-show="user.foster_care_end=='yes'" id="foster_end_yes">X</div>
+        <div ng-show="user.foster_care_end=='no'" id="foster_end_no">X</div>
+        <div id="foster_end_age">{{ user.foster_care_end_input_age }}</div>
+        <div id="foster_end_state">{{ user.foster_care_end_input_state }}</div>
+
+        <div ng-show="user.medical_need=='yes'" id="medical_need_yes">X</div>
+        <div ng-show="user.medical_need=='no'" id="medical_need_no">X</div>
+        <div id="medical_need_who">{{ user.medical_need_input }}</div>
+        <div id="medical_need_disability">{{ user.medical_need_input_disability }}</div>
+
+
+        <div ng-show="user.medical_lt_care=='yes'" id="medical_lt_yes">X</div>
+        <div ng-show="user.medical_lt_care=='no'" id="medical_lt_no">X</div>
+
+
+        <div ng-show="user.medical_unpaid=='yes'" id="medical_unpaid_yes">X</div>
+        <div ng-show="user.medical_unpaid=='no'" id="medical_unpaid_no">X</div>
+
+
+        <div ng-show="user.domestic_abuse=='yes'" id="domestic_abuse_yes">X</div>
+        <div ng-show="user.domestic_abuse=='no'" id="domestic_abuse_no">X</div>
+
+        <div ng-show="user.medical_medication=='yes'" id="medical_medication_yes">X</div>
+        <div ng-show="user.medical_medication=='no'" id="medical_medication_no">X</div>
+        <div id="medical_medication_who">{{ user.medical_medication_input }}</div>
+
+
+        <div ng-show="user.drug_abuse=='yes'" id="drug_abuse_yes">X</div>
+        <div ng-show="user.drug_abuse=='no'" id="drug_abuse_no">X</div>
+        <div id="drug_abuse_who">{{ user.drug_abuse_input }}</div>
+
+        <div id="criminal_history_container">
+            <div class="criminal_row" style="margin-top:13px;">
+                <div ng-show="user.criminal_defendant=='yes'" class="crim_app_y" id="criminal_defendant_yes">X</div>
+                <div ng-show="user.criminal_defendant=='no'" class="crim_app_n" id="criminal_defendant_no">X</div>
+                <div class="crim_app_input" id="criminal_defendant_who">{{ user.criminal_defendant_input }}</div>
+            </div>
+            <div class="criminal_row next_crim_row">
+                <div ng-show="user.criminal_fine_payment=='yes'" class="crim_app_y" id="criminal_fine_payment_yes">X</div>
+                <div ng-show="user.criminal_fine_payment=='no'" class="crim_app_n" id="criminal_fine_payment_no">X</div>
+                <div class="crim_app_input" id="criminal_fine_payment_who">{{ user.criminal_fine_payment_input }}</div>
+            </div>
+
+            <div class="criminal_row next_crim_row">
+                <div ng-show="user.criminal_payment_plan=='yes'" class="crim_app_y">X</div>
+                <div ng-show="user.criminal_payment_plan=='no'" class="crim_app_n">X</div>
+                <div class="crim_app_input">{{ user.criminal_payment_plan_input }}</div>
+            </div>
+
+
+
+            <div class="criminal_row next_crim_row">
+                <div ng-show="user.criminal_probation=='yes'" class="crim_app_y">X</div>
+                <div ng-show="user.criminal_probation=='no'" class="crim_app_n">X</div>
+                <div class="crim_app_input" >{{ user.criminal_probation_input }}</div>
+            </div>
+
+            <div class="criminal_row next_crim_row">
+                <div ng-show="user.welfare_fraud=='yes'" class="crim_app_y">X</div>
+                <div ng-show="user.welfare_fraud=='no'" class="crim_app_n">X</div>
+                <div class="crim_app_input" >{{ user.welfare_fraud_input }}</div>
+            </div>
+
+
+            <div class="criminal_row next_crim_row">
+                <div ng-show="user.law_enforcement=='yes'" class="crim_app_y">X</div>
+                <div ng-show="user.law_enforcement=='no'" class="crim_app_n">X</div>
+                <div class="crim_app_input" >{{ user.law_enforcement_input }}</div>
+=======
+    <div id="app_signature_label1"><%= __("APPLICANT/REPRESENTATIVE SIGNATURE") %></div>
+    <div id="sig_container1" ng-class="{hide_sig: !show_sig1, show_sig: show_sig1}">
+        <div id="sig_prompt1">
+            <%= __("Sign in the box with your finger.") %>
+            <div id="sig_continue" class="sig_button" ng-click="goToSig2();">
+                <%= __("Continue") %>
+>>>>>>> overdrive:views/templates/interview/interview-review-app.html
+            </div>
+
+
+        </div>
+
+
+
+    </div>
+
+
+</div>
+<<<<<<< HEAD:public/templates/interview/interview-review-app.html
+
+<div class="app_page_header" id="page_header7" ng-click="backToMainSign(7)">Resources</div>
+<div class="app_alt_page_header" id="page_alt_header7" >Resources</div>
+<div class="img_container" id="image_wrapper7">
+    <img src="images/pa_app/app10.png" alt=""/>
+    <div class="resources_container">
+        <div ng-repeat="u in user.resources track by $index | limitTo: 6" class="resources_row" >
+            <div class="resources_name">{{ u.person_name }}</div>
+            <div class="resources_kind">{{ u.type }}</div>
+            <div class="resources_amount">${{ u.amount }}</div>
+            <div class="resources_location">{{ u.location }}</div>
+        </div>
+=======
+<div class="app_page_header" id="page_header2" ng-click="backToMainSign(2)"><%= __("Page 2: Income") %></div>
+<div class="app_alt_page_header" id="page_alt_header2" ><%= __("Page 2: Income") %></div>
+<div class="img_container" id="image_wrapper2" >
+    <img src="images/app2.png" alt=""/>
+    <div ng-repeat="person in personsWithIncome track by $index">
+        <div class="data_overlay" id="app_{{ $index }}_income_name">{{ person.name }}</div>
+        <div class="data_overlay" id="app_{{ $index }}_income_hours">{{ person.hours_per_month }}</div>
+        <div class="data_overlay" id="app_{{ $index }}_income_amount">${{ person.amount }}</div>
+>>>>>>> overdrive:views/templates/interview/interview-review-app.html
+    </div>
+
+    <div class="other_resources_container">
+
+        <div ng-show="user.resources_expecting_money=='yes'" id="resources_expecting_money_yes">X</div>
+        <div ng-show="user.resources_expecting_money=='no'" id="resources_expecting_money_no">X</div>
+        <div id="resources_expecting_money_who">{{ user.resources_expecting_money_who }}</div>
+        <div id="resources_expecting_money_kind">{{ user.resources_expecting_money_kind }}</div>
+        <div id="resources_expecting_money_when">{{ user.resources_expecting_money_when }}</div>
+        <div id="resources_expecting_money_amount">${{ user.resources_expecting_money_amount }}</div>
+
+        <div ng-show="user.resources_sold_stuff=='yes'" id="resources_sold_stuff_yes">X</div>
+        <div ng-show="user.resources_sold_stuff=='no'" id="resources_sold_stuff_no">X</div>
+        <div id="resources_sold_stuff_who">{{ user.resources_sold_stuff_who }}</div>
+        <div id="resources_sold_stuff_kind">{{ user.resources_sold_stuff_kind }}</div>
+        <div id="resources_sold_stuff_when">{{ user.resources_sold_stuff_when }}</div>
+        <div id="resources_sold_stuff_amount">${{ user.resources_sold_stuff_amount }}</div>
+
+        <div ng-show="user.resources_own_property=='yes" id="resources_own_property_yes">X</div>
+        <div ng-show="user.resources_own_property=='no'" id="resources_own_property_no">X</div>
+        <div id="resources_own_property_who">{{ user.resources_own_property_input }}</div>
+
+        <div ng-show="user.resources_burial_agreement=='yes" id="resources_burial_agreement_yes">X</div>
+        <div ng-show="user.resources_burial_agreement=='no'" id="resources_burial_agreement_no">X</div>
+        <div id="resources_burial_agreement_who">{{ user.resources_burial_agreement_input }}</div>
+
+
+        <div ng-show="user.resources_life_insurance=='yes" id="resources_life_insurance_yes">X</div>
+        <div ng-show="user.resources_life_insurance=='no'" id="resources_life_insurance_no">X</div>
+        <div id="resources_life_insurance_who">{{ user.resources_life_insurance_input }}</div>
+
+    </div>
+
+
+
+</div>
+<<<<<<< HEAD:public/templates/interview/interview-review-app.html
+
+
+<div class="app_page_header" id="page_header8" ng-click="backToMainSign(8)">Income</div>
+<div class="app_alt_page_header" id="page_alt_header8" >Income</div>
+<div class="img_container" id="image_wrapper8">
+    <img src="images/pa_app/app11.png" alt=""/>
+
+    <div class="income_container">
+        <div ng-repeat="u in user.incomes track by $index | limitTo: 6" class="income_row">
+            <div class="income_name">{{ u.person_name }}</div>
+            <div class="income_kind">{{ u.type }}</div>
+            <div class="income_amount">${{ u.amount }}</div>
+            <div class="income_frequency">{{ u.frequency}}</div>
+            <div class="income_recent">{{ u.recent_date }}</div>
+        </div>
+
+
+    </div>
+
+</div>
+
+
+<div class="app_page_header" id="page_header9" ng-click="backToMainSign(9)">Expenses</div>
+<div class="app_alt_page_header" id="page_alt_header9" >Expenses</div>
+<div class="img_container" id="image_wrapper9">
+    <img src="images/pa_app/app13.png" alt=""/>
+    <div class="top_expenses_container">
+        <div ng-show="user.child_support_expense=='yes'" id="expenses_child_support_yes">X</div>
+        <div ng-show="user.child_support_expense=='no'" id="expenses_child_support_no">X</div>
+
+        <div ng-show="user.child_support_expense_court_ordered=='yes'" id="child_support_expense_court_ordered_yes">X</div>
+        <div ng-show="user.child_support_expense_court_ordered=='no'" id="child_support_expense_court_ordered_no">X</div>
+
+        <div ng-show="user.housing_assistance=='yes'" id="housing_assistance_yes">X</div>
+        <div ng-show="user.housing_assistance=='no'" id="housing_assistance_no">X</div>
+        <div id="housing_assistance_who">{{ user.housing_assistance_input }}</div>
+
+        <div ng-show="user.housing_assistance_allowance=='yes'" id="housing_assistance_allowance_yes">X</div>
+        <div ng-show="user.housing_assistance_allowance=='no'" id="housing_assistance_allowance_no">X</div>
+
+    </div>
+
+    <div class="monthly_expenses_container">
+
+        <div class="monthly_expenses_row">
+            <div class="ppm_amt">$1400</div>
+            <div class="ppm_in_rent_y">X</div>
+            <div class="ppm_in_rent_n">X</div>
+            <div id="expenses_others_rent">others_rent</div>
+            <div id="lives_in_home_yes">X</div>
+            <div id="lives_in_home_no">X</div>
+        </div>
+
+        <div class="monthly_expenses_row">
+            <div class="me_ppm">{{ user.monthly_expenses_condo_amount }}</div>
+            <div class="me_others">{{ user.monthly_expenses_condo_other }}</div>
+            <div ng-show="user.monthly_expenses_condo_lives_with=='yes'" class="me_others_lw_y">X</div>
+            <div ng-show="user.monthly_expenses_condo_lives_with=='no'" class="me_others_lw_n">X</div>
+        </div>
+
+        <div class="monthly_expenses_row">
+            <div class="me_ppm">{{ user.monthly_expenses_prop_insurance_amount }}</div>
+            <div class="me_others">{{ user.monthly_expenses_prop_insurance_other }}</div>
+            <div ng-show="user.monthly_expenses_prop_insurance_lives_with=='yes'" class="me_others_lw_y">X</div>
+            <div ng-show="user.monthly_expenses_prop_insurance_lives_with=='no'" class="me_others_lw_n">X</div>
+=======
+<div class="app_page_header" id="page_header3" ng-click="backToMainSign(3)"><%= __("Page 3: Expenses") %></div>
+<div class="app_alt_page_header" id="page_alt_header3" ><%= __("Page 3: Expenses") %></div>
+<div class="img_container" id="image_wrapper3">
+    <img src="images/app3.png"  alt=""/>
+</div>
+<div class="app_page_header" id="page_header4" ng-click="backToMainSign(4)"><%= __("Page 4: Legal") %></div>
+<div class="app_alt_page_header" id="page_alt_header4" ><%= __("Page 4: Legal") %></div>
+<div class="img_container" id="image_wrapper4">
+    <img src="images/app4.png" alt=""/>
+</div>
+<div class="app_page_header" id="page_header5" ng-click="backToMainSign(5)"><%= __("Page 5: Final Signature") %></div>
+<div class="app_alt_page_header" id="page_alt_header5" ><%= __("Page 5: Final Signature") %></div>
+<div class="img_container" id="image_wrapper5">
+    <img src="images/app5.png" alt=""/>
+    <div id="app_signature_label2"></div>
+    <div id="sig_container2" ng-class="{hide_sig: !show_sig1, show_sig: show_sig1}">
+
+        <div class="sig_prompt">
+            <%= __("Sign in the box with your finger.") %>
+            <div ng-hide="appSubmissionInProcess" class="sig_button" id="submit_application" ng-click="submitSignedApplication();">
+                <%= __("Submit application") %>
+            </div>
+            <div ng-show="appSubmissionInProcess" style="background-color:gray" class="sig_button">
+                <%= __("Submitting application...") %>
+            </div>
+>>>>>>> overdrive:views/templates/interview/interview-review-app.html
+        </div>
+
+        <div class="monthly_expenses_row">
+            <div class="me_ppm">{{ user.monthly_expenses_prop_taxes_amount }}</div>
+            <div class="me_others">{{ user.monthly_expenses_prop_taxes_other }}</div>
+            <div ng-show="user.monthly_expenses_prop_taxes_lives_with=='yes'" class="me_others_lw_y">X</div>
+            <div ng-show="user.monthly_expenses_prop_taxes_lives_with=='no'" class="me_others_lw_n">X</div>
+        </div>
+
+
+    </div>
+
+    <div id="utilities_container">
+        <div ng-show="user.utilities.hasOwnProperty('phone')">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('garbage')" id="util_garbage">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('sewer')" id="util_sewer">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('water')" id="util_water">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('utility_installation')" id="util_install">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('gas')" id="util_gas">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('electric')" id="util_elec">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('oil')" id="util_oil">X</div>
+        <div ng-show="user.utilities.hasOwnProperty('other')" id="util_other">X</div>
+        <div id="util_other_names">{{ user.utilities.other_name }}</div>
+
+    </div>
+
+
+    <div id="medical_expenses_container">
+
+        <div ng-show="user.medical_expenses.hasOwnProperty('dental')">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('doctor')" id="med_doctor">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('hospital)" id="med_hospital">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('health_insurance')" id="med_health_insurance">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('medical_equipment')" id="med_medical_equipment">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('health_aides')" id="med_health_aides">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('health_related_supplies')" id="med_health_related_supplies">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('prescription_medicines')" id="med_prescription_medicines">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('general_costs')" id="med_general_costs">X</div>
+        <div ng-show="user.medical_expenses.hasOwnProperty('other')" id="med_other">X</div>
+        <div id="med_other_names">{{ user.medical_expenses.other_name }}</div>
+
+    </div>
+
+</div>
+
+<div class="app_page_header" id="page_header10" ng-click="backToMainSign(10)">Rights & Responsibilities 1</div>
+<div class="app_alt_page_header" id="page_alt_header10" >Rights & Responsibilities 1</div>
+<div class="img_container" id="image_wrapper10">
+    <img src="images/pa_app/app15.png" alt=""/>
+</div>
+
+<div class="app_page_header" id="page_header11" ng-click="backToMainSign(11)">Rights & Responsibilities 2</div>
+<div class="app_alt_page_header" id="page_alt_header11" >Rights & Responsibilities 2</div>
+<div class="img_container" id="image_wrapper11">
+    <img src="images/pa_app/app16.png" alt=""/>
+</div>
+
+<div class="app_page_header" id="page_header12" ng-click="backToMainSign(12)">Rights & Responsibilities 3 + Signature</div>
+<div class="app_alt_page_header" id="page_alt_header12" >Rights & Responsibilities 3 + Signature</div>
+<div class="img_container" id="image_wrapper12">
+    <img src="images/pa_app/app17.png" alt=""/>
+</div>
+
+<!--<script src="js/sig/jSignature.js"></script>-->
+

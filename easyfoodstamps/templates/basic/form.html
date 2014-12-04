@@ -1,0 +1,14 @@
+<div class="page-header">
+  <div class="header" ng-click="goBack()">
+    <h3>{{ _("Step 1 of 3") }}</h3>
+    <h4>{{ _("Basics") }}</h4>
+  </div>
+  <div class="progress" ng-show="show_progress" ng-class="{'remove-progress': remove_progress_bar }">
+    <div class="progress-bar" role="progressbar" aria-valuenow="((progress))" aria-valuemin="0" aria-valuemax="100" ng-style="{ width: progress +'%'}">
+    </div>
+  </div>
+</div>
+
+<form name="snapForm" id="signup-form" novalidate>
+  <div class="form-wrapper" ui-view></div>
+</form>

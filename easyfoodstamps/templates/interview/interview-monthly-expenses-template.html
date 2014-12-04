@@ -1,0 +1,32 @@
+<h1>How much do you pay each month on <strong>(( title ))</strong>?</h1>
+
+
+<div class="input-group dollar-input">
+    <input ng-model="model_for_route[route_name_amount]" id="(( data_name ))_amount" type="number" class="name-input rent-input" >
+</div>
+<br/>
+<div ng-show="alt_question">
+    <p>(( alt_question ))</p>
+
+    <input ng-model="model_for_route[alt_question_data]" id="(( alt_question_data ))_yes" name="(( alt_question_data ))_yes" type="radio" class="name-input marital-input" value="yes" >
+    <label for="(( alt_question_data ))_yes">Yes</label>
+    <br/>
+
+    <input ng-model="model_for_route[alt_question_data]" id="(( alt_question_data ))_no" name="(( alt_question_data ))_no" type="radio" class="name-input marital-input" value="no" >
+    <label for="(( alt_question_data ))_no" >No</label>
+</div>
+<br/>
+<p>How much does anyone else pay?</p>
+<div class="input-group dollar-input">
+    <input ng-model="model_for_route[route_name_other_amount]" id="(( data_name ))_other_amount" name="(( data_name ))_other_amount" type="number" class="name-input rent-input" >
+</div>
+<br/>
+<p>Does this person live in your home?</p>
+<input ng-model="model_for_route[route_name_other_lives_with]" id="(( data_name ))_other_lives_yes" name="(( data_name ))_other_lives_yes" type="radio" class="name-input marital-input" value="yes" >
+<label for="(( data_name ))_other_lives_yes">Yes</label>
+<br/>
+
+<input ng-model="model_for_route[route_name_other_lives_with]" id="(( data_name ))_other_lives_no" name="(( data_name ))_other_lives_no" type="radio" class="name-input marital-input" value="no" >
+<label for="(( data_name ))_other_lives_no" >No</label>
+
+<div ng-click="updateCurrentAndGoToNext('int.(( route_name ))', 'int.(( to_route_name ))')" class="yellow-button">Continue</div>

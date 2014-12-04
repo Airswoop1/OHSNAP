@@ -1,0 +1,9 @@
+<h1>What is your driver's license or state ID #?</h1>
+
+<div class="form-group" ng-class="{'has-success':interviewForm.state_id.$pristine ,'has-error': interviewForm.state_id.$invalid}">
+    <input class="form-control" type="text" name="state_id" id="state_id" ng-model="user.state_id" autofocus="true" ng-minlength="5" ng-required="true"/>
+    <span class="help-block" ng-show="submitted_state_id && interviewForm.state_id.$invalid">Value required for driver's license or state ID</span>
+</div>
+
+<div ng-hide="interviewForm.state_id.$valid" class="yellow-button disabled" ng-click="submitted_state_id = true">Continue</div>
+<div ng-show="interviewForm.state_id.$valid" class="yellow-button" ng-click="updateCurrentAndGoToNext('int.state_id', 'int.school')">Continue</div>

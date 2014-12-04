@@ -1,0 +1,23 @@
+<h1>Does anyone in your home get housing assistance?</h1>
+
+<input ng-click="inputHousingAssistance = true;" ng-model="user.housing_assistance" id="housing_assistance_yes" type="radio" class="name-input marital-input" value="yes" name="housing_assistance"><label
+        for="housing_assistance_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.expenses-housing-assistance', 'int.monthly-expenses-rent')" ng-model="user.housing_assistance" id="housing_assistance_no" type="radio" class="name-input marital-input" value="no" name="housing_assistance"><label
+        for="housing_assistance_no" >No</label>
+<br/>
+<div ng-show="inputHousingAssistance">
+    <p>What Kind?</p>
+    <input type="text" ng-model="user.housing_assistance_input" ng-required="true" id="housing_assistance_input" name="housing_assistance_input"/>
+
+    <p>Do you get any allowance?</p>
+    <input ng-model="user.housing_assistance_allowance" id="housing_assistance_allowance_yes" type="radio" class="name-input marital-input" value="yes" name="housing_assistance_allowance"><label
+        for="housing_assistance_allowance_yes">Yes</label>
+    <br/>
+    <input ng-model="user.housing_assistance_allowance" id="housing_assistance_allowance_no" type="radio" class="name-input marital-input" value="no" name="housing_assistance_allowance"><label
+        for="housing_assistance_allowance_no" >No</label>
+    <br/>
+
+    <div ng-hide="interviewForm.housing_assistance_input.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.housing_assistance_input.$valid" class="yellow-button" ng-click="updateCurrentAndGoToNext('int.expenses-housing-assistance', 'int.monthly-expenses-rent')">Continue</div>
+</div>

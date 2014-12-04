@@ -1,0 +1,9 @@
+<h1>{{ _("Who lives with you?") }}</h1>
+<p>{{ _("Please enter at least one name") }}</p>
+<div ng-repeat="num in getNumber(user.household) track by $index" class="household-names">
+    <h6 for="name_(( $index ))">Person (( $index + 1 ))</h6>
+    <input id="name_(( $index ))" placeholder="{{ _("First and Last Name") }}" type="text" name="names" ng-model="user.household_members[$index].name"/>
+</div>
+
+<div ng-show="!hasHouseholdMembers()" class="yellow-button disabled">{{ _("Continue") }}</div>
+<div ng-show="hasHouseholdMembers()" class="yellow-button" ui-sref="int.household-applying">{{ _("Continue") }}</div>

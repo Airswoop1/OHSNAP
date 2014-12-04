@@ -1,0 +1,28 @@
+<!-- form-income.html -->
+<h1>{{ _("What was your household income last month?") }}</h1>
+<p>{{ _("This includes:") }}</p>
+<style>
+    li,ul {list-style-type: disc; list-style-position: outside; margin-left:10px; }
+</style>
+<ul style="margin-bottom:10px;margin-top:-14px;">
+    <li>{{ _("Wages") }}</li>
+    <li>{{ _("Child support") }}</li>
+    <li>{{ _("Social security") }}</li>
+    <li>{{ _("Money from relatives") }}</li>
+    <li>{{ _("Other sources of income") }}</li>
+</ul>
+<p>Use the amount before taxes are taken out.</p>
+
+<div class="form-group">
+
+    <div class="input-group dollar-input" ng-class="{'has-success':snapForm.income.$pristine ,'has-error': snapForm.income.$invalid }">
+        <input class="form-control" type="number" name="income" min="0" id="income" ng-model="formData.income" autofocus="true" required ng-enter/>
+        <span class="help-block"  ng-show="submitted_income && snapForm.income.$error.required">
+            {{ _("Input 0 if no income in the last 30 days.") }}</span>
+        <span class="help-block"  ng-show="submitted_income && snapForm.income.$error.min">
+            {{ _("Minimum income is 0.") }}</span>
+    </div>
+</div>
+
+<div class="yellow-button" ng-class="{'disabled':snapForm.income.$invalid}"
+    ng-click="next()">{{ _("Continue") }}</div>

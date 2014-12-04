@@ -1,0 +1,9 @@
+<h1>How many babies are expected?</h1>
+
+<div class="form-control">
+    <input type="number" name="num_babies" id="num_babies" ng-model="user.pregnant_num_babies" ng-require="true"/>
+</div>
+
+<div ng-hide="interviewForm.num_babies.$valid" class="yellow-button disabled">Continue</div>
+<div ng-show="interviewForm.num_babies.$valid" class="yellow-button" ui-sref="int.main"
+        ng-click="$emit('int-main', 'eligibility');">Continue</div>

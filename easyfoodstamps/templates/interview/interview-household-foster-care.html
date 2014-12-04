@@ -1,0 +1,16 @@
+<h1>Was anyone in foster care at age 18 or older?</h1>
+
+<input ng-click="inputFostercare = true" ng-model="user.foster_care" id="foster_care_yes" type="radio" class="name-input marital-input" value="yes" name="foster_care"><label
+        for="foster_care_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.foster-care', 'int.medical-need')" ng-model="user.foster_care" id="foster_care_no" type="radio" class="name-input marital-input" value="no" name="foster_care"><label
+        for="foster_care_no" >No</label>
+<br/>
+<div ng-show="inputFosterCare">
+    <p>Who?</p>
+
+    <input type="text" ng-model="user.foster_care_input" ng-required="true" id="foster_care_input" name="foster_care_input"/>
+
+    <div ng-hide="interviewForm.foster_care_input.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.foster_care_input.$valid" class="yellow-button" ng-click="updateCurrentAndGoToNext('int.foster-care', 'int.foster-care-end')">Continue</div>
+</div>

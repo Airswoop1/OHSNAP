@@ -1,0 +1,19 @@
+<h1>Does anyone have a payment plan for fines and costs?</h1>
+
+<input ng-click="inputCriminalPaymentPlan = true" ng-model="user.criminal_payment_plan" id="criminal_payment_plan_yes"
+       type="radio" class="name-input marital-input" value="yes" name="criminal_payment_plan"><label
+        for="criminal_payment_plan_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.criminal-payment-plan', 'int.criminal-probation')" ng-model="user.criminal_payment_plan"
+       id="criminal_payment_plan_no" type="radio" class="name-input marital-input" value="no" name="criminal_payment_plan">
+<label for="criminal_payment_plan_no" >No</label>
+<br/>
+<div ng-show="inputCriminalPaymentPlan">
+    <p>Who?</p>
+
+    <input type="text" ng-value="user.criminal_payment_plan_input" ng-model="user.criminal_payment_plan_input" ng-required="true" id="criminal_payment_plan_input" name="criminal_payment_plan_input"/>
+
+    <div ng-hide="interviewForm.criminal_payment_plan_input.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.criminal_payment_plan_input.$valid" class="yellow-button"
+         ng-click="updateCurrentAndGoToNext('int.criminal-payment-plan', 'int.criminal-payment-plan')">Continue</div>
+</div>

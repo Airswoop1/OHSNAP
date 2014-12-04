@@ -1,0 +1,6 @@
+<h1>What is your due date?</h1>
+
+<input ng-model="user.pregnant_due_date" type="date" name="preg_due_date" placeholder="MM/DD/YYYY" class="name-input dob-input" ng-required="true">
+
+<div ng-hide="interviewForm.preg_due_date.$valid" class="yellow-button disabled">Continue</div>
+<div ng-show="interviewForm.preg_due_date.$valid" class="yellow-button" ui-sref="int.pregnant-num-babies">Continue</div>

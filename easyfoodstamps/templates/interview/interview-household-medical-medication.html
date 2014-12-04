@@ -1,0 +1,16 @@
+<h1>Does anyone have a medical condition that requires health sustaining medication?</h1>
+
+<input ng-click="inputMedicalMedication = true" ng-model="user.medical_medication" id="medical_medication_yes" type="radio" class="name-input marital-input" value="yes" name="medical_medication"><label
+        for="medical_medication_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.medical-medication', 'int.drug-abuse')" ng-model="user.medical_medication" id="medical_medication_no" type="radio" class="name-input marital-input" value="no" name="medical_medication"><label
+        for="medical_medication_no" >No</label>
+<br/>
+<div ng-show="inputMedicalMedication">
+    <p>Who?</p>
+
+    <input type="text" ng-model="user.medical_medication_input" ng-required="true" id="medical_medication_input" name="medical_medication_input"/>
+
+    <div ng-hide="interviewForm.medical_medication_input.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.medical_medication_input.$valid" class="yellow-button" ng-click="updateCurrentAndGoToNext('int.medical-medication', 'int.drug-abuse')">Continue</div>
+</div>

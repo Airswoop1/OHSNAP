@@ -1,0 +1,18 @@
+<h1>Did the foster care end due to age?</h1>
+
+<input ng-click="inputFosterCareEndedDueToAge();" ng-model="user.foster_care_end" id="foster_care_end_yes" type="radio" class="name-input marital-input" value="yes" name="foster_care_end"><label
+        for="foster_care_end_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.foster-care-end', 'int.medical-need')" ng-model="user.foster_care_end" id="foster_care_end_no" type="radio" class="name-input marital-input" value="no" name="foster_care_end"><label
+        for="foster_care_end_no" >No</label>
+<br/>
+<div ng-show="inputFosterCareEnd">
+    <p>Age?</p>
+    <input type="text" ng-model="user.foster_care_end_input_age" ng-required="true" id="foster_care_end_input_age" name="foster_care_end_input_age"/>
+
+    <p>State?</p>
+    <input type="text" ng-model="user.foster_care_end_input_state" ng-required="true" id="foster_care_end_input_state" name="foster_care_end_input_state"/>
+
+    <div ng-hide="interviewForm.foster_care_end_input_state.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.foster_care_end_input_state.$valid" class="yellow-button" ng-click="updateCurrentAndGoToNext('int.foster-care-end', 'int.medical-need')">Continue</div>
+</div>

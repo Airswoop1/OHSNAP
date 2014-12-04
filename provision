@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+
+# This file is meant to be executed inside the Vagrant development VM
+
+# Prevent dpkg-reconfigure interactive sessions
+export DEBIAN_FRONTEND=noninteractive
+
+apt-get update
+apt-get install -y git
+apt-get install -y nodejs npm
+apt-get install -y python-dev python-pip
+apt-get install -y gettext
+apt-get install -y mongodb
+apt-get install -y pdftk libmagickwand-dev
+
+# Sass
+apt-get install -y ruby-full build-essential
+gem install sass
+
+ln -s /usr/bin/nodejs /usr/bin/node
+npm install -g bower
+npm install -g nodemon
+npm install -g grunt-cli
+
+cd /vagrant
+python setup.py develop
+su vagrant -c  "chmod 755 /home/vagrant/.python-eggs"
+# su vagrant -c  "echo 'export NODE_ENV=sandbox' >> /home/vagrant/.bashrc"
+cd -

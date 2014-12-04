@@ -1,0 +1,17 @@
+{% extends 'admin/model/list.html' %}
+
+{% block list_row_actions %}
+  {{ super() }}
+  <a href="/api/pa_snap/{{ get_pk_value(row) }}/sign/" title="Generate Application PDF">
+    <span class="icon-file"></span>
+  </a>
+  <a href="/ny/snap/doc/{{ get_pk_value(row) }}" title="Generate Documents PDF">
+    <span class="icon-film"></span>
+  </a>
+  <a href="/ny/snap/app/fax/{{ get_pk_value(row) }}" title="Fax Application">
+    <span class="icon-envelope"></span>
+  </a>
+  <a href="/ny/snap/doc/fax/{{ get_pk_value(row) }}" title="Fax Documents">
+    <span class="icon-gift"></span>
+  </a>
+{% endblock %}

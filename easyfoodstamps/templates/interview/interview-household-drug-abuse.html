@@ -1,0 +1,16 @@
+<h1>Is anyone in treatment for drug or alcohol abuse?</h1>
+
+<input ng-click="inputDrugAbuse = true" ng-model="user.drug_abuse" id="drug_abuse_yes" type="radio" class="name-input marital-input" value="yes" name="drug_abuse"><label
+        for="drug_abuse_yes">Yes</label>
+<br/>
+<input ng-click="updateCurrentAndGoToNext('int.drug-abuse', 'int.criminal-defendant')" ng-model="user.drug_abuse" id="drug_abuse_no" type="radio" class="name-input marital-input" value="no" name="drug_abuse"><label
+        for="drug_abuse_no" >No</label>
+<br/>
+<div ng-show="inputDrugAbuse">
+    <p>Who?</p>
+
+    <input type="text" ng-model="user.drug_abuse_input" ng-required="true" id="drug_abuse_input" name="drug_abuse_input"/>
+
+    <div ng-hide="interviewForm.drug_abuse_input.$valid" class="yellow-button disabled">Continue</div>
+    <div ng-show="interviewForm.drug_abuse_input.$valid" class="yellow-button" ng-click="updateCurrentAndGoToNext('int.drug-abuse', 'int.criminal-defendant')">Continue</div>
+</div>

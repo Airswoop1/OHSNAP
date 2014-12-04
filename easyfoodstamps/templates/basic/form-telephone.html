@@ -1,0 +1,9 @@
+<!-- form-telephone.html -->
+<h1>{{ _("What’s your phone number?") }}</h1>
+<div class="form-group" ng-class="{'has-success':snapForm.phone.$pristine ,'has-error': !snapForm.phone.$valid}">
+    <input class="form-control" type="tel" placeholder="Phone Number" name="phone" id="phone" ng-model="formData.phone_main" ng-pattern="/^1?(?:\([2-9]\d{2}\)\ ?|[2-9]\d{2}(?:\-?|\ ?))[2-9]\d{2}[- ]?\d{4}$/" autofocus="true" ng-required="true"/>
+    <span class="help-block" ng-show="submitted_phone && !snapForm.phone.$valid">{{ _("Ten Digit Telephone Number Required") }}</span>
+</div>
+
+<p>{{ _("A case worker will give you a call at this number within five business days.") }}</p>
+<button class="yellow-button" ng-class="{'disabled': !snapForm.phone.$valid }" ng-click="next()">{{ _("Continue") }}</button>

@@ -1,0 +1,13 @@
+<h1>How much is your monthly rent or mortgage?</h1>
+<p>For you and anyone else that is applying with you.</p>
+
+<div class="input-group dollar-input" ng-class="{'has-success':snapForm.expenses.$pristine ,'has-error': snapForm.expenses.$invalid }">
+    <input class="form-control" type="number" name="expenses"  id="expenses"
+           ng-model="formData.expenses" autofocus="true" min="0" required/>
+    <span class="help-block"  ng-show="submitted_expenses && snapForm.expenses.$error.min">
+            <%= __("Minimum expenses is 0.") %></span>
+    <span class="help-block"  ng-show="submitted_expenses && snapForm.expenses.$invalid && !snapForm.expenses.$error.min">
+            <%= __("You must enter a number.") %></span>
+</div>
+
+<div class="yellow-button" ng-class="{'disabled': snapForm.expenses.$invalid}" ng-click="next()"><%= __("Continue") %></div>

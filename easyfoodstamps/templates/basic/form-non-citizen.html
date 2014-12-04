@@ -1,0 +1,15 @@
+<h1>{{ _("Does your immigration status fall into one of the following categories?") }}</h1>
+<style>
+    li,ul {list-style-type: disc; list-style-position: outside; margin-left:10px; }
+</style>
+<ul style="margin-bottom:10px;margin-top:-14px;">
+    <li>{{ _("Legal immigrant since 2009 or earlier") }}</li>
+    <li>{{ _("Refugee") }}</li>
+    <li>{{ _("Non-citizen under 18") }}</li>
+</ul>
+<br/>
+<input ng-model="formData.non_citizen" id="non_citizen_yes" type="radio" class="name-input marital-input" value="yes"
+	name="non_citizenship" ng-click="next()" required><label for="non_citizen_yes">{{ _("Yes") }}</label>
+<br/>
+<input ng-model="formData.non_citizen" id="non_citizen_no" type="radio" class="name-input marital-input" value="no"
+	name="non_citizenship" ng-click="next()"><label for="non_citizen_no" >{{ _("No") }}</label>
