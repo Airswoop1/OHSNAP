@@ -31,10 +31,27 @@ var app = angular.module('formApp', [
     return $delegate;
   });
 })
-.controller('AppCtrl', function($state, $rootScope, $timeout, $window, User) {
+.controller('AppCtrl', function($scope, $state, $rootScope, $timeout, $window, User) {
+  $scope.goBack = function() {
+    window.history.back();
+  };
+
+  $scope.external = function(name) {
+    $window.ga('send','event','external', 'tap', name, 1);
+  };
+
+  $scope.accordion = function(isActive, name) {
+    var active = isActive[name];
+    for(var i in isActive) {
+      isActive[i] = false;
+    }
+    isActive[name] = !active;
+    $window.ga('send','event','accordion', 'tap', name, 1);
+  };
+
   $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {
     if(fromState.name === 'home') {
-      $window.scrollTo(0,0);
+      $window.scrollTo(0, 0);
     }
   });
 });

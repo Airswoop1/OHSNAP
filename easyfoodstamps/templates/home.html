@@ -1,50 +1,89 @@
 <!-- form.html -->
 <div class="intro-header">
-    <div class="logo">EASY <i class="bolt-logo"></i> FOODSTAMPS NYC</div>
-    <h1>{{ _("Get food stamps, <br/>without the <br/>hassle.") }}</h1>
-    <div>
-        <div ng-click="$emit('start.application')" ui-sref="form.name" class="intro-button">{{ _("Apply now") }}</div>
-        <div ng-click="$emit('start.eligibility')" ui-sref="eligibility.citizenship" class="intro-button dull">{{ _("Am I eligible?") }}</div>
+  <div class="logo">EASY <i class="bolt-logo"></i> FOODSTAMPS PHL</div>
+  <h1>{{ _("Get food stamps, <br/>without the <br/>hassle.") }}</h1>
+  <div>
+    <div ui-sref="form.name" class="intro-button">{{ _("Apply now") }}</div>
+    <div ui-sref="eligibility.citizenship" class="intro-button dull">{{ _("Am I eligible?") }}</div>
 
-        {% if locale == "en" %}
-        <div class="language-link"><a href="/?lang=es">En español, por favor</a></div>
-        {% else %}
-        <div class="language-link"><a href="/?lang=en">English?</a></div>
-        {% endif %}
-    </div>
+    {% if locale == "en" %}
+    <div class="language-link" ng-hide="'true'"><a href="/?lang=es">En español, por favor</a></div>
+    {% else %}
+    <div class="language-link" ng-hide="'true'"><a href="/?lang=en">English?</a></div>
+    {% endif %}
+  </div>
 </div>
 
 <!-- our nested state views will be injected here -->
 <div class="form-wrapper" ui-view>
-    <!-- form-intro.html -->
-    <div class="steps-wrapper">
-        <div class="steps">
-            {{ _("APPLY IN 3 EASY STEPS!") }}
-            <i class="steps-triangle"></i>
-        </div>
-        <div class="step-1 steps">
-            <h1>{{ _("Step 1") }}</h1>
-            <h2>{{ _("Basics") }}</h2>
-            <p>{{ _("Answer 5 basic questions about yourself to get started.") }}</p>
-            <i class="steps-triangle step-triangle-1"></i>
-        </div>
-        <div class="step-2 steps">
-            <h1>{{ _("Step 2") }}</h1>
-        <h2>{{ _("Interview") }}</h2>
-            <p>{{ _("Prepare for your interview with a government worker with our interview guide.") }}</p>
-            <i class="steps-triangle step-triangle-2"></i>
-        </div>
-        <div class="step-3 steps">
-            <h1>{{ _("Step 3") }}</h1>
-            <h2>{{ _("Documents") }}</h2>
-            <p>{{ _("Text us your documents or upload them online, and we’ll fax them in for you.  Boom! You’re done.") }}</p>
-            <i class="steps-triangle step-triangle-3"></i>
-        </div>
+  <!-- form-intro.html -->
+  <div class="steps-wrapper">
+    <div class="steps">
+      {{ _("APPLY IN 3 EASY STEPS!") }}
+      <i class="steps-triangle"></i>
     </div>
+    <div class="step-1 steps">
+      <h1>{{ _("Step 1") }}</h1>
+      <h2>{{ _("Basics") }}</h2>
+      <p>{{ _("Answer 5 basic questions about yourself to get started.") }}</p>
+      <i class="steps-triangle step-triangle-1"></i>
+    </div>
+    <div class="step-2 steps">
+      <h1>{{ _("Step 2") }}</h1>
+    <h2>{{ _("Interview") }}</h2>
+      <p>{{ _("Prepare for your interview with a government worker with our interview guide.") }}</p>
+      <i class="steps-triangle step-triangle-2"></i>
+    </div>
+    <div class="step-3 steps">
+      <h1>{{ _("Step 3") }}</h1>
+      <h2>{{ _("Documents") }}</h2>
+      <p>{{ _("Text us your documents or upload them online, and we’ll fax them in for you.  Boom! You’re done.") }}</p>
+      <i class="steps-triangle step-triangle-3"></i>
+    </div>
+  </div>
 
-    <button class="yellow-button" ng-click="$emit('start.application')" ui-sref="form.name">{{ _("Get started") }}</button>
+  <button class="yellow-button" ui-sref="form.name">{{ _("Get started") }}</button>
 
-    <info-footer></info-footer>
+  <div class="footer" ng-init="isActive = {}">
+    <h5 ng-class="{'open': isActive.about, 'close': !isActive.about}" ng-click="accordion(isActive, 'about')">
+      {{ _("ABOUT US") }}
+    </h5>
+    <p class="accordion" ng-class="{'open': isActive.about, 'close': !isActive.about}">
+      {{ _("We’re %(propellink)s, and we're trying to make it easier to apply for SNAP. We're based in Brooklyn at Significance Labs, and we aren’t affiliated with the US government.", propellink='<a target="_blank" href="http://joinpropel.com/Propel">Propel</a>') }}</p>
+    <h5 ng-class="{'open':isActive.faqs, 'close':!isActive.faqs}" ng-click="accordion(isActive, 'faqs')">
+      {{ _("FAQs") }}
+    </h5>
+    <div class="accordion" ng-class="{'open':isActive.faqs, 'close':!isActive.faqs}">
+      <p>
+        <strong>{{ _("What’s the difference between applying here versus applying elsewhere?") }}</strong>
+        <span ng-class="{'open':faqActive.diff, 'close':!faqActive.diff}">
+          {{ _("The application that gets submitted is the same. We think you’ll be able to save time and headaches by applying with us, though. You’ll be eligible for the exact same SNAP benefits no matter where you apply.") }}
+        </span>
+      </p>
+      <p>
+        <strong>{{ _("How much does this cost?") }}</strong>
+        <span ng-class="{'open':faqActive.cost, 'close':!faqActive.cost}">{{ _("It's free.") }}</span>
+      </p>
+      <p>
+        <strong>{{ _("What will you do with my personal information?") }}</strong>
+        <span ng-class="{'open':faqActive.info, 'close':!faqActive.info}">
+          By using this app, you are agreeing to our <a ng-click="external('tos')" href="templates/terms-of-service.html">Terms of Service</a> and <a ng-click="external('privacy')" href="templates/privacy-policy.html">Privacy Policy</a>.
+        </span>
+      </p>
+      <p >
+        <strong>{{ _("Where can I read more about SNAP?") }}</strong>
+        <span ng-class="{'open':faqActive.more, 'close':!faqActive.more}">
+          Learn more <a ng-click="external('usda.gov')" href="http://www.fns.usda.gov/snap/supplemental-nutrition-assistance-program-snap">here</a>.
+        </span>
+      </p>
+    </div>
+    <h5 ng-class="{'open':isActive.contact, 'close':!isActive.contact}" ng-click="accordion(isActive, 'contact')">
+      {{ _("CONTACT US") }}
+    </h5>
+    <p class="accordion" ng-class="{'open':isActive.contact, 'close':!isActive.contact}" >
+      <a href="http://joinpropel.com/">www.joinpropel.com</a><br/>
+      <a href="mailto://info@joinpropel.com">info@joinpropel.com</a><br/>
+      <a href="tel://1-917-727-6855">+1 (917) 727-6855</a>
+    </p>
+  </div>
 </div>
-
-<modal-dialog show='modalShown' width='90%' height='100%'></modal-dialog>

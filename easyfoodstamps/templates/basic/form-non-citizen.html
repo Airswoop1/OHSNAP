@@ -8,15 +8,8 @@
     <li>{{ _("Non-citizen under 18") }}</li>
 </ul>
 <br/>
-<input ng-model="formData.non_citizen" id="non_citizen_yes" type="radio" class="name-input marital-input" value="yes" name="non_citizenship" required><label
-        for="non_citizen_yes">{{ _("Yes") }}</label>
+<input ng-model="formData.non_citizen" id="non_citizen_yes" type="radio" class="name-input marital-input" value="yes"
+	name="non_citizenship" ng-click="next()" required><label for="non_citizen_yes">{{ _("Yes") }}</label>
 <br/>
-<input ng-model="formData.non_citizen" id="non_citizen_no" type="radio" class="name-input marital-input" value="no" name="non_citizenship"><label
-        for="non_citizen_no" >{{ _("No") }}</label>
-<br/>
-<span class="help-block" style="color:red;" ng-show="submitted_non_citizenship && !formData.non_citizen">{{ _("Citizenship selection required.") }}</span>
-
-
-<div class="yellow-button disabled" ng-hide="formData.non_citizen == 'yes' || formData.non_citizen == 'no'">{{ _("Continue") }}</div>
-<div ng-show="formData.non_citizen == 'yes'" class="yellow-button" ng-click="completedNonCitizenship()">{{ _("Continue") }}</div>
-<div ng-show="formData.non_citizen == 'no'" class="yellow-button" ui-sref="form.citizenship-false">{{ _("Continue") }}</div>
+<input ng-model="formData.non_citizen" id="non_citizen_no" type="radio" class="name-input marital-input" value="no"
+	name="non_citizenship" ng-click="next()"><label for="non_citizen_no" >{{ _("No") }}</label>

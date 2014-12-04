@@ -6,7 +6,7 @@
 
 <div class="checkbox-group" ng-init="agree_to_texts = true">
     <input type="checkbox" class="agree-checkbox big-checkbox" id="agree_to_texts"  ng-model="agree_to_texts"/>
-    <span style="font-weight:600;padding-left:10px">{{ _("Text me updates about my application status! (Recommended) - make this box checked by default.") }}</span>
+    <span style="font-weight:600;padding-left:10px">{{ _("Text me updates about my application status! (Recommended)") }}</span>
 </div>
 
 <div class="yellow-button" style="text-align: left;" ng-click="$emit('start-last-step');" ui-sref="upload.documents">{{ _("Start the last step") }}</div>

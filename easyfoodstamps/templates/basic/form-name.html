@@ -12,4 +12,4 @@
     <span class="help-block" ng-show="submitted_name && (snapForm.last_name.$error.required)">{{ _("What's your last name?") }}</span>
 </div>
 
-<div class="yellow-button" ng-class="{'disabled':(snapForm.last_name.$invalid || snapForm.first_name.$invalid)}"  ng-click="completedName()">{{ _("Continue") }}</div>
+<div class="yellow-button" ng-class="{'disabled':(snapForm.last_name.$invalid || snapForm.first_name.$invalid)}" ng-click="next()">{{ _("Continue") }}</div>

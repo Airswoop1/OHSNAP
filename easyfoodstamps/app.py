@@ -90,21 +90,13 @@ def logout():
 
 @app.route('/')
 def index():
-    return render_template("index.html")
+    return render_template("index.html", locale=get_locale())
 
 
 @app.route('/templates/<path:partial>')
 def partials(partial):
-    return render_template(partial)
+    return render_template(partial, locale=get_locale())
 
-
-@app.route("/site-map")
-def site_map():
-    links = []
-    for rule in app.url_map.iter_rules():
-        url = rule.rule
-        links.append((url, rule.endpoint))
-    return "<br/>".join(("%s:%s" % (url, endpoint) for (url, endpoint) in links))
 
 js_deps = Bundle(
     "components/jquery/dist/jquery.min.js",

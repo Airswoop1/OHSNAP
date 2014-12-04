@@ -9,9 +9,7 @@ angular.module('formApp.formStates', ['formApp.formController'])
 	$stateProvider
 		.state('home', {
 			url: '/home',
-			templateUrl: 'templates/home.html',
-			controller: //'homeController'
-			function() {}
+			templateUrl: 'templates/home.html'
 		})
 
 		.state('eligibility', {
@@ -24,6 +22,16 @@ angular.module('formApp.formStates', ['formApp.formController'])
 		.state('eligibility.citizenship', {
 			url:'/citizenship',
 			templateUrl:'templates/basic/form-citizenship.html'
+		})
+
+		.state('eligibility.non-citizen', {
+			url:'/non-us-citizen',
+			templateUrl:'templates/basic/form-non-citizen.html'
+		})
+
+		.state('eligibility.citizenship-false', {
+			url:'/citizenship-false',
+			templateUrl:'templates/basic/form-illegal-citizen.html'
 		})
 
 		.state('eligibility.household', {
