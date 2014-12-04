@@ -54,3 +54,7 @@ nohup.out
 
 # local settings
 settings.cfg
+
+# webassets
+easyfoodstamps/static/.webassets-cache/
+easyfoodstamps/static/gen/
