@@ -53,16 +53,18 @@ angular.module('formApp.CalcBenefitService', [])
 		}
 
 		if(eligible){
-			if(house === 1){ benefit=189; }
-			else if(house === 2){ benefit=347;}
-			else if(house === 3){ benefit=497;}
-			else if(house === 4){ benefit=632;}
-			else if(house === 5){ benefit=750;}
-			else if(house === 6){ benefit=900;}
-			else if(house === 7){ benefit=995;}
-			else if(house === 8){ benefit=1137}
-			else if(house >= 9) {
-				benefit = 1337 + (142*(house-8))
+			if(house === 1){ benefit=194; }
+			else if(house === 2){ benefit=357;}
+			else if(house === 3){ benefit=511;}
+			else if(house === 4){ benefit=649;}
+			else if(house === 5){ benefit=771;}
+			else if(house === 6){ benefit=925;}
+			else if(house === 7){ benefit=1022;}
+			else if(house === 8){ benefit=1169;}
+			else if(house === 9){ benefit=1315;}
+			else if(house === 10){ benefit=1461;}
+			else if(house >= 11) {
+				benefit = 1607 + (146*(house-11))
 			}
 		}
 
